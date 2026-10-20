@@ -36,9 +36,9 @@ README EN/ES con la misma información esencial, inicio rápido y mapa real de a
 
 Comprobaciones y límites detallados a continuación. No quedan fallos reproducibles observados de la implementación tras las correcciones. La publicación todavía debe verificarse en el hito 5.
 
-### 5. Entrega — en curso
+### 5. Entrega — realizada; seguimiento de cierre
 
-Commits y push a la fuente verificada, comprobación del despliegue y web pública. Sin force push ni cambios de ajustes. Un push no se presentará como despliegue terminado.
+Implementación entregada en `1415421` y push confirmado a `origin/main`. Build de Pages `built` para ese SHA, sin error, el 20 de octubre de 2026 a las 11:20 (Madrid). Web pública y README renderizado comprobados. El commit de cierre registra la entrega y mejora el foco de anclas observado en producción. Sin force push ni cambios de ajustes.
 
 ## Historial anterior
 
@@ -55,6 +55,7 @@ Las etapas 1–2 se entregaron en `bf6d803`; las etapas 3–4 y restauración de
 - Indicadores de los detalles cambiados a + / −, sin rotación que exceda la caja. Los tres abiertos en EN/ES a 320 px tienen desbordamiento cero.
 - Al abrir el menú, el foco entra en su primer enlace. Tab pasa al siguiente; Escape cierra y devuelve foco. Si se oculta al redimensionar, no queda foco dentro de enlaces `inert`.
 - Parámetros de versión derivados del hash de CSS/JS para evitar servir el diseño anterior desde la caché tras publicar. Recursos relativos, sin sistema de compilación.
+- Ajuste final de foco de anclas tras probar la web pública: señal discreta en la etiqueta del destino, en lugar de un contorno nativo alrededor de toda la sección. Comprobado con navegación al equipo y retorno al inicio.
 
 ## Comprobaciones efectuadas
 
@@ -76,4 +77,10 @@ Viewports del navegador integrado, sin dispositivos físicos, matriz de motores 
 
 ## Estado de entrega
 
-Implementación y documentación verificadas. Rama remota `main` sin protección y todavía en `4945ec0` al comprobarla antes de la entrega. Hito 5 en curso: commit, push normal y comprobar el build correspondiente y la web pública. No se han cambiado ajustes de Pages ni fotografías. Los hitos anteriores y sus verificaciones se conservan en este registro si se interrumpe el trabajo.
+**Rediseño integral entregado en `origin/main`.** Commit de implementación `14154218c45e1a8c8b46e1be8835e99222458345`; despliegue `built` confirmado para ese SHA, sin errores. URL pública: https://withnolan.github.io/senva/.
+
+Comprobación en producción: titular y metadatos nuevos, referencias CSS/JS versionadas, escenario a 110 px, avance y regreso, cambio EN/ES sin perder capítulo, menú móvil por Tab y Enter hasta el equipo, retratos cargados de 800 × 800 y mismo tamaño visible, retorno al inicio con teclado y cero desbordamiento a 320 px. Sin nuevos errores o avisos en ese recorrido. El README de GitHub muestra el logo cargado y la nueva entrada inglesa con acceso a español.
+
+La prueba pública de retorno con teclado mostró un contorno nativo alrededor de toda la portada. El seguimiento de cierre lo sustituye por una señal de foco en la etiqueta del destino, manteniendo foco visible y navegación nativa. Comprobado localmente desde el enlace del equipo y desde el pie: sección sin contorno grande, etiqueta con contorno turquesa y retorno a `scrollY = 0`. Este ajuste no cambia contenido, arquitectura ni movimiento; actualiza el hash del CSS.
+
+El commit de cierre incluye este registro y el ajuste de foco; su SHA y resultado final de Pages se confirman en la respuesta de entrega. Las comprobaciones y límites anteriores se mantienen. No hay ajustes del repositorio, fotografías, licencia o datos personales nuevos en esta entrega.

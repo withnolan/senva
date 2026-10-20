@@ -60,7 +60,7 @@ El control **Pause motion / Pausar movimiento** elimina animaciones y transicion
 ## Accesibilidad y responsive
 
 - Menú móvil desde 700 px hacia abajo; enlaces cerrados con `inert` y `aria-hidden`, Al abrir, el foco entra en el primer enlace; Escape devuelve el foco. Al cambiar al ancho de escritorio se retiran esas restricciones.
-- Anclas nativas, foco en el destino sin desplazamiento forzado y margen superior para la cabecera. Enlace de salto al contenido y foco visible.
+- Anclas nativas, foco en el destino sin desplazamiento forzado y margen superior para la cabecera. La etiqueta del destino muestra el foco de teclado, evitando un contorno alrededor de toda la sección. Enlace de salto al contenido y foco visible.
 - Detalles de investigación con `<details>` / `<summary>` nativos; toda la información puede leerse sin animaciones ni JavaScript.
 - Sin JavaScript: inglés completo y navegación visible, gráficos estáticos y controles dependientes ocultos.
 - Ninguna capacidad se representa solo por color. Las dos direcciones se explican en texto y con etiquetas y rutas, sin simular reconocimiento.
