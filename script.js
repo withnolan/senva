@@ -5,6 +5,35 @@
   // Arrays insert intentional line breaks using DOM nodes, never HTML strings.
   const translations = {
     "en": {
+        "narrativeLabel": "From purpose to questions",
+        "chapterNav": "Explore the four chapters",
+        "chapter1": "Purpose",
+        "chapter2": "Vision",
+        "chapter3": "First experiment",
+        "chapter4": "To demonstrate",
+        "scenePurposeTitle": "More room for connection.",
+        "sceneVisionBody": "We are exploring a possible gloves-and-glasses system to support communication between Deaf signers and hearing people, in both directions.",
+        "signDirection": "LSE → speech or text",
+        "speechDirection": "Speech → captions",
+        "conceptBoundaries": "What this concept would require",
+        "sceneExperimentTitle": "A first experiment. Not the destination.",
+        "practiceDetails": "A limited practice hypothesis",
+        "sceneProofTitle": "What we need to demonstrate.",
+        "proofUtility": "Useful to people",
+        "proofUtilityBody": "Define worthwhile needs with Deaf signers, and investigate whether the proposed hardware is useful and acceptable.",
+        "proofFeasibility": "Technically feasible",
+        "proofFeasibilityBody": "Find out which signals can be measured reliably and what information would still be missing.",
+        "proofAlternatives": "Worth choosing over alternatives",
+        "proofAlternativesBody": "Compare gloves with cameras and existing resources, including cost, calibration, comfort and accessibility.",
+        "researchDetails": "The open research questions",
+        "seeValidation": "See the validation plan",
+        "visualPurpose": "People → possibilities",
+        "visualVision": "Two directions of communication",
+        "visualExperiment": "A practice hypothesis",
+        "visualProof": "Questions before answers",
+        "visualUtility": "Usefulness?",
+        "visualFeasibility": "Feasibility?",
+        "visualAlternatives": "Gloves or cameras?",
         "title": "SENVA — Conversations open possibilities",
         "description": "SENVA explores ways to reduce communication barriers between Deaf signers and hearing people. A gloves-and-glasses concept at the idea and hypothesis-validation stage.",
         "socialDescription": "Communication is the purpose. Exploring autonomy, participation and everyday connection between Deaf signers and hearing people.",
@@ -25,6 +54,9 @@
         "pauseMotion": "Pause motion",
         "resumeMotion": "Resume motion",
         "heroEyebrow": "More autonomy. More ways to connect.",
+        "heroConnectionFirst": "Two perspectives.",
+        "heroConnectionSecond": "A shared conversation.",
+        "heroConnectionCaption": "Connection, imagined. A conceptual illustration.",
         "heroTitle1": "A conversation",
         "heroTitle2": "opens possibilities.",
         "heroDescription": "We explore new ways to connect Deaf signers and hearing people through technology that supports their communication.",
@@ -152,6 +184,35 @@
         "storyCaption": "A direction for research, shaped by people."
     },
     "es": {
+        "narrativeLabel": "Del propósito a las preguntas",
+        "chapterNav": "Explorar los cuatro capítulos",
+        "chapter1": "Propósito",
+        "chapter2": "Visión",
+        "chapter3": "Primer experimento",
+        "chapter4": "Por demostrar",
+        "scenePurposeTitle": "Más espacio para conectar.",
+        "sceneVisionBody": "Exploramos un posible sistema de guantes y gafas para apoyar la comunicación entre personas sordas signantes y oyentes, en ambas direcciones.",
+        "signDirection": "LSE → voz o texto",
+        "speechDirection": "Habla → subtítulos",
+        "conceptBoundaries": "Qué requeriría este concepto",
+        "sceneExperimentTitle": "Un primer experimento. No el destino.",
+        "practiceDetails": "Una hipótesis de práctica acotada",
+        "sceneProofTitle": "Lo que debemos demostrar.",
+        "proofUtility": "Utilidad para las personas",
+        "proofUtilityBody": "Definir con personas sordas signantes qué necesidades merece la pena resolver y comprobar si el hardware propuesto resulta útil y aceptable.",
+        "proofFeasibility": "Viabilidad técnica",
+        "proofFeasibilityBody": "Averiguar qué señales pueden medirse con fiabilidad y qué información seguiría faltando.",
+        "proofAlternatives": "Valor frente a alternativas",
+        "proofAlternativesBody": "Comparar los guantes con cámaras y recursos existentes, considerando coste, calibración, comodidad y accesibilidad.",
+        "researchDetails": "Las preguntas de investigación abiertas",
+        "seeValidation": "Ver el plan de validación",
+        "visualPurpose": "Personas → posibilidades",
+        "visualVision": "Dos direcciones de comunicación",
+        "visualExperiment": "Una hipótesis de práctica",
+        "visualProof": "Preguntas antes que respuestas",
+        "visualUtility": "¿Útil?",
+        "visualFeasibility": "¿Viable?",
+        "visualAlternatives": "¿Guantes o cámaras?",
         "title": "SENVA — Que una conversación abra posibilidades",
         "description": "SENVA explora formas de reducir las barreras de comunicación entre personas sordas signantes y oyentes. Un concepto de guantes y gafas en fase de idea y validación de hipótesis.",
         "socialDescription": "La comunicación es el propósito. Exploramos autonomía, participación y conexión cotidiana entre personas sordas signantes y oyentes.",
@@ -172,6 +233,9 @@
         "pauseMotion": "Pausar movimiento",
         "resumeMotion": "Reanudar movimiento",
         "heroEyebrow": "Más autonomía. Más formas de conectar.",
+        "heroConnectionFirst": "Dos perspectivas.",
+        "heroConnectionSecond": "Una conversación compartida.",
+        "heroConnectionCaption": "Imaginamos la conexión. Ilustración conceptual.",
         "heroTitle1": "Que una conversación",
         "heroTitle2": "abra posibilidades.",
         "heroDescription": "Exploramos nuevas formas de conectar a personas sordas signantes y oyentes mediante tecnología que acompañe su comunicación.",
@@ -401,7 +465,6 @@
   // Motion is an enhancement: no content depends on an observer or a hidden class.
   const runningAnimations = new Set();
   const revealed = new WeakSet();
-  const storyStage = document.querySelector('.story-stage');
 
   function reveal(element) {
     if (reducedMotion.matches || motionPaused || revealed.has(element) || typeof element.animate !== 'function') return;
@@ -425,26 +488,63 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.opportunity-content, .vision-copy, .concept-board, .team-heading, .xiji-heading, .contact-inner').forEach((element) => revealObserver.observe(element));
 
-    const visibleSteps = new Map();
-    const storyObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          visibleSteps.set(entry.target, entry.intersectionRatio);
-          reveal(entry.target);
-        } else visibleSteps.delete(entry.target);
-      });
-      if (!visibleSteps.size) return;
-      const [activeStep] = [...visibleSteps.entries()].sort((a, b) => b[1] - a[1])[0];
-      const index = activeStep.dataset.storyStep;
-      storyStage.dataset.activeStep = index;
-      document.querySelectorAll('[data-story-node]').forEach((node) => node.classList.toggle('is-active', node.dataset.storyNode === index));
-    }, { rootMargin: '-15% 0px -30% 0px', threshold: [0, 0.25, 0.5, 0.75] });
-    document.querySelectorAll('[data-story-step]').forEach((step) => storyObserver.observe(step));
-
     const ambientObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
     });
     ambientObserver.observe(document.querySelector('.hero-art'));
+  }
+
+  const narrative = document.querySelector('.senva-narrative');
+  const scenes = [...document.querySelectorAll('[data-scene]')];
+  const narrativeStage = document.querySelector('.narrative-stage');
+  const chapters = [...document.querySelectorAll('[data-chapter]')];
+  let narrativeFrame = 0;
+  let activeScene = -1;
+
+  function updateNarrative() {
+    narrativeFrame = 0;
+    const readingLine = window.innerHeight * 0.5;
+    let active = 0;
+    scenes.forEach((scene, index) => {
+      if (scene.getBoundingClientRect().top <= readingLine) active = index;
+    });
+    if (active === activeScene) return;
+    activeScene = active;
+    narrativeStage.dataset.activeScene = String(active);
+    chapters.forEach((link, index) => {
+      if (index === active) link.setAttribute('aria-current', 'step');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function queueNarrativeUpdate() {
+    if (!narrativeFrame) narrativeFrame = window.requestAnimationFrame(updateNarrative);
+  }
+
+  function setNarrativeMotion() {
+    narrative.classList.toggle('narrative-static', reducedMotion.matches);
+    queueNarrativeUpdate();
+  }
+
+  if (narrative && 'IntersectionObserver' in window) {
+    narrative.classList.add('narrative-enhanced');
+    const narrativeObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        window.addEventListener('scroll', queueNarrativeUpdate, { passive: true });
+        queueNarrativeUpdate();
+      } else {
+        window.removeEventListener('scroll', queueNarrativeUpdate);
+      }
+    });
+    narrativeObserver.observe(narrative);
+    window.addEventListener('resize', queueNarrativeUpdate, { passive: true });
+    window.addEventListener('hashchange', queueNarrativeUpdate);
+    reducedMotion.addEventListener('change', setNarrativeMotion);
+    // Expanding research notes changes scene heights; keep the chapter accurate.
+    narrative.querySelectorAll('details').forEach((detail) => detail.addEventListener('toggle', queueNarrativeUpdate));
+    const narrativeResize = typeof ResizeObserver === 'function' ? new ResizeObserver(queueNarrativeUpdate) : null;
+    if (narrativeResize) narrativeResize.observe(narrative);
+    setNarrativeMotion();
   }
 
   reducedMotion.addEventListener('change', () => {
