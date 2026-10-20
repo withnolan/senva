@@ -37,7 +37,7 @@
         "title": "SENVA — Conversations open possibilities",
         "description": "SENVA explores ways to reduce communication barriers between Deaf signers and hearing people. A gloves-and-glasses concept at the idea and hypothesis-validation stage.",
         "socialDescription": "Communication is the purpose. Exploring autonomy, participation and everyday connection between Deaf signers and hearing people.",
-        "socialImageAlt": "SENVA. Every gesture brings us closer. A conceptual illustration of connected gloves and glasses in turquoise on night blue.",
+        "socialImageAlt": "SENVA. Conversations open possibilities. Two connected forms in warm white and turquoise on night blue. Idea / Hypothesis validation.",
         "skip": "Skip to content",
         "homeLabel": "SENVA — home",
         "navLabel": "Main navigation",
@@ -216,7 +216,7 @@
         "title": "SENVA — Que una conversación abra posibilidades",
         "description": "SENVA explora formas de reducir las barreras de comunicación entre personas sordas signantes y oyentes. Un concepto de guantes y gafas en fase de idea y validación de hipótesis.",
         "socialDescription": "La comunicación es el propósito. Exploramos autonomía, participación y conexión cotidiana entre personas sordas signantes y oyentes.",
-        "socialImageAlt": "SENVA. Cada gesto nos acerca. Ilustración conceptual de guantes y gafas conectados, en turquesa sobre azul noche.",
+        "socialImageAlt": "SENVA. Que una conversación abra posibilidades. Dos formas conectadas en blanco cálido y turquesa sobre azul noche. Idea / Validación de hipótesis.",
         "skip": "Saltar al contenido",
         "homeLabel": "SENVA — inicio",
         "navLabel": "Navegación principal",
@@ -381,6 +381,10 @@
 
   function setMenu(open, returnFocus = false) {
     menu.classList.toggle('is-open', open);
+    const hidden = mobileViewport.matches && !open;
+    menu.toggleAttribute('inert', hidden);
+    if (hidden) menu.setAttribute('aria-hidden', 'true');
+    else menu.removeAttribute('aria-hidden');
     menuToggle.setAttribute('aria-expanded', String(open));
     menuToggle.setAttribute('aria-label', translations[language][open ? 'closeMenu' : 'openMenu']);
     if (returnFocus) menuToggle.focus();
@@ -401,6 +405,15 @@
 
   function setLanguage(nextLanguage, announce = false) {
     if (!Object.hasOwn(translations, nextLanguage)) return;
+    // Keep the same place in the scene when translated copy changes its height.
+    const readingLine = window.innerHeight * 0.5;
+    const readingScene = announce ? [...document.querySelectorAll('[data-scene]')].find((scene) => {
+      const rect = scene.getBoundingClientRect();
+      return rect.top <= readingLine && rect.bottom > readingLine;
+    }) : null;
+    const previousRect = readingScene?.getBoundingClientRect();
+    const readingFraction = previousRect ? (readingLine - previousRect.top) / previousRect.height : 0;
+    if (readingScene) document.documentElement.classList.add('language-changing');
     language = nextLanguage;
     const copy = translations[language];
     document.querySelectorAll('[data-i18n]').forEach((element) => {
@@ -426,6 +439,21 @@
     menuToggle.setAttribute('aria-label', copy[menuToggle.getAttribute('aria-expanded') === 'true' ? 'closeMenu' : 'openMenu']);
     if (announce) document.querySelector('#language-announcement').textContent = copy.languageChanged;
     updateMotionButton();
+    if (readingScene) {
+      const restoreReadingPosition = () => {
+        const rect = readingScene.getBoundingClientRect();
+        const correction = rect.top + rect.height * readingFraction - readingLine;
+        if (Math.abs(correction) > 1) window.scrollBy({ top: correction, behavior: 'auto' });
+      };
+      restoreReadingPosition();
+      // The next layout includes browser anchoring and translated line wrapping.
+      window.requestAnimationFrame(() => {
+        restoreReadingPosition();
+        document.documentElement.classList.remove('language-changing');
+        document.dispatchEvent(new Event('senva:languagechange'));
+      });
+    }
+    document.dispatchEvent(new Event('senva:languagechange'));
     try { window.localStorage.setItem(storageKey, language); } catch { /* Storage is optional. */ }
   }
 
@@ -461,6 +489,10 @@
   } catch { /* Keep the English default if storage is unavailable. */ }
   setLanguage(language);
   document.documentElement.classList.add('js');
+  setMenu(false);
+  if (!reducedMotion.matches && window.scrollY < 100 && (!window.location.hash || window.location.hash === '#home')) {
+    document.documentElement.classList.add('intro-ready');
+  }
 
   // Motion is an enhancement: no content depends on an observer or a hidden class.
   const runningAnimations = new Set();
@@ -486,7 +518,7 @@
         }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.opportunity-content, .vision-copy, .concept-board, .team-heading, .xiji-heading, .contact-inner').forEach((element) => revealObserver.observe(element));
+    document.querySelectorAll('.team-heading, .xiji-heading, .contact-inner').forEach((element) => revealObserver.observe(element));
 
     const ambientObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
@@ -497,23 +529,73 @@
   const narrative = document.querySelector('.senva-narrative');
   const scenes = [...document.querySelectorAll('[data-scene]')];
   const narrativeStage = document.querySelector('.narrative-stage');
+  const narrativeLayout = document.querySelector('.narrative-layout');
+  const panels = [...document.querySelectorAll('[data-scene-panel]')];
+  const dots = [...document.querySelectorAll('[data-scene-dot]')];
   const chapters = [...document.querySelectorAll('[data-chapter]')];
+  const desktopNarrative = window.matchMedia('(min-width: 1000px) and (min-height: 720px)');
+  // y, scale, first field x/rotation/scale, second field x/rotation/scale, exchange opacity.
+  const poses = [
+    [-25, 1, 0, 0, 1, 0, 0, 1, 1],
+    [-80, .7, -65, 0, 1, 65, 0, 1, 1],
+    [-80, .7, 0, -20, .9, 0, 20, .9, 1],
+    [-80, .58, -110, 25, 1, 110, -25, 1, 0]
+  ];
+  const clamp = (value) => Math.max(0, Math.min(1, value));
+  const smooth = (value) => value * value * (3 - 2 * value);
   let narrativeFrame = 0;
   let activeScene = -1;
+  let previousProgress = '';
 
   function updateNarrative() {
     narrativeFrame = 0;
-    const readingLine = window.innerHeight * 0.5;
-    let active = 0;
-    scenes.forEach((scene, index) => {
-      if (scene.getBoundingClientRect().top <= readingLine) active = index;
+    const height = window.innerHeight;
+    const readingLine = height * .5;
+    const bounds = scenes.map((scene) => scene.getBoundingClientRect());
+    const layout = narrativeLayout.getBoundingClientRect();
+    const animated = desktopNarrative.matches && !reducedMotion.matches && !motionPaused;
+    const blendRange = Math.min(260, height * .26);
+    let progress = 0;
+    bounds.slice(1).forEach((rect) => {
+      progress += animated ? clamp((readingLine + blendRange / 2 - rect.top) / blendRange) : Number(rect.top <= readingLine);
     });
-    if (active === activeScene) return;
-    activeScene = active;
-    narrativeStage.dataset.activeScene = String(active);
-    chapters.forEach((link, index) => {
-      if (index === active) link.setAttribute('aria-current', 'step');
-      else link.removeAttribute('aria-current');
+    const active = Math.round(progress);
+    if (active !== activeScene) {
+      activeScene = active;
+      narrativeStage.dataset.activeScene = String(active);
+      scenes.forEach((scene, index) => scene.classList.toggle('is-current', index === active));
+      chapters.forEach((link, index) => {
+        if (index === active) link.setAttribute('aria-current', 'step');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    // Only the visual changes continuously. The reading order and scroll stay native.
+    const envelope = animated ? Math.min(clamp((height - layout.top - 60) / 260), clamp((layout.bottom - 350) / 260)) : 1;
+    narrativeStage.style.setProperty('--stage-opacity', (.72 + .28 * envelope).toFixed(3));
+    narrativeStage.style.setProperty('--stage-scale', (.985 + .015 * envelope).toFixed(4));
+    narrativeStage.style.setProperty('--stage-y', `${(8 * (1 - envelope)).toFixed(2)}px`);
+    const rounded = progress.toFixed(3);
+    if (rounded === previousProgress) return;
+    previousProgress = rounded;
+    const from = Math.floor(progress);
+    const to = Math.min(3, from + 1);
+    const mix = smooth(progress - from);
+    const values = poses[from].map((value, index) => value + (poses[to][index] - value) * mix);
+    const units = ['px', '', 'px', 'deg', '', 'px', 'deg', '', ''];
+    ['field-y', 'field-scale', 'first-x', 'first-angle', 'first-scale', 'second-x', 'second-angle', 'second-scale', 'exchange-opacity'].forEach((key, index) => {
+      narrativeStage.style.setProperty(`--${key}`, values[index].toFixed(3) + units[index]);
+    });
+    narrativeStage.style.setProperty('--chapter-progress', rounded);
+    panels.forEach((panel, index) => {
+      const distance = Math.abs(progress - index);
+      // Fade out before the next caption fades in, keeping the text layers separate.
+      const opacity = animated ? smooth(clamp((.48 - distance) / .38)) : Number(index === active);
+      const offset = animated ? Math.max(-1, Math.min(1, index - progress)) : 0;
+      panel.style.setProperty('--panel-opacity', opacity.toFixed(3));
+      panel.style.setProperty('--panel-y', `${(offset * 12).toFixed(2)}px`);
+      panel.style.setProperty('--panel-scale', (1 - Math.abs(offset) * .015).toFixed(4));
+      panel.style.visibility = opacity > .001 ? 'visible' : 'hidden';
+      dots[index].style.opacity = String(.4 + .6 * clamp(1 - distance));
     });
   }
 
@@ -523,6 +605,7 @@
 
   function setNarrativeMotion() {
     narrative.classList.toggle('narrative-static', reducedMotion.matches);
+    previousProgress = '';
     queueNarrativeUpdate();
   }
 
@@ -532,28 +615,33 @@
       if (entry.isIntersecting) {
         window.addEventListener('scroll', queueNarrativeUpdate, { passive: true });
         queueNarrativeUpdate();
-      } else {
-        window.removeEventListener('scroll', queueNarrativeUpdate);
-      }
+      } else window.removeEventListener('scroll', queueNarrativeUpdate);
     });
     narrativeObserver.observe(narrative);
     window.addEventListener('resize', queueNarrativeUpdate, { passive: true });
     window.addEventListener('hashchange', queueNarrativeUpdate);
+    document.addEventListener('senva:languagechange', queueNarrativeUpdate);
     reducedMotion.addEventListener('change', setNarrativeMotion);
-    // Expanding research notes changes scene heights; keep the chapter accurate.
+    desktopNarrative.addEventListener('change', setNarrativeMotion);
     narrative.querySelectorAll('details').forEach((detail) => detail.addEventListener('toggle', queueNarrativeUpdate));
-    const narrativeResize = typeof ResizeObserver === 'function' ? new ResizeObserver(queueNarrativeUpdate) : null;
-    if (narrativeResize) narrativeResize.observe(narrative);
+    if (typeof ResizeObserver === 'function') new ResizeObserver(queueNarrativeUpdate).observe(narrative);
     setNarrativeMotion();
   }
 
   reducedMotion.addEventListener('change', () => {
-    if (reducedMotion.matches) runningAnimations.forEach((animation) => animation.cancel());
+    if (reducedMotion.matches) {
+      document.documentElement.classList.remove('intro-ready');
+      runningAnimations.forEach((animation) => animation.cancel());
+    }
   });
   motionButton.addEventListener('click', () => {
     motionPaused = !motionPaused;
     document.documentElement.classList.toggle('motion-paused', motionPaused);
-    if (motionPaused) runningAnimations.forEach((animation) => animation.cancel());
+    if (motionPaused) {
+      document.documentElement.classList.remove('intro-ready');
+      runningAnimations.forEach((animation) => animation.cancel());
+    }
+    if (narrative && 'IntersectionObserver' in window) setNarrativeMotion();
     updateMotionButton();
   });
 })();

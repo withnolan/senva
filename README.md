@@ -10,7 +10,7 @@ Exploramos nuevas formas de contribuir a reducir las barreras de comunicación e
 
 **[Descubre SENVA en nuestra web →](https://withnolan.github.io/senva/)**
 
-![SENVA: un concepto de guantes y gafas conectados. Cada gesto nos acerca.](assets/social-card.png)
+![SENVA: una conexión conceptual en blanco cálido y turquesa. Idea / Validación de hipótesis.](assets/social-card.png)
 
 **Estado: Idea / Validación de hipótesis.** Solo existe la idea. Todavía no hemos realizado investigación, entrevistas, un prototipo ni pruebas técnicas. No hay usuarios, clientes, ingresos, patentes ni alianzas confirmadas. SENVA es un proyecto emprendedor, no una empresa constituida.
 
@@ -69,6 +69,7 @@ El objetivo es aprender a convertir una idea en hipótesis contrastables y un pr
 
 - **[Web de SENVA — EN / ES](https://withnolan.github.io/senva/)**: propósito, visión y personas detrás de la idea.
 - [Síntesis del proyecto — EN / ES](docs/project-brief.md): concepto, hipótesis y borrador de motivación de Santiago para Xiji.
+- [Estado del rediseño](docs/redesign-progress.md): etapas completadas, comprobaciones y límites de la revisión local.
 - [Guía técnica de la web](docs/technical-guide.md): previsualización local, archivos, traducciones, accesibilidad y despliegue.
 
 ---
