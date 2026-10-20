@@ -1,6 +1,8 @@
 # SENVA — Rediseño integral
 
-Actualizado: 20 de octubre de 2026. Base: `4945ec0` en `main`.
+Actualizado: 20 de octubre de 2026. Registro del rediseño desde `4945ec0`.
+
+**Estado actual:** ampliación de [ilustración editorial 2D](#editorial-2d) implementada y revisada localmente, sobre `d199c90`. El bloque final registra su entrega; los apartados anteriores conservan el historial.
 
 ## Objetivo y alcance
 
@@ -84,3 +86,40 @@ Comprobación en producción: titular y metadatos nuevos, referencias CSS/JS ver
 La prueba pública de retorno con teclado mostró un contorno nativo alrededor de toda la portada. El seguimiento de cierre lo sustituye por una señal de foco en la etiqueta del destino, manteniendo foco visible y navegación nativa. Comprobado localmente desde el enlace del equipo y desde el pie: sección sin contorno grande, etiqueta con contorno turquesa y retorno a `scrollY = 0`. Este ajuste no cambia contenido, arquitectura ni movimiento; actualiza el hash del CSS.
 
 El commit de cierre incluye este registro y el ajuste de foco; su SHA y resultado final de Pages se confirman en la respuesta de entrega. Las comprobaciones y límites anteriores se mantienen. No hay ajustes del repositorio, fotografías, licencia o datos personales nuevos en esta entrega.
+
+<a id="editorial-2d"></a>
+## Capa visual editorial 2D — 20 de octubre de 2026
+
+Base `d199c90`. La dirección anterior de objetos fotorrealistas se ha descartado por corrección explícita del usuario antes de publicar. Los recursos creados para esa dirección se han retirado del árbol del proyecto. No se añadieron modelos, motores ni dependencias 3D. Logo, retratos y recursos ajenos conservados.
+
+### Dirección final
+
+Ilustración editorial contemporánea 2D: dos personajes ficticios en conversación, gafas y guante estilizados; curvas limpias, azul noche, blanco cálido y turquesa. Sin signo concreto, manos de personajes fuera de encuadre y guante vacío. Nada de naranja, WebGL, perspectivas CSS ni rotaciones tridimensionales.
+
+### Hitos
+
+1. Inspección de la versión pública y del código: terminada en el inicio de esta ampliación.
+2. Recursos 2D: creados tres másteres y seis WebP responsive locales; 73 KiB juntos a 768 px / 178 KiB a 1536 px. Renders descartados retirados.
+3. Integración: portada humana; dos rutas con dispositivos ilustrados, voz, subtítulos ficticios e información adicional pendiente; primer experimento con guante y aplicación ilustrativa. Textos y avisos EN/ES en HTML. Implementada y comprobada.
+4. README, guía técnica y procedencia/prompts actualizados para la implementación 2D. Vista previa social SVG/PNG 1200 × 630 exportada y revisada visualmente.
+5. Revisión local finalizada según el detalle siguiente. Las comprobaciones de la dirección descartada no se atribuyen a esta versión.
+6. Commit/push y comprobación de Pages: pendientes. Autorizados explícitamente; no se considera publicado hasta verificar el build.
+
+### Comprobaciones de la versión 2D
+
+- EN/ES: 320 × 844, 390 × 844, 768 × 1024, 1100 × 740, 1280 × 720 y 1440 × 1000, más orientación horizontal 844 × 390, con dimensiones reales del viewport comprobadas. Sin desplazamiento horizontal ni desbordamiento de textos en figuras. El escenario se convierte en lectura normal en móvil/tablet y ventana baja. Los paneles caben en la altura mínima de escritorio; figcaptions dentro del recurso.
+- Revisión visual de portada humana, visión/subtítulos y práctica en escritorio y a 320 px; dibujos completos, sin texto incrustado en imágenes, ejemplos y avisos visibles. Corregido un cruce de la etiqueta de voz con las gafas; el nombre de la ruta ya explica el origen y la señal queda despejada. Eliminados los fondos multiplicados que encajonaban los dibujos; composición 2D integrada con colores planos.
+- Secuencia 01 → 02 → 03 → 04 → 03 → 02 → 01 en ES y recorrido equivalente en EN. Sticky a 110 px durante los capítulos centrales; entrada y salida naturales. Dentro de visión, las dos rutas avanzan y retroceden en orden (fracciones 0,12 / 0,30 / 0,50 / 0,30 / 0,12). Los textos no bajan de opacidad: el énfasis afecta a señal, figura y trazados decorativos.
+- Cambio EN → ES dentro de visión a 1100 × 740: fracción de lectura 0,3503 antes y después. `lang`, título, descripción, metadatos y alternativa de la escena humana sincronizados. 134 claves EN/ES con paridad y respaldo inglés comprobado.
+- Menú a 320 px con Enter: foco en el primer enlace; Tab avanza; Escape cierra, devuelve foco al botón y deja enlaces cerrados `inert`. Anclas funcionales. Sin JavaScript en arnés externo a 320 px y escritorio: inglés íntegro, menú visible, ilustraciones estáticas y detalles abiertos mediante Enter, sin controles de idioma inoperantes.
+- Movimiento reducido **simulado** con CSS y `matchMedia` equivalentes en un arnés fuera del repositorio: sin sticky, entrada, transiciones ni scroll suave; artículos sin altura mínima; visión y experimento completos en escritorio y móvil, EN/ES. No se ha cambiado ni comprobado la preferencia real del sistema operativo.
+- Todos los recursos, incluidas las seis variantes `srcset`, responden HTTP 200 bajo `/senva/`. Carga inmediata de portada y diferida en escenas, dimensiones reservadas, sin PNG fuente en HTML. Sin referencias a renders retirados, modelos, motores 3D o servicios de recursos externos. SVG válido y PNG social real de 1200 × 630, revisado visualmente.
+- `node --check`, `git diff --check`, HTML equilibrado, IDs/anclas y enlaces locales Markdown correctos. Logo original idéntico en cabecera y pie; favicon y ambos retratos idénticos byte a byte a la base conservada. Contrastes de texto calculados: turquesa oscuro/blanco cálido 4,98:1 y turquesa claro/azul noche 9,31:1. Sin errores o avisos registrados en el recorrido final del navegador de revisión.
+
+### Límites de esta ampliación
+
+Pruebas con el navegador integrado y viewports, sin dispositivos físicos, matriz de motores ni lector de pantalla real. Movimiento reducido y ausencia de script comprobados en arneses externos, no mediante cambios de ajustes del sistema. Los dibujos son ilustraciones de una visión: no demuestran hardware, captación de movimiento, feedback validado ni traducción. Los datos del proyecto, perfiles y candidatura Xiji se conservan. Capturas y arneses fuera del repositorio.
+
+### Entrega 2D
+
+Verificación local completada. API de Pages consultada: fuente `main`, carpeta `/`, modo `legacy`; referencias remotas actualizadas y coincidentes con `d199c90` antes del commit. Commit/push y build de esta ampliación se registran tras la publicación autorizada. Sin cambios de ajustes del repositorio ni force push.
