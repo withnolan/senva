@@ -2,7 +2,7 @@
 
 Actualizado: 20 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Estado actual:** ampliación de [ilustración editorial 2D](#editorial-2d) implementada y revisada localmente, sobre `d199c90`. El bloque final registra su entrega; los apartados anteriores conservan el historial.
+**Estado actual:** ampliación de [ilustración editorial 2D](#editorial-2d) entregada y con despliegue confirmado, sobre `d199c90`. El bloque final registra su entrega; los apartados anteriores conservan el historial.
 
 ## Objetivo y alcance
 
@@ -103,7 +103,7 @@ Ilustración editorial contemporánea 2D: dos personajes ficticios en conversaci
 3. Integración: portada humana; dos rutas con dispositivos ilustrados, voz, subtítulos ficticios e información adicional pendiente; primer experimento con guante y aplicación ilustrativa. Textos y avisos EN/ES en HTML. Implementada y comprobada.
 4. README, guía técnica y procedencia/prompts actualizados para la implementación 2D. Vista previa social SVG/PNG 1200 × 630 exportada y revisada visualmente.
 5. Revisión local finalizada según el detalle siguiente. Las comprobaciones de la dirección descartada no se atribuyen a esta versión.
-6. Commit/push y comprobación de Pages: pendientes. Autorizados explícitamente; no se considera publicado hasta verificar el build.
+6. Implementación subida en `397d0f7` mediante push normal a `origin/main`; build de Pages `built` para ese SHA, sin errores. Versión pública comprobada.
 
 ### Comprobaciones de la versión 2D
 
@@ -122,4 +122,8 @@ Pruebas con el navegador integrado y viewports, sin dispositivos físicos, matri
 
 ### Entrega 2D
 
-Verificación local completada. API de Pages consultada: fuente `main`, carpeta `/`, modo `legacy`; referencias remotas actualizadas y coincidentes con `d199c90` antes del commit. Commit/push y build de esta ampliación se registran tras la publicación autorizada. Sin cambios de ajustes del repositorio ni force push.
+**Implementación entregada:** `397d0f752ea91bd3e6be8b19491b42f1397216ff`, subida a `origin/main`. Pages confirmó `built` sin error para ese SHA el 20 de octubre de 2026 a las 18:16 (Madrid, 16:16 UTC). URL: https://withnolan.github.io/senva/.
+
+La web pública carga `assets/illustrations/conversation-768.webp`, CSS `4890c529` y JS `885046c8`, con imagen completa y sin desbordamiento. Revisadas portada y rutas publicadas, escenario fijo a 110 px y paso al experimento; las ilustraciones cargan correctamente. Capturas de portada, visión, experimento y móvil guardadas fuera del repositorio con prefijo `senva-2d-`.
+
+Fuente Pages verificada: rama `main`, carpeta `/`, modo `legacy`. Referencias remotas actualizadas y coincidentes con `d199c90` antes del commit. Sin cambios de ajustes del repositorio ni force push. Este seguimiento documental registra la entrega ya comprobada; su commit y el resultado de su build se confirman en la respuesta final.
