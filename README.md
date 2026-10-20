@@ -1,77 +1,125 @@
-# SENVA
+<p><img src="assets/senva-logo.svg" alt="SENVA" width="190"></p>
 
-**Cada gesto nos acerca.**
+**Every gesture brings us closer. / Cada gesto nos acerca.**
 
-## Que una conversación abra posibilidades.
+[Explore the website — EN / ES](https://withnolan.github.io/senva/) · [English](#en) · [Español](#es)
 
-Compartir una idea. Conocer a alguien. Participar en una conversación espontánea. Esas posibilidades de encuentro motivan SENVA.
+<a id="en"></a>
+## English
 
-Exploramos nuevas formas de contribuir a reducir las barreras de comunicación entre **personas sordas signantes y oyentes**, favoreciendo la autonomía, la participación y la conexión cotidiana.
+### A conversation. More possibilities.
 
-**[Descubre SENVA en nuestra web →](https://withnolan.github.io/senva/)**
+SENVA explores technology that could help reduce communication barriers between **Deaf signers and hearing people**, supporting autonomy, participation and everyday connection. Sharing an idea, meeting someone new and joining a spontaneous conversation motivate the project; these are starting points for research, not testimonials.
 
-![SENVA: una conexión conceptual en blanco cálido y turquesa. Idea / Validación de hipótesis.](assets/social-card.png)
+**Idea / Hypothesis validation.** Only the idea exists. No prototype, interviews, tests, users, revenue or confirmed partnerships. SENVA is an entrepreneurial project, not an incorporated company.
 
-**Estado: Idea / Validación de hipótesis.** Solo existe la idea. Todavía no hemos realizado investigación, entrevistas, un prototipo ni pruebas técnicas. No hay usuarios, clientes, ingresos, patentes ni alianzas confirmadas. SENVA es un proyecto emprendedor, no una empresa constituida.
+The name is inspired by *seña*, movement and progress. It is not an acronym.
 
-## La visión: una conversación compartida
+### The vision, and a first question
 
-Imaginamos un posible sistema de **guantes y gafas para asistir a la comunicación en ambas direcciones**, con la aspiración de conversar sin tener que sostener o colocar un móvil.
+A possible gloves-and-glasses system, with the aspiration of conversing without holding or positioning a phone:
 
-Los guantes podrían aportar información manual a la investigación sobre asistencia de lengua de signos española (LSE) a voz o texto, junto con otra información lingüística. Las gafas podrían mostrar subtítulos del habla del interlocutor y aportar sensores adicionales, si se demuestra su utilidad.
+- **Speech → captions in glasses.**
+- **Manual information from gloves + the other necessary linguistic information → research towards text or voice.** Facial expression, the body and space also matter; gloves alone cannot translate a whole language.
 
-Esta visión está por investigar con personas signantes competentes. Reconocer movimientos de las manos no equivale a comprender una lengua: la expresión facial, el cuerpo y el espacio también importan. No prometemos traducción perfecta, universal ni en tiempo real.
+**Communication is the purpose. Learning is a first hypothesis.** One possible starting experiment is selected Spanish Sign Language (LSE) practice with adult learners and teachers, to investigate sensors and useful feedback. LSE is a proposed first scope, not a universal sign language. This experiment would complement teaching; it would not establish a guaranteed route to natural-conversation translation.
 
-## Empezar por las personas
+Adult LSE learners are potential initial users. Teaching centres are possible collaborators and buyers. Both assumptions need validation; none are existing partners or customers.
 
-Queremos **codiseñar con personas sordas signantes** para comprender qué necesidades merece la pena abordar y si el hardware propuesto resulta útil y aceptable en su vida cotidiana.
+### What we need to learn
 
-Su participación formaría parte de la definición de las preguntas, el diseño y la evaluación. También queremos escuchar a interlocutores oyentes, docentes y estudiantes adultos de LSE. Este trabajo y estas colaboraciones todavía no han comenzado.
+- Define worthwhile needs through co-design with Deaf signers and hearing interlocutors.
+- Compare gloves and glasses with cameras, phones and existing resources: usefulness, acceptability, autonomy, comfort, calibration, cost and accessibility.
+- Investigate what sensors can reliably measure and what linguistic information would be missing.
+- If justified, choose a limited experiment with teachers and evaluate feedback with different adult learners.
 
-Las situaciones que inspiran el proyecto son puntos de partida para investigar, no testimonios ni necesidades ya validadas.
+These are proposed next steps, with no claimed results or launch date. Evidence should decide whether to continue, adapt or set the hardware aside.
 
-## Una primera hipótesis: el aprendizaje
+### The people
 
-> La comunicación es el propósito. El aprendizaje es una primera hipótesis que exploraremos.
-
-Una posible primera aplicación son unos guantes con sensores y una aplicación de práctica para **estudiantes adultos de LSE**. Con docentes, investigaríamos si el feedback sobre ciertos aspectos medibles de la configuración y el movimiento de las manos puede ayudar en ejercicios acotados, como complemento a la enseñanza y al criterio docente.
-
-La pregunta es si ese feedback aportaría suficiente valor para justificar el coste, la calibración y la incomodidad de los guantes frente a cámaras y recursos educativos existentes. Los centros que enseñan LSE serían posibles colaboradores y compradores: una hipótesis que también debemos contrastar.
-
-Un experimento de aprendizaje no demostraría una ruta hacia la traducción de conversaciones naturales. Esa visión necesitaría investigación específica y datos de personas signantes competentes; los datos de principiantes no bastarían.
-
-## Cómo queremos contrastar la idea
-
-1. **Definir juntos la necesidad.** Investigar con personas sordas signantes e interlocutores oyentes qué situaciones merecen atención. Explorar por separado la práctica de LSE con estudiantes adultos y docentes.
-2. **Comparar alternativas.** Valorar el hardware propuesto frente a cámaras, móviles y recursos existentes en utilidad, accesibilidad, aceptabilidad, comodidad y coste.
-3. **Elegir un primer experimento.** Si la investigación lo justifica, explorar sensores comerciales y unos pocos ejercicios de práctica elegidos con docentes.
-4. **Evaluar con las personas.** Contrastar la utilidad y la aceptabilidad del enfoque; en la hipótesis de aprendizaje, valorar el feedback, la calibración y la comodidad con personas distintas.
-5. **Decidir con evidencia.** Continuar, cambiar el enfoque o descartar el hardware según lo que aprendamos.
-
-## El equipo
-
-| Cofundador | Ámbito de estudio | Contacto |
+| Co-founder | Studies | Contact |
 | --- | --- | --- |
-| **Shengyu Nolan Chen** | Informática y Administración y Dirección de Empresas en la Universidad Carlos III de Madrid (UC3M). | [LinkedIn](https://www.linkedin.com/in/shengyu-nolan-chen/) |
-| **Santiago Muñoz Veguillas** | Grado en Diseño y Gestión de Proyectos Transmedia en CSEU La Salle. | [LinkedIn](https://www.linkedin.com/in/santiago-veguillas/) |
+| **Shengyu Nolan Chen** | Computer Science and Business Administration, Universidad Carlos III de Madrid (UC3M). | [LinkedIn](https://www.linkedin.com/in/shengyu-nolan-chen/) |
+| **Santiago Muñoz Veguillas** | Bachelor’s degree in Design and Management of Transmedia Projects, CSEU La Salle. | [LinkedIn](https://www.linkedin.com/in/santiago-veguillas/) |
 
-Sus ámbitos de estudio ofrecen perspectivas complementarias para explorar la tecnología, la comunicación y el valor de la idea.
+Both are students. Their fields offer complementary perspectives; no executive roles or professional track records are implied. With contributions from two student collaborators during ideation.
 
-Con aportaciones de dos estudiantes colaboradoras durante la fase de ideación.
+**Santiago is applying to Xiji Incubator, Shanghai**, to broaden his knowledge and international experience, learn about China’s entrepreneurial ecosystem and understand how hardware development and access to components and suppliers could help investigate SENVA. This application implies no admission, affiliation, endorsement or supplier commitments.
 
-## Una oportunidad para aprender: Xiji
+[Run the website locally](#quick-start) · [Research brief and application context](docs/project-brief.md#english) · [Technical guide](docs/technical-guide.md)
 
-La web acompaña la candidatura de **Santiago** a Xiji Incubator, Shanghái. Su motivación es ampliar conocimientos y experiencia internacional, conocer el ecosistema emprendedor chino y entender cómo el desarrollo de hardware y el acceso a componentes y proveedores podrían ayudar a explorar el concepto.
+<a id="es"></a>
+## Español
 
-El objetivo es aprender a convertir una idea en hipótesis contrastables y un primer experimento. La candidatura no implica admisión, afiliación, respaldo ni compromisos de Xiji o de proveedores.
+### Una conversación. Más posibilidades.
 
-## Explora el proyecto
+SENVA explora tecnología que podría contribuir a reducir barreras de comunicación entre **personas sordas signantes y oyentes**, favoreciendo la autonomía, la participación y la conexión cotidiana. Compartir una idea, conocer a alguien o participar en una conversación espontánea motivan el proyecto; son puntos de partida para investigar, no testimonios.
 
-- **[Web de SENVA — EN / ES](https://withnolan.github.io/senva/)**: propósito, visión y personas detrás de la idea.
-- [Síntesis del proyecto — EN / ES](docs/project-brief.md): concepto, hipótesis y borrador de motivación de Santiago para Xiji.
-- [Estado del rediseño](docs/redesign-progress.md): etapas completadas, comprobaciones y límites de la revisión local.
-- [Guía técnica de la web](docs/technical-guide.md): previsualización local, archivos, traducciones, accesibilidad y despliegue.
+**Idea / Validación de hipótesis.** Solo existe la idea. Sin prototipo, entrevistas, pruebas, usuarios, ingresos ni alianzas confirmadas. SENVA es un proyecto emprendedor, no una empresa constituida.
 
----
+El nombre se inspira en *seña*, movimiento y avance. No es un acrónimo.
 
-SENVA se inspira en «seña», movimiento y avance. No es un acrónimo. **Cada gesto nos acerca. / Every gesture brings us closer.**
+### La visión y una primera pregunta
+
+Un posible sistema de guantes y gafas, con la aspiración de conversar sin sostener o colocar un móvil:
+
+- **Habla → subtítulos en las gafas.**
+- **Información manual de guantes + la información lingüística adicional necesaria → investigación sobre salida en texto o voz.** La expresión facial, el cuerpo y el espacio también importan; los guantes por sí solos no pueden traducir una lengua completa.
+
+**La comunicación es el propósito. El aprendizaje es una primera hipótesis.** Un posible experimento inicial es la práctica acotada de lengua de signos española (LSE) con estudiantes adultos y docentes para investigar sensores y feedback útil. La LSE es un primer alcance propuesto, no una lengua de signos universal. El experimento complementaría la enseñanza; no demostraría una ruta garantizada hacia la traducción de conversaciones naturales.
+
+Los estudiantes adultos de LSE serían posibles usuarios iniciales. Los centros docentes, posibles colaboradores y compradores. Ambas hipótesis requieren validación; no hay socios ni clientes actuales.
+
+### Qué necesitamos aprender
+
+- Definir necesidades que merezca la pena abordar mediante codiseño con personas sordas signantes e interlocutores oyentes.
+- Comparar guantes y gafas con cámaras, móviles y recursos existentes: utilidad, aceptabilidad, autonomía, comodidad, calibración, coste y accesibilidad.
+- Investigar qué pueden medir los sensores de forma fiable y qué información lingüística faltaría.
+- Si se justifica, elegir un experimento acotado con docentes y evaluar el feedback con estudiantes adultos distintos.
+
+Son próximos pasos propuestos, sin resultados ni fechas de lanzamiento. La evidencia debe decidir si continuar, adaptar o descartar el hardware.
+
+### El equipo
+
+| Cofundador | Estudios | Contacto |
+| --- | --- | --- |
+| **Shengyu Nolan Chen** | Informática y Administración y Dirección de Empresas, Universidad Carlos III de Madrid (UC3M). | [LinkedIn](https://www.linkedin.com/in/shengyu-nolan-chen/) |
+| **Santiago Muñoz Veguillas** | Grado en Diseño y Gestión de Proyectos Transmedia, CSEU La Salle. | [LinkedIn](https://www.linkedin.com/in/santiago-veguillas/) |
+
+Ambos son estudiantes. Sus ámbitos aportan perspectivas complementarias; no se atribuyen cargos ejecutivos ni trayectorias profesionales. Con aportaciones de dos estudiantes colaboradoras durante la ideación.
+
+**Santiago presenta su candidatura a Xiji Incubator, Shanghái**, para ampliar conocimientos y experiencia internacional, conocer el ecosistema emprendedor chino y entender cómo el desarrollo de hardware y el acceso a componentes y proveedores podrían ayudar a investigar SENVA. Esta candidatura no implica admisión, afiliación, respaldo ni compromisos de proveedores.
+
+[Ejecutar la web localmente](#quick-start) · [Síntesis de investigación y candidatura](docs/project-brief.md#español) · [Guía técnica](docs/technical-guide.md)
+
+<a id="quick-start"></a>
+## Quick start / Inicio rápido
+
+No install or build required. Python 3, from this repository / Sin instalación ni compilación. Con Python 3, desde este repositorio:
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Open / Abrir [http://127.0.0.1:8000](http://127.0.0.1:8000). Stop / Detener: `Ctrl+C`.
+
+## Repository / Repositorio
+
+```text
+index.html                 English fallback / contenido inglés de respaldo
+styles.css                 Responsive layout, motion / diseño y movimiento
+script.js                  EN/ES, navigation, native scroll / navegación
+assets/                    Existing logo, portraits, social image / recursos
+  favicon.svg              Original symbol / símbolo original
+  senva-logo.svg           Existing symbol + wordmark / logotipo existente
+  *.jpg                    Original founder portraits / retratos originales
+  social-card.svg, .png     Social preview / vista previa social
+docs/
+  project-brief.md          Research hypotheses and Xiji / hipótesis y Xiji
+  technical-guide.md        Maintenance and deployment / mantenimiento
+  redesign-progress.md      Decisions, checks and delivery / estado
+```
+
+Detailed local preview under `/senva/`, editing, motion and publication: [technical guide / guía técnica](docs/technical-guide.md). Review status and limitations: [redesign progress / estado del rediseño](docs/redesign-progress.md).
+
+No licence has been defined in this repository. / No se ha definido una licencia en este repositorio.

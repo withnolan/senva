@@ -1,141 +1,89 @@
-# SENVA — Project brief / Síntesis del proyecto
+# SENVA — Research brief / Síntesis de investigación
 
-Working document for review. This is neither a pitch deck nor a submitted application.
-
-Documento de trabajo para revisión. No es un pitch deck ni una solicitud enviada.
+[English](#english) · [Español](#español) · [Project and team / Proyecto y equipo](../README.md)
 
 ## English
 
-### Name and stage
+### Scope
 
-**SENVA** is inspired by the Spanish word *seña*, movement and progress; it is not an acronym. Tagline: **Every gesture brings us closer.**
+SENVA explores assistance to communication between Deaf signers and hearing people, supporting autonomy and everyday participation. The concept combines glasses for captions of the interlocutor’s speech with research on manual information from gloves, alongside the additional linguistic information needed for a possible text or voice output. The aspiration is to avoid holding or positioning a phone.
 
-**Stage: Idea / Hypothesis validation.** Only the idea exists. There has been no research, interviews, prototype, technical testing, users, customers, revenue, patents or confirmed partnerships. SENVA is an entrepreneurial project and is not presented as an incorporated company.
+**Idea / Hypothesis validation.** No prototype, interviews, technical tests, users, customers, revenue, patents or confirmed partnerships. SENVA is not presented as an incorporated company. The everyday situations on the website are motivations, not observed experiences or testimonials.
 
-### Short description for the Xiji application form
+### Research questions and decisions
 
-SENVA is an early-stage project whose mission is to help reduce communication barriers between Deaf signers and hearing people, supporting autonomy, participation and everyday connection. We are exploring a possible gloves-and-glasses system to assist communication in both directions without having to hold or position a phone. This is a concept, not a built product. Co-design with Deaf signers would guide which needs are worth addressing and whether the proposed hardware is useful and acceptable. Practice support for adult Spanish Sign Language (LSE) learners is one possible first hypothesis for researching sensors and feedback with teachers, not a guaranteed route to translation.
+| Hypothesis | What we would investigate | Decision it should inform |
+| --- | --- | --- |
+| Communication support could be worthwhile. | Co-design with Deaf signers and hearing interlocutors to define needs, autonomy, usefulness and acceptable forms of support. | Which needs merit attention, including whether hardware is appropriate at all. |
+| Gloves and glasses could add value. | Compare cameras, phones and existing resources, including calibration, cost, comfort and accessibility. | Keep, adapt or set aside the proposed hardware. |
+| Selected manual signals could support useful feedback. | If warranted, explore commercial sensors and a small set of LSE exercises with teachers and different adult learners. | Whether measurements and teacher-verified guidance are reliable, understandable and useful in that limited context. |
+| Teaching centres might collaborate or buy. | Explore interest and practical requirements separately from learner needs. | Whether there is a credible educational use case and buyer hypothesis. |
 
-### Mission, situations and vision
+All are future questions. Co-design is a commitment in the proposed validation plan, not a collaboration already underway. There are no claimed budgets, prices, study results or launch dates.
 
-**Communication is the purpose. Learning is a first hypothesis we will explore.**
+### Technical boundaries
 
-Sharing an idea, meeting someone new and joining a spontaneous conversation are everyday situations that motivate the project. They are not testimonials, interview findings or evidence of a validated need. The tone is grounded in reciprocity, autonomy and possibilities for participation. Deaf signers have a language; the project does not assume that all Deaf people sign or that they are unable to communicate.
+- Gloves would contribute **manual information**, not complete language understanding. Facial expression, the body and space also carry linguistic information.
+- Inertial sensors alone cannot be assumed to establish hand position relative to the body. Sensor selection and architecture remain open.
+- Spanish Sign Language (LSE) is the proposed first scope. Sign languages are distinct; there is no assumed universal system.
+- A practice experiment would complement teaching. Beginner practice data would not establish natural-conversation translation; that would require separate research and data from competent signers.
+- No perfect, universal or real-time translation is promised. The graphics explain a concept, not a working capability.
 
-The vision is a possible gloves-and-glasses system for communication assistance in both directions. Gloves could contribute manual signals to research on LSE-to-speech or text assistance, alongside other linguistic information. Glasses could display captions of the interlocutor’s speech and add sensors if their value is demonstrated. The aspiration is to converse without holding or positioning a phone.
+### Proposed sequence
 
-This concept requires specific research and data from competent signers. It does not promise perfect, universal or real-time translation. Recognising hand movement is not understanding a language: facial expression, the body and the use of space also carry linguistic information. Sign languages are distinct. Inertial sensors alone cannot be assumed to establish hand position relative to the body. Sensors and architecture remain to be explored.
+Define a worthwhile need with people → compare approaches → choose a limited experiment only if justified → assess usefulness, feasibility and acceptability → decide whether to continue, adapt or stop. Communication research and the learning hypothesis require their own evidence; one does not guarantee the other.
 
-### A possible first hypothesis: learning
+### Santiago’s Xiji application context
 
-One possible first application is a pair of sensor gloves and an app for adult LSE learners. With qualified teachers, we would investigate whether feedback on selected, measurable aspects of hand configuration and movement could help with a small set of practice exercises. The proposed flow is **practice → capture movement → analyse → offer feedback**. This would complement teaching and teachers’ judgement.
+Santiago Muñoz Veguillas is a student of the **Grado en Diseño y Gestión de Proyectos Transmedia at CSEU La Salle**. He is the applicant to Xiji, not a confirmed participant. Shengyu Nolan Chen is his co-founder and studies Computer Science and Business Administration at UC3M. [Profiles and LinkedIn](../README.md#the-people).
 
-For this hypothesis, adult LSE students would be users. LSE teaching centres are potential collaborators and buyers, not existing partners or customers. We would investigate those assumptions separately. The central learning question is whether feedback could justify gloves’ cost, calibration and discomfort compared with cameras and existing educational resources.
+A short motivation draft, not a submitted application:
 
-A learning experiment would not validate natural-conversation translation. Beginner practice data would not be sufficient for that purpose, and a path from learning to communication assistance is not guaranteed.
+> I am applying to Xiji Incubator to broaden my knowledge and international experience and learn about China’s entrepreneurial ecosystem. With SENVA, I want to learn how to turn an early communication concept into worthwhile questions and a first experiment.
+>
+> I would like to understand how hardware development knowledge and access to components and suppliers could help us investigate our assumptions. My goal is to learn to make decisions from evidence, including changing direction or setting the hardware aside.
 
-### Main hypotheses
-
-- Deaf signers and hearing interlocutors identify communication situations in which additional support would be worth exploring.
-- A gloves-and-glasses approach could be useful and acceptable, compared with other approaches, without adding unnecessary effort or discomfort.
-- A narrowly scoped LSE practice experiment could be a useful way to investigate sensors and educational feedback.
-- Selected measurements could support feedback that teachers can verify and learners can understand and use.
-- Benefits could justify cost, calibration and discomfort and work acceptably across different people.
-- Teaching centres might collaborate or buy; this requires its own validation.
-
-### Proposed validation plan
-
-1. **Define the need together.** Plan research and co-design with Deaf signers and hearing interlocutors around communication needs. Separately, explore practice difficulties with adult LSE learners and teachers.
-2. **Compare alternatives.** Compare the hardware concept with camera-based, phone-based and existing educational alternatives for usefulness, accessibility, acceptability, comfort and cost.
-3. **Choose a first experiment.** If the research justifies it, explore a limited practice experiment with off-the-shelf sensors and a few exercises chosen with teachers.
-4. **Evaluate with people.** Involve Deaf signers in assessing usefulness and acceptability. For the practice experiment, evaluate feedback with teachers and learners, including calibration and comfort across different people.
-5. **Decide.** Continue, change direction or discard the hardware approach according to evidence.
-
-Co-design is a commitment in the proposed plan. Deaf signers should help define the questions, the design and the evaluation. No interviews or collaborations have started. There are no claimed results, budgets, prices or commercialisation dates.
-
-### Founders
-
-- **Shengyu Nolan Chen:** student of Computer Science and Business Administration at Universidad Carlos III de Madrid (UC3M). [LinkedIn](https://www.linkedin.com/in/shengyu-nolan-chen/).
-- **Santiago Muñoz Veguillas:** Bachelor’s degree student in Design and Management of Transmedia Projects at CSEU La Salle. Santiago is the applicant to Xiji. [LinkedIn](https://www.linkedin.com/in/santiago-veguillas/).
-
-The potential complementarity lies in their fields of study; it is not a claim of demonstrated professional experience. Both are co-founders, without invented executive titles.
-
-With contributions from two student collaborators during the ideation phase.
-
-### Santiago’s motivation for Xiji — draft
-
-I am applying to Xiji Incubator to broaden my knowledge and international experience, learn about China’s entrepreneurial ecosystem, and understand how an early idea can become testable hypotheses and a first experiment.
-
-With SENVA, my co-founder and I want to explore ways to help reduce communication barriers between Deaf signers and hearing people. Our vision is a possible gloves-and-glasses system that supports communication in both directions, with the aspiration of avoiding the need to hold or position a phone. We are at the idea stage and want to define worthwhile needs and assess the hardware’s usefulness and acceptability with Deaf signers.
-
-One possible first application is LSE practice support, to investigate sensors and feedback with adult learners and teachers. This would be an initial research hypothesis, not proof of a route to conversation translation. I would like to understand how hardware development knowledge and access to components and suppliers could help us investigate our questions. I hope to learn how to use evidence to decide whether to continue, adapt or set aside our original approach.
-
-This draft does not imply admission, endorsement, supplier contacts or commitments from Xiji.
+This context implies no admission, affiliation, endorsement, supplier contacts or commitments. Two student collaborators contributed to ideation; their identities and personal details are not published.
 
 ## Español
 
-### Nombre y estado
+### Alcance
 
-**SENVA** se inspira en «seña», movimiento y avance; no es un acrónimo. Lema: **Cada gesto nos acerca.**
+SENVA explora asistencia a la comunicación entre personas sordas signantes y oyentes, favoreciendo autonomía y participación cotidiana. El concepto combina gafas para subtitular el habla del interlocutor con investigación sobre información manual de guantes, junto con la información lingüística adicional necesaria para una posible salida en texto o voz. La aspiración es evitar sostener o colocar un móvil.
 
-**Estado: Idea / Validación de hipótesis.** Solo existe la idea. No se han realizado investigaciones, entrevistas, prototipos ni pruebas técnicas; no hay usuarios, clientes, ingresos, patentes ni alianzas confirmadas. SENVA es un proyecto emprendedor y no se presenta como una empresa constituida.
+**Idea / Validación de hipótesis.** Sin prototipo, entrevistas, pruebas técnicas, usuarios, clientes, ingresos, patentes ni alianzas confirmadas. SENVA no se presenta como empresa constituida. Las situaciones cotidianas de la web son motivaciones, no experiencias observadas ni testimonios.
 
-### Descripción breve para el formulario de Xiji
+### Preguntas de investigación y decisiones
 
-SENVA es un proyecto en fase de idea cuya misión es contribuir a reducir las barreras de comunicación entre personas sordas signantes y oyentes, favoreciendo la autonomía, la participación y la conexión cotidiana. Exploramos un posible sistema de guantes y gafas para asistir a la comunicación en ambas direcciones sin sostener o colocar un móvil. Es un concepto, no un producto construido. El codiseño con personas sordas signantes ayudaría a definir qué necesidades merece la pena abordar y si el hardware resulta útil y aceptable. El apoyo a la práctica de lengua de signos española (LSE) de estudiantes adultos es una posible primera hipótesis para investigar sensores y feedback con docentes, no una ruta garantizada hacia la traducción.
+| Hipótesis | Qué investigaríamos | Qué decisión debería orientar |
+| --- | --- | --- |
+| Podría merecer la pena apoyar ciertas situaciones de comunicación. | Codiseñar con personas sordas signantes e interlocutores oyentes para definir necesidades, autonomía, utilidad y formas aceptables de apoyo. | Qué necesidades abordar, incluso si conviene proponer hardware. |
+| Guantes y gafas podrían aportar valor. | Comparar cámaras, móviles y recursos existentes, incluida calibración, coste, comodidad y accesibilidad. | Mantener, adaptar o descartar el hardware propuesto. |
+| Ciertas señales manuales podrían apoyar un feedback útil. | Si se justifica, explorar sensores comerciales y ejercicios acotados de LSE con docentes y estudiantes adultos distintos. | Si las mediciones y la orientación verificada por docentes son fiables, comprensibles y útiles en ese contexto limitado. |
+| Los centros podrían colaborar o comprar. | Explorar interés y requisitos prácticos por separado de las necesidades de estudiantes. | Si existe un caso educativo y una hipótesis de comprador creíbles. |
 
-### Misión, situaciones y visión
+Todas son preguntas futuras. El codiseño es un compromiso del plan de validación, no una colaboración iniciada. No se atribuyen presupuestos, precios, resultados ni fechas de lanzamiento.
 
-**La comunicación es el propósito. El aprendizaje es una primera hipótesis que exploraremos.**
+### Límites técnicos
 
-Compartir una idea, conocer a alguien y participar en una conversación espontánea son situaciones cotidianas que motivan el proyecto. No son testimonios, hallazgos de entrevistas ni evidencia de una necesidad validada. El tono parte de la reciprocidad, la autonomía y las posibilidades de participación. Las personas sordas signantes tienen una lengua; el proyecto no presupone que todas las personas sordas signan ni que estén incomunicadas.
+- Los guantes aportarían **información manual**, no comprensión de una lengua completa. La expresión facial, el cuerpo y el espacio también contienen información lingüística.
+- No se puede asumir que los sensores inerciales por sí solos establezcan la posición de las manos respecto al cuerpo. Sensores y arquitectura siguen abiertos.
+- La lengua de signos española (LSE) es el primer alcance propuesto. Las lenguas de signos son distintas; no se presupone un sistema universal.
+- Un experimento de práctica complementaría la enseñanza. Los datos de principiantes no demostrarían traducción de conversaciones naturales: eso exige investigación propia y datos de personas signantes competentes.
+- No se promete traducción perfecta, universal ni en tiempo real. Los gráficos explican un concepto, no una capacidad funcional.
 
-La visión es un posible sistema de guantes y gafas para asistir a la comunicación en ambas direcciones. Los guantes podrían aportar información manual a la investigación sobre asistencia de LSE a voz o texto, junto con otra información lingüística. Las gafas podrían mostrar subtítulos del habla del interlocutor y añadir sensores si se demuestra su utilidad. La aspiración es conversar sin tener que sostener o colocar un móvil.
+### Secuencia propuesta
 
-Este concepto requiere investigación específica y datos de personas signantes competentes. No promete traducción perfecta, universal ni en tiempo real. Reconocer movimientos de las manos no equivale a comprender una lengua: la expresión facial, el cuerpo y el uso del espacio también contienen información lingüística. Las lenguas de signos son distintas. No se asume que los sensores inerciales por sí solos resuelvan la posición de las manos respecto al cuerpo. Los sensores y la arquitectura están por explorar.
+Definir con las personas una necesidad que merezca atención → comparar enfoques → elegir un experimento acotado solo si se justifica → evaluar utilidad, viabilidad y aceptabilidad → decidir si continuar, adaptar o detenerse. La investigación en comunicación y la hipótesis de aprendizaje necesitan evidencia propia; una no garantiza la otra.
 
-### Una posible primera hipótesis: el aprendizaje
+### Contexto de la candidatura de Santiago a Xiji
 
-Una posible primera aplicación son unos guantes con sensores y una aplicación para estudiantes adultos de LSE. Con docentes competentes, investigaríamos si el feedback sobre determinados aspectos medibles de la configuración y el movimiento de las manos puede ayudar con un conjunto pequeño de ejercicios de práctica. El flujo propuesto es **practicar → captar movimiento → analizar → ofrecer feedback**. Complementaría la enseñanza y el criterio docente.
+Santiago Muñoz Veguillas es estudiante del **Grado en Diseño y Gestión de Proyectos Transmedia en CSEU La Salle**. Es candidato a Xiji, no participante confirmado. Shengyu Nolan Chen es su cofundador y estudia Informática y Administración y Dirección de Empresas en UC3M. [Perfiles y LinkedIn](../README.md#el-equipo).
 
-En esta hipótesis, los usuarios serían estudiantes adultos de LSE. Los centros que la enseñan son posibles colaboradores y compradores, no socios ni clientes actuales. Investigaríamos esas suposiciones por separado. La pregunta central del aprendizaje es si el feedback justificaría el coste, la calibración y la incomodidad de los guantes frente a cámaras y recursos educativos existentes.
+Borrador breve de motivación, no una solicitud enviada:
 
-Un experimento de aprendizaje no validaría la traducción de conversaciones naturales. Los datos de práctica de principiantes no bastarían para ese fin y no está garantizado un camino desde el aprendizaje hasta la asistencia a la comunicación.
+> Presento mi candidatura a Xiji Incubator para ampliar conocimientos y experiencia internacional y conocer el ecosistema emprendedor chino. Con SENVA quiero aprender a convertir un concepto inicial de comunicación en preguntas que merezca la pena investigar y un primer experimento.
+>
+> Me gustaría entender cómo el conocimiento sobre desarrollo de hardware y el acceso a componentes y proveedores podrían ayudar a investigar nuestras hipótesis. Mi objetivo es aprender a decidir a partir de evidencia, incluso si implica cambiar el enfoque o descartar el hardware.
 
-### Hipótesis principales
-
-- Personas sordas signantes e interlocutores oyentes identifican situaciones de comunicación en las que merece la pena explorar apoyo adicional.
-- Un enfoque de guantes y gafas podría ser útil y aceptable frente a otras alternativas, sin añadir esfuerzo ni incomodidad innecesarios.
-- Un experimento de práctica de LSE acotado podría ser una forma útil de investigar sensores y feedback educativo.
-- Ciertas mediciones podrían aportar feedback que los docentes puedan verificar y los estudiantes entender y aprovechar.
-- Los beneficios podrían justificar el coste, la calibración y la incomodidad, y funcionar de forma aceptable con personas distintas.
-- Los centros podrían colaborar o comprar; es una hipótesis que requiere validación propia.
-
-### Plan de validación propuesto
-
-1. **Definir juntos la necesidad.** Plantear investigación y codiseño con personas sordas signantes e interlocutores oyentes sobre necesidades de comunicación. Explorar por separado las dificultades de práctica con estudiantes adultos de LSE y docentes.
-2. **Comparar alternativas.** Contrastar el concepto de hardware con alternativas basadas en cámara, móvil y recursos educativos existentes en utilidad, accesibilidad, aceptabilidad, comodidad y coste.
-3. **Elegir un primer experimento.** Si la investigación lo justifica, explorar un experimento de práctica limitado con sensores comerciales y unos pocos ejercicios elegidos con docentes.
-4. **Evaluar con las personas.** Involucrar a personas sordas signantes al valorar utilidad y aceptabilidad. En el experimento de práctica, evaluar el feedback con docentes y estudiantes, incluida la calibración y la comodidad con personas distintas.
-5. **Decidir.** Continuar, cambiar el enfoque o descartar el hardware según la evidencia.
-
-El codiseño es un compromiso del plan propuesto. Las personas sordas signantes deben contribuir a definir las preguntas, el diseño y la evaluación. Todavía no han comenzado las entrevistas ni las colaboraciones. No se atribuyen resultados, presupuestos, precios ni fechas de comercialización.
-
-### Cofundadores
-
-- **Shengyu Nolan Chen:** estudiante de Informática y Administración y Dirección de Empresas en la Universidad Carlos III de Madrid (UC3M). [LinkedIn](https://www.linkedin.com/in/shengyu-nolan-chen/).
-- **Santiago Muñoz Veguillas:** estudiante del Grado en Diseño y Gestión de Proyectos Transmedia en CSEU La Salle. Santiago es quien presenta la candidatura a Xiji. [LinkedIn](https://www.linkedin.com/in/santiago-veguillas/).
-
-La complementariedad potencial parte de sus ámbitos de estudio; no implica experiencia profesional demostrada. Ambos se presentan como cofundadores, sin cargos ejecutivos inventados.
-
-Con aportaciones de dos estudiantes colaboradoras durante la fase de ideación.
-
-### Motivación de Santiago para Xiji — borrador
-
-Presento mi candidatura a Xiji Incubator para ampliar conocimientos y experiencia internacional, conocer el ecosistema emprendedor chino y comprender cómo convertir una idea inicial en hipótesis contrastables y un primer experimento.
-
-Con SENVA, mi cofundador y yo queremos explorar formas de contribuir a reducir las barreras de comunicación entre personas sordas signantes y oyentes. Nuestra visión es un posible sistema de guantes y gafas que asista a la comunicación en ambas direcciones, con la aspiración de evitar tener que sostener o colocar un móvil. Estamos en fase de idea y queremos definir las necesidades que merece la pena abordar y valorar la utilidad y aceptabilidad del hardware con personas sordas signantes.
-
-Una posible primera aplicación es apoyar la práctica de LSE para investigar sensores y feedback con estudiantes adultos y docentes. Sería una hipótesis inicial de investigación, no la demostración de una ruta hacia la traducción de conversaciones. Me gustaría entender cómo el conocimiento sobre desarrollo de hardware y el acceso a componentes y proveedores podrían ayudarnos a investigar estas preguntas. Quiero aprender a decidir a partir de la evidencia si continuar, adaptar o descartar nuestro enfoque inicial.
-
-Este borrador no implica admisión, respaldo, contactos con proveedores ni compromisos de Xiji.
+Este contexto no implica admisión, afiliación, respaldo, contactos ni compromisos de proveedores. Dos estudiantes colaboradoras contribuyeron a la ideación; no se publican sus identidades ni datos personales.
