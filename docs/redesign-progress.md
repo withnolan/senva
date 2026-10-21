@@ -143,8 +143,8 @@ Un único escenario abierto enlaza portada, voz/subtítulos, información manual
 1. Inspección de SENVA publicada, código y referencia TuffStudy: realizada. Se toman continuidad, escala y pausas; no recursos, identidad ni tramos de scroll vacíos.
 2. Recursos SVG coherentes: gafas y guante propios en `assets/graphics/`, integrados como definiciones compartidas. Contornos legibles sobre ambos fondos y máscaras para los recorridos. Terminado.
 3. Escenario continuo, textos breves y alternativas estáticas: terminados. Se sustituyeron el controlador, los gráficos y estilos anteriores; cuatro secciones reales, un escenario SVG compartido y una interfaz HTML. Se conserva la información técnica en desplegables y documentación. Sin dependencias nuevas.
-4. Revisión local, documentación y vista previa social: terminadas según el detalle siguiente. README, guía técnica y procedencia describen la implementación actual. Hito vectorial guardado en `50f9718`; implementación/revisión listas para commit.
-5. Commit/push y build de Pages: pendientes de comprobación pública. Fuente confirmada el 21 de octubre: `main`, `/`, modo `legacy`; remoto actualizado sin cambios ajenos entrantes.
+4. Revisión local, documentación y vista previa social: terminadas según el detalle siguiente. README, guía técnica y procedencia describen la implementación actual. Hito vectorial guardado en `50f9718`; implementación/revisión entregadas en `2493afb`.
+5. Commit/push y comprobación pública: realizados. Implementación `2493afb` y hito `50f9718` subidos mediante push normal a `origin/main`. Pages confirmó `built` para `2493afb87dcd2fc4453763c1b07533e18038a372`, sin error, el 21 de octubre a las 10:32:09 UTC (12:32 Madrid). Fuente confirmada: `main`, `/`, modo `legacy`; sin cambios ajenos entrantes ni cambios de ajustes.
 
 ### Correcciones de la revisión actual
 
@@ -174,8 +174,14 @@ Un único escenario abierto enlaza portada, voz/subtítulos, información manual
 
 Capturas antes/después de escritorio y móvil y secuencia GIF de 25 capturas reales del navegador, fuera del repositorio. El GIF permite observar el avance y el regreso, pero **no es una grabación continua ni una medida de rendimiento**. No hay herramienta de grabación de vídeo disponible en este entorno.
 
-Pruebas con viewports del navegador integrado, sin dispositivos físicos, matriz de motores o lector de pantalla real. Reducción de movimiento y bloqueo de almacenamiento comprobados por simulación; ausencia de script mediante arnés externo. LinkedIn conserva los enlaces facilitados; no se verifica contenido detrás de inicio de sesión. No se ha comprobado acceso desde China. Los checks locales todavía no acreditan un despliegue público de estos cambios.
+Pruebas con viewports del navegador integrado, sin dispositivos físicos, matriz de motores o lector de pantalla real. Reducción de movimiento y bloqueo de almacenamiento comprobados por simulación; ausencia de script mediante arnés externo. LinkedIn conserva los enlaces facilitados; no se verifica contenido detrás de inicio de sesión. No se ha comprobado acceso desde China. El despliegue y las comprobaciones públicas se registran a continuación.
 
 ### Estado de entrega actual
 
-Implementación y revisión local finalizadas. Siguiente paso: commit normal, push a `origin/main` y comprobación del build y de la web pública. Sin cambios de ajustes del repositorio ni force push.
+**Rediseño entregado y publicado:** https://withnolan.github.io/senva/.
+
+Comprobación pública de la implementación `2493afb`: definiciones SVG nuevas, cuatro escenas, CSS `2b87ce5c` y JS `34e5cbc7`; recorrido hacia delante y regreso, sticky a 84 px y cambio ES → EN sin perder el capítulo. A 320 px: alternativa sin fijación, EN/ES, cero desplazamiento horizontal, retratos de igual tamaño y menú por Enter/Tab hasta `#team`, con foco en la sección y cierre correcto. Sin errores ni avisos de la página registrados durante estas comprobaciones.
+
+CSS, JS, favicon, retratos, fuentes SVG nuevas, vista previa social y `.nojekyll` respondieron HTTP 200 desde Pages y son idénticos byte a byte a los archivos locales. La comprobación HTTPS se hizo con TLS verificado por el almacén del sistema; no se desactivó validación de certificados. Capturas públicas de portada, voz/subtítulos y móvil guardadas fuera del repositorio.
+
+Este commit de cierre documenta el despliegue ya verificado; no cambia código o recursos. Su SHA y build final se confirman en la respuesta. No quedan fallos reproducibles observados dentro de la revisión descrita; se mantienen los límites de dispositivos, motores y tecnologías de asistencia indicados. Sin ajustes del repositorio ni force push.
