@@ -201,8 +201,8 @@ Retirar la columna gráfica derecha persistente, los objetos pequeños semitrans
 1. Inspección y dirección: terminadas; captura anterior guardada fuera del repositorio.
 2. Dibujos: gafas y guante redibujados con un contorno, proporciones coherentes y detalles selectivos. Fuentes SVG válidas, versiones clara/oscura y PNG social 1200 × 630 revisados. Logo/retratos conservados.
 3. Composición y coreografía: terminadas. Cinco artículos reales, pausas de lectura, cruces laterales con curvas, campo SVG que se abre y recoge. Sin dependencias nuevas ni captura de rueda.
-4. Revisión local y documentación: terminadas según el detalle siguiente. README, guía y procedencia actualizados. Hito de dibujos guardado en `d0df0b1`; implementación lista para commit y publicación.
-5. Entrega: pendiente de commit/push final y comprobación de Pages.
+4. Revisión local y documentación: terminadas según el detalle siguiente. README, guía y procedencia actualizados. Hito de dibujos guardado en `d0df0b1`; implementación entregada en `8ace7a6`.
+5. Entrega realizada: `d0df0b1` y `8ace7a6` subidos mediante push normal. Pages confirmó `built` para `8ace7a645400a6e697a595abdec2aae67fb7a5b5`, sin error, el 21 de octubre de 2026 a las 13:33:11 UTC. Web pública comprobada.
 
 ### Correcciones durante la revisión
 
@@ -235,4 +235,10 @@ Revisión en el navegador integrado con viewports; sin dispositivos físicos, ma
 
 ### Publicación
 
-Revisión local finalizada. Remoto actualizado: sin cambios ajenos entrantes. Fuente Pages verificada el 21 de octubre: `main`, `/`, modo `legacy`. Pendientes push normal del rediseño y comprobación del build y versión pública. Sin force push ni cambios de ajustes.
+**Publicado:** https://withnolan.github.io/senva/.
+
+Implementación `8ace7a6`, con build `built` confirmado para su SHA completo y sin error. En producción se comprobaron cinco destinos, altura7665px a1440×960, escenarios y tránsito lateral, regreso, cambio ES→EN conservando el capítulo y sticky a84px. A320px, lectura normal con las cinco copias a opacidad1, EN/ES, menú por teclado hasta `#team`, foco de destino y cierre `inert`; ambos retratos cargados a800px originales, visibles al mismo tamaño76×76px. Sin desplazamiento horizontal ni errores/avisos de la página registrados durante ese recorrido.
+
+CSS `0940e2ea` y JS `badc3fa4`, favicon, retratos, fuentes nuevas, vista social y `.nojekyll` respondieron HTTP200 desde Pages y coincidieron byte a byte con el repositorio. HTTPS con verificación TLS del sistema; sin desactivarla. Capturas públicas guardadas fuera del repositorio.
+
+Remoto actualizado sin cambios ajenos entrantes. Fuente verificada: `main`, `/`, modo `legacy`; sin force push ni cambios de ajustes. Este cierre solo documenta el despliegue verificado, sin modificar código o recursos. Su commit y build final se confirman en la respuesta de entrega. No quedan fallos reproducibles observados dentro del alcance de revisión descrito; se mantienen sus límites de dispositivos, motores y tecnologías de asistencia.
