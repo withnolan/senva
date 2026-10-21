@@ -1,6 +1,6 @@
 # SENVA — Rediseño integral
 
-Actualizado: 20 de octubre de 2026. Registro del rediseño desde `4945ec0`.
+Actualizado: 21 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
 **Trabajo actual:** [Una conversación en movimiento](#conversation-in-motion), 21 de octubre de 2026, sobre `34ec015`. El bloque final registra hitos, comprobaciones y entrega. Los apartados anteriores conservan el historial.
 
@@ -142,6 +142,40 @@ Un único escenario abierto enlaza portada, voz/subtítulos, información manual
 
 1. Inspección de SENVA publicada, código y referencia TuffStudy: realizada. Se toman continuidad, escala y pausas; no recursos, identidad ni tramos de scroll vacíos.
 2. Recursos SVG coherentes: gafas y guante propios en `assets/graphics/`, integrados como definiciones compartidas. Contornos legibles sobre ambos fondos y máscaras para los recorridos. Terminado.
-3. Escenario continuo, textos breves y alternativas estáticas: implementados, en revisión. Se sustituyó el controlador y los gráficos anteriores. Corregida la inicialización del idioma y la contención del sticky mediante una cuadrícula compartida para evitar superponer el escenario al plan de validación.
-4. Revisión, documentación y vista previa social: pendiente.
-5. Commit/push y build de Pages: pendiente.
+3. Escenario continuo, textos breves y alternativas estáticas: terminados. Se sustituyeron el controlador, los gráficos y estilos anteriores; cuatro secciones reales, un escenario SVG compartido y una interfaz HTML. Se conserva la información técnica en desplegables y documentación. Sin dependencias nuevas.
+4. Revisión local, documentación y vista previa social: terminadas según el detalle siguiente. README, guía técnica y procedencia describen la implementación actual. Hito vectorial guardado en `50f9718`; implementación/revisión listas para commit.
+5. Commit/push y build de Pages: pendientes de comprobación pública. Fuente confirmada el 21 de octubre: `main`, `/`, modo `legacy`; remoto actualizado sin cambios ajenos entrantes.
+
+### Correcciones de la revisión actual
+
+- Contención del sticky en la misma celda de cuadrícula que los artículos; termina con el experimento y no cubre validación. Sin márgenes negativos ni scroll artificial.
+- Inicialización de idioma robusta, sin acceder al rectángulo de un valor booleano durante el arranque.
+- Contorno blanco cálido en gafas y guante para conservar definición sobre azul noche; fuentes SVG compartidas, sin variantes por escena. Máscaras separadas del trazado discontinuo visible para dibujar realmente los recorridos.
+- Ventanas de fundido separadas para subtítulos, información adicional y aplicación. Corregidos cruces de etiquetas observados en los puntos 1,5 y 2,5. Repetidos puntos 1,36 / 1,50 / 1,65 y 2,35 / 2,50 / 2,70: solo una familia de anotaciones visible a la vez.
+- Controles superiores y aviso cambian de color según el fondo situado realmente debajo, incluso durante la frontera entre fondos.
+- Experimento más estrecho a la izquierda, guante en el centro e interfaz ajustada a ventanas bajas. La frase final vuelve al flujo y reserva espacio tras desplegar los detalles; corregido el solapamiento observado a 1280 × 720.
+- Portada móvil con los objetos inmediatamente después del titular. Figura de la segunda dirección adaptada para que la ruta no atraviese las etiquetas. Subtítulo ficticio y aviso conceptual separados.
+- Vista previa social vectorial 1200 × 630 actualizada; corregida la herencia de relleno al exportar los trazados. PNG de 69 381 bytes revisado visualmente.
+
+### Comprobaciones de esta implementación
+
+- **Responsive EN/ES:** 320 × 844, 390 × 844, 768 × 1024, 844 × 390, 1000 × 680, 1100 × 740, 1280 × 720 y 1440 × 960, con dimensiones reales del viewport. Sin desplazamiento horizontal ni desbordamiento medido de los bloques de texto de las escenas. Los cuatro primeros tamaños usan lectura normal. Repetidos 1000 × 680 y 1280 × 720 con los tres desplegables abiertos en ambos idiomas: contenido crece sin cruzar la frase final.
+- **Visual:** comparación con la versión publicada anterior e inspección de TuffStudy; portada nueva, estados completos y mitades de las tres transiciones, ambos recorridos, práctica y salida del escenario. Revisión móvil de los gráficos, plan, equipo, candidatura y contacto; equipo también revisado en escritorio. Las figuras no son capturas ni paneles de texto incrustado.
+- **Scroll nativo:** 0 → 0,5 → 1 → 1,5 → 2 → 2,5 → 3 y regreso en EN/ES; mismas posiciones y escalas al volver a cada punto. Sticky a 84 px, salida contenida antes del plan; sin bloqueo de rueda. Capturas de los estados y 25 fotogramas del avance/regreso guardados fuera del repositorio.
+- **Idioma:** 111 claves EN/ES con paridad, respaldo inglés, alternativas y etiquetas accesibles sincronizados. `lang`, título, descripción y `og:locale` cambian. Detalles abiertos se conservan; un clic real EN → ES en la segunda dirección mantuvo exactamente la fracción de lectura 0,434328. No se confunden los desplazamientos automáticos de los localizadores de revisión con clics reales del selector fijo.
+- **Teclado y controles:** capítulos con anclas nativas y foco en la sección de destino; ejemplo `#reciprocity`. Ningún control dentro del canvas decorativo oculto. Pausa/reanudación con Space; pausa elimina interpolación y deja transiciones a cero. Al pasar a móvil con el foco en pausa, vuelve a la sección real. Menú con Enter, Tab y Escape; enlaces cerrados `inert`. Orientación de 320 × 844 a 844 × 390 y regreso sin foco en elementos ocultos ni desbordamiento.
+- **Sin JavaScript:** arnés externo sin script, en escritorio y a 320 px. Inglés completo, navegación visible, figuras en flujo normal y detalles abiertos con Enter; controles dependientes ocultos. Sin `IntersectionObserver`, lectura normal con las cuatro figuras. Almacenamiento bloqueado simulado: arranque en inglés y cambio a español funcional.
+- **Movimiento reducido:** CSS y `matchMedia` equivalentes simulados fuera del repositorio; revisión de escritorio en ES y móvil de 320 px en EN. Sin sticky, entrada, transiciones ni scroll suave, con contenido completo. No se cambió ni comprobó la preferencia real del sistema operativo.
+- **Recursos y código:** HTTP 200 bajo `/senva/` para CSS/JS versionados, favicon, retratos, SVG nuevos, logo reutilizable y vista previa social. XML válido para SVG; PNG real 1200 × 630. `node --check`, `git diff --check`, HTML equilibrado, IDs/anclas y enlaces Markdown locales correctos. Sin GLB/GLTF, motores o dependencias de ejecución. Las imágenes antiguas se conservan como archivo, sin cargarse.
+- **Identidad y contenido:** SVG original del logo idéntico en cabecera/pie; favicon y retratos idénticos byte a byte a la base conservada. Contrastes de texto calculados 4,98:1 / 9,31:1 / 5,42:1 / 8,27:1 para los pares documentados. Misión, hipótesis, límites lingüísticos, estudios, perfiles, colaboradoras anónimas y candidatura de Santiago conservados. No se atribuyen producto, entrevistas, datos o alianzas.
+- **Consola:** sin errores ni avisos de la página registrados en los recorridos finales de la pestaña de revisión. Los errores de consulta de la herramienta durante la inspección DOM no se atribuyen a la web.
+
+### Entrega visual y límites
+
+Capturas antes/después de escritorio y móvil y secuencia GIF de 25 capturas reales del navegador, fuera del repositorio. El GIF permite observar el avance y el regreso, pero **no es una grabación continua ni una medida de rendimiento**. No hay herramienta de grabación de vídeo disponible en este entorno.
+
+Pruebas con viewports del navegador integrado, sin dispositivos físicos, matriz de motores o lector de pantalla real. Reducción de movimiento y bloqueo de almacenamiento comprobados por simulación; ausencia de script mediante arnés externo. LinkedIn conserva los enlaces facilitados; no se verifica contenido detrás de inicio de sesión. No se ha comprobado acceso desde China. Los checks locales todavía no acreditan un despliegue público de estos cambios.
+
+### Estado de entrega actual
+
+Implementación y revisión local finalizadas. Siguiente paso: commit normal, push a `origin/main` y comprobación del build y de la web pública. Sin cambios de ajustes del repositorio ni force push.

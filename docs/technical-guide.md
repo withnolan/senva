@@ -1,18 +1,18 @@
 # SENVA — Guía técnica
 
-La [presentación del proyecto](../README.md) explica misión, equipo y estado. Esta guía describe la implementación real y su mantenimiento.
+La [presentación del proyecto](../README.md) explica misión, equipo y estado. La implementación actual es **Una conversación en movimiento**, una web estática con objetos SVG compartidos, scroll nativo y texto HTML EN/ES.
 
 ## Ejecución
 
-Web estática sin instalación, compilación, framework, backend ni dependencias externas. Con Python 3 desde la raíz:
+Sin instalación, framework, compilación, backend o dependencias externas. Desde la raíz, con Python 3:
 
 ```sh
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Abrir [http://127.0.0.1:8000](http://127.0.0.1:8000); detener con `Ctrl+C`. También se puede abrir `index.html`, aunque HTTP es preferible para probar almacenamiento y recursos de forma consistente.
+Abrir [http://127.0.0.1:8000](http://127.0.0.1:8000); detener con `Ctrl+C`. HTTP permite comprobar recursos y almacenamiento de forma consistente.
 
-Para reproducir el prefijo de GitHub Pages sin mover archivos del repositorio:
+Para comprobar el prefijo real de Pages sin mover el repositorio:
 
 ```sh
 senva_preview_dir="$(mktemp -d)"
@@ -20,78 +20,66 @@ ln -s "$PWD" "$senva_preview_dir/senva"
 python3 -m http.server 8000 --bind 127.0.0.1 --directory "$senva_preview_dir"
 ```
 
-Abrir [http://127.0.0.1:8000/senva/](http://127.0.0.1:8000/senva/). El enlace simbólico queda fuera del repositorio y no se publica. Usar otro puerto si está ocupado. Las referencias CSS/JS llevan un parámetro `?v=` derivado de su SHA-256 para evitar reutilizar la versión anterior tras publicar. Al editar uno de esos archivos, actualizar ese valor en `index.html` con los primeros ocho caracteres de su nuevo hash (`shasum -a 256 styles.css script.js`). En una revisión local también se puede forzar recarga.
+Abrir [http://127.0.0.1:8000/senva/](http://127.0.0.1:8000/senva/). El enlace simbólico y los arneses de revisión quedan fuera del repositorio. Cambiar puerto si está ocupado.
 
-## Archivos
+CSS y JS llevan `?v=` con los primeros ocho caracteres de su SHA-256. Al modificarlos, actualizar `index.html` con el resultado de `shasum -a 256 styles.css script.js`. Esto evita reutilizar versiones anteriores desde caché; no es un sistema de compilación.
 
-- `index.html`: documento semántico completo en inglés, anclas, detalles nativos y diagramas SVG/CSS propios.
-- `styles.css`: composición, responsive, estados del escenario, entrada finita, microinteracciones, impresión y movimiento reducido. Incluye el bloque “Editorial 2D illustrations” con la escena humana, los dispositivos ilustrados y las interfaces conceptuales. Se retiraron los estilos del esquema anterior de palabras y flechas.
-- `script.js`: diccionarios EN/ES, preferencia local opcional, menú, metadatos y un único controlador de progreso de la secuencia.
-- `assets/favicon.svg`: símbolo original, sin cambios. `senva-logo.svg`: versión reutilizable del mismo símbolo y logotipo para README.
-- `assets/*.jpg`: los dos retratos existentes de 800 × 800; no alterarlos. Se muestran con igual importancia y tamaño, sin recortar su contenido.
-- `assets/illustrations/`: seis WebP responsive locales; `source/` conserva tres másteres PNG de ilustración editorial 2D. [Procedencia, prompts, pesos y edición](visual-assets.md). Representan conceptos, no hardware construido; sin modelos ni motores 3D.
-- `assets/social-card.svg` y `.png`: fuente y exportación 1200 × 630 de la vista previa social.
-- `.nojekyll`: entrega estática directa en Pages.
-- `docs/project-brief.md`: preguntas de investigación y contexto Xiji. `docs/redesign-progress.md`: decisiones, comprobaciones, límites y entrega.
+## Archivos y recursos
 
-No se cargan fuentes, imágenes, bibliotecas ni scripts de servicios externos. Los WebP de personas, gafas y guante usan `srcset` 768/1536 y dimensiones explícitas; la portada se carga inmediatamente y los recursos de escenas con `loading="lazy"`. Los PNG fuente no aparecen en el HTML. No hay nuevas dependencias de ejecución: Sharp se usó fuera de la web solo para redimensionar/codificar las exportaciones. Los enlaces salientes van al repositorio y a los LinkedIn facilitados; incluyen aviso accesible de nueva pestaña y `rel="noopener noreferrer"`. No hay formularios, analítica ni cuentas.
+- `index.html`: inglés completo de respaldo, definiciones SVG, cuatro escenas reales, controles, detalles nativos, plan, equipo, Xiji y contacto.
+- `styles.css`: composición abierta, capa gráfica, alternativas estáticas, responsive, controles, entrada finita y movimiento reducido. Sustituye los paneles y estilos de la secuencia anterior.
+- `script.js`: 111 claves EN/ES, menú, metadatos, preferencia opcional y un único controlador de composición.
+- `assets/graphics/glasses.svg`, `glove.svg`: fuentes vectoriales propias de los objetos; sus mismos trazados están en las definiciones de `index.html`. [Edición y procedencia](visual-assets.md).
+- Señal de voz, conexiones y máscaras SVG; subtítulos e interfaz de práctica HTML dentro de `index.html`. No hay una imagen de la interfaz.
+- `assets/favicon.svg` y `senva-logo.svg`: identidad original conservada. Los retratos originales de 800 × 800 permanecen iguales y con el mismo tratamiento.
+- `assets/social-card.svg` / `.png`: fuente enteramente vectorial y exportación real 1200 × 630, con avisos EN/ES. El PNG solo se usa como vista previa social.
+- `assets/illustrations/`: recursos de la iteración anterior, conservados sin cargarse en la web actual. La pareja y las imágenes WebP ya no forman parte de la presentación.
+- `.nojekyll`: entrega directa. No hay `dist`, workflow propio o dependencias de ejecución nuevas.
 
-## Textos e idiomas
+La página solo carga su CSS, JS y los dos retratos locales (carga diferida con dimensiones reservadas). Los dibujos del recorrido están en el propio documento, por lo que no esperan descargas de imágenes. No se cargan fuentes remotas, bibliotecas, WebGL, GLB/GLTF, analítica ni servicios externos. Los enlaces externos son GitHub y los LinkedIn facilitados, con `noopener noreferrer` y aviso accesible de nueva pestaña.
 
-El inglés de `index.html` debe coincidir con `translations.en` de `script.js`. Cada `data-i18n="clave"` corresponde a una cadena en EN y ES. El controlador usa `textContent`, sin aceptar HTML en traducciones. Los nombres accesibles y retratos emplean `data-i18n-aria-label` y `data-i18n-alt`.
+## Composición y scroll
 
-El idioma inicial es inglés, salvo preferencia válida guardada en `localStorage` con la clave `senva-language`. Un bloqueo de almacenamiento se captura y no impide el selector durante la visita. EN/ES conservan su propio atributo `lang`; el documento, título, descripción, `og:title`, `og:description`, `og:locale` y `og:image:alt` se actualizan al cambiar idioma. Los rastreadores sin JavaScript reciben el inglés inicial y la imagen social bilingüe.
+Cuatro secciones semánticas, todas legibles en el documento: `home`, `vision` (voz/subtítulos), `reciprocity` (información manual + información lingüística adicional), `concept` (primera hipótesis de práctica). Los antiguos destinos `opportunity` y `questions` se conservan en etiquetas visibles de portada y validación.
 
-Al traducir durante una escena, se conserva su fracción relativa en la línea de lectura. `.language-changing` desactiva temporalmente scroll suave y anclaje automático durante la recomposición. Solo esta acción del selector ajusta el punto de lectura: la navegación ordinaria usa scroll nativo.
+La base muestra dibujos SVG y las anotaciones HTML junto a su texto. JavaScript añade `.js` tras preparar idiomas y navegación; `.is-enhanced` solo aparece si hay `IntersectionObserver`, al menos **1000 × 680 px** y movimiento permitido. Las ventanas bajas, móvil, tablet, ausencia de observador y movimiento reducido usan el recorrido estático completo.
 
-Conservar los hechos confirmados, incluidos CSEU La Salle para Santiago y su condición de candidato a Xiji. No publicar datos de las colaboradoras anónimas ni añadir resultados, cargos, alianzas, presupuestos o plazos sin evidencia. Los textos de visión deben distinguir información manual, información lingüística adicional e investigación pendiente.
+En modo mejorado, escenario y secciones ocupan la misma celda de una cuadrícula. El escenario es `position: sticky`, bajo la cabecera de 84 px, y su altura es `100svh - 84px`. Su contención termina con el último experimento: no cubre el plan de validación. Los fondos y textos de las secciones se desplazan de manera nativa; los mismos objetos SVG permanecen y cambian de composición. El artboard mantiene proporción 5:3 y cabe en ancho y altura disponibles.
 
-## Arquitectura del movimiento
+Un `IntersectionObserver` activa un listener pasivo de scroll solo cuando el recorrido está visible. Una única cola `requestAnimationFrame` mide los centros de las cuatro secciones y calcula progreso 0–3. El array `poses` en `script.js` contiene posición, escala y opacidad de gafas y guante. Se interpola con una curva suave, sin capturar rueda, imponer saltos, usar temporizadores ni añadir alturas vacías para animar.
 
-La base es una página estática legible. JavaScript añade `.js` después de preparar idioma y navegación; los controles dependientes no aparecen sin él. La entrada de marca, las dos líneas del titular y el bloque de apoyo es CSS, breve y de una sola ejecución desde portada. Las ilustraciones hacen una entrada corta y después permanecen estables; la antigua trayectoria de portada se ha retirado. No hay animación constante, bucles de temporizador ni revelaciones repetidas de todas las secciones.
+La conexión de portada cede a voz → gafas → subtítulos. El segundo momento destaca el guante, la información facial/corporal/espacial y una salida en investigación. Las máscaras simples trazan el recorrido de información y la ida/vuelta de captación/feedback en práctica. El ejemplo es conceptual, no reconocimiento ni traducción funcional. Los objetos quedan estables cuando el visitante deja de deslizar.
 
-La secuencia tiene cuatro artículos reales (`data-step`, anclas `opportunity`, `vision`, `concept`, `questions`). Los títulos y textos permanecen en el flujo; nunca son capas invisibles enfocables. El duplicado del escenario está marcado `aria-hidden="true"` y no contiene controles. Las figuras de visión y práctica dentro de los artículos son alternativas accesibles: cuando funciona el sticky, se ocultan solo visualmente con una caja recortada de 1 px; en lectura estática se muestran junto al texto. Sus frases ficticias y avisos siguen disponibles para tecnologías de asistencia.
+Las etiquetas de subtítulos, información adicional e interfaz tienen ventanas de opacidad separadas: no se superponen durante los fundidos. El texto de los artículos conserva siempre su opacidad. La frase final de práctica participa del flujo para dejar espacio a los detalles abiertos, también en ventanas bajas.
 
-El escenario usa `position: sticky` solo desde **1100 × 740 px**, con movimiento permitido e `IntersectionObserver` disponible. El alto es como máximo 650 px y respeta la altura útil de la ventana. Los artículos tienen una duración espacial acotada y crecen si su texto lo exige. En móvil, tablet, ventanas bajas, sin observador o con movimiento reducido, se muestran artículos normales e ilustraciones dentro del contenido; no se crean tramos vacíos para animar.
+Los controles de recorrido se sitúan en la zona superior derecha, separada del texto principal. `aria-current="step"` señala el momento activo. El color de controles y aviso se calcula a partir del fondo que tienen realmente debajo, también durante transiciones. Pausar elimina interpolación y transiciones; conserva el scroll y muestra una composición estable por escena. Reanudar no repite la entrada. La entrada inicial de marca, texto, objetos y conexión es breve y de una sola ejecución.
 
-Un `IntersectionObserver` activa el listener pasivo de scroll únicamente al entrar en la secuencia y lo retira al salir. `requestAnimationFrame` agrupa cuatro medidas de escena y actualiza el progreso continuo. A partir de él se interpolan `transform` y `opacity` de la trayectoria y los cuatro gráficos. Dentro del capítulo de visión se destaca primero la ruta de habla/gafas/subtítulos y después la de guantes + información facial/corporal/espacial hacia investigación. Las etiquetas siempre permanecen presentes. Las barras de recorrido, opacidad de la señal y aparición sutil de la superficie óptica siguen el progreso nativo; no hay reproducción automática. Es una explicación conceptual, sin datos ni reconocimiento simulado. Las leyendas de gráficos se funden sin superponerse; su contenido esencial también está escrito en los artículos. El indicador numérico y `aria-current="step"` señalan el capítulo activo. Redimensionado, traducción, anclas y detalles nativos solicitan una nueva medida. No se captura rueda, se fuerza scroll ni se impone un salto por gesto.
+## Accesibilidad e idiomas
 
-El control **Pause motion / Pausar movimiento** elimina animaciones y transiciones y muestra el gráfico del capítulo sin interpolación; conserva las dimensiones de lectura. Reanudar no repite la entrada. `prefers-reduced-motion: reduce` desactiva también scroll suave y sticky y ofrece lectura estática completa.
+- Los títulos, mensajes y desplegables permanecen en flujo normal. No se ocultan capas de texto principal para animar.
+- El canvas mejorado es decorativo (`aria-hidden`); no contiene controles. Sus figuras estáticas alternativas se ocultan solo visualmente a 1 px en escritorio, y siguen disponibles para tecnologías de asistencia. En móvil y lectura estática se muestran en su sitio.
+- Los controles están fuera del canvas oculto a tecnologías de asistencia. Al pasar a un modo donde el escenario desaparece, el foco vuelve a la sección real si estaba en esos controles.
+- En móvil el menú cerrado es `inert` y `aria-hidden`. Al abrir entra foco al primer enlace; Escape cierra y devuelve foco. Anclas nativas, foco de destino y enlace de salto al contenido.
+- Los detalles usan `<details>` / `<summary>` nativos; el contenido crece al abrirlos y no se recorta. Las figuras no reciben foco. El texto de los ejemplos y sus etiquetas son HTML traducible.
+- Sin JavaScript: inglés completo, navegación visible, figuras y detalles funcionales; controles dependientes ocultos. No es necesario esperar animaciones para leer.
+- `prefers-reduced-motion: reduce`: sin entrada, transiciones, sticky o scroll suave; versión completa en flujo normal.
 
-## Accesibilidad y responsive
+El inglés de `index.html` debe coincidir con `translations.en`. `data-i18n`, `data-i18n-alt` y `data-i18n-aria-label` se actualizan mediante `textContent` y atributos, sin aceptar HTML. El selector actualiza `lang`, título, descripción, metadatos sociales y `og:locale`. Se conserva la fracción de lectura al traducir una escena. El almacenamiento opcional `senva-language` se usa con `try/catch`; bloquearlo no impide el selector durante la visita. Los rastreadores sin script reciben inglés y la vista previa social bilingüe.
 
-- Menú móvil desde 700 px hacia abajo; enlaces cerrados con `inert` y `aria-hidden`, Al abrir, el foco entra en el primer enlace; Escape devuelve el foco. Al cambiar al ancho de escritorio se retiran esas restricciones.
-- Anclas nativas, foco en el destino sin desplazamiento forzado y margen superior para la cabecera. La etiqueta del destino muestra el foco de teclado, evitando un contorno alrededor de toda la sección. Enlace de salto al contenido y foco visible.
-- Detalles de investigación con `<details>` / `<summary>` nativos; toda la información puede leerse sin animaciones ni JavaScript.
-- Sin JavaScript: inglés completo y navegación visible, gráficos estáticos y controles dependientes ocultos.
-- Ninguna capacidad se representa solo por color. Las dos direcciones se explican en texto y con etiquetas y rutas, sin simular reconocimiento.
-- Paleta central en `:root`: azul noche, blanco cálido, turquesa oscuro para texto sobre claro y turquesa claro sobre oscuro. Sin naranja.
+Conservar el estado de idea, el carácter hipotético del aprendizaje, codiseño futuro y límites lingüísticos. LSE no es universal, los guantes solos no traducen una lengua, los sensores inerciales no bastan para posicionar manos respecto al cuerpo y la práctica inicial no demuestra una ruta hacia traducción natural. Los estudios de Santiago son los corregidos por el usuario: CSEU La Salle; su relación con Xiji es candidatura, sin admisión. Las colaboradoras siguen anónimas.
 
-No se afirma certificación de accesibilidad. La [revisión documentada](redesign-progress.md) distingue simulaciones, navegador integrado y límites de dispositivos o tecnologías de asistencia.
+## Comprobar después de editar
 
-## Recursos sociales y logo
+1. `node --check script.js` y `git diff --check`; paridad EN/ES, respaldo inglés, IDs, anclas y enlaces locales.
+2. Comprobar SVG fuente/definiciones, máscaras, avisos y PNG social real 1200 × 630. Actualizar los parámetros de caché si cambia CSS/JS.
+3. Revisar 320 px, móvil, tablet, escritorio bajo y grande, EN/ES, redimensionado y orientación. No solo los estados finales: observar mitad de cada transición y salida hacia validación, en ambos sentidos.
+4. Revisar títulos y etiquetas junto a objetos, detalles abiertos, controles de capítulo/pausa, teclado, cambio de idioma y menú.
+5. Movimiento reducido, ausencia de JavaScript/observador y almacenamiento bloqueado; comprobar recursos bajo `/senva/` y errores atribuibles a la web.
 
-El logo de cabecera y pie conserva el SVG original y su logotipo; los ajustes son de integración. No confundir las trayectorias editoriales con el símbolo de SENVA. Las fotografías originales no deben sustituirse ni alterarse.
+La [revisión de esta entrega](redesign-progress.md#conversation-in-motion) distingue lo observado, simulaciones y límites. No implica certificación de accesibilidad, prueba con dispositivos físicos o lector de pantalla real.
 
-Si se cambia `social-card.svg`, exportar de nuevo `social-card.png` a **1200 × 630 en formato PNG real**. La URL de `og:image` es absoluta porque la consumen rastreadores: `https://withnolan.github.io/senva/assets/social-card.png`. El resto de recursos son relativos y compatibles con `/senva/`. La vista previa combina ilustración editorial 2D, titulares y aviso conceptual EN/ES, no una captura de producto.
+## Publicación
 
-## Comprobaciones después de editar
+GitHub Pages en `withnolan/senva`: fuente verificada el 21 de octubre de 2026, `main`, carpeta `/`, modo `legacy`; comprobar de nuevo antes de publicar si ha cambiado. No se requieren nuevos ajustes o secretos.
 
-1. Sintaxis: `node --check script.js`, cuando Node esté disponible, y `git diff --check`.
-2. Paridad de claves EN/ES, respaldo inglés, IDs únicos y destinos internos; comprobar archivos enlazados y metadatos.
-3. Navegador: 320 px, móvil habitual, tablet, escritorio grande y bajo; EN/ES, menús, detalles abiertos, cambios de orientación y redimensionado.
-4. Entrada y salida del sticky, estados principales e intermedios, avance y regreso, anclas y selector durante una escena.
-5. Teclado, movimiento reducido, lectura sin JavaScript y almacenamiento bloqueado. Revisar consola, recursos y desbordamientos bajo `/senva/`.
-6. Comparar capturas de portada, escenas, equipo y cierre. Repetir solo pruebas afectadas por correcciones.
-
-Los arneses y capturas de la revisión no se añaden a la web ni requieren infraestructura de tests.
-
-## GitHub Pages
-
-Fuente **verificada mediante la API el 20 de octubre de 2026**: repositorio `withnolan/senva`, rama `main`, carpeta `/`, mecanismo `legacy`. No hay workflow propio ni carpeta `dist`; se sirven los archivos de raíz. No se necesitan nuevos ajustes ni secretos.
-
-Después de las comprobaciones, guardar los archivos pertinentes en un commit y hacer push normal a `origin/main`, según la autorización del propietario. Conservar cambios ajenos; nunca usar force push ni eludir protecciones. Si una protección requiere PR, subir una rama y documentar la aprobación pendiente.
-
-El push puede iniciar el despliegue ya configurado. Comprobar el build de Pages correspondiente al SHA y su resultado, y abrir después [la web pública](https://withnolan.github.io/senva/). Un push correcto no demuestra que el despliegue haya terminado. No afirmar publicación si el build sigue pendiente o falla. El resultado de esta entrega se registra en `redesign-progress.md`.
-
-Referencia de mantenimiento: [fuentes de publicación de GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+Guardar hitos coherentes y hacer push normal según la autorización del propietario, conservando cambios ajenos y protecciones. No usar force push. Comprobar el build correspondiente al SHA y después [la web pública](https://withnolan.github.io/senva/). Un push correcto no demuestra por sí solo que el despliegue esté terminado. El registro y la respuesta final distinguen ambos estados.

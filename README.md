@@ -92,13 +92,13 @@ Ambos son estudiantes. Sus ámbitos aportan perspectivas complementarias; no se 
 
 [Ejecutar la web localmente](#quick-start) · [Síntesis de investigación y candidatura](docs/project-brief.md#español) · [Guía técnica](docs/technical-guide.md)
 
-## Editorial illustrations / Ilustraciones editoriales
+## A conversation in motion / Una conversación en movimiento
 
-A coherent **2D editorial illustration** system brings together two people in conversation, stylized glasses and an empty glove. The homepage, two communication routes and possible LSE practice experiment share the same curves and flat navy, warm white and turquoise colors. These are design concepts, not built hardware. Captions and feedback are fictional/interface studies, not recognition results. Text and controls remain accessible HTML in EN/ES.
+An open **layered SVG composition** connects the homepage, voice-to-caption concept, manual-information research and first LSE practice hypothesis. The same glasses and empty glove change position, scale and context with native scroll. A speech signal, conceptual captions and HTML practice interface explain the relationships. This is a vision, not working hardware or recognition. EN/ES, keyboard access and complete static/reduced-motion alternatives are retained.
 
-Un sistema coherente de **ilustración editorial 2D** reúne a dos personas en conversación, unas gafas estilizadas y un guante vacío. La portada, las dos rutas de comunicación y un posible experimento de práctica de LSE comparten curvas y colores planos azul noche, blanco cálido y turquesa. Son conceptos de diseño, no hardware construido. Los subtítulos y el feedback son estudios ficticios/de interfaz, no resultados de reconocimiento. Textos y controles siguen en HTML accesible EN/ES.
+Una **composición abierta de SVG por capas** conecta portada, concepto de voz a subtítulos, investigación sobre información manual y primera hipótesis de práctica de LSE. Las mismas gafas y el guante vacío cambian de posición, escala y contexto con el scroll nativo. La señal de voz, los subtítulos conceptuales y una interfaz HTML de práctica explican las relaciones. Es una visión, no hardware o reconocimiento funcional. Se mantienen EN/ES, teclado y alternativas completas estáticas/con movimiento reducido.
 
-[Assets, prompts and editing / Recursos, prompts y edición](docs/visual-assets.md). No 3D, external runtime dependencies or build step / Sin 3D, dependencias externas de ejecución ni compilación.
+[Drawings and maintenance / Dibujos y mantenimiento](docs/visual-assets.md). No 3D, external runtime dependencies or build step / Sin 3D, dependencias externas de ejecución ni compilación.
 
 <a id="quick-start"></a>
 ## Quick start / Inicio rápido
@@ -122,13 +122,13 @@ assets/                    Existing logo, portraits, social image / recursos
   senva-logo.svg           Existing symbol + wordmark / logotipo existente
   *.jpg                    Original founder portraits / retratos originales
   social-card.svg, .png     Social preview / vista previa social
-  illustrations/           Editorial 2D illustrations / ilustraciones 2D
-    source/                PNG masters / másteres PNG
-    *.webp                 Responsive web assets / recursos optimizados
+  graphics/                Layered SVG sources / fuentes SVG por capas
+    glasses.svg, glove.svg  Shared objects / objetos compartidos
+  illustrations/           Earlier iteration, not loaded / iteración anterior
 docs/
   project-brief.md          Research hypotheses and Xiji / hipótesis y Xiji
   technical-guide.md        Maintenance and deployment / mantenimiento
-  visual-assets.md           Provenance, prompts, editing / procedencia y edición
+  visual-assets.md           SVG sources and editing / fuentes SVG y edición
   redesign-progress.md      Decisions, checks and delivery / estado
 ```
 

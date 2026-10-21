@@ -1,12 +1,12 @@
 (() => {
   'use strict';
-  // English in the HTML is the complete, script-free fallback.
+  // Complete English HTML remains readable without this enhancement.
   const translations = {
   "en": {
     "title": "SENVA — Every gesture brings us closer",
     "description": "Exploring communication between Deaf signers and hearing people. A gloves-and-glasses concept, with LSE practice as a first research hypothesis.",
     "socialDescription": "Communication. Autonomy. Connection. Discover the idea behind SENVA and the questions we want to explore.",
-    "socialImageAlt": "SENVA. Two people in conversation, with illustrated glasses and a glove. Design concept, hardware to be defined.",
+    "socialImageAlt": "SENVA. A conversation in motion. Illustrated glasses and an empty glove connected by a turquoise path. Design concept.",
     "skip": "Skip to content",
     "homeLabel": "SENVA — home",
     "navLabel": "Main navigation",
@@ -26,67 +26,22 @@
     "heroEyebrow": "Communication. Autonomy. Connection.",
     "heroTitle1": "A conversation.",
     "heroTitle2": "More possibilities.",
-    "heroLead": "We explore technology that could help Deaf signers and hearing people connect, with more autonomy in everyday life.",
-    "heroConcrete": "The idea: gloves and glasses to support communication in both directions. The work: find out whether they should exist.",
+    "heroLead": "Exploring new ways for Deaf signers and hearing people to connect, with technology that could support their communication.",
+    "heroConcrete": "A vision of gloves and glasses. Everything to investigate.",
     "heroCta": "Explore the idea",
-    "heroSecondary": "Meet the founders",
-    "heroFrom": "An idea.",
-    "heroTo": "An encounter.",
-    "heroThread": "Different forms of expression. A conversation to share.",
     "stageNote": "Only the idea exists. No prototype, interviews, tests, users, revenue or confirmed partnerships.",
-    "storyLabel": "The idea, in four chapters",
-    "chapterNav": "Explore the four chapters",
-    "chapter1": "Why",
-    "chapter2": "Two directions",
-    "chapter3": "First experiment",
-    "chapter4": "What must hold true",
-    "purposeTitle": "A little more room for possibility.",
-    "purposeBody": "Sharing an idea. Meeting someone new. Joining a spontaneous conversation. These are the everyday possibilities that motivate SENVA.",
-    "purposePrinciple": "The freedom to take part. The choice to connect.",
-    "purposeNote": "Starting points for research, not testimonials or needs we have already validated.",
-    "visualYour": "Your idea.",
-    "visualOther": "Another perspective.",
-    "visualTogether": "Room for a conversation.",
-    "visionTitle": "One conversation. Two directions.",
-    "visionBody": "A possible gloves-and-glasses system, with the aspiration of conversing without holding or positioning a phone.",
-    "directionSpeech": "Speech → captions in glasses.",
-    "directionSign": "Manual information from gloves, together with other necessary linguistic information → research towards text or voice.",
-    "visionNote": "The second direction is an open research challenge. Gloves alone cannot translate a whole language.",
-    "conceptTag": "Concept · not a working product",
-    "laneSpeech": "Speech",
-    "laneGlasses": "Glasses",
     "laneCaptions": "Captions",
-    "laneHands": "Manual information",
-    "laneGloves": "Glove concept",
-    "laneMore": "Facial, bodily + spatial information",
     "laneResearch": "Research",
     "laneOutput": "Text / voice",
-    "laneResearchNote": "A direction to investigate, not a translation demonstration.",
-    "experimentTitle": "Start small. Ask something real.",
-    "experimentBody": "One possible first experiment: selected LSE practice exercises with adult learners and teachers, to investigate sensors and useful feedback.",
-    "experimentPrinciple": "Communication is the purpose. Learning is a first hypothesis.",
-    "experimentAudience": "Adult LSE learners as potential users; teaching centres as possible collaborators and buyers. Both hypotheses to validate.",
-    "practice1": "Practise",
-    "practice2": "Explore signals",
-    "practice3": "Question the feedback",
-    "practiceWith": "With adult learners + teachers",
-    "proofTitle": "The idea has to earn its hardware.",
-    "proofBody": "Would it help? Would people choose it? Could we measure what matters? We want to answer these questions before defending a device.",
-    "proofUseful": "Useful?",
-    "proofPossible": "Feasible?",
-    "proofAcceptable": "Acceptable?",
-    "proofAlternative": "Gloves, cameras, or another approach?",
-    "proofDecision": "Continue. Adapt. Or set the hardware aside.",
-    "seePlan": "How we would find out",
     "planLabel": "The work ahead",
     "planTitle": "Decisions before devices.",
     "planIntro": "A future plan, shaped with the people it is meant to support. None of this research has started.",
     "plan1Title": "Define the need together.",
-    "plan1Body": "Co-design with Deaf signers and hearing interlocutors: which situations are worth addressing, and what would useful, acceptable support look like?",
+    "plan1Body": "Co-design with Deaf signers and hearing people: which situations matter, and what support would be useful and acceptable?",
     "plan2Title": "Challenge the hardware choice.",
-    "plan2Body": "Compare gloves and glasses with cameras, phones and existing resources. Consider autonomy, comfort, calibration, cost and accessibility.",
+    "plan2Body": "Compare gloves and glasses with cameras, phones and existing resources: autonomy, comfort, calibration, cost and accessibility.",
     "plan3Title": "Choose a question we can test.",
-    "plan3Body": "If research justifies it, explore off-the-shelf sensors and a few LSE exercises selected with teachers. Assess feedback across different adult learners.",
+    "plan3Body": "If justified, select a few exercises with teachers and explore off-the-shelf sensors. Assess feedback with different adult learners.",
     "planDecision": "Evidence should decide whether to continue, change direction or leave the hardware behind.",
     "researchLabel": "What remains open",
     "researchTitle": "A signal is not a language.",
@@ -122,27 +77,49 @@
     "backTop": "Back to top",
     "footerStage": "An entrepreneurial project at the idea stage.",
     "designLabel": "Design concept. Hardware to be defined.",
-    "objectsAlt": "Two people in conversation, with illustrated glasses and an empty glove as design concepts. No specific sign is represented.",
     "routeA": "A / Speech to captions",
     "routeB": "B / Towards text or voice",
     "captionExample": "Shall we meet here tomorrow?",
-    "illustrativeLabel": "Illustrative experience. Not a functional demonstration.",
+    "illustrativeLabel": "Conceptual experience. Not a functional demonstration.",
     "additionalLabel": "Face · body · space",
     "additionalPending": "How to capture this? Still open.",
     "interfaceLabel": "Interface concept · no measured data",
     "exerciseLabel": "Practice exercise / to be defined",
     "exercisePrompt": "A short movement. A question to explore.",
-    "captureQuestion": "Which motion could we capture?",
-    "feedbackQuestion": "Would this feedback help you practise?",
-    "feedbackDetail": "To design and assess with adult learners and teachers.",
-    "feedbackLabel": "Feedback / a research question",
-    "fictionLabel": "Fictional everyday phrase"
+    "feedbackQuestion": "Would this guidance help?",
+    "feedbackDetail": "To design and assess with learners and teachers.",
+    "feedbackLabel": "Question the feedback",
+    "fictionLabel": "Fictional everyday phrase",
+    "journeyNav": "Explore the conversation",
+    "momentHome": "The idea",
+    "momentA": "Voice",
+    "momentB": "Expression",
+    "momentPractice": "Practice",
+    "voiceTitle": "A voice.\nWords in view.",
+    "voiceBody": "Explore speech as captions in lightweight glasses, without holding or positioning a phone.",
+    "voiceDetails": "What is this illustration showing?",
+    "voiceMore": "A possible experience, not existing hardware or working speech recognition. The phrase is fictional. Usefulness, comfort and the system itself still need investigation.",
+    "signTitle": "Beyond\nthe hands.",
+    "signBody": "Manual information, together with the face, body and space. Research towards text or voice; a glove cannot translate a language on its own.",
+    "signDetails": "What would we need to understand?",
+    "signMore": "The needs must be defined through future co-design with Deaf signers. Facial, bodily and spatial information and how to capture it remain unresolved. Inertial sensors alone do not establish hand position relative to the body.",
+    "practiceTitle": "First, a question.",
+    "practiceBody": "First hypothesis: selected LSE practice with adult learners and teachers, to investigate motion capture and useful feedback.",
+    "practicePrinciple": "Communication is the purpose.\nLearning is a first hypothesis.",
+    "practiceDetails": "The scope of this first hypothesis",
+    "practiceMore": "A complementary practice tool, with exercises to select with teachers. Adult learners are potential users; teaching centres are possible collaborators and buyers. No recognition, scores or linguistic corrections have been validated. This would not establish a route to natural-conversation translation.",
+    "motionQuestion": "What could we capture?",
+    "graphicAlt": "Illustrated glasses and an empty glove, connected by a curved line. Design concept, not built hardware.",
+    "purposeDetail": "Sharing an idea, meeting someone new, joining a spontaneous conversation: situations that motivate the project, not researched experiences or testimonials.",
+    "voiceGraphicAlt": "A speech signal leading to illustrated glasses and a fictional caption.",
+    "signGraphicAlt": "An empty glove linked to facial, bodily and spatial information, towards research into text or voice.",
+    "practiceGraphicAlt": "An empty conceptual glove connected to a practice interface and questions about capture and feedback."
   },
   "es": {
     "title": "SENVA — Cada gesto nos acerca",
     "description": "Exploramos la comunicación entre personas sordas signantes y oyentes. Un concepto de guantes y gafas, con la práctica de LSE como primera hipótesis de investigación.",
     "socialDescription": "Comunicación. Autonomía. Conexión. Descubre la idea de SENVA y las preguntas que queremos explorar.",
-    "socialImageAlt": "SENVA. Dos personas en conversación, con gafas y un guante ilustrados. Concepto de diseño, hardware por definir.",
+    "socialImageAlt": "SENVA. Una conversación en movimiento. Gafas y un guante vacío ilustrados, conectados por una trayectoria turquesa. Concepto de diseño.",
     "skip": "Saltar al contenido",
     "homeLabel": "SENVA — inicio",
     "navLabel": "Navegación principal",
@@ -162,67 +139,22 @@
     "heroEyebrow": "Comunicación. Autonomía. Conexión.",
     "heroTitle1": "Una conversación.",
     "heroTitle2": "Más posibilidades.",
-    "heroLead": "Exploramos tecnología que podría ayudar a conectar a personas sordas signantes y oyentes, con más autonomía en su día a día.",
-    "heroConcrete": "La idea: guantes y gafas para asistir a la comunicación en ambas direcciones. El trabajo: descubrir si merece la pena construirlos.",
+    "heroLead": "Exploramos nuevas formas de conectar a personas sordas signantes y oyentes mediante tecnología que acompañe su comunicación.",
+    "heroConcrete": "Una visión de guantes y gafas. Todo por investigar.",
     "heroCta": "Explora la idea",
-    "heroSecondary": "Conoce al equipo",
-    "heroFrom": "Una idea.",
-    "heroTo": "Un encuentro.",
-    "heroThread": "Distintas formas de expresión. Una conversación que compartir.",
     "stageNote": "Solo existe la idea. Sin prototipo, entrevistas, pruebas, usuarios, ingresos ni alianzas confirmadas.",
-    "storyLabel": "La idea, en cuatro capítulos",
-    "chapterNav": "Explorar los cuatro capítulos",
-    "chapter1": "El porqué",
-    "chapter2": "Dos direcciones",
-    "chapter3": "Primer experimento",
-    "chapter4": "Por demostrar",
-    "purposeTitle": "Más espacio para lo posible.",
-    "purposeBody": "Compartir una idea. Conocer a alguien. Participar en una conversación espontánea. Esas posibilidades cotidianas de encuentro motivan SENVA.",
-    "purposePrinciple": "La libertad de participar. La decisión de conectar.",
-    "purposeNote": "Puntos de partida para investigar, no testimonios ni necesidades que ya hayamos validado.",
-    "visualYour": "Tu idea.",
-    "visualOther": "Otra perspectiva.",
-    "visualTogether": "Espacio para conversar.",
-    "visionTitle": "Una conversación. Dos direcciones.",
-    "visionBody": "Un posible sistema de guantes y gafas, con la aspiración de conversar sin tener que sostener o colocar un móvil.",
-    "directionSpeech": "Habla → subtítulos en las gafas.",
-    "directionSign": "Información manual de los guantes, junto con la información lingüística adicional necesaria → investigación sobre salida en texto o voz.",
-    "visionNote": "La segunda dirección es un reto abierto de investigación. Los guantes por sí solos no pueden traducir una lengua completa.",
-    "conceptTag": "Concepto · no es un producto funcional",
-    "laneSpeech": "Habla",
-    "laneGlasses": "Gafas",
     "laneCaptions": "Subtítulos",
-    "laneHands": "Información manual",
-    "laneGloves": "Guante conceptual",
-    "laneMore": "Información facial, corporal + espacial",
     "laneResearch": "Investigación",
     "laneOutput": "Texto / voz",
-    "laneResearchNote": "Una dirección por investigar, no una demostración de traducción.",
-    "experimentTitle": "Empezar con algo pequeño. Preguntar algo concreto.",
-    "experimentBody": "Un posible primer experimento: ejercicios acotados de práctica de LSE con estudiantes adultos y docentes para investigar sensores y feedback útil.",
-    "experimentPrinciple": "La comunicación es el propósito. El aprendizaje es una primera hipótesis.",
-    "experimentAudience": "Estudiantes adultos de LSE como posibles usuarios; centros docentes como posibles colaboradores y compradores. Dos hipótesis por validar.",
-    "practice1": "Practicar",
-    "practice2": "Explorar señales",
-    "practice3": "Cuestionar el feedback",
-    "practiceWith": "Con estudiantes adultos + docentes",
-    "proofTitle": "El hardware tiene que demostrar su valor.",
-    "proofBody": "¿Ayudaría? ¿Lo elegirían las personas? ¿Podríamos medir lo que importa? Queremos responder antes de defender un dispositivo.",
-    "proofUseful": "¿Útil?",
-    "proofPossible": "¿Viable?",
-    "proofAcceptable": "¿Aceptable?",
-    "proofAlternative": "¿Guantes, cámaras u otro enfoque?",
-    "proofDecision": "Continuar. Adaptar. O descartar el hardware.",
-    "seePlan": "Cómo lo contrastaríamos",
     "planLabel": "El trabajo que viene",
     "planTitle": "Decisiones antes que dispositivos.",
     "planIntro": "Un plan futuro, definido con las personas a las que quiere acompañar. Esta investigación todavía no ha comenzado.",
     "plan1Title": "Definir juntos la necesidad.",
-    "plan1Body": "Codiseñar con personas sordas signantes e interlocutores oyentes: ¿qué situaciones merecen atención y cómo sería un apoyo útil y aceptable?",
+    "plan1Body": "Codiseñar con personas sordas signantes y oyentes qué situaciones merecen atención y qué apoyo sería útil y aceptable.",
     "plan2Title": "Cuestionar la elección de hardware.",
-    "plan2Body": "Comparar guantes y gafas con cámaras, móviles y recursos existentes. Valorar autonomía, comodidad, calibración, coste y accesibilidad.",
+    "plan2Body": "Comparar guantes y gafas con cámaras, móviles y recursos existentes: autonomía, comodidad, calibración, coste y accesibilidad.",
     "plan3Title": "Elegir una pregunta comprobable.",
-    "plan3Body": "Si la investigación lo justifica, explorar sensores comerciales y unos pocos ejercicios de LSE elegidos con docentes. Evaluar el feedback con estudiantes adultos distintos.",
+    "plan3Body": "Si se justifica, elegir unos pocos ejercicios con docentes y explorar sensores comerciales. Evaluar el feedback con distintos estudiantes adultos.",
     "planDecision": "La evidencia debe decidir si continuar, cambiar el enfoque o dejar atrás el hardware.",
     "researchLabel": "Lo que sigue abierto",
     "researchTitle": "Una señal no es una lengua.",
@@ -258,190 +190,166 @@
     "backTop": "Volver al inicio",
     "footerStage": "Un proyecto emprendedor en fase de idea.",
     "designLabel": "Concepto de diseño. Hardware por definir.",
-    "objectsAlt": "Dos personas en conversación, con gafas y un guante vacío ilustrados como conceptos de diseño. No se representa ningún signo concreto.",
     "routeA": "A / De la voz a los subtítulos",
     "routeB": "B / Hacia texto o voz",
     "captionExample": "¿Nos vemos aquí mañana?",
-    "illustrativeLabel": "Experiencia ilustrativa. No es una demostración funcional.",
+    "illustrativeLabel": "Experiencia conceptual. No es una demostración funcional.",
     "additionalLabel": "Rostro · cuerpo · espacio",
     "additionalPending": "¿Cómo captarlo? Por resolver.",
     "interfaceLabel": "Concepto de interfaz · sin datos medidos",
     "exerciseLabel": "Ejercicio de práctica / por definir",
     "exercisePrompt": "Un movimiento breve. Una pregunta que explorar.",
-    "captureQuestion": "¿Qué movimiento podríamos captar?",
-    "feedbackQuestion": "¿Este feedback ayudaría a practicar?",
-    "feedbackDetail": "Por diseñar y evaluar con estudiantes adultos y docentes.",
-    "feedbackLabel": "Feedback / una pregunta de investigación",
-    "fictionLabel": "Frase cotidiana ficticia"
+    "feedbackQuestion": "¿Ayudaría esta orientación?",
+    "feedbackDetail": "Por diseñar y evaluar con estudiantes y docentes.",
+    "feedbackLabel": "Cuestionar el feedback",
+    "fictionLabel": "Frase cotidiana ficticia",
+    "journeyNav": "Explorar la conversación",
+    "momentHome": "La idea",
+    "momentA": "Voz",
+    "momentB": "Expresión",
+    "momentPractice": "Práctica",
+    "voiceTitle": "Una voz.\nPalabras a la vista.",
+    "voiceBody": "Explorar el habla como subtítulos en unas gafas ligeras, sin sostener ni colocar un móvil.",
+    "voiceDetails": "¿Qué muestra esta ilustración?",
+    "voiceMore": "Una posible experiencia, no hardware existente ni reconocimiento de voz funcional. La frase es ficticia. La utilidad, la comodidad y el sistema siguen pendientes de investigación.",
+    "signTitle": "Más allá de\nlas manos.",
+    "signBody": "Información manual junto a rostro, cuerpo y espacio. Investigar una salida en texto o voz; un guante no puede traducir una lengua por sí solo.",
+    "signDetails": "¿Qué necesitaríamos comprender?",
+    "signMore": "Las necesidades se definirían mediante futuro codiseño con personas sordas signantes. La información facial, corporal y espacial y cómo captarla siguen por resolver. Los sensores inerciales por sí solos no establecen la posición de las manos respecto al cuerpo.",
+    "practiceTitle": "Primero, una pregunta.",
+    "practiceBody": "Primera hipótesis: practicar LSE con estudiantes adultos y docentes para investigar captación de movimiento y feedback útil.",
+    "practicePrinciple": "La comunicación es el propósito.\nEl aprendizaje es una primera hipótesis.",
+    "practiceDetails": "El alcance de esta primera hipótesis",
+    "practiceMore": "Una herramienta complementaria de práctica, con ejercicios por elegir con docentes. Los estudiantes adultos serían posibles usuarios; los centros, posibles colaboradores y compradores. No se ha validado reconocimiento, puntuaciones ni correcciones lingüísticas. Esto no demostraría una ruta hacia la traducción de conversaciones naturales.",
+    "motionQuestion": "¿Qué podríamos captar?",
+    "graphicAlt": "Gafas y un guante vacío ilustrados, conectados por una curva. Concepto de diseño, no hardware construido.",
+    "purposeDetail": "Compartir una idea, conocer a alguien, participar en una conversación espontánea: situaciones que motivan el proyecto, no experiencias investigadas ni testimonios.",
+    "voiceGraphicAlt": "Una señal de voz hacia unas gafas ilustradas y un subtítulo ficticio.",
+    "signGraphicAlt": "Un guante vacío unido a información facial, corporal y espacial, hacia investigación sobre texto o voz.",
+    "practiceGraphicAlt": "Un guante conceptual vacío conectado a una interfaz de práctica y preguntas sobre captación y feedback."
   }
 };
   const root = document.documentElement;
   const menu = document.querySelector('#main-nav');
   const menuToggle = document.querySelector('.menu-toggle');
   const languageButtons = [...document.querySelectorAll('[data-language]')];
-  const motionButton = document.querySelector('.motion-toggle');
-  const story = document.querySelector('.story');
+  const experience = document.querySelector('.experience');
   const scenes = [...document.querySelectorAll('[data-step]')];
-  const stage = document.querySelector('.story-stage');
-  const panels = [...document.querySelectorAll('[data-panel]')];
+  const motionButton = document.querySelector('.motion-toggle');
   const chapters = [...document.querySelectorAll('[data-chapter]')];
-  const mobile = window.matchMedia('(max-width: 700px)');
-  const desktop = window.matchMedia('(min-width: 1100px) and (min-height: 740px)');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let language = 'en';
-  let paused = false;
-  let frame = 0;
-  let lastProgress = '';
+  const mobile = matchMedia('(max-width: 700px)');
+  const desktop = matchMedia('(min-width: 1000px) and (min-height: 680px)');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let language = 'en', paused = false, frame = 0;
   const clamp = (n) => Math.max(0, Math.min(1, n));
-  const smooth = (n) => n * n * (3 - 2 * n);
+  const smooth = (n) => { n = clamp(n); return n*n*(3-2*n); };
 
   function setMenu(open, returnFocus = false) {
     const hidden = mobile.matches && !open;
     menu.classList.toggle('is-open', open);
     menu.toggleAttribute('inert', hidden);
-    if (hidden) menu.setAttribute('aria-hidden', 'true');
-    else menu.removeAttribute('aria-hidden');
-    menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', translations[language][open ? 'closeMenu' : 'openMenu']);
+    if (hidden) menu.setAttribute('aria-hidden','true'); else menu.removeAttribute('aria-hidden');
+    menuToggle.setAttribute('aria-expanded',String(open));
+    menuToggle.setAttribute('aria-label',translations[language][open?'closeMenu':'openMenu']);
     if (returnFocus || (hidden && menu.contains(document.activeElement))) menuToggle.focus();
-    if (open && mobile.matches) menu.querySelector('a').focus({ preventScroll: true });
+    if (open && mobile.matches) menu.querySelector('a').focus({preventScroll:true});
   }
   function updateMotion() {
-    motionButton.textContent = translations[language][paused ? 'resumeMotion' : 'pauseMotion'];
-    motionButton.setAttribute('aria-pressed', String(paused));
+    motionButton.textContent = translations[language][paused?'resumeMotion':'pauseMotion'];
+    motionButton.setAttribute('aria-pressed',String(paused));
+    const enhanced=desktop.matches && !reduced.matches && 'IntersectionObserver' in window;
+    if(!enhanced && document.querySelector('.experience-stage').contains(document.activeElement)) scenes[Number(experience.dataset.active)||0].focus({preventScroll:true});
+    root.classList.toggle('is-enhanced',enhanced);
+    queueUpdate();
   }
   function setLanguage(next, announce = false) {
-    if (!Object.hasOwn(translations, next)) return;
-    const readingLine = innerHeight * .5;
-    const scene = announce && scenes.find((item) => {
-      const rect = item.getBoundingClientRect();
-      return rect.top <= readingLine && rect.bottom > readingLine;
-    });
+    if (!Object.hasOwn(translations,next)) return;
+    const line = innerHeight * .5;
+    const scene = announce && scenes.find(el => {const r=el.getBoundingClientRect();return r.top<=line && r.bottom>line;});
     const before = scene && scene.getBoundingClientRect();
-    const fraction = before ? (readingLine - before.top) / before.height : 0;
-    if (scene) root.classList.add('language-changing');
-    language = next;
-    const copy = translations[next];
-    document.querySelectorAll('[data-i18n]').forEach((element) => {
-      const value = copy[element.dataset.i18n];
-      if (value !== undefined) element.textContent = value;
-    });
-    for (const [dataKey, attribute] of [['i18nAriaLabel', 'aria-label'], ['i18nAlt', 'alt']]) {
-      document.querySelectorAll(attribute === 'alt' ? '[data-i18n-alt]' : '[data-i18n-aria-label]').forEach((element) => {
-        const value = copy[element.dataset[dataKey]];
-        if (value !== undefined) element.setAttribute(attribute, value);
-      });
+    const fraction = before ? (line-before.top)/before.height : 0;
+    if(scene) root.classList.add('language-changing');
+    language=next;
+    const copy=translations[next];
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const value=copy[el.dataset.i18n];if(value!==undefined)el.textContent=value;});
+    for(const [key,attr,selector] of [['i18nAriaLabel','aria-label','[data-i18n-aria-label]'],['i18nAlt','alt','[data-i18n-alt]']]) {
+      document.querySelectorAll(selector).forEach(el=>{const value=copy[el.dataset[key]];if(value!==undefined)el.setAttribute(attr,value);});
     }
-    root.lang = next;
-    document.title = copy.title;
-    document.querySelector('meta[name="description"]').content = copy.description;
-    document.querySelector('meta[property="og:title"]').content = copy.title;
-    document.querySelector('meta[property="og:description"]').content = copy.socialDescription;
-    document.querySelector('meta[property="og:image:alt"]').content = copy.socialImageAlt;
-    document.querySelector('meta[property="og:locale"]').content = next === 'es' ? 'es_ES' : 'en_GB';
-    languageButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.language === next)));
-    menuToggle.setAttribute('aria-label', copy[menuToggle.getAttribute('aria-expanded') === 'true' ? 'closeMenu' : 'openMenu']);
+    root.lang=next;document.title=copy.title;
+    for(const [selector,value] of [['meta[name="description"]',copy.description],['meta[property="og:title"]',copy.title],['meta[property="og:description"]',copy.socialDescription],['meta[property="og:image:alt"]',copy.socialImageAlt],['meta[property="og:locale"]',next==='es'?'es_ES':'en_GB']]) document.querySelector(selector).content=value;
+    languageButtons.forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.language===next)));
+    menuToggle.setAttribute('aria-label',copy[menuToggle.getAttribute('aria-expanded')==='true'?'closeMenu':'openMenu']);
+    if(announce) document.querySelector('#language-announcement').textContent=copy.languageChanged;
+    try{localStorage.setItem('senva-language',next);}catch{/* Optional preference. */}
     updateMotion();
-    if (announce) document.querySelector('#language-announcement').textContent = copy.languageChanged;
-    try { localStorage.setItem('senva-language', next); } catch { /* An optional preference. */ }
-    if (scene) {
-      const restore = () => {
-        const rect = scene.getBoundingClientRect();
-        const delta = rect.top + rect.height * fraction - readingLine;
-        if (Math.abs(delta) > 1) window.scrollBy({ top: delta, behavior: 'auto' });
-      };
-      restore();
-      requestAnimationFrame(() => { restore(); root.classList.remove('language-changing'); queueUpdate(); });
+    if(scene) {
+      const restore=()=>{const r=scene.getBoundingClientRect();const delta=r.top+r.height*fraction-line;if(Math.abs(delta)>1)scrollBy({top:delta,behavior:'auto'});};
+      restore();requestAnimationFrame(()=>{restore();root.classList.remove('language-changing');queueUpdate();});
     }
-    queueUpdate();
   }
-
-  menuToggle.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') setMenu(false, true);
-  });
-  document.addEventListener('click', (event) => { if (!event.target.closest('.site-header')) setMenu(false); });
-  document.addEventListener('focusin', (event) => { if (!event.target.closest('.site-header')) setMenu(false); });
-  mobile.addEventListener('change', () => setMenu(false));
-  document.querySelectorAll('a[href^="#"]').forEach((link) => link.addEventListener('click', () => {
-    const target = document.getElementById(link.hash.slice(1));
-    setMenu(false);
-    if (target) {
-      target.setAttribute('tabindex', '-1');
-      target.focus({ preventScroll: true });
-    }
-    // The browser performs the anchor navigation; no wheel or scroll interception.
+  menuToggle.addEventListener('click',()=>setMenu(menuToggle.getAttribute('aria-expanded')!=='true'));
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true')setMenu(false,true);});
+  document.addEventListener('click',event=>{if(!event.target.closest('.site-header'))setMenu(false);});
+  document.addEventListener('focusin',event=>{if(!event.target.closest('.site-header'))setMenu(false);});
+  mobile.addEventListener('change',()=>setMenu(false));
+  document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{
+    const target=document.getElementById(link.hash.slice(1));setMenu(false);
+    if(target){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}
+    // Anchor navigation and wheel scrolling remain browser-native.
   }));
-  languageButtons.forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
-  motionButton.addEventListener('click', () => {
-    paused = !paused;
-    root.classList.toggle('motion-paused', paused);
-    if (paused) root.classList.remove('enter');
-    updateMotion();
-    lastProgress = '';
-    queueUpdate();
-  });
-  reduced.addEventListener('change', () => {
-    if (reduced.matches) root.classList.remove('enter');
-    lastProgress = '';
-    queueUpdate();
-  });
+  languageButtons.forEach(el=>el.addEventListener('click',()=>setLanguage(el.dataset.language,true)));
+  motionButton.addEventListener('click',()=>{paused=!paused;root.classList.toggle('motion-paused',paused);if(paused)root.classList.remove('enter');updateMotion();});
+  reduced.addEventListener('change',()=>{if(reduced.matches)root.classList.remove('enter');updateMotion();});
+  desktop.addEventListener('change',updateMotion);
 
-  function updateStory() {
-    frame = 0;
-    const bounds = scenes.map((scene) => scene.getBoundingClientRect());
-    const line = innerHeight * .53;
-    const animated = desktop.matches && !reduced.matches && !paused;
-    const blend = Math.min(240, innerHeight * .25);
-    let progress = 0;
-    bounds.slice(1).forEach((rect) => {
-      progress += animated ? clamp((line + blend / 2 - rect.top) / blend) : Number(rect.top <= line);
-    });
-    const active = Math.round(progress);
-    story.dataset.active = String(active);
-    chapters.forEach((link, i) => {
-      if (i === active) link.setAttribute('aria-current', 'step');
-      else link.removeAttribute('aria-current');
-    });
-    stage.querySelector('.stage-count').textContent = `0${active + 1} — 04`;
-    const rounded = progress.toFixed(3);
-    // Within the vision chapter, reveal the two routes in reading order.
-    // Labels stay visible: this explains a concept, never live recognition.
-    const visionFraction = clamp((line - bounds[1].top) / bounds[1].height);
-    stage.style.setProperty('--speech-reveal', (animated ? .18 + .82 * clamp((visionFraction + .05) * 3) : 1).toFixed(3));
-    stage.style.setProperty('--sign-reveal', (animated ? .18 + .82 * clamp((visionFraction - .17) * 3) : 1).toFixed(3));
-    if (lastProgress === rounded) return;
-    lastProgress = rounded;
-    stage.style.setProperty('--progress', (progress / 3).toFixed(4));
-    const from = Math.floor(progress), to = Math.min(3, from + 1), mix = smooth(progress - from);
-    const poses = [[0,0,1,.8], [0,0,.85,.42], [-50,-30,.8,.4], [35,10,1,.55]];
-    const pose = poses[from].map((v, i) => v + (poses[to][i] - v) * mix);
-    ['--line-y','--line-angle','--line-scale','--line-opacity'].forEach((key,i) => stage.style.setProperty(key, pose[i].toFixed(3) + ['px','deg','',''][i]));
-    panels.forEach((panel, i) => {
-      const distance = Math.abs(progress - i);
-      const opacity = animated ? smooth(clamp((.5 - distance) / .16)) : Number(i === active);
-      panel.style.setProperty('--panel-opacity', opacity.toFixed(3));
-      panel.style.setProperty('--panel-x', `${Math.max(-1,Math.min(1,i-progress))*24}px`);
-      panel.style.setProperty('--panel-scale', (1 - Math.min(1,distance)*.012).toFixed(4));
-      panel.style.visibility = opacity > .002 ? 'visible' : 'hidden';
-    });
+  // One set of objects, interpolated between four meaningful compositions.
+  const poses=[
+    [870,220,.88,1, 650,495,.72,1],
+    [820,275,1.08,1, 620,615,.25,.15],
+    [1030,155,.43,.38, 680,370,1.04,1],
+    [1015,120,.32,0, 470,525,.78,1]
+  ];
+  function updateScene() {
+    frame=0;
+    const rects=scenes.map(el=>el.getBoundingClientRect());
+    const header=document.querySelector('.site-header').getBoundingClientRect().height;
+    const line=header+(innerHeight-header)*.5;
+    const centers=rects.map(r=>r.top+r.height*.5);
+    let progress=0;
+    for(let i=0;i<centers.length-1;i++) progress+=clamp((line-centers[i])/(centers[i+1]-centers[i]));
+    const active=Math.round(progress);
+    experience.dataset.active=String(active);
+    const at=(y)=>rects.findIndex(r=>r.top<=y&&r.bottom>y);
+    const controlsRect=document.querySelector('.journey-controls').getBoundingClientRect();
+    const labelRect=document.querySelector('.scene-label').getBoundingClientRect();
+    const controlScene=at(controlsRect.top+controlsRect.height*.5),labelScene=at(labelRect.top+labelRect.height*.5);
+    experience.dataset.controlsTheme=(controlScene===1||controlScene===2)?'dark':'light';
+    experience.dataset.labelTheme=(labelScene===1||labelScene===2)?'dark':'light';
+    chapters.forEach((el,i)=>{if(i===active)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});
+    if(!root.classList.contains('is-enhanced')) return;
+    const p=paused?active:progress,from=Math.floor(p),to=Math.min(3,from+1),mix=paused?0:smooth(p-from);
+    const pose=poses[from].map((v,i)=>v+(poses[to][i]-v)*mix);
+    ['--gx','--gy','--gs','--go','--hx','--hy','--hs','--ho'].forEach((key,i)=>experience.style.setProperty(key,pose[i].toFixed(4)+([0,1,4,5].includes(i)?'px':'')));
+    const a=smooth((p-.42)/.38)*(1-smooth((p-1.15)/.22));
+    const b=smooth((p-1.48)/.26)*(1-smooth((p-2.18)/.20));
+    const practice=smooth((p-2.60)/.22);
+    const fraction=(i)=>clamp((line-rects[i].top)/rects[i].height);
+    const voiceDraw=paused?1:clamp((fraction(1)+.02)*2.2);
+    const signDraw=paused?1:clamp((fraction(2)+.03)*2);
+    const caption=a*(paused?1:smooth((fraction(1)-.12)*4));
+    const vars={'--hero-route':1-smooth(p/.75),'--a-opacity':a,'--b-opacity':b,'--practice-opacity':practice,'--voice-opacity':a,'--voice-draw':voiceDraw,'--sign-draw':signDraw,'--caption-opacity':caption,'--practice-draw':paused?1:clamp(fraction(3)*2.5)};
+    for(const [key,value] of Object.entries(vars))experience.style.setProperty(key,value.toFixed(4));
   }
-  function queueUpdate() { if (!frame) frame = requestAnimationFrame(updateStory); }
-
-  try { const saved = localStorage.getItem('senva-language'); if (Object.hasOwn(translations,saved)) language = saved; } catch { /* English fallback. */ }
-  setLanguage(language);
-  setMenu(false);
-  root.classList.add('js');
-  if (!reduced.matches && scrollY < 100 && (!location.hash || location.hash === '#home')) root.classList.add('enter');
-  if ('IntersectionObserver' in window) {
-    story.classList.add('can-enhance');
-    new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { window.addEventListener('scroll', queueUpdate, {passive:true}); queueUpdate(); }
-      else window.removeEventListener('scroll', queueUpdate);
-    }).observe(story);
-  }
-  window.addEventListener('resize', queueUpdate, {passive:true});
-  window.addEventListener('hashchange', queueUpdate);
-  document.querySelectorAll('details').forEach((item) => item.addEventListener('toggle',queueUpdate));
+  function queueUpdate(){if(!frame)frame=requestAnimationFrame(updateScene);}
+  try{const saved=localStorage.getItem('senva-language');if(Object.hasOwn(translations,saved))language=saved;}catch{/* English fallback. */}
+  setLanguage(language);setMenu(false);root.classList.add('js');updateMotion();
+  if(!reduced.matches&&scrollY<100&&(!location.hash||location.hash==='#home'))root.classList.add('enter');
+  if('IntersectionObserver' in window)new IntersectionObserver(([entry])=>{
+    if(entry.isIntersecting){window.addEventListener('scroll',queueUpdate,{passive:true});queueUpdate();}
+    else window.removeEventListener('scroll',queueUpdate);
+  }).observe(experience);
+  window.addEventListener('resize',queueUpdate,{passive:true});
+  window.addEventListener('hashchange',queueUpdate);
+  document.querySelectorAll('details').forEach(el=>el.addEventListener('toggle',queueUpdate));
   queueUpdate();
 })();
