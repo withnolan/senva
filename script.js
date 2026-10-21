@@ -100,7 +100,7 @@
     "voiceDetails": "What is this illustration showing?",
     "voiceMore": "A possible experience, not existing hardware or working speech recognition. The phrase is fictional. Usefulness, comfort and the system itself still need investigation.",
     "signTitle": "Beyond\nthe hands.",
-    "signBody": "Manual information, together with the face, body and space. Research towards text or voice; a glove cannot translate a language on its own.",
+    "signBody": "Explore manual information with a glove. One part of a language, never a complete translator.",
     "signDetails": "What would we need to understand?",
     "signMore": "The needs must be defined through future co-design with Deaf signers. Facial, bodily and spatial information and how to capture it remain unresolved. Inertial sensors alone do not establish hand position relative to the body.",
     "practiceTitle": "First, a question.",
@@ -112,8 +112,13 @@
     "graphicAlt": "Illustrated glasses and an empty glove, connected by a curved line. Design concept, not built hardware.",
     "purposeDetail": "Sharing an idea, meeting someone new, joining a spontaneous conversation: situations that motivate the project, not researched experiences or testimonials.",
     "voiceGraphicAlt": "A speech signal leading to illustrated glasses and a fictional caption.",
-    "signGraphicAlt": "An empty glove linked to facial, bodily and spatial information, towards research into text or voice.",
-    "practiceGraphicAlt": "An empty conceptual glove connected to a practice interface and questions about capture and feedback."
+    "signGraphicAlt": "An empty illustrated glove representing manual information, not a specific sign or a working translator.",
+    "practiceGraphicAlt": "An empty conceptual glove connected to a practice interface and questions about capture and feedback.",
+    "contextTitle": "The context matters.",
+    "contextBody": "The face, body and space also carry meaning. How to capture that information, before exploring text or voice, remains an open question.",
+    "momentContext": "Context",
+    "manualInfo": "Manual information",
+    "contextGraphicAlt": "A face and body on one side, an empty glove on the other. The link towards text or voice is an unresolved research question."
   },
   "es": {
     "title": "SENVA — Cada gesto nos acerca",
@@ -213,7 +218,7 @@
     "voiceDetails": "¿Qué muestra esta ilustración?",
     "voiceMore": "Una posible experiencia, no hardware existente ni reconocimiento de voz funcional. La frase es ficticia. La utilidad, la comodidad y el sistema siguen pendientes de investigación.",
     "signTitle": "Más allá de\nlas manos.",
-    "signBody": "Información manual junto a rostro, cuerpo y espacio. Investigar una salida en texto o voz; un guante no puede traducir una lengua por sí solo.",
+    "signBody": "Explorar información manual con un guante. Una parte de la lengua, nunca un traductor completo.",
     "signDetails": "¿Qué necesitaríamos comprender?",
     "signMore": "Las necesidades se definirían mediante futuro codiseño con personas sordas signantes. La información facial, corporal y espacial y cómo captarla siguen por resolver. Los sensores inerciales por sí solos no establecen la posición de las manos respecto al cuerpo.",
     "practiceTitle": "Primero, una pregunta.",
@@ -225,8 +230,13 @@
     "graphicAlt": "Gafas y un guante vacío ilustrados, conectados por una curva. Concepto de diseño, no hardware construido.",
     "purposeDetail": "Compartir una idea, conocer a alguien, participar en una conversación espontánea: situaciones que motivan el proyecto, no experiencias investigadas ni testimonios.",
     "voiceGraphicAlt": "Una señal de voz hacia unas gafas ilustradas y un subtítulo ficticio.",
-    "signGraphicAlt": "Un guante vacío unido a información facial, corporal y espacial, hacia investigación sobre texto o voz.",
-    "practiceGraphicAlt": "Un guante conceptual vacío conectado a una interfaz de práctica y preguntas sobre captación y feedback."
+    "signGraphicAlt": "Un guante vacío ilustrado como información manual, no un signo concreto ni un traductor funcional.",
+    "practiceGraphicAlt": "Un guante conceptual vacío conectado a una interfaz de práctica y preguntas sobre captación y feedback.",
+    "contextTitle": "El contexto cuenta.",
+    "contextBody": "El rostro, el cuerpo y el espacio también aportan significado. Cómo captar esa información, antes de explorar texto o voz, sigue por resolver.",
+    "momentContext": "Contexto",
+    "manualInfo": "Información manual",
+    "contextGraphicAlt": "Un rostro y un cuerpo a un lado, un guante vacío al otro. La conexión hacia texto o voz es una pregunta de investigación sin resolver."
   }
 };
   const root = document.documentElement;
@@ -302,43 +312,92 @@
   reduced.addEventListener('change',()=>{if(reduced.matches)root.classList.remove('enter');updateMotion();});
   desktop.addEventListener('change',updateMotion);
 
-  // One set of objects, interpolated between four meaningful compositions.
+  // Reading poses, with deliberate holds. The transit occupies the final useful
+  // viewport of each article; its earlier space holds the current composition.
+  // [glasses x,y,scale,opacity, glove x,y,scale,opacity, field x,y,rx,ry,opacity]
   const poses=[
-    [870,220,.88,1, 650,495,.72,1],
-    [820,275,1.08,1, 620,615,.25,.15],
-    [1030,155,.43,.38, 680,370,1.04,1],
-    [1015,120,.32,0, 470,525,.78,1]
+    [470,390,.90,1, 805,425,.64,1, 600,450,330,300,0],
+    [280,395,1.08,1, 560,400,.80,0, 265,440,390,340,1],
+    [400,280,.95,0, 900,430,.88,1, 925,440,390,345,1],
+    [400,280,.95,0, 945,555,.60,1, 600,570,790,190,1],
+    [400,280,.95,0, 280,425,.84,1, 255,445,335,330,1]
   ];
+  // Control points bend the lateral exchanges through free space, rather than
+  // running a straight line through the incoming reading column.
+  const crossings=[
+    {g:[390,335],h:[850,410]},
+    {g:[570,200],h:[720,260]},
+    {g:[400,280],h:[1030,425]},
+    {g:[400,280],h:[650,250]}
+  ];
+  const readingControls=scenes.map(scene=>[...scene.querySelectorAll('.step-copy a,.step-copy button,.step-copy summary')].map(el=>({el,tabindex:el.getAttribute('tabindex')})));
+  const bezier=(a,b,c,t)=>(1-t)*(1-t)*a+2*(1-t)*t*b+t*t*c;
   function updateScene() {
     frame=0;
     const rects=scenes.map(el=>el.getBoundingClientRect());
     const header=document.querySelector('.site-header').getBoundingClientRect().height;
-    const line=header+(innerHeight-header)*.5;
-    const centers=rects.map(r=>r.top+r.height*.5);
-    let progress=0;
-    for(let i=0;i<centers.length-1;i++) progress+=clamp((line-centers[i])/(centers[i+1]-centers[i]));
-    const active=Math.round(progress);
+    if(scrollY>header)root.classList.remove('enter');
+    const height=innerHeight-header;
+    let index=0;
+    rects.forEach((r,i)=>{if(r.top<=header+1)index=i;});
+    const next=Math.min(poses.length-1,index+1);
+    const current=rects[index];
+    const hold=Math.max(0,current.height-height);
+    const travelled=header-current.top;
+    let u=next===index?0:clamp((travelled-hold)/height);
+    let active=index+(u>.5?1:0);
     experience.dataset.active=String(active);
-    const at=(y)=>rects.findIndex(r=>r.top<=y&&r.bottom>y);
-    const controlsRect=document.querySelector('.journey-controls').getBoundingClientRect();
-    const labelRect=document.querySelector('.scene-label').getBoundingClientRect();
-    const controlScene=at(controlsRect.top+controlsRect.height*.5),labelScene=at(labelRect.top+labelRect.height*.5);
-    experience.dataset.controlsTheme=(controlScene===1||controlScene===2)?'dark':'light';
-    experience.dataset.labelTheme=(labelScene===1||labelScene===2)?'dark':'light';
+    experience.dataset.progress=(index+u).toFixed(4);
+    experience.dataset.phase=u>0&&u<1?'transit':'reading';
     chapters.forEach((el,i)=>{if(i===active)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});
-    if(!root.classList.contains('is-enhanced')) return;
-    const p=paused?active:progress,from=Math.floor(p),to=Math.min(3,from+1),mix=paused?0:smooth(p-from);
+    if(!root.classList.contains('is-enhanced')) {
+      readingControls.forEach(items=>items.forEach(({el,tabindex})=>{if(tabindex===null)el.removeAttribute('tabindex');else el.setAttribute('tabindex',tabindex);}));
+      scenes.forEach((el,i)=>{const v=clamp((innerHeight-rects[i].top)/(innerHeight+rects[i].height));el.style.setProperty('--mobile-x',(!reduced.matches&&!paused?(i%2?-1:1)*(0.5-v)*24:0).toFixed(2)+'px');});
+      return;
+    }
+    let from=index,to=next,mix=smooth((u-.12)/.76);
+    if(paused){from=to=active;mix=0;u=0;}
+    scenes.forEach((scene,i)=>{
+      let opacity=i===index?1-smooth(u/.08):(i===next?(i===3?smooth((u-.92)/.08):smooth((u-.80)/.18)):0);
+      if(paused)opacity=i===active?1:0;
+      if(!paused&&from===to&&i===index)opacity=1;
+      scene.style.setProperty('--copy-opacity',opacity.toFixed(4));
+      scene.dataset.readingVisible=String(opacity>=.01||scene.querySelector('.step-copy')?.contains(document.activeElement));
+      readingControls[i].forEach(({el,tabindex})=>{
+        if(opacity<.01&&!scene.querySelector('.step-copy')?.contains(document.activeElement))el.setAttribute('tabindex','-1');
+        else if(tabindex===null)el.removeAttribute('tabindex');else el.setAttribute('tabindex',tabindex);
+      });
+    });
     const pose=poses[from].map((v,i)=>v+(poses[to][i]-v)*mix);
-    ['--gx','--gy','--gs','--go','--hx','--hy','--hs','--ho'].forEach((key,i)=>experience.style.setProperty(key,pose[i].toFixed(4)+([0,1,4,5].includes(i)?'px':'')));
-    const a=smooth((p-.42)/.38)*(1-smooth((p-1.15)/.22));
-    const b=smooth((p-1.48)/.26)*(1-smooth((p-2.18)/.20));
-    const practice=smooth((p-2.60)/.22);
-    const fraction=(i)=>clamp((line-rects[i].top)/rects[i].height);
-    const voiceDraw=paused?1:clamp((fraction(1)+.02)*2.2);
-    const signDraw=paused?1:clamp((fraction(2)+.03)*2);
-    const caption=a*(paused?1:smooth((fraction(1)-.12)*4));
-    const vars={'--hero-route':1-smooth(p/.75),'--a-opacity':a,'--b-opacity':b,'--practice-opacity':practice,'--voice-opacity':a,'--voice-draw':voiceDraw,'--sign-draw':signDraw,'--caption-opacity':caption,'--practice-draw':paused?1:clamp(fraction(3)*2.5)};
-    for(const [key,value] of Object.entries(vars))experience.style.setProperty(key,value.toFixed(4));
+    if(from!==to){
+      const bend=crossings[from];
+      for(const [offset,key] of [[0,'g'],[4,'h']])for(let axis=0;axis<2;axis++)pose[offset+axis]=bezier(poses[from][offset+axis],bend[key][axis],poses[to][offset+axis],mix);
+      if(from===0)pose[7]=1-smooth(u/.45);
+      if(from===1){pose[3]=1-smooth(u/.5);pose[7]=smooth((u-.12)/.5);}
+    }
+    // The ink field grows as a flat silhouette, never a grey translucent panel.
+    if(from===0&&to!==0){const grow=smooth(u/.6);pose[10]*=grow;pose[11]*=grow;pose[12]=grow>0?1:0;}
+    const weights=poses.map(()=>0);
+    if(from===to||u===0)weights[from]=1;
+    else {weights[from]=1-smooth(u/.32);weights[to]=smooth((u-.65)/.30);}
+    const contextOpacity=weights[3];
+    const contextX=from===2?520+(255-520)*mix:255;
+    const contextY=from===3?525-100*mix:525;
+    const exit=(!paused&&index===4)?smooth((header+height*.88-current.bottom)/(height*.68)):0;
+    pose[6]*=1-exit*.25;pose[7]*=1-exit;
+    pose[10]*=1-exit;pose[11]*=1-exit;pose[12]*=exit===1?0:1;
+    const art=document.querySelector('.artboard').getBoundingClientRect();
+    const scale=art.width/1200;
+    const caption=document.querySelector('.voice-caption .caption-surface').getBoundingClientRect();
+    const app=document.querySelector('.practice-interface').getBoundingClientRect();
+    const endpoint=r=>({x:clamp((r.left-art.left)/(scale*1200))*1200,y:Math.max(190,Math.min(650,(r.top+36-art.top)/scale))});
+    const capEnd=endpoint(caption),appEnd=endpoint(app);
+    const voicePath=document.querySelector('.voice-route path');
+    const practicePath=document.querySelector('.practice-route path');
+    const vars={'--gx':pose[0]+'px','--gy':pose[1]+'px','--gs':pose[2],'--go':pose[3],'--hx':pose[4]+'px','--hy':pose[5]+'px','--hs':pose[6],'--ho':pose[7],'--fx':pose[8]+'px','--fy':pose[9]+'px','--frx':pose[10],'--fry':pose[11],'--field-opacity':pose[12],'--hero-opacity':weights[0],'--voice-opacity':weights[1],'--manual-opacity':weights[2],'--context-opacity':contextOpacity,'--practice-opacity':weights[4]*(1-exit),'--cx':contextX+'px','--cy':contextY+'px','--cs':1.18,'--caption-read':weights[1]};
+    for(const [key,value] of Object.entries(vars))experience.style.setProperty(key,String(value));
+    if(weights[1]>.001)voicePath.setAttribute('d',`M600 395H480M280 475C280 580 ${capEnd.x-100} ${capEnd.y} ${capEnd.x} ${capEnd.y}`);
+    if(weights[4]>.001)practicePath.setAttribute('d',`M385 420C520 360 ${appEnd.x-90} ${appEnd.y} ${appEnd.x} ${appEnd.y}M${appEnd.x} ${Math.min(650,appEnd.y+250)}C575 665 400 600 385 500`);
   }
   function queueUpdate(){if(!frame)frame=requestAnimationFrame(updateScene);}
   try{const saved=localStorage.getItem('senva-language');if(Object.hasOwn(translations,saved))language=saved;}catch{/* English fallback. */}

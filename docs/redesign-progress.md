@@ -200,6 +200,39 @@ Retirar la columna gráfica derecha persistente, los objetos pequeños semitrans
 
 1. Inspección y dirección: terminadas; captura anterior guardada fuera del repositorio.
 2. Dibujos: gafas y guante redibujados con un contorno, proporciones coherentes y detalles selectivos. Fuentes SVG válidas, versiones clara/oscura y PNG social 1200 × 630 revisados. Logo/retratos conservados.
-3. Composición y coreografía: implementadas, en revisión local. Cinco artículos reales, pausas de lectura, cruces laterales con curvas, campo SVG que se abre y recoge. Sin dependencias nuevas ni captura de rueda.
-4. Revisión/documentación: en curso. Ya revisados estados y mitades de los cuatro movimientos en escritorio; corregida una colisión de nombre de figura/etiqueta, separación temporal de textos y contornos contrastados mediante clips complementarios. Pendientes matriz responsive/idiomas y alternativas accesibles.
+3. Composición y coreografía: terminadas. Cinco artículos reales, pausas de lectura, cruces laterales con curvas, campo SVG que se abre y recoge. Sin dependencias nuevas ni captura de rueda.
+4. Revisión local y documentación: terminadas según el detalle siguiente. README, guía y procedencia actualizados. Hito de dibujos guardado en `d0df0b1`; implementación lista para commit y publicación.
 5. Entrega: pendiente de commit/push final y comprobación de Pages.
+
+### Correcciones durante la revisión
+
+- Separados el nombre de la figura panorámica y el de su leyenda para mantener la figura en flujo normal. En móvil las anotaciones se sitúan debajo del dibujo: corregido un roce del texto de salida con el puño.
+- El texto saliente despeja el cruce antes de que viajen los objetos; el entrante aparece al asentarse. El encabezado panorámico espera un poco más para dejar libre el intercambio. Títulos y párrafos siguen siendo HTML real, sin `aria-hidden`.
+- Los controles de copias totalmente ocultas salen temporalmente de Tab y dejan de aceptar clics. Se restauran al reaparecer o pasar a lectura normal; un bloque con foco conserva visibilidad. Pausar en mitad del tránsito deja una única copia visible.
+- Dibujos claros/oscuros con los mismos trazados y un clip elíptico exacto: cada parte mantiene contraste al cruzar el campo sin añadir doble contorno. Entrada del campo por escala, opaca; sin disco gris semitransparente.
+- Trazados y subtítulos sin reinicio al cambiar de capítulo. La conexión inicial permanece dibujada tras la entrada. La entrada termina si el visitante empieza a avanzar.
+- Posición del estado de idea corregida en escritorio estrecho: queda debajo de la etiqueta de misión, separado de ella y de los controles. Nuevo destino `#research` con señal de foco visible.
+- Interfaz de práctica en flujo HTML, no en una capa de altura fija. En móvil, dispositivo antes de la interfaz y subtítulo junto al recorrido de voz. Los detalles pueden crecer sin recortar texto.
+
+### Comprobaciones de esta entrega
+
+- **Responsive EN/ES:** 320 × 844, 390 × 844, 768 × 1024, 844 × 390, 1000 × 680, 1100 × 740, 1280 × 720 y 1440 × 960. Dimensiones reales del viewport; sin desplazamiento horizontal ni desbordamiento medido en copias, subtítulos, interfaz o cabeceras. Repetidos los cuatro tamaños estáticos tras mover las leyendas y figuras móviles.
+- **Ritmo:** a 1280 × 720, el bloque pasó de cuatro alturas útiles aproximadamente a 5565 px para cinco capítulos (antes unos 2544 px). A 1440 × 960 mide 7665 px. Las duraciones de escritorio son 1,65 / 1,85 / 1,65 / 1,8 / 1,8 alturas útiles; el tramo anterior al tránsito mantiene la pose. Móvil no hereda esas alturas ni fijaciones.
+- **Movimientos:** estados de lectura y muestras 0,04 / 0,10 / 0,50 / 0,85 / 0,99 de cada uno de los cuatro tránsitos en EN/ES. Sin intersecciones observadas entre texto visible y objetos en las muestras geométricas revisadas. Inspección visual de mitades, estados completos, salida y ventanas altas/bajas; no equivale a una prueba matemática de todos los píxeles del recorrido.
+- **Regreso:** cinco poses recorridas hacia atrás en ambos idiomas; mitades repetidas en sentido inverso. Posiciones/escala equivalentes salvo redondeo de scroll. En las cuatro fronteras, visibilidad de objetos, voz y subtítulo coincide antes/después; no se retrae el recorrido entrante.
+- **Escritorio bajo:** revisadas portada, voz, panorama y práctica a 1000 × 680, además de 1280 × 720. Texto y figuras separados; interfaz más larga accesible por scroll normal. El escenario termina exactamente al comenzar validación; no cubre su contenido.
+- **Idioma:** 116 claves EN/ES con paridad, respaldo inglés, alt y etiquetas accesibles sincronizados. Cambio con detalles abiertos, título, `lang` y `og:locale` correctos; conserva el capítulo y una posición próxima de lectura. No se afirma coincidencia subpíxel de la fracción de lectura. Todos los textos anteriores del equipo, misión/estado, validación y candidatura se mantienen; solo cambian dos claves existentes relacionadas con el nuevo alcance gráfico manual, además de las cinco claves nuevas de contexto.
+- **Teclado:** pausa/reanudación con Space; prueba de pausa intermedia con una sola lectura activa y punteros deshabilitados en la saliente. Enlace de contexto por Enter llega a `#research` con foco visible. Regreso al inicio con teclado. Al redimensionar con foco en pausa, este vuelve a la sección real. Menú con Enter, Tab y Escape; orientación 320 × 844 → 844 × 390 → 320 × 844 sin foco en enlaces `inert`.
+- **Sin JavaScript:** arnés externo en escritorio y 320 px, inglés íntegro, navegación visible, cinco figuras en flujo, opacidad1 y detalles abiertos con Enter. Sin observador: lectura normal completa; almacenamiento bloqueado simulado: arranque inglés y selector ES funcional.
+- **Movimiento reducido:** CSS y `matchMedia` equivalentes simulados fuera del repositorio, escritorio EN y móvil ES. Sin sticky, entrada, transiciones ni scroll suave; texto y figuras completos. No se cambió la preferencia real del sistema operativo.
+- **Recursos/código:** `node --check`, `git diff --check`, HTML equilibrado, IDs/anclas, enlaces Markdown, SVG y PNG social 1200 × 630 correctos. Recursos locales HTTP200 bajo `/senva/`; hashes de CSS/JS actualizados. Logo exacto y retratos/favicon idénticos a la base conservada. Sin nuevos modelos, motores, paquetes o servicios externos. Sin errores ni avisos de la página registrados en los recorridos finales de revisión.
+
+### Capturas y límites
+
+Captura anterior, estados nuevos de escritorio/móvil, matriz y 33 fotogramas reales del avance/regreso guardados fuera del repositorio con prefijo `senva-lateral-`. GIF de capturas, no grabación continua ni medición de rendimiento. No hay herramienta de vídeo disponible.
+
+Revisión en el navegador integrado con viewports; sin dispositivos físicos, matriz de motores ni lector de pantalla real. Reducción de movimiento y bloqueo de almacenamiento por simulación; sin script mediante arnés externo. Perfiles y LinkedIn conservados según los datos facilitados; no se comprueba contenido tras inicio de sesión ni disponibilidad desde China. Los dibujos y la interfaz expresan conceptos, no capacidades probadas.
+
+### Publicación
+
+Revisión local finalizada. Remoto actualizado: sin cambios ajenos entrantes. Fuente Pages verificada el 21 de octubre: `main`, `/`, modo `legacy`. Pendientes push normal del rediseño y comprobación del build y versión pública. Sin force push ni cambios de ajustes.

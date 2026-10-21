@@ -94,11 +94,13 @@ Ambos son estudiantes. Sus ámbitos aportan perspectivas complementarias; no se 
 
 ## A conversation in motion / Una conversación en movimiento
 
-An open **layered SVG composition** connects the homepage, voice-to-caption concept, manual-information research and first LSE practice hypothesis. The same glasses and empty glove change position, scale and context with native scroll. A speech signal, conceptual captions and HTML practice interface explain the relationships. This is a vision, not working hardware or recognition. EN/ES, keyboard access and complete static/reduced-motion alternatives are retained.
+Five open **2D SVG scenes** give the idea room to unfold: a central introduction, speech and captions, a shift towards manual information, a wider view of face/body/space, and a first practice experiment. The redrawn glasses and empty glove travel from the centre to alternating sides, with reading pauses between transitions. A navy field and connecting paths carry the composition forward through native vertical scroll. Captions and the practice interface remain adaptable HTML. This is a conceptual vision, not working hardware or recognition.
 
-Una **composición abierta de SVG por capas** conecta portada, concepto de voz a subtítulos, investigación sobre información manual y primera hipótesis de práctica de LSE. Las mismas gafas y el guante vacío cambian de posición, escala y contexto con el scroll nativo. La señal de voz, los subtítulos conceptuales y una interfaz HTML de práctica explican las relaciones. Es una visión, no hardware o reconocimiento funcional. Se mantienen EN/ES, teclado y alternativas completas estáticas/con movimiento reducido.
+Cinco **escenas abiertas con SVG 2D** dan espacio al propósito: presentación central, voz y subtítulos, información manual, una visión amplia de rostro/cuerpo/espacio y primer experimento de práctica. Las gafas y el guante vacío, redibujados, recorren el centro y ambos lados con pausas de lectura entre transiciones. Un campo azul noche y los trazados de conexión acompañan el avance del scroll vertical nativo. Los subtítulos y la interfaz de práctica siguen siendo HTML adaptable. Es una visión conceptual, no hardware o reconocimiento funcional.
 
-[Drawings and maintenance / Dibujos y mantenimiento](docs/visual-assets.md). No 3D, external runtime dependencies or build step / Sin 3D, dependencias externas de ejecución ni compilación.
+EN/ES, keyboard navigation, a mobile adaptation and complete static/reduced-motion alternatives are part of the implementation. / La implementación conserva EN/ES, teclado, un recorrido adaptado a móvil y alternativas completas estáticas/con movimiento reducido.
+
+[Drawings and maintenance / Dibujos y mantenimiento](docs/visual-assets.md) · [Review status / Estado de la revisión](docs/redesign-progress.md). No 3D, external runtime dependencies or build step / Sin 3D, dependencias externas de ejecución ni compilación.
 
 <a id="quick-start"></a>
 ## Quick start / Inicio rápido
@@ -128,7 +130,7 @@ assets/                    Existing logo, portraits, social image / recursos
 docs/
   project-brief.md          Research hypotheses and Xiji / hipótesis y Xiji
   technical-guide.md        Maintenance and deployment / mantenimiento
-  visual-assets.md           SVG sources and editing / fuentes SVG y edición
+  visual-assets.md         SVG sources and editing / fuentes SVG y edición
   redesign-progress.md      Decisions, checks and delivery / estado
 ```
 
