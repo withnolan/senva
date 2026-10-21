@@ -2,7 +2,7 @@
 
 Actualizado: 20 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Estado actual:** ampliación de [ilustración editorial 2D](#editorial-2d) entregada y con despliegue confirmado, sobre `d199c90`. El bloque final registra su entrega; los apartados anteriores conservan el historial.
+**Trabajo actual:** [Una conversación en movimiento](#conversation-in-motion), 21 de octubre de 2026, sobre `34ec015`. El bloque final registra hitos, comprobaciones y entrega. Los apartados anteriores conservan el historial.
 
 ## Objetivo y alcance
 
@@ -127,3 +127,21 @@ Pruebas con el navegador integrado y viewports, sin dispositivos físicos, matri
 La web pública carga `assets/illustrations/conversation-768.webp`, CSS `4890c529` y JS `885046c8`, con imagen completa y sin desbordamiento. Revisadas portada y rutas publicadas, escenario fijo a 110 px y paso al experimento; las ilustraciones cargan correctamente. Capturas de portada, visión, experimento y móvil guardadas fuera del repositorio con prefijo `senva-2d-`.
 
 Fuente Pages verificada: rama `main`, carpeta `/`, modo `legacy`. Referencias remotas actualizadas y coincidentes con `d199c90` antes del commit. Sin cambios de ajustes del repositorio ni force push. Este seguimiento documental registra la entrega ya comprobada; su commit y el resultado de su build se confirman en la respuesta final.
+
+
+<a id="conversation-in-motion"></a>
+## Una conversación en movimiento — 21 de octubre de 2026
+
+Base `34ec015`, árbol limpio. El nuevo briefing sustituye la dirección visual anterior en caso de conflicto. Se conservan el logo exacto, colores, datos y retratos, EN/ES y rigor del estado de idea. Commit/push autorizados; sin force push.
+
+### Dirección elegida
+
+Un único escenario abierto enlaza portada, voz/subtítulos, información manual + información adicional, y primer experimento. Gafas y guante vectoriales por capas, pocos trazos y colores planos. La conexión de portada se convierte en recorridos de información; el mismo guante cambia de contexto hacia una interfaz HTML traducible. El fondo cambia con el desplazamiento nativo. Sin imágenes rectangulares, personajes de portada, 3D o dependencias nuevas.
+
+### Hitos
+
+1. Inspección de SENVA publicada, código y referencia TuffStudy: realizada. Se toman continuidad, escala y pausas; no recursos, identidad ni tramos de scroll vacíos.
+2. Recursos SVG coherentes: gafas y guante propios en `assets/graphics/`, integrados como definiciones compartidas. Contornos legibles sobre ambos fondos y máscaras para los recorridos. Terminado.
+3. Escenario continuo, textos breves y alternativas estáticas: implementados, en revisión. Se sustituyó el controlador y los gráficos anteriores. Corregida la inicialización del idioma y la contención del sticky mediante una cuadrícula compartida para evitar superponer el escenario al plan de validación.
+4. Revisión, documentación y vista previa social: pendiente.
+5. Commit/push y build de Pages: pendiente.
