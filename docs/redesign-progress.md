@@ -2,7 +2,7 @@
 
 Actualizado: 21 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Trabajo actual:** [Una conversación en movimiento](#conversation-in-motion), 21 de octubre de 2026, sobre `34ec015`. El bloque final registra hitos, comprobaciones y entrega. Los apartados anteriores conservan el historial.
+**Trabajo actual:** [Relevo lateral](#lateral-relay), 21 de octubre de 2026, sobre `6a0edda`. Los bloques anteriores conservan el historial.
 
 ## Objetivo y alcance
 
@@ -185,3 +185,21 @@ Comprobación pública de la implementación `2493afb`: definiciones SVG nuevas,
 CSS, JS, favicon, retratos, fuentes SVG nuevas, vista previa social y `.nojekyll` respondieron HTTP 200 desde Pages y son idénticos byte a byte a los archivos locales. La comprobación HTTPS se hizo con TLS verificado por el almacén del sistema; no se desactivó validación de certificados. Capturas públicas de portada, voz/subtítulos y móvil guardadas fuera del repositorio.
 
 Este commit de cierre documenta el despliegue ya verificado; no cambia código o recursos. Su SHA y build final se confirman en la respuesta. No quedan fallos reproducibles observados dentro de la revisión descrita; se mantienen los límites de dispositivos, motores y tecnologías de asistencia indicados. Sin ajustes del repositorio ni force push.
+
+
+<a id="lateral-relay"></a>
+## Relevo lateral — 21 de octubre de 2026
+
+Base `6a0edda`, árbol inicial limpio. Inspeccionados web publicada y código antes de editar. El nuevo briefing sustituye las restricciones visuales anteriores en conflicto. Se conservan identidad, paleta, datos y retratos; commits y push autorizados.
+
+### Decisión creativa
+
+Retirar la columna gráfica derecha persistente, los objetos pequeños semitransparentes residuales y los trazos redundantes. Dos opciones consideradas: viaje diagonal continuo, o relevo lateral con intervalos de lectura. Elegido el relevo: composición central → gafas izquierda → guante derecha → relación panorámica → guante izquierda/interfaz derecha. Un campo plano azul noche acompaña los cambios de composición.
+
+### Hitos
+
+1. Inspección y dirección: terminadas; captura anterior guardada fuera del repositorio.
+2. Dibujos: gafas y guante redibujados con un contorno, proporciones coherentes y detalles selectivos. Fuentes SVG válidas, versiones clara/oscura y PNG social 1200 × 630 revisados. Logo/retratos conservados.
+3. Composición y coreografía: implementadas, en revisión local. Cinco artículos reales, pausas de lectura, cruces laterales con curvas, campo SVG que se abre y recoge. Sin dependencias nuevas ni captura de rueda.
+4. Revisión/documentación: en curso. Ya revisados estados y mitades de los cuatro movimientos en escritorio; corregida una colisión de nombre de figura/etiqueta, separación temporal de textos y contornos contrastados mediante clips complementarios. Pendientes matriz responsive/idiomas y alternativas accesibles.
+5. Entrega: pendiente de commit/push final y comprobación de Pages.
