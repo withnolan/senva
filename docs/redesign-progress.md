@@ -314,6 +314,12 @@ Contenido EN/ES idéntico al baseline: 114 claves; logo, favicon y fotografías 
 - Arneses externos: sin JS con inglés completo y rutas/menú visibles; sin observador con lectura normal y selector funcional; almacenamiento bloqueado sin impedir el idioma. Reducción de movimiento equivalente en CSS/JS: sin sticky, transformaciones, trazados progresivos ni scroll suave. No se cambió la preferencia real del sistema operativo.
 - Consola sin errores o avisos registrados. No se han realizado pruebas en dispositivos físicos, lector de pantalla real o medición de FPS. Las revisiones independientes son de capturas/código; el recorrido nativo lo verificó coordinación.
 
-### Entrega — pendiente de verificación pública
+### Entrega — verificada
 
-Se hará commit y push normal a `origin/main`, sin cambios de ajustes ni force push. Falta confirmar el build del SHA enviado y revisar los recursos públicos.
+Implementación guardada y pusheada a `origin/main` en `5837255fea5a0a0343aba20bcb87a936dd1ee7ed`. GitHub Pages devolvió `built` para ese SHA, sin error. En la web pública, a 1280×720, se verificaron el escenario activo, avance a 52 % y final, regreso a 28 % y cambio ES→EN; sin intersecciones o recortes medidos en esas muestras ni errores/avisos registrados. Portada pública a 390×844 en ES, sin fijación ni desbordamiento horizontal.
+
+Once recursos públicos —HTML, CSS/JS versionados, fuente, dispositivos SVG, retratos, favicon, imagen social y `.nojekyll`— respondieron correctamente y coincidieron byte a byte con los archivos locales revisados. HTTPS con validación TLS del sistema. Sin force push ni cambios de ajustes.
+
+Fuera del repositorio se guardaron capturas y un GIF de once estados reales del recorrido, con regreso mediante la secuencia inversa de esas capturas: `senva-motion-return.gif`. Es una vista de estados, no una grabación continua ni una medición de fluidez/FPS. La navegación nativa hacia delante y atrás se comprobó aparte.
+
+Este cierre solo actualiza el registro de entrega; se guarda en un segundo commit normal. No quedan fallos reproducibles observados dentro del alcance descrito. Se conservan los límites de revisión indicados arriba. [Web publicada](https://withnolan.github.io/senva/).
