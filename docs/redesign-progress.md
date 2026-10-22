@@ -274,4 +274,10 @@ Preflight: sintaxis JS, HTML equilibrado, IDs/anclas, 114 claves EN/ES y respald
 
 ### Límites y pendientes
 
-Pruebas en navegador con tamaños de viewport, no en dispositivos físicos; revisión interna, no pruebas con usuarios. La preferencia reducida se simuló en un arnés externo. No se hizo medición de FPS. Queda comprobar el build y la web pública del commit que se enviará a `origin/main`; no se requieren cambios de configuración de Pages.
+Pruebas en navegador con tamaños de viewport, no en dispositivos físicos; revisión interna, no pruebas con usuarios. La preferencia reducida se simuló en un arnés externo. No se hizo medición de FPS. No quedan incidencias reproducibles detectadas dentro del alcance revisado. No se requieren cambios de configuración de Pages.
+
+### Entrega y publicación — verificadas
+
+Implementación guardada y pusheada a `origin/main` en `8a09545a8881c69be8f5ae427a25216427931dc2`. GitHub Pages devolvió `built` para ese SHA, sin error. Se abrió la web pública y se revisaron portada móvil y escritorio; estado, EN/ES, fuente y nueva ilustración cargan correctamente. Once recursos publicados —incluidos HTML, CSS/JS con sus versiones, fuente, SVG, retratos y PNG social— coinciden byte a byte con los archivos locales revisados. La fuente de Pages permanece en `main`, `/`, modo `legacy`.
+
+Este registro de cierre se guarda en un segundo commit normal, sin cambios de implementación. [Web publicada](https://withnolan.github.io/senva/).
