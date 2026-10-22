@@ -434,4 +434,10 @@ Revisión independiente de código detectó el cálculo del indicador y la neces
 - Móvil320×844 EN/ES: desbordamiento horizontal cero y sin recortes por anchura en titulares/párrafos medidos. Alternativa reducida en arnés externo1280×720: scroll nativo, texto/figura en flujo, opacidad completa y sin desbordamiento. No se modificó la preferencia del sistema operativo.
 - 114 pares EN/ES, bloque restaurado de equipo/contacto, logo y retratos conservados. Sintaxis JS, HTML/IDs/anclas/recursos/Markdown y `git diff --check` correctos. Sin errores/avisos de consola registrados en el recorrido local.
 
-Pruebas con viewports del navegador integrado, sin dispositivos físicos, lector de pantalla real ni mediciones de FPS. Registro de publicación pendiente de confirmar tras commit/push autorizados.
+Pruebas con viewports del navegador integrado, sin dispositivos físicos, lector de pantalla real ni mediciones de FPS. Se repitió además el respaldo sin JS a320 px: inglés, navegación visible, diagrama en flujo y desbordamiento cero.
+
+### Publicación — verificada
+
+Commit de implementación `7ad7a4abeae31cb995d610190eaf824fe04925ec`, push a `origin/main` y build de Pages `built`, sin error. En la web pública se comprobaron visión a1100×700, indicador correcto, margen12,87 px y ausencia de desbordamiento. PageDown interrumpió un destino a Xiji; posición3515 px estable al asentarse y sin callback que recupere el destino anterior. Consola pública sin errores/avisos registrados.
+
+Dieciséis recursos publicados coinciden byte a byte con los revisados, mediante HTTPS validado. CSS `9617f459`, JS `dc71c364`. Captura fuera del repositorio: `senva-scroll-fixes-public.jpg`. Este registro de entrega se guarda en un segundo commit normal de documentación; su push/build se confirma antes de la respuesta. Sin cambios de configuración ni force push. No quedan fallos reproducibles pendientes dentro del alcance probado; se mantienen los límites de revisión anteriores.
