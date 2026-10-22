@@ -403,6 +403,10 @@ Coordinación integra HTML/CSS/JS y realiza revisión visual/Git. Un agente prep
 
 Capturas fuera de producción, prefijo `senva-inertia-`. Pruebas con tamaños de viewport, sin dispositivos físicos, lector de pantalla real ni medición de FPS. Preferencia reducida simulada mediante arnés externo; sin afirmar pruebas del ajuste real del sistema.
 
-### Entrega — pendiente de verificar
+### Entrega — verificada
 
-Implementación lista para commit y push autorizados. Siguiente paso: confirmar el build del SHA enviado y revisar recursos y cabecera en GitHub Pages. Sin cambios de configuración del repositorio.
+Implementación guardada y pusheada en `a6a9ee3630bb7de77fe45b599839a6ebf24ac453`. GitHub Pages devolvió `built` para ese SHA, sin error, a las 21:45 (Madrid). Se revisó la web pública a1440×900: cabecera única, título completo, Lenis activo y avance con rueda hasta reposo. A390×844 ES: modo nativo, figura en flujo y desbordamiento horizontal cero. Consola pública sin errores/avisos registrados.
+
+Dieciséis recursos públicos —incluidos HTML, CSS/JS versionados, Lenis CSS/JS, las tres fuentes y recursos visuales— respondieron HTTP200 y coincidieron byte a byte con los archivos revisados, con TLS validado. CSS `ab20db59`, JS `39d7d236`. Captura pública `senva-inertia-public-header.jpg` fuera del repositorio. El indicador se comprobó limpio al final de página en la última revisión local.
+
+Este cierre se guarda en un segundo commit normal, solo de documentación; se confirma también su push/build antes de la entrega. No hay incidencias reproducibles pendientes dentro del alcance comprobado. Se mantienen los límites de revisión indicados. Sin force push ni cambios de configuración. [Web publicada](https://withnolan.github.io/senva/).
