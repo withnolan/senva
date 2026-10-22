@@ -1,28 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
-<rect width="1200" height="630" fill="#f8f7f2"/>
-<g transform="translate(55 40)" fill="none" stroke="#08777b" stroke-width="3.2"><path d="M5 24C5 12 25 20 25 8M5 16C5 4 25 12 25 0M5 32C5 20 25 28 25 16"/></g>
-<text x="99" y="67" fill="#102e3b" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="750" letter-spacing="-2.1">SENVA<tspan fill="#08777b">.</tspan></text>
-<text x="1140" y="62" text-anchor="end" fill="#08777b" font-family="Arial,Helvetica,sans-serif" font-size="14">Idea / Hypothesis validation</text>
-<text x="1140" y="84" text-anchor="end" fill="#53616a" font-family="Arial,Helvetica,sans-serif" font-size="11">Idea / Validación de hipótesis</text>
-<text x="600" y="177" text-anchor="middle" fill="#102e3b" font-family="Arial,Helvetica,sans-serif" font-size="58" letter-spacing="-3.3">A conversation.</text>
-<text x="600" y="244" text-anchor="middle" fill="#08777b" font-family="Georgia,serif" font-size="60" font-style="italic" letter-spacing="-3.1">More possibilities.</text>
-<text x="600" y="281" text-anchor="middle" fill="#53616a" font-family="Arial,Helvetica,sans-serif" font-size="16">Una conversación en movimiento.</text>
-<path d="M659 364c70 0 27 81 75 81" stroke="#08777b" stroke-width="2"/>
-<g transform="translate(460 363) scale(.82)">
-  <g stroke="var(--device-line,#102e3b)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M-218-30c36-19 121-19 165 0 13 6 16 19 14 38l-4 25c-5 27-31 40-73 40-47 0-80-14-91-41-8-19-12-44-11-62Z" fill="var(--lens-fill,#f8f7f2)"/>
-    <path d="M218-30c-36-19-121-19-165 0-13 6-16 19-14 38l4 25c5 27 31 40 73 40 47 0 80-14 91-41 8-19 12-44 11-62Z" fill="var(--lens-fill,#f8f7f2)"/>
-    <path d="M-40-10c18-17 62-17 80 0M-239-30h21m457 0h-21"/>
+<title>SENVA — Let a conversation open possibilities.</title>
+<rect width="1200" height="630" fill="#102e3b"/>
+<g transform="translate(62 54)" fill="none" stroke="#8de0d4" stroke-width="3.2"><path d="M5 24C5 12 25 20 25 8M5 16C5 4 25 12 25 0M5 32C5 20 25 28 25 16"/></g>
+<g font-family="Arial,Helvetica,sans-serif">
+<text x="106" y="83" fill="#f8f7f2" font-size="32" font-weight="750" letter-spacing="-2.24">SENVA<tspan fill="#8de0d4">.</tspan></text>
+<text x="65" y="190" fill="#8de0d4" font-size="12" font-weight="600" letter-spacing="1.3">COMMUNICATION. AUTONOMY. CONNECTION.</text>
+<text x="62" y="275" fill="#f8f7f2" font-size="54" font-weight="500" letter-spacing="-2.6">Let a conversation</text>
+<text x="62" y="338" fill="#8de0d4" font-size="54" font-weight="500" letter-spacing="-2.6">open possibilities.</text>
+<text x="65" y="400" fill="#f8f7f2" font-size="18">Exploring ways for Deaf signers</text>
+<text x="65" y="428" fill="#f8f7f2" font-size="18">and hearing people to connect.</text>
+<circle cx="69" cy="504" r="4" fill="#8de0d4"/>
+<text x="83" y="509" fill="#8de0d4" font-size="14">Idea / Hypothesis validation</text>
+<text x="65" y="587" fill="#f8f7f2" font-size="14">withnolan.github.io/senva</text>
+</g>
+<g transform="translate(585 22) scale(.8445)">
+  <g id="left-person">
+    <path d="M0 720V623c0-63 45-113 107-128l92-23 81 40c56 28 85 85 92 144l7 64H0Z" fill="#08777b"/>
+    <path d="m159 408-4 77c8 25 36 44 64 41 27-3 46-24 45-45l-28-84-77 11Z" fill="#f8f7f2"/>
+    <path d="m238 409 14 42c-31 4-68-16-81-37l67-5Z" fill="#8de0d4"/>
+    <path d="M140 229c-2-61 40-103 95-98 48 4 72 42 66 87l-7 38 29 40c4 6 1 12-6 13l-23 3-5 53c-2 27-17 47-41 53-36 9-75-11-91-45l-17-144Z" fill="#f8f7f2"/>
+    <path d="M288 251c-8-5-17-5-24-2" stroke="#102e3b" stroke-width="5" stroke-linecap="round"/>
+    <path d="m282 266 4 1" stroke="#102e3b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M292 340c-8 3-16 3-23 0" stroke="#102e3b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M143 332c-18-9-30-27-30-49-28-20-29-57-11-78-8-28 9-58 36-64 10-34 43-51 74-41 30-16 63-6 77 19 29 0 48 25 41 49-7 23-33 35-55 21-10 19-32 28-52 21-4 21-15 38-32 49l-13 61-18 33-17-21Z" fill="#102e3b"/>
+    <path d="M170 278c-9-13-26-12-31 1-6 17 5 38 21 36l10-37Z" fill="#f8f7f2"/>
+    <path d="M150 283c8 0 10 6 7 13" stroke="#08777b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M112 184c15 9 32 8 45-2m-19-39c16 9 35 8 46-3m48-23c10 16 26 22 43 19" stroke="#08777b" stroke-width="3" stroke-linecap="round"/>
+    <path d="m154 477-39 21 45 94 49-58m55-52 32 42-37 56-40-46" fill="#102e3b"/>
+    <path d="M83 570c24 46 33 97 34 150" stroke="#8de0d4" stroke-width="3" stroke-linecap="round"/>
+    <path d="m218 556 9 164" stroke="#8de0d4" stroke-width="3" stroke-linecap="round"/>
   </g>
-  <path d="M-237-30h10m464 0h-10" stroke="#8de0d4" stroke-width="4" stroke-linecap="round"/>
+  <g id="shared-space" stroke="#8de0d4" stroke-width="5" stroke-linecap="round">
+    <path d="M316 441c25-48 59-56 88-40 31 17 39 49 21 74-15 22-42 23-59 6-22-23-9-58 14-77 17-13 40-18 64-13"/>
+  </g>
+  <g id="right-person">
+    <path d="M720 720V603c0-53-33-99-82-120l-63-26-91 29c-57 19-99 71-105 132l-10 102h351Z" fill="#8de0d4"/>
+    <path d="m489 394-11 94c2 27 28 50 54 49 26-1 45-25 44-49l-19-98-68 4Z" fill="#f8f7f2"/>
+    <path d="M486 416c24 11 48 8 65-7-9 25-36 43-68 43l3-36Z" fill="#08777b"/>
+    <path d="M590 242c4-58-34-103-83-103-47 0-76 35-77 80l-1 43-27 35c-5 7-2 13 6 14l21 4 6 50c3 29 20 51 46 57 36 8 73-16 88-51l21-129Z" fill="#f8f7f2"/>
+    <path d="M435 252c8-5 17-5 25-1" stroke="#102e3b" stroke-width="5" stroke-linecap="round"/>
+    <path d="m441 267 4 1" stroke="#102e3b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M433 340c9 4 18 3 25-1" stroke="#102e3b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M438 232c-27-51 3-115 64-124 60-8 109 36 116 92 27 9 44 33 40 60-4 31-31 51-61 47l-28 71-20-59-6-75c-36-2-67-22-84-52-2 16-10 30-21 40Z" fill="#102e3b"/>
+    <path d="M550 279c9-13 26-11 30 3 4 17-8 36-23 33l-7-36Z" fill="#f8f7f2"/>
+    <path d="M569 284c-8-1-11 5-8 12" stroke="#08777b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M473 149c25-18 60-17 83 2m-86 16c20 33 50 50 84 53m51 7c13 4 21 14 22 28" stroke="#08777b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M480 488c5 27 26 47 52 48 26 1 47-19 45-49" stroke="#102e3b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M640 558c-25 47-34 102-32 162m-126-67-13 67" stroke="#08777b" stroke-width="3" stroke-linecap="round"/>
+  </g>
 </g>
-<g transform="translate(800 427) scale(.52)">
-  <path d="M-45 183v-25c-1-26-17-50-36-77l-48-63c-8-12-6-25 5-30 11-6 23 1 31 13l30 39c-3-35-4-56-6-80l-9-88c-2-19 8-32 21-32s22 10 24 28l10 88c1 10 5 10 5 10l-6-144c-1-20 8-33 21-33s21 12 21 31l3 136c0 10 6 10 6 10l7-127c2-20 11-31 24-30s20 13 18 33l-9 138c0 10 6 12 6 12l14-100c3-17 13-26 25-23 13 3 17 15 14 31L108 36c-4 31-16 59-31 85-8 14-13 29-14 40v22c-36 10-72 10-108 0Z" fill="#8de0d4" stroke="var(--device-line,#102e3b)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M-45 158H63v25c-36 10-72 10-108 0Z" fill="#08777b" stroke="var(--device-line,#102e3b)" stroke-width="5.5" stroke-linejoin="round"/>
-  <path d="M-24 171H42" stroke="#8de0d4" stroke-width="3.5" stroke-linecap="round"/>
-</g>
-<path d="M55 566H1140" stroke="#c6d1cd"/>
-<text x="60" y="602" fill="#102e3b" font-family="Arial,Helvetica,sans-serif" font-size="14">Every gesture brings us closer. / Cada gesto nos acerca.</text>
-<text x="1140" y="596" text-anchor="end" fill="#53616a" font-family="Arial,Helvetica,sans-serif" font-size="11">Design concept. Hardware to be defined.</text>
-<text x="1140" y="615" text-anchor="end" fill="#53616a" font-family="Arial,Helvetica,sans-serif" font-size="11">Concepto de diseño. Hardware por definir.</text>
 </svg>

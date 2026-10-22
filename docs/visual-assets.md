@@ -1,43 +1,54 @@
-# Recursos — Una conversación en movimiento
+# SENVA — Recursos visuales y tipografía
 
-La dirección actual utiliza **SVG 2D por capas**, con colores planos azul noche, blanco cálido y turquesa. Los objetos son conceptos sin hardware definido; no representan un prototipo, especificaciones, sensores interiores o capacidades existentes. El guante está vacío y no representa un signo.
+La implementación editorial utiliza azul noche, blanco cálido y turquesa, ilustración 2D original y texto HTML traducible. Los gráficos explican una idea de investigación; no son pruebas de hardware, captación o traducción funcional.
 
-## Fuentes activas y procedencia
+## Recursos activos
 
-Dibujos propios realizados directamente en SVG y redibujados para la coreografía lateral el 21 de octubre de 2026, sin recursos de terceros ni generación de renders. Sin 3D, texturas, modelos o bibliotecas externas.
-
-| Recurso | Fuente | Integración |
+| Recurso | Fuente | Uso |
 | --- | --- | --- |
-| Gafas frontales | `assets/graphics/glasses.svg` | `#drawing-glasses` en las definiciones de `index.html` |
-| Guante vacío | `assets/graphics/glove.svg` | `#drawing-glove` en las mismas definiciones |
-| Voz, contexto y conexiones | SVG dentro de `index.html` | Capas y trazados del mismo escenario; versiones estáticas |
-| Subtítulos y práctica | HTML en `index.html`, traducciones de `script.js` | Adaptables y accesibles; no imágenes de interfaces |
-| Vista previa social | `assets/social-card.svg` / `.png` | Fuente vectorial y exportación PNG real 1200 × 630 |
+| Conversación entre dos personas | `assets/graphics/conversation.svg` | Portada; alternativa EN/ES mediante `heroArtAlt` en HTML. |
+| Gafas frontales | `assets/graphics/glasses.svg` | Primera dirección del diagrama de visión. |
+| Guante vacío | `assets/graphics/glove.svg` | Segunda dirección y primera hipótesis de práctica. |
+| Señal de voz y conexiones | HTML/CSS del diagrama; SVG local en la práctica | Relaciones conceptuales, sin datos capturados. |
+| Ilustraciones de la práctica y sus preguntas | HTML, SVG y CSS en `index.html` / `styles.css` | Interfaz ilustrativa adaptable, con texto EN/ES. |
+| Retratos | `assets/shengyu-nolan-chen.jpg`, `assets/santiago-munoz-veguillas.jpg` | Fotografías facilitadas por el usuario, con igual tratamiento. |
+| Identidad | `assets/favicon.svg`, `assets/senva-logo.svg`, marca en cabecera/pie | Logo conservado. |
+| Vista previa social | `assets/social-card.svg`, `.png` | Fuente editable y exportación de 1200 × 630 para metadatos. |
+| Manrope | `assets/fonts/manrope-variable.ttf` | Tipografía local de la web; licencia adjunta. |
 
-Las gafas y el guante comparten curvas, un único contorno visible y un peso de trazo proporcional. Se han retirado el borde exterior duplicado, los reflejos y las líneas interiores redundantes. Las gafas mantienen montura frontal y dos acentos de bisagra; el guante, cinco dedos separados con longitudes distintas, pulgar lateral y muñeca corta, sin anatomía dibujada en su interior. La señal de voz y la información adicional son diagramáticas; no capturan datos.
+## Ilustraciones originales
 
-El contraste se adapta sin añadir otro borde: los trazados utilizan `var(--device-line,#102e3b)` y las lentes `var(--lens-fill,#f8f7f2)`. Sus valores de respaldo sirven en fondo blanco cálido. Sobre azul noche pueden heredarse `--device-line:#f8f7f2` y `--lens-fill:#102e3b`. El guante conserva el relleno turquesa plano. Mantener estas variables al copiar los trazados al HTML evita mantener dibujos diferentes para cada fondo.
+`conversation.svg` es una ilustración vectorial original creada por el agente para este proyecto. Contiene los grupos `left-person`, `shared-space` y `right-person`, sobre un `viewBox` de 720 × 720. Representa dos personas adultas y un espacio compartido; no reproduce un signo concreto, testimonio o resultado de investigación. Está construida con colores planos, sin modelos, texturas ni recursos de terceros.
 
-La vista previa social presenta el titular breve centrado, con los dos objetos conectados debajo sobre un fondo abierto. Conserva logo, lema, estado y avisos EN/ES. El SVG es la fuente; el PNG real de 1200 × 630 se ha exportado con Sharp y revisado visualmente. Esta comprobación del recurso no equivale a una prueba nueva del navegador o del recorrido.
+Las gafas y el guante se redibujaron directamente en SVG para SENVA. Comparten un contorno sencillo y pesos proporcionales; se retiraron reflejos, bordes duplicados y líneas interiores redundantes. El guante está vacío, con cinco dedos, pulgar lateral y muñeca corta; no contiene una mano anatómica ni representa un signo lingüístico.
 
-## Editar
+Sus fuentes conservan `var(--device-line,#102e3b)` para el contorno y, en las gafas, `var(--lens-fill,#f8f7f2)` para las lentes. **La web actual los carga con `<img>` sobre superficies claras**, usando los colores de respaldo. Las variables de la página no atraviesan el documento externo de una imagen SVG. Si en el futuro se integran como SVG en línea, podrán heredarse `--device-line:#f8f7f2` y `--lens-fill:#102e3b` para un fondo azul noche, sin añadir un segundo borde.
 
-1. Editar los trazados de `assets/graphics/glasses.svg` o `glove.svg`, conservando centro y `viewBox` para no alterar las posiciones.
-2. Copiar el interior del SVG actualizado al grupo correspondiente de `.drawing-definitions` en `index.html`. Preservar `fill="none"` al integrar los trazados o exportarlos; los rellenos intencionados son explícitos. El mismo grupo se reutiliza con `<use>` en todo el documento; no dibujar variantes por escena.
-3. Revisar las posiciones y escalas del controlador de `script.js` y las zonas seguras de texto en CSS. Las anotaciones pertenecen al escenario HTML. No incrustar texto en los dibujos.
-4. Los SVG estáticos de móvil y alternativas conservan los mismos objetos, con un encuadre adaptado. Su texto está fuera del SVG cuando es posible. Revisar figuras, avisos y detalles abiertos en ambos idiomas.
-5. Si cambia la portada, actualizar `social-card.svg` y exportar PNG de 1200 × 630. La exportación actual se hizo con Sharp disponible en el entorno de trabajo; no es dependencia del repositorio ni de ejecución. Puede usarse un editor SVG equivalente.
+No hay definiciones de dispositivos duplicadas en `index.html`, capas claras/oscuras superpuestas ni un escenario continuo de objetos viajeros. El diagrama de visión reúne ambas direcciones con texto HTML y un énfasis de escala/desplazamiento muy pequeño. Los textos y aclaraciones permanecen visibles.
 
-La página no descarga imágenes para estos objetos: sus definiciones están en el HTML. Solo los retratos reales se cargan como imágenes, con `loading="lazy"` y dimensiones reservadas. La vista previa social no forma parte de la carga del recorrido. No hay hotlinks ni servicios de pago.
+## Tipografía y licencia
 
-## Límites de representación
+Manrope procede del repositorio oficial [google/fonts, `ofl/manrope`](https://github.com/google/fonts/tree/main/ofl/manrope): `Manrope[wght].ttf`, guardado localmente como `assets/fonts/manrope-variable.ttf`. La licencia oficial `OFL.txt` se conserva como [assets/fonts/OFL-Manrope.txt](../assets/fonts/OFL-Manrope.txt), **SIL Open Font License 1.1**, con el aviso de copyright de The Manrope Project Authors.
 
-- La frase de subtítulos es ficticia; no se atribuye a una persona o un signo.
-- La segunda dirección exige información facial, corporal y espacial adicional pendiente de resolver. El guante no se presenta como traductor completo.
-- La interfaz de práctica plantea preguntas de investigación. No hay porcentajes, mediciones, reconocimiento validado, puntuaciones ni correcciones lingüísticas concretas.
-- La escena animada comparte objetos, no evidencia de una capacidad funcional. Los avisos de concepto son HTML visible.
-- Logo y retratos originales conservados sin modificaciones.
+La fuente y licencia locales se contrastaron con los objetos publicados por `google/fonts`: sus identificadores de blob coinciden (`75274da58537d6123b14f2cd0c355ad4681fc2b3` y `e271172a9ed0cddc895aabb6509f1c7d880b492d`). Esta comprobación identifica la procedencia de los archivos; no es una prueba del renderizado del navegador.
 
-## Iteración anterior
+`styles.css` declara `@font-face`, pesos 400–800 y `font-display: swap`, con Arial/Helvetica/sans-serif como respaldo. No se solicita Google Fonts durante la visita. La palabra de marca conserva su familia independiente. Al redistribuir o sustituir la fuente, conservar su licencia y comprobar las condiciones del recurso concreto; no atribuir la tipografía a SENVA.
 
-El historial Git conserva las versiones SVG anteriores al redibujado. Los PNG/WebP de `assets/illustrations/` pertenecen a la versión del 20 de octubre. No se solicitan ni se muestran en la web actual; la pareja y sus láminas se han retirado de la composición. Se conservan los archivos existentes y su historial para no borrar recursos previos. No se han creado nuevas imágenes raster para el recorrido.
+## Editar sin romper la integración
+
+1. Editar las fuentes SVG directamente, conservando sus `viewBox` y proporciones. La ilustración de conversación tiene grupos separados; los dispositivos son archivos externos compartidos por sus usos.
+2. Conservar `fill="none"` y rellenos explícitos donde correspondan. Evitar sombras, perspectiva, reflejos o trazos añadidos para ocultar problemas de contraste.
+3. Mantener los textos del diagrama, preguntas, estado y avisos en HTML y traducciones de `script.js`; no convertir una sección en una imagen ni incrustar sus textos en SVG.
+4. Reservar dimensiones en las imágenes. Revisar encuadre, títulos, alternativas EN/ES y longitudes de etiquetas en móvil y escritorio.
+5. Si cambia la portada, actualizar la fuente `social-card.svg`, su PNG de 1200 × 630 y las alternativas sociales EN/ES. Sharp puede exportar el SVG desde el entorno de autoría; no es una dependencia de ejecución de la web. Revisar el PNG exportado antes de publicarlo.
+6. Conservar logo, retratos y licencia de la fuente; registrar las comprobaciones visuales reales en [el seguimiento del rediseño](redesign-progress.md).
+
+## Límites de representación y archivo
+
+- La frase cotidiana es ficticia y no se atribuye a una persona real.
+- La información facial, corporal y espacial y su captación siguen por resolver; el guante no traduce una lengua por sí solo.
+- La práctica presenta preguntas de investigación, sin mediciones, puntuaciones o correcciones lingüísticas validadas.
+- La situación de las personas de la portada no es un testimonio ni el retrato de un participante investigado.
+- Los PNG/WebP de `assets/illustrations/` pertenecen a iteraciones anteriores. Se conservan como archivo pasivo y no se solicitan en la página actual. El historial Git conserva los dibujos y coreografías sustituidos.
+
+Este documento registra recursos y mantenimiento. La existencia de un SVG, una exportación o una licencia no acredita por sí sola pruebas responsive, de accesibilidad o del despliegue.

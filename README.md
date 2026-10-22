@@ -7,7 +7,7 @@
 <a id="en"></a>
 ## English
 
-### A conversation. More possibilities.
+### Let a conversation open possibilities.
 
 SENVA explores technology that could help reduce communication barriers between **Deaf signers and hearing people**, supporting autonomy, participation and everyday connection. Sharing an idea, meeting someone new and joining a spontaneous conversation motivate the project; these are starting points for research, not testimonials.
 
@@ -51,7 +51,7 @@ Both are students. Their fields offer complementary perspectives; no executive r
 <a id="es"></a>
 ## Español
 
-### Una conversación. Más posibilidades.
+### Que una conversación abra posibilidades.
 
 SENVA explora tecnología que podría contribuir a reducir barreras de comunicación entre **personas sordas signantes y oyentes**, favoreciendo la autonomía, la participación y la conexión cotidiana. Compartir una idea, conocer a alguien o participar en una conversación espontánea motivan el proyecto; son puntos de partida para investigar, no testimonios.
 
@@ -92,15 +92,15 @@ Ambos son estudiantes. Sus ámbitos aportan perspectivas complementarias; no se 
 
 [Ejecutar la web localmente](#quick-start) · [Síntesis de investigación y candidatura](docs/project-brief.md#español) · [Guía técnica](docs/technical-guide.md)
 
-## A conversation in motion / Una conversación en movimiento
+## Exploring SENVA / Explorar SENVA
 
-Five open **2D SVG scenes** give the idea room to unfold: a central introduction, speech and captions, a shift towards manual information, a wider view of face/body/space, and a first practice experiment. The redrawn glasses and empty glove travel from the centre to alternating sides, with reading pauses between transitions. A navy field and connecting paths carry the composition forward through native vertical scroll. Captions and the practice interface remain adaptable HTML. This is a conceptual vision, not working hardware or recognition.
+The website starts with the people and everyday possibilities that motivate SENVA. A single diagram brings the two directions of the communication concept together; a separate section explains the limited learning hypothesis. The validation plan, research boundaries, founders and Santiago’s Xiji application follow in a direct reading flow. The illustrations describe an idea, not a working product.
 
-Cinco **escenas abiertas con SVG 2D** dan espacio al propósito: presentación central, voz y subtítulos, información manual, una visión amplia de rostro/cuerpo/espacio y primer experimento de práctica. Las gafas y el guante vacío, redibujados, recorren el centro y ambos lados con pausas de lectura entre transiciones. Un campo azul noche y los trazados de conexión acompañan el avance del scroll vertical nativo. Los subtítulos y la interfaz de práctica siguen siendo HTML adaptable. Es una visión conceptual, no hardware o reconocimiento funcional.
+La web parte de las personas y las posibilidades cotidianas que motivan SENVA. Un único diagrama reúne las dos direcciones del concepto de comunicación; una sección independiente explica la hipótesis acotada de aprendizaje. Después se presentan el plan de validación, los límites de investigación, los fundadores y la candidatura de Santiago a Xiji. Las ilustraciones explican una idea, no un producto funcional.
 
-EN/ES, keyboard navigation, a mobile adaptation and complete static/reduced-motion alternatives are part of the implementation. / La implementación conserva EN/ES, teclado, un recorrido adaptado a móvil y alternativas completas estáticas/con movimiento reducido.
+The redesign uses bounded specialist tasks, a shared factual brief and independent review, informed by [AVIVA’s team method](https://github.com/withnolan/aviva/blob/main/CLAUDE.md). It preserves SENVA’s own identity and content. Decisions and review evidence: [design review](docs/design-review.md) and [progress](docs/redesign-progress.md).
 
-[Drawings and maintenance / Dibujos y mantenimiento](docs/visual-assets.md) · [Review status / Estado de la revisión](docs/redesign-progress.md). No 3D, external runtime dependencies or build step / Sin 3D, dependencias externas de ejecución ni compilación.
+El rediseño utiliza tareas especializadas acotadas, un brief factual común y revisión independiente, a partir del método de equipo de AVIVA. Conserva la identidad y el contenido propios de SENVA. EN/ES, navegación por teclado, lectura móvil y alternativas sin movimiento forman parte de la implementación.
 
 <a id="quick-start"></a>
 ## Quick start / Inicio rápido
@@ -117,21 +117,24 @@ Open / Abrir [http://127.0.0.1:8000](http://127.0.0.1:8000). Stop / Detener: `Ct
 
 ```text
 index.html                 English fallback / contenido inglés de respaldo
-styles.css                 Responsive layout, motion / diseño y movimiento
-script.js                  EN/ES, navigation, native scroll / navegación
+styles.css                 Editorial layout, motion / diseño editorial y movimiento
+script.js                  EN/ES, navigation, diagram emphasis / navegación
 assets/                    Existing logo, portraits, social image / recursos
   favicon.svg              Original symbol / símbolo original
   senva-logo.svg           Existing symbol + wordmark / logotipo existente
   *.jpg                    Original founder portraits / retratos originales
   social-card.svg, .png     Social preview / vista previa social
-  graphics/                Layered SVG sources / fuentes SVG por capas
-    glasses.svg, glove.svg  Shared objects / objetos compartidos
+  graphics/                Original 2D SVG sources / fuentes SVG 2D propias
+    conversation.svg       Two people / dos personas
+    glasses.svg, glove.svg  Concept devices / dispositivos conceptuales
+  fonts/                   Local Manrope + SIL licence / fuente local y licencia
   illustrations/           Earlier iteration, not loaded / iteración anterior
 docs/
   project-brief.md          Research hypotheses and Xiji / hipótesis y Xiji
   technical-guide.md        Maintenance and deployment / mantenimiento
   visual-assets.md         SVG sources and editing / fuentes SVG y edición
   redesign-progress.md      Decisions, checks and delivery / estado
+  design-review.md           Brief, AVIVA method and independent review / revisión
 ```
 
 Detailed local preview under `/senva/`, editing, motion and publication: [technical guide / guía técnica](docs/technical-guide.md). Review status and limitations: [redesign progress / estado del rediseño](docs/redesign-progress.md).

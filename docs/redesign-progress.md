@@ -1,8 +1,8 @@
 # SENVA — Rediseño integral
 
-Actualizado: 21 de octubre de 2026. Registro del rediseño desde `4945ec0`.
+Actualizado: 22 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Trabajo actual:** [Relevo lateral](#lateral-relay), 21 de octubre de 2026, sobre `6a0edda`. Los bloques anteriores conservan el historial.
+**Trabajo actual:** [Revisión editorial con método de agentes](#editorial-review), 22 de octubre de 2026, sobre `27a7d3d`. Los bloques anteriores conservan el historial.
 
 ## Objetivo y alcance
 
@@ -242,3 +242,36 @@ Implementación `8ace7a6`, con build `built` confirmado para su SHA completo y s
 CSS `0940e2ea` y JS `badc3fa4`, favicon, retratos, fuentes nuevas, vista social y `.nojekyll` respondieron HTTP 200 desde Pages y coincidieron byte a byte con el repositorio. HTTPS con verificación TLS del sistema; sin desactivarla. Capturas públicas guardadas fuera del repositorio.
 
 Remoto actualizado sin cambios ajenos entrantes. Fuente verificada: `main`, `/`, modo `legacy`; sin force push ni cambios de ajustes. Este cierre solo documenta el despliegue verificado, sin modificar código o recursos. Su commit y build final se confirman en la respuesta de entrega. No quedan fallos reproducibles observados dentro del alcance de revisión descrito; se mantienen sus límites de dispositivos, motores y tecnologías de asistencia.
+
+
+<a id="editorial-review"></a>
+## Revisión editorial con método de agentes — 22 de octubre de 2026
+
+### Objetivo y método — terminado
+
+Revisión de la web publicada y del código tras la petición de investigar [AVIVA](https://github.com/withnolan/aviva). Consultados su contrato, roles, coordinación y revisiones. Se adopta un brief común, tareas con propiedad de archivos, separación de arte/contenido/implementación y crítica independiente. No se importan código, identidad, 3D ni dependencias. Detalles y criterios: [design-review.md](design-review.md).
+
+### Implementación — terminada
+
+- Portada navy con ilustración vectorial original de dos adultos y mensaje humano. Estado visible antes del titular, también en móvil.
+- Situaciones cotidianas visibles. Visión reunida en un diagrama con rutas opuestas; guante e información facial/corporal/espacial se explican juntos.
+- Primer experimento de LSE separado, sin sugerir traducción demostrada. Plan de codiseño, comparación con alternativas y límites conservados.
+- Retirados el escenario global de cinco poses, fundidos que ocultaban texto, controles obsoletos y duraciones artificiales. Solo el diagrama tiene un sticky corto y énfasis ligado al scroll nativo en pantallas adecuadas.
+- Nueva tipografía Manrope alojada localmente con licencia SIL, SVG de conversación y vista social coherente. Logo, favicon, retratos y datos personales conservados.
+- README reorientado a la presentación real. Guías técnicas y de recursos actualizadas.
+
+### Comprobaciones y correcciones — terminadas localmente
+
+Preflight: sintaxis JS, HTML equilibrado, IDs/anclas, 114 claves EN/ES y respaldo inglés, SVG XML, logo original y hashes de retratos/favicon. Matriz en navegador EN/ES: 320×844, 390×844, 768×1024, 1024×768, 1440×900, 1280×720 y 844×390; sin desbordamiento horizontal ni recortes de texto medidos. Revisión visual de portada, propósito, visión, experimento, validación, equipo, Xiji y contacto. Corregidos estado demasiado bajo en móvil, escala inicial de la ilustración y dirección del segundo flujo.
+
+- Auditoría editorial inicial y revisión independiente de implementación/capturas: sin bloqueos restantes. Se corrigió la herencia de Manrope en la marca conservando Arial, peso 750 y espaciado anterior.
+- Visión: comienzo, mitad (`--route-progress` 0,509), final 1,000 y regreso 0,000 observados mediante scroll nativo; textos con opacidad1 durante el recorrido. Entrada y salida del diagrama sin bloqueo, con lectura normal del resto de la página. Recorrido con EN y ES.
+- Cambio ES→EN durante la visión conservó la coordenada del título de la segunda explicación exactamente en 479,16 px. `lang`, título y `og:locale` cambiaron correctamente. Detalles y enlaces siguen en el documento.
+- Teclado móvil: abrir menú enfoca primer enlace; Tab avanza, Escape cierra y devuelve foco. Ancla de equipo enfoca `#team` y cierra el menú. Redimensionado de 320×844 a 844×390 y vuelta sin desbordamiento ni foco en navegación oculta.
+- Alternativas en arneses externos: HTML sin script con inglés y menú visible; ausencia de observador y almacenamiento bloqueado con cambio a ES funcional; preferencia reducida equivalente en CSS/JS con `position:relative`, transformaciones/animaciones anuladas y scroll automático. No se cambió la preferencia real del sistema operativo.
+- Consola del navegador sin errores o avisos recogidos. Fuentes y recursos locales; PNG social 1200×630 revisado. Perfiles, plan, límites técnicos, colaboradoras y Xiji comparados con la versión anterior: mismos hechos EN/ES.
+- Ajustes observados al revisar: aviso de estado arriba, escala de personas, segunda ruta inversa, foco de anclas limitado a una etiqueta y estudios de fundadores a anchura completa en móvil.
+
+### Límites y pendientes
+
+Pruebas en navegador con tamaños de viewport, no en dispositivos físicos; revisión interna, no pruebas con usuarios. La preferencia reducida se simuló en un arnés externo. No se hizo medición de FPS. Queda comprobar el build y la web pública del commit que se enviará a `origin/main`; no se requieren cambios de configuración de Pages.
