@@ -2,7 +2,7 @@
 
 Actualizado: 22 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Trabajo actual:** [Recuperar la coreografía](#motion-return), sobre `d0ba6f9`. La revisión editorial anterior no satisfizo la intención de movimiento; se conserva su contenido y se corrige la experiencia. Los bloques anteriores conservan el historial.
+**Trabajo actual:** [Cabecera integrada y smooth scroll](#inertial-scroll), sobre `7315149`. Se conserva el contenido y la restauración de equipo/contacto; se amplía el recorrido con transiciones e inercia de escritorio por petición expresa del usuario.
 
 ## Objetivo y alcance
 
@@ -372,3 +372,37 @@ No quedan fallos reproducibles observados dentro del alcance descrito. Se mantie
 Petición del usuario: recuperar «Dos perspectivas» y «Cada gesto nos acerca» como estaban antes de la última revisión y mantener una web sencilla de presentación. Se restaura el aspecto de `4269030` exclusivamente en `#team` y `#contact`: Manrope, introducción del equipo a dos columnas, fotos cuadradas y perfiles anteriores; cierre turquesa claro con texto azul noche, titular en dos líneas y separadores de LinkedIn. HTML, traducciones, datos, retratos y enlaces eran idénticos y se conservan. Sin cambios de diseño en otras secciones.
 
 Comparación independiente de alcance realizada sin editar archivos. Restauración terminada: inspección visual de ambas secciones en escritorio y comprobación EN/ES a 320, 390 y 1440 px, sin desbordamiento horizontal o recortes medidos en sus textos. Manrope cargada y retícula anterior comprobada. HTML idéntico salvo versión CSS; JavaScript y las demás reglas CSS conservados. HTML, traducciones, recursos y `git diff --check` correctos. Capturas `senva-restored-team.jpg` y `senva-restored-contact.jpg` fuera del repositorio. La confirmación de push y build del SHA se realiza antes de la respuesta de entrega.
+
+
+<a id="inertial-scroll"></a>
+## Cabecera integrada y smooth scroll — 22 de octubre de 2026
+
+### Alcance y referencia — terminados
+
+La captura del usuario muestra la barra de capítulos como una franja separada que tapa el título. Pide más recorrido y transiciones entre apartados, sin nuevo contenido, e investigar smooth scroll en GitHub. Revisado el repositorio oficial [darkroomengineering/lenis](https://github.com/darkroomengineering/lenis). Esta petición autoriza inercia real de página y prevalece sobre la restricción anterior de rueda nativa; AGENTS y guía técnica reflejan la excepción.
+
+Coordinación integra HTML/CSS/JS y realiza revisión visual/Git. Un agente prepara exclusivamente los archivos oficiales de Lenis y después actualiza guía/contrato; otro revisa código en lectura. Sin nuevo rediseño de arte o tipografía.
+
+### Implementación — terminada
+
+- Retirada la barra flotante. Propósito, visión, primera hipótesis, preguntas, equipo y Xiji comparten una sola navegación en cabecera; el indicador activo se limpia al salir de las secciones observadas. Menú desplegable hasta 1050 px.
+- Más separación en los cuatro apartados del recorrido. En escritorio, cada lectura de visión reserva 110svh, manteniendo el texto sticky dentro de su artículo mientras evoluciona la figura. Offset compartido calculado a partir de la cabecera real.
+- Dos interludios decorativos con campos planos e hilo SVG trazado entre propósito/visión y visión/primera hipótesis. Transiciones reversibles y entrada de práctica más marcada; sin añadir texto o datos.
+- Lenis vanilla 1.3.27 local (18 815 bytes JS), licencia MIT y procedencia/hashes conservados. Inercia de rueda en escritorio con puntero fino; móvil/táctil, movimiento reducido y biblioteca ausente mantienen scroll nativo. Sin CDN, framework o contenedores transformados. Se evita doble interpolación de las figuras.
+- Anclas con hash/foco y compensación CSS única. Idioma reajusta la posición y cancela el objetivo de inercia anterior. Atrás/Adelante cancelan la animación pendiente. Menú y anclas siguen disponibles sin JS; cabecera sin fijación y enlaces separados en esa alternativa.
+
+### Comprobaciones locales — terminadas
+
+- Revisión visual en navegador integrado a 1440×900 y 1100×700, EN/ES. Cabecera única, título visible, entrada/salida de visión, estados iniciales/intermedios/finales y regreso. Lecturas de texto y dispositivos en columnas separadas. Cambio ES→EN en B a 1100×700 conserva el título: 200,56 px antes / 200,59 px después.
+- Rueda real mediante la herramienta nativa: clase de desplazamiento suave activa y avance posterior al fin del gesto, hasta asentarse. No se confunde con CSS de anclas. Teclado PageDown/PageUp continúa funcionando. Detectado y corregido que Atrás dejaba continuar la animación al destino anterior; repetido, posición estable y animación cancelada.
+- A 1440×900 ES, comparación del mismo contenido con `7315149`: recorrido principal pasa de 4005,78 a 6154,79 px; documento de 7322 a 9471 px. La longitud adicional corresponde a separación, lectura y transiciones, sin nuevo contenido.
+- Tablet1000×680: menú, foco en primer enlace, Escape y retorno a botón; cambio a móvil y vuelta a escritorio recupera modos. Móvil390×844, 320×844 EN/ES y orientación844×390: desbordamiento horizontal cero en medidas; sin texto recortado en los elementos revisados, diagramas en flujo, interludios de 150 px en móvil. Ancla de visión desde el menú comprobada.
+- Arnés externo sin JS a 320 px: inglés completo, seis enlaces visibles y diagramas en flujo. Se corrigió separación entre enlaces contiguos. Arnés de movimiento reducido equivalente en CSS/JS a1280×720: sin Lenis, sticky o interludios, lecturas completas. Sin archivo de Lenis: script propio funciona con scroll nativo. No se cambió la preferencia real del sistema.
+- Revisión independiente encontró indicador activo residual y cambio de tacto al pasar la rueda por la navegación; ambos corregidos. Detectó el caso Atrás para comprobarlo en navegador; se reprodujo y corrigió. Su revisión es estática, la navegación corresponde a coordinación.
+- 114 pares EN/ES, HTML de equipo/contacto y bloque CSS restaurado idénticos al baseline. Logo, favicon y retratos conservados. Sintaxis JS, HTML equilibrado, IDs/anclas, recursos locales, Markdown y `git diff --check` comprobados. Consola del recorrido local sin errores/avisos registrados.
+
+Capturas fuera de producción, prefijo `senva-inertia-`. Pruebas con tamaños de viewport, sin dispositivos físicos, lector de pantalla real ni medición de FPS. Preferencia reducida simulada mediante arnés externo; sin afirmar pruebas del ajuste real del sistema.
+
+### Entrega — pendiente de verificar
+
+Implementación lista para commit y push autorizados. Siguiente paso: confirmar el build del SHA enviado y revisar recursos y cabecera en GitHub Pages. Sin cambios de configuración del repositorio.

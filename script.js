@@ -238,12 +238,26 @@
   const root = document.documentElement;
   const menu = document.querySelector('#main-nav');
   const toggle = document.querySelector('.menu-toggle');
-  const mobile = matchMedia('(max-width: 760px)');
+  const mobile = matchMedia('(max-width: 1050px)');
+  const inertiaDesktop = matchMedia('(min-width: 1051px) and (hover: hover) and (pointer: fine)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const diagramMotion = matchMedia('(min-width: 1100px) and (min-height: 700px)');
   const languages = [...document.querySelectorAll('[data-language]')];
   const diagram = document.querySelector('.vision-diagram');
   let language = 'en';
+  let smoothScroll = null;
+
+  // The user explicitly requested wheel inertia. Touch and reduced motion stay native.
+  function updateSmoothScroll() {
+    const enabled = inertiaDesktop.matches && !reduced.matches && typeof window.Lenis === 'function';
+    if (!enabled) {
+      if (smoothScroll) smoothScroll.destroy();
+      smoothScroll = null;
+    } else if (!smoothScroll) {
+      smoothScroll = new window.Lenis({autoRaf: true, lerp: .1, smoothWheel: true, syncTouch: false, respectReducedMotion: true, anchors: false});
+    }
+    root.dataset.scrollMode = smoothScroll ? 'inertia' : 'native';
+  }
 
   function setMenu(open, returnFocus = false) {
     const hidden = mobile.matches && !open;
@@ -286,7 +300,9 @@
       document.querySelector('#language-announcement').textContent = copy.languageChanged;
       if (reading && scrollY > 100) {
         root.classList.add('language-changing');
-        scrollBy({top: reading.getBoundingClientRect().top - top, behavior: 'auto'});
+        const position = scrollY + reading.getBoundingClientRect().top - top;
+        if (smoothScroll) { smoothScroll.resize(); smoothScroll.scrollTo(position, {immediate: true}); }
+        else scrollTo({top: position, behavior: 'auto'});
         requestAnimationFrame(() => root.classList.remove('language-changing'));
       }
     }
@@ -301,14 +317,32 @@
   document.addEventListener('click', event => { if (!event.target.closest('.site-header')) setMenu(false); });
   document.addEventListener('focusin', event => { if (!event.target.closest('.site-header')) setMenu(false); });
   mobile.addEventListener('change', () => setMenu(false));
-  document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
+    if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = document.getElementById(link.hash.slice(1));
+    if (!target) return;
     setMenu(false);
-    if (target) { target.setAttribute('tabindex', '-1'); target.focus({preventScroll: true}); }
+    target.setAttribute('tabindex', '-1');
+    if (smoothScroll) {
+      event.preventDefault();
+      history.pushState(null, '', link.hash);
+      // Lenis reads CSS scroll-padding; applying another header offset would double it.
+      smoothScroll.scrollTo(target, {onComplete: () => target.focus({preventScroll: true})});
+    } else target.focus({preventScroll: true});
   }));
   languages.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
+  function cancelNavigationInertia() {
+    if (smoothScroll) smoothScroll.scrollTo(smoothScroll.actualScroll, {immediate: true});
+    // Browser history may restore its native position after popstate dispatch.
+    requestAnimationFrame(() => {
+      if (smoothScroll) smoothScroll.scrollTo(smoothScroll.actualScroll, {immediate: true});
+    });
+  }
+  addEventListener('popstate', cancelNavigationInertia);
+  addEventListener('hashchange', cancelNavigationInertia);
 
-  // Native scrolling owns the document. Only decorative poses settle briefly.
+
+  // The document retains its native scrollbar; Lenis eases desktop wheel input only.
   // Geometry is measured after layout changes, never after writes in a frame.
   const clamp = value => Math.max(0, Math.min(1, value));
   const smooth = value => { value = clamp(value); return value * value * (3 - 2 * value); };
@@ -318,6 +352,8 @@
   const visionLayout = document.querySelector('.vision-layout');
   const experiment = document.querySelector('.experiment');
   const practiceLayout = document.querySelector('.experiment-layout');
+  const transitions = [...document.querySelectorAll('.scene-transition')];
+  const header = document.querySelector('.site-header');
   let frame = 0, measureFrame = 0, previousTime = 0, geometry = null;
   const pose = {hero: 0, purpose: 0, vision: 0, practice: 0};
   let settled = false;
@@ -325,7 +361,10 @@
     measureFrame = 0;
     const y = scrollY;
     const box = el => { const r = el.getBoundingClientRect(); return {top: r.top + y, height: r.height}; };
-    geometry = {height: innerHeight, hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height};
+    const headerHeight = header.getBoundingClientRect().height;
+    geometry = {sceneTop: headerHeight + 28, transitions: transitions.map(box), height: innerHeight, hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height};
+    root.style.setProperty('--header-height', headerHeight + 'px');
+    if (smoothScroll) smoothScroll.resize();
     queueMotion();
   }
   function queueMeasure() {
@@ -336,6 +375,7 @@
     root.classList.toggle('motion-ready', allowed);
     root.classList.toggle('motion-desktop', allowed && diagramMotion.matches);
     if (!allowed) root.classList.remove('enter');
+    updateSmoothScroll();
     settled = false;
     queueMeasure();
   }
@@ -348,12 +388,12 @@
     const target = {
       hero: enabled ? clamp(y / Math.max(300, g.hero.height * .72)) : 1,
       purpose: enabled ? clamp((y + g.height * .85 - g.purpose.top) / (g.height * .8)) : 1,
-      vision: enabled ? (desktop ? clamp((y + 150 - g.vision.top) / Math.max(1, g.vision.height - g.stage)) : clamp((y + g.height * .65 - g.vision.top) / Math.max(1, g.vision.height * .7))) : 1,
+      vision: enabled ? (desktop ? clamp((y + g.sceneTop - g.vision.top) / Math.max(1, g.vision.height - g.stage)) : clamp((y + g.height * .65 - g.vision.top) / Math.max(1, g.vision.height * .7))) : 1,
       practice: enabled ? clamp((y + g.height * .9 - g.practice.top) / (g.height * .75)) : 1
     };
     const dt = previousTime ? Math.min(50, time - previousTime) : 16;
     previousTime = time;
-    const alpha = !enabled || !settled ? 1 : 1 - Math.exp(-dt / 70);
+    const alpha = !enabled || !settled || smoothScroll ? 1 : 1 - Math.exp(-dt / 70);
     let moving = false;
     for (const key of Object.keys(pose)) {
       pose[key] += (target[key] - pose[key]) * alpha;
@@ -369,6 +409,11 @@
     vision.style.setProperty('--manual-reveal', smooth((pose.vision - .30) / .25).toFixed(4));
     vision.style.setProperty('--voice-trace', (1 - smooth(pose.vision / .22)).toFixed(4));
     vision.dataset.motionProgress = pose.vision.toFixed(4);
+    transitions.forEach((el, i) => {
+      const b = g.transitions[i];
+      const progress = enabled ? smooth((y + g.height - b.top) / (g.height + b.height)) : 1;
+      el.style.setProperty('--transition-progress', progress.toFixed(4));
+    });
     if (moving) frame = requestAnimationFrame(updateMotion);
     else previousTime = 0;
   }
@@ -377,13 +422,17 @@
   }
   if ('IntersectionObserver' in window) {
     const chapters = [...document.querySelectorAll('[data-chapter]')];
+    const visibleChapters = new Set();
     const observer = new IntersectionObserver(entries => {
-      for (const entry of entries) if (entry.isIntersecting) {
-        chapters.forEach(link => {
-          if (link.dataset.chapter === entry.target.id) link.setAttribute('aria-current', 'step');
-          else link.removeAttribute('aria-current');
-        });
+      for (const entry of entries) {
+        if (entry.isIntersecting) visibleChapters.add(entry.target.id);
+        else visibleChapters.delete(entry.target.id);
       }
+      const active = chapters.find(link => visibleChapters.has(link.dataset.chapter));
+      chapters.forEach(link => {
+        if (link === active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
     }, {rootMargin: '-20% 0px -55% 0px'});
     chapters.forEach(link => observer.observe(document.getElementById(link.dataset.chapter)));
     addEventListener('scroll', queueMotion, {passive: true});
@@ -391,9 +440,10 @@
   addEventListener('resize', updateMotionMode, {passive: true});
   diagramMotion.addEventListener('change', updateMotionMode);
   reduced.addEventListener('change', updateMotionMode);
+  inertiaDesktop.addEventListener('change', updateSmoothScroll);
   if ('ResizeObserver' in window) {
     const sizeObserver = new ResizeObserver(queueMeasure);
-    [hero, purpose, visionLayout, practiceLayout, diagram].forEach(el => sizeObserver.observe(el));
+    [hero, purpose, visionLayout, practiceLayout, diagram, header].forEach(el => sizeObserver.observe(el));
   }
   if (document.fonts?.ready) document.fonts.ready.then(queueMeasure);
   document.addEventListener('visibilitychange', () => {

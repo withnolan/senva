@@ -22,7 +22,7 @@ No editar archivos que otro agente tenga asignados. Comunicar dependencias al co
 
 - El movimiento protagonista debe resultar evidente al comparar inicio, mitad y final. Un cambio de escala del 2 % o un fundido aislado no sustituye una coreografía.
 - Mantener continuidad entre escenas, intervalos de lectura y un foco claro. No ocultar texto principal durante largos recorridos ni añadir pantallas vacías para justificar duración.
-- Scroll vertical nativo, reversible; sin captura de rueda, saltos obligatorios o motores innecesarios.
+- Desplazamiento vertical reversible, sin saltos obligatorios. La petición vigente autoriza Lenis local para suavizar con inercia la rueda y el trackpad de escritorio; conservar el scrollbar del documento, teclado y anclas. Móvil, entrada táctil, movimiento reducido o biblioteca ausente mantienen desplazamiento nativo. No añadir otros motores de scroll.
 - Móvil conserva una adaptación con personalidad. Movimiento reducido y ausencia de JS ofrecen lectura completa, sin fijaciones prolongadas.
 - Revisar ambos idiomas, estados intermedios, ida/vuelta, anclas, foco, redimensionado y dispositivos pequeños en navegador. Distinguir simulaciones de pruebas reales.
 - No dar por terminado un rediseño animado solo porque pasa las comprobaciones técnicas: coordinación y revisión creativa deben observar el movimiento y la composición.
