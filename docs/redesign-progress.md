@@ -356,6 +356,12 @@ Capturas y matriz fuera del repositorio con prefijo `senva-visual-reset-`. Hubo 
 
 Las dos críticas visuales independientes se incorporaron a la composición; no quedan fallos visuales imprescindibles observados en las capturas finales. Se ha sincronizado la entrada del grupo manual con el espacio que libera la voz, sin guardas de colisión. El caso ajustado de entrada a 1280×720 conserva margen entre leyendas y aviso; las etiquetas del grupo reducido se dimensionan para mantener al menos 12 px efectivos en su reposo final. La barra de capítulos termina antes del contenido directo; comprobado fuera del viewport al final de página.
 
-### Publicación — pendiente
+### Publicación — verificada
 
-Implementación lista para commit y push normal. Falta confirmar el build y los recursos públicos. Sin cambios de configuración del repositorio.
+Implementación `1f52ab9`, seguida de `5899409363f1fcdbde5c7b42a3f0a7c6325c4fcb` para normalizar únicamente espacios finales en las dos licencias oficiales. Push normal a `origin/main`; sin cambios ajenos entrantes, force push o ajustes del repositorio. GitHub Pages devolvió `built` para el último SHA, sin error.
+
+Se abrió la web pública y se verificaron portada, fuentes cargadas, ilustración de 1200 px, EN/ES y metadatos. A 1440×900, escenario activo, progreso observado 0,567 y regreso hacia inicio, sin desbordamiento. Trece recursos públicos —HTML, CSS/JS versionados, dos fuentes, ilustración WebP, dispositivos SVG, retratos, favicon, vista social y `.nojekyll`— respondieron HTTP 200 y coincidieron byte a byte con los archivos revisados. CSS `c4e2c166`, JS `9f3b1c0f`. HTTPS con validación TLS del sistema.
+
+La revisión técnica independiente final no encuentra nuevos mustfix concretos en el código; sus límites son revisión estática, sin FPS o navegador propio. Las comprobaciones de interacción y publicación corresponden a coordinación. Este cierre se guarda en un commit adicional solo de documentación, cuyo push/build se confirma en la entrega. [Web publicada](https://withnolan.github.io/senva/).
+
+No quedan fallos reproducibles observados dentro del alcance descrito. Se mantienen los límites de pruebas con viewports, simulación de preferencia reducida y ausencia de dispositivos/lector de pantalla reales.
