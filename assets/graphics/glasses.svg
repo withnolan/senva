@@ -1,8 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-250 -125 500 250" fill="none">
-  <g stroke="var(--device-line,#102e3b)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M-218-30c36-19 121-19 165 0 13 6 16 19 14 38l-4 25c-5 27-31 40-73 40-47 0-80-14-91-41-8-19-12-44-11-62Z" fill="var(--lens-fill,#f8f7f2)"/>
-    <path d="M218-30c-36-19-121-19-165 0-13 6-16 19-14 38l4 25c5 27 31 40 73 40 47 0 80-14 91-41 8-19 12-44 11-62Z" fill="var(--lens-fill,#f8f7f2)"/>
-    <path d="M-40-10c18-17 62-17 80 0M-239-30h21m457 0h-21"/>
+  <!-- Flat editorial concept. The arms and lens marks describe form, not hardware. -->
+  <g stroke="var(--device-line,#102e3b)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-215-18l-17-50c-3-10 0-19 9-23l12-5M215-18l17-50c3-10 0-19-9-23l-12-5"/>
   </g>
-  <path d="M-237-30h10m464 0h-10" stroke="#8de0d4" stroke-width="4" stroke-linecap="round"/>
+  <path d="M-225-38c42-17 121-18 168-4 20 6 36 8 57 8s37-2 57-8c47-14 126-13 168 4l9 34-15 7-8 35c-7 34-39 53-89 53-47 0-78-19-84-52l-5-30C25-7 13-13 0-13S-25-7-33 9l-5 30c-6 33-37 52-84 52-50 0-82-19-89-53l-8-35-15-7 9-34Z" fill="var(--device-line,#102e3b)"/>
+  <path d="M-207-18c33-11 99-12 139-2 12 3 18 11 16 23l-6 33c-5 24-28 36-65 36-38 0-62-12-68-37l-16-53ZM207-18c-33-11-99-12-139-2C56-17 50-9 52 3l6 33c5 24 28 36 65 36 38 0 62-12 68-37l16-53Z" fill="var(--lens-fill,#f8f7f2)"/>
+  <path d="M-195-12c27-7 61-9 91-6l-30 31h-51l-10-25ZM195-12c-27-7-61-9-91-6l30 31h51l10-25Z" fill="#8de0d4"/>
+  <path d="m-177 42 40-40M177 42 137 2" stroke="#08777b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M-221-22h13M221-22h-13" stroke="#8de0d4" stroke-width="4" stroke-linecap="round"/>
 </svg>

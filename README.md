@@ -100,7 +100,7 @@ La web parte de las personas y las posibilidades cotidianas que motivan SENVA. U
 
 The redesign uses bounded specialist tasks, a shared factual brief and independent review, informed by [AVIVA’s team method](https://github.com/withnolan/aviva/blob/main/CLAUDE.md). It preserves SENVA’s own identity and content. Decisions and review evidence: [design review](docs/design-review.md) and [progress](docs/redesign-progress.md).
 
-El rediseño utiliza tareas especializadas acotadas, un brief factual común y revisión independiente, a partir del método de equipo de AVIVA. Esta referencia organiza a los agentes; la identidad, el contenido y la dirección animada siguen siendo propios de SENVA. [Contrato de colaboración](AGENTS.md) · [Storyboard](docs/motion-direction.md). EN/ES, navegación por teclado, movimiento adaptado a móvil y alternativas sin animación forman parte de la implementación.
+El rediseño utiliza tareas especializadas acotadas, un brief factual común y revisión independiente, a partir del método de equipo de AVIVA. Esta referencia organiza a los agentes; la identidad, el contenido y la dirección animada siguen siendo propios de SENVA. [Contrato de colaboración](AGENTS.md) · [Dirección visual y movimiento](docs/visual-reset-brief.md). EN/ES, navegación por teclado, movimiento adaptado a móvil y alternativas sin animación forman parte de la implementación.
 
 <a id="quick-start"></a>
 ## Quick start / Inicio rápido
@@ -128,7 +128,7 @@ assets/                    Existing logo, portraits, social image / recursos
   graphics/                Original 2D SVG sources / fuentes SVG 2D propias
     conversation.svg       Two people / dos personas
     glasses.svg, glove.svg  Concept devices / dispositivos conceptuales
-  fonts/                   Local Manrope + SIL licence / fuente local y licencia
+  fonts/                   Local Bricolage + Instrument Sans / fuentes locales y licencias
   illustrations/           Earlier iteration, not loaded / iteración anterior
 docs/
   project-brief.md          Research hypotheses and Xiji / hipótesis y Xiji
@@ -136,8 +136,10 @@ docs/
   visual-assets.md         SVG sources and editing / fuentes SVG y edición
   redesign-progress.md      Decisions, checks and delivery / estado
   design-review.md           Earlier editorial review / revisión editorial anterior
-  motion-direction.md        Current animation storyboard / coreografía vigente
-  motion-review.md           Findings and corrections / hallazgos y correcciones
+  motion-direction.md        Earlier animation storyboard / coreografía anterior
+  motion-review.md           Earlier findings / hallazgos anteriores
+  visual-reset-brief.md      Current visual direction / dirección visual vigente
+  conversation-art.md       Editorial illustration / origen de la ilustración
 ```
 
 Detailed local preview under `/senva/`, editing, motion and publication: [technical guide / guía técnica](docs/technical-guide.md). Review status and limitations: [redesign progress / estado del rediseño](docs/redesign-progress.md).

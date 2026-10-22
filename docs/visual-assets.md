@@ -1,54 +1,36 @@
 # SENVA — Recursos visuales y tipografía
 
-La implementación editorial utiliza azul noche, blanco cálido y turquesa, ilustración 2D original y texto HTML traducible. Los gráficos explican una idea de investigación; no son pruebas de hardware, captación o traducción funcional.
+Azul noche, blanco cálido y turquesa; ilustración 2D y contenido HTML traducible. Los gráficos son conceptos de investigación, sin datos capturados o capacidades funcionales demostradas.
 
 ## Recursos activos
 
-| Recurso | Fuente | Uso |
-| --- | --- | --- |
-| Conversación entre dos personas | `assets/graphics/conversation.svg` | Fuente de portada, integrada en línea por capas; alternativa EN/ES mediante `heroArtAlt`. |
-| Gafas frontales | `assets/graphics/glasses.svg` | Primera dirección del diagrama de visión. |
-| Guante vacío | `assets/graphics/glove.svg` | Segunda dirección y primera hipótesis de práctica. |
-| Señal de voz y conexiones | HTML/CSS del diagrama; SVG local en la práctica | Relaciones conceptuales, sin datos capturados. |
-| Ilustraciones de la práctica y sus preguntas | HTML, SVG y CSS en `index.html` / `styles.css` | Interfaz ilustrativa adaptable, con texto EN/ES. |
-| Retratos | `assets/shengyu-nolan-chen.jpg`, `assets/santiago-munoz-veguillas.jpg` | Fotografías facilitadas por el usuario, con igual tratamiento. |
-| Identidad | `assets/favicon.svg`, `assets/senva-logo.svg`, marca en cabecera/pie | Logo conservado. |
-| Vista previa social | `assets/social-card.svg`, `.png` | Fuente editable y exportación de 1200 × 630 para metadatos. |
-| Manrope | `assets/fonts/manrope-variable.ttf` | Tipografía local de la web; licencia adjunta. |
+| Recurso | Uso y origen |
+| --- | --- |
+| `assets/illustrations/conversation-editorial.webp` | Portada, dos adultos con manos en reposo. Generación editorial mediante imagegen; [origen, selección y límites](conversation-art.md). 1200×800 y unos 122 KB. |
+| `assets/graphics/glasses.svg` | Montura plana, patillas y detalles geométricos; ilustración vectorial propia. |
+| `assets/graphics/glove.svg` | Guante textil vacío con panel, costuras y puño; no es un signo concreto ni un esquema de sensores. |
+| Conexiones y voz | SVG/CSS originales, relaciones conceptuales. No representan reconocimiento real. |
+| `assets/shengyu-nolan-chen.jpg`, `santiago-munoz-veguillas.jpg` | Fotografías facilitadas por el usuario; mismo tratamiento y tamaño reservado. |
+| Favicon, símbolo y palabra SENVA | Identidad conservada. El logo mantiene su familia independiente. |
+| `assets/social-card.svg`, `.png` | Vista social 1200×630, nueva ilustración. SVG con imagen PNG embebida para exportación; PNG final para metadatos. |
 
-## Ilustraciones originales
+Dispositivos cargados como `<img>` sobre fondo claro. Son archivos únicos compartidos por sus usos, sin paths duplicados dentro de un stage adicional. Textos, conceptos y aclaraciones se mantienen en HTML.
 
-`conversation.svg` es una ilustración vectorial original creada por el agente para este proyecto. Contiene los grupos `left-person`, `shared-space` y `right-person`, sobre un `viewBox` de 720 × 720. Representa dos personas adultas y un espacio compartido; no reproduce un signo concreto, testimonio o resultado de investigación. Está construida con colores planos, sin modelos, texturas ni recursos de terceros. En la portada sus grupos equivalentes `person-left`, `shared-space` y `person-right` se integran en línea para animar aproximación e hilo. Si cambia el dibujo fuente, sincronizar esa copia en `index.html` y la vista social; no editar únicamente una representación.
+La nueva imagen tiene alfa real. Su raster utiliza familias cromáticas y antialiasing; no se afirma una paleta matemática de cuatro valores exactos. No hay naranja, modelado 3D, iluminación volumétrica ni un renderer de ejecución.
 
-Las gafas y el guante se redibujaron directamente en SVG para SENVA. Comparten un contorno sencillo y pesos proporcionales; se retiraron reflejos, bordes duplicados y líneas interiores redundantes. El guante está vacío, con cinco dedos, pulgar lateral y muñeca corta; no contiene una mano anatómica ni representa un signo lingüístico.
+## Tipografía local
 
-Sus fuentes conservan `var(--device-line,#102e3b)` para el contorno y, en las gafas, `var(--lens-fill,#f8f7f2)` para las lentes. **La web actual los carga con `<img>` y `<image>` sobre superficies claras**, usando los colores de respaldo. Las variables de la página no atraviesan el documento externo de una imagen SVG. Si en el futuro se integran como SVG en línea, podrán heredarse `--device-line:#f8f7f2` y `--lens-fill:#102e3b` para un fondo azul noche, sin añadir un segundo borde.
+- **Bricolage Grotesque**, titulares, pesos variables 400–800; fuente [original](https://github.com/ateliertriay/bricolage), distribución oficial [google/fonts](https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque). Licencia [BricolageGrotesque-OFL.txt](../assets/fonts/BricolageGrotesque-OFL.txt).
+- **Instrument Sans**, lectura e interfaz, pesos variables 400–700; fuente [original](https://github.com/Instrument/instrument-sans), distribución oficial [google/fonts](https://github.com/google/fonts/tree/main/ofl/instrumentsans). Licencia [InstrumentSans-OFL.txt](../assets/fonts/InstrumentSans-OFL.txt).
 
-No hay paths de dispositivos duplicados en `index.html` ni capas claras/oscuras superpuestas: el stage reutiliza sus fuentes externas mediante `<image>`. El escenario de visión reúne ambas direcciones, pero cambia su composición mediante recorridos laterales amplios y trazados SVG. El HTML conserva las rutas accesibles; el stage por capas es decorativo. Los textos y aclaraciones permanecen disponibles.
+WOFF2 latinos oficiales descargados mediante Google Fonts CSS2, aproximadamente 77 y 30 KB. Conservan caracteres EN/ES y puntuación. Dos `@font-face`, `font-display:swap`, preload local y respaldo sans-serif. El visitante no solicita Google Fonts ni otro CDN. No son conversiones realizadas por el proyecto.
 
-## Tipografía y licencia
+Manrope y su licencia se conservan como recursos anteriores sin carga actual. La palabra de marca sigue en Arial/Helvetica, peso 750 y espaciado anterior.
 
-Manrope procede del repositorio oficial [google/fonts, `ofl/manrope`](https://github.com/google/fonts/tree/main/ofl/manrope): `Manrope[wght].ttf`, guardado localmente como `assets/fonts/manrope-variable.ttf`. La licencia oficial `OFL.txt` se conserva como [assets/fonts/OFL-Manrope.txt](../assets/fonts/OFL-Manrope.txt), **SIL Open Font License 1.1**, con el aviso de copyright de The Manrope Project Authors.
+## Edición y límites
 
-La fuente y licencia locales se contrastaron con los objetos publicados por `google/fonts`: sus identificadores de blob coinciden (`75274da58537d6123b14f2cd0c355ad4681fc2b3` y `e271172a9ed0cddc895aabb6509f1c7d880b492d`). Esta comprobación identifica la procedencia de los archivos; no es una prueba del renderizado del navegador.
+Conservar los `viewBox` y proporciones de los SVG; revisar objetos a tamaño grande y móvil. No añadir puntos de reconocimiento, sensores elegidos, marcas o arquitectura inventada. La ilustración humana no es testimonio, retrato de usuarios investigados ni referencia lingüística de LSE.
 
-`styles.css` declara `@font-face`, pesos 400–800 y `font-display: swap`, con Arial/Helvetica/sans-serif como respaldo. No se solicita Google Fonts durante la visita. La palabra de marca conserva su familia independiente. Al redistribuir o sustituir la fuente, conservar su licencia y comprobar las condiciones del recurso concreto; no atribuir la tipografía a SENVA.
+Mantener medidas reservadas, alternativas EN/ES y textos en HTML. Si cambia la portada, actualizar vista social y revisar su PNG: algunos exportadores SVG no soportan imágenes WebP embebidas, por eso la fuente social usa PNG. Sharp solo se usa durante autoría.
 
-## Editar sin romper la integración
-
-1. Editar las fuentes SVG directamente, conservando sus `viewBox` y proporciones. La ilustración de conversación tiene grupos separados; los dispositivos son archivos externos compartidos por sus usos.
-2. Conservar `fill="none"` y rellenos explícitos donde correspondan. Evitar sombras, perspectiva, reflejos o trazos añadidos para ocultar problemas de contraste.
-3. Mantener los textos del diagrama, preguntas, estado y avisos en HTML y traducciones de `script.js`; no convertir una sección en una imagen ni incrustar sus textos en SVG.
-4. Reservar dimensiones en las imágenes. Revisar encuadre, títulos, alternativas EN/ES y longitudes de etiquetas en móvil y escritorio.
-5. Si cambia la portada, actualizar la fuente `social-card.svg`, su PNG de 1200 × 630 y las alternativas sociales EN/ES. Sharp puede exportar el SVG desde el entorno de autoría; no es una dependencia de ejecución de la web. Revisar el PNG exportado antes de publicarlo.
-6. Conservar logo, retratos y licencia de la fuente; registrar las comprobaciones visuales reales en [el seguimiento del rediseño](redesign-progress.md).
-
-## Límites de representación y archivo
-
-- La frase cotidiana es ficticia y no se atribuye a una persona real.
-- La información facial, corporal y espacial y su captación siguen por resolver; el guante no traduce una lengua por sí solo.
-- La práctica presenta preguntas de investigación, sin mediciones, puntuaciones o correcciones lingüísticas validadas.
-- La situación de las personas de la portada no es un testimonio ni el retrato de un participante investigado.
-- Los PNG/WebP de `assets/illustrations/` pertenecen a iteraciones anteriores. Se conservan como archivo pasivo y no se solicitan en la página actual. El historial Git conserva los dibujos y coreografías sustituidos.
-
-Este documento registra recursos y mantenimiento. La existencia de un SVG, una exportación o una licencia no acredita por sí sola pruebas responsive, de accesibilidad o del despliegue.
+Los recursos históricos ajenos se preservan. `assets/graphics/conversation.svg` y otras ilustraciones anteriores no se solicitan por la implementación actual. El historial Git conserva las coreografías sustituidas. Registrar revisión real y límites en [redesign-progress.md](redesign-progress.md).

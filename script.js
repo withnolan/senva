@@ -240,7 +240,7 @@
   const toggle = document.querySelector('.menu-toggle');
   const mobile = matchMedia('(max-width: 760px)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const diagramMotion = matchMedia('(min-width: 1000px) and (min-height: 640px)');
+  const diagramMotion = matchMedia('(min-width: 1100px) and (min-height: 700px)');
   const languages = [...document.querySelectorAll('[data-language]')];
   const diagram = document.querySelector('.vision-diagram');
   let language = 'en';
@@ -291,10 +291,10 @@
       }
     }
     try { localStorage.setItem('senva-language', next); } catch { /* Optional preference. */ }
-    queueMotion();
+    queueMeasure();
   }
 
-  toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  toggle.addEventListener('click', () => { root.classList.add('menu-used'); setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setMenu(false, true);
   });
@@ -308,162 +308,97 @@
   }));
   languages.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
 
-  // One native-scroll controller, active only near the three visual sequences.
-  // Copy stays in normal flow; only decorative 2D layers use these progress values.
-  let frame = 0;
+  // Native scrolling owns the document. Only decorative poses settle briefly.
+  // Geometry is measured after layout changes, never after writes in a frame.
   const clamp = value => Math.max(0, Math.min(1, value));
   const smooth = value => { value = clamp(value); return value * value * (3 - 2 * value); };
-  const mix = (a, b, value) => a + (b - a) * value;
   const hero = document.querySelector('.hero');
   const purpose = document.querySelector('.purpose');
   const vision = document.querySelector('.vision');
   const visionLayout = document.querySelector('.vision-layout');
   const experiment = document.querySelector('.experiment');
   const practiceLayout = document.querySelector('.experiment-layout');
-  const artboard = document.querySelector('.vision-artboard');
-  const readingA = document.querySelector('[data-route="voice"] .vision-copy');
-  const readingB = document.querySelector('[data-route="manual"] .vision-copy');
-  const blocks = [hero, purpose, vision, experiment];
-  const visibleBlocks = new Set();
-  const percentX = value => (value / 12).toFixed(3) + '%';
-  const percentY = value => (value / 6.4).toFixed(3) + '%';
-  const styles = (element, values) => {
-    for (const [name, value] of Object.entries(values)) element.style.setProperty(name, String(value));
-  };
+  let frame = 0, measureFrame = 0, previousTime = 0, geometry = null;
+  const pose = {hero: 0, purpose: 0, vision: 0, practice: 0};
+  let settled = false;
+  function measureMotion() {
+    measureFrame = 0;
+    const y = scrollY;
+    const box = el => { const r = el.getBoundingClientRect(); return {top: r.top + y, height: r.height}; };
+    geometry = {height: innerHeight, hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height};
+    queueMotion();
+  }
+  function queueMeasure() {
+    if (!measureFrame) measureFrame = requestAnimationFrame(measureMotion);
+  }
   function updateMotionMode() {
     const allowed = !reduced.matches && 'IntersectionObserver' in window;
     root.classList.toggle('motion-ready', allowed);
     root.classList.toggle('motion-desktop', allowed && diagramMotion.matches);
     if (!allowed) root.classList.remove('enter');
-    if (allowed && visibleBlocks.size) addEventListener('scroll', queueMotion, {passive: true});
-    else removeEventListener('scroll', queueMotion);
-    queueMotion();
+    settled = false;
+    queueMeasure();
   }
-  function updateMotion() {
+  function updateMotion(time) {
     frame = 0;
-    if (document.hidden) return;
-    const height = innerHeight;
+    if (document.hidden || !geometry) return;
     const enabled = root.classList.contains('motion-ready');
-    const header = document.querySelector('.site-header').getBoundingClientRect().height;
-    if (visibleBlocks.has(hero) || !enabled) {
-      const box = hero.getBoundingClientRect();
-      const value = enabled ? clamp((header - box.top) / Math.max(240, box.height * .72)) : 1;
-      const picture = hero.querySelector('.conversation-art').getBoundingClientRect();
-      const personShift = (innerWidth <= 760 ? 20 : 44) * 720 / Math.max(1, picture.width);
-      styles(hero, {'--hero-progress': value.toFixed(4), '--person-shift': personShift.toFixed(2) + 'px'});
+    const y = scrollY, g = geometry;
+    const desktop = root.classList.contains('motion-desktop');
+    const target = {
+      hero: enabled ? clamp(y / Math.max(300, g.hero.height * .72)) : 1,
+      purpose: enabled ? clamp((y + g.height * .85 - g.purpose.top) / (g.height * .8)) : 1,
+      vision: enabled ? (desktop ? clamp((y + 150 - g.vision.top) / Math.max(1, g.vision.height - g.stage)) : clamp((y + g.height * .65 - g.vision.top) / Math.max(1, g.vision.height * .7))) : 1,
+      practice: enabled ? clamp((y + g.height * .9 - g.practice.top) / (g.height * .75)) : 1
+    };
+    const dt = previousTime ? Math.min(50, time - previousTime) : 16;
+    previousTime = time;
+    const alpha = !enabled || !settled ? 1 : 1 - Math.exp(-dt / 70);
+    let moving = false;
+    for (const key of Object.keys(pose)) {
+      pose[key] += (target[key] - pose[key]) * alpha;
+      if (Math.abs(target[key] - pose[key]) < .0005) pose[key] = target[key];
+      else moving = true;
     }
-    if (visibleBlocks.has(purpose) || !enabled) {
-      const box = purpose.getBoundingClientRect();
-      const value = enabled ? clamp((height * .9 - box.top) / (height * .75)) : 1;
-      purpose.style.setProperty('--purpose-progress', value.toFixed(4));
-    }
-    if (visibleBlocks.has(experiment) || !enabled) {
-      const box = practiceLayout.getBoundingClientRect();
-      const value = enabled ? clamp((height * .95 - box.top) / (height * .78)) : 1;
-      experiment.style.setProperty('--practice-progress', value.toFixed(4));
-    }
-    if (!visibleBlocks.has(vision) && enabled) return;
-    const layout = visionLayout.getBoundingClientRect();
-    if (!root.classList.contains('motion-desktop')) {
-      const value = enabled ? clamp((height * .9 - layout.top) / (height * .9)) : 1;
-      styles(vision, {'--mobile-vision-progress': value.toFixed(4), '--mobile-line-progress': (.25 + value * .75).toFixed(4)});
-      vision.dataset.motionProgress = value.toFixed(4);
-      return;
-    }
-    const stage = diagram.getBoundingClientRect();
-    const board = artboard.getBoundingClientRect();
-    const scale = board.width / 1200;
-    const range = Math.max(1, layout.height - stage.height);
-    const progress = clamp((88 - layout.top) / range);
-    const a = readingA.getBoundingClientRect();
-    const b = readingB.getBoundingClientRect();
-    const crossing = smooth((progress - .28) / .44);
-    const gs = mix(.82, .5, crossing);
-    // Reserve the actual concept/status band as well as the main copy. The
-    // external SVG image box includes its lens whitespace, so use its full
-    // 250-unit height when keeping the upper crossing below that band.
-    const legendBottom = Math.max(
-      diagram.querySelector('.diagram-head').getBoundingClientRect().bottom,
-      diagram.querySelector('figcaption').getBoundingClientRect().bottom
-    );
-    const minimumGy = (legendBottom + 22 - board.top) / scale + 125 * gs;
-    const gy = Math.max(minimumGy, mix(250, 130, crossing) - Math.sin(Math.PI * crossing) * 55);
-    const laneTop = board.top + (gy - 125 * gs) * scale;
-    const clearLane = smooth((laneTop - a.bottom - 14) / Math.max(45, 90 * scale));
-    const glassesTravel = crossing * clearLane;
-    const gx = mix(850, 300, glassesTravel);
-    const source = gx - 330 * gs - 50;
-    const manualTravel = smooth((progress - .29) / .42);
-    const gloveVisible = smooth((progress - .26) / .13);
-    const labelsVisible = smooth((progress - .49) / .20);
-    const hx = mix(900, 310, manualTravel);
-    let hy = mix(500, 390, manualTravel) - Math.sin(Math.PI * manualTravel) * 85;
-    let hs = .58 - Math.sin(Math.PI * manualTravel) * .12;
-    // The glove traverses the gap between the outgoing left copy and the
-    // incoming right copy. Real text boxes define that gap after translation.
-    const halfWidth = 155 * hs * scale;
-    const centreX = board.left + hx * scale;
-    let low = 45 + 230 * hs;
-    let high = 625 - 230 * hs;
-    if (centreX - halfWidth < a.right + 22 && centreX + halfWidth > a.left - 22 && a.bottom > header) {
-      low = Math.max(low, (a.bottom + 22 - board.top) / scale + 230 * hs);
-    }
-    if (centreX + halfWidth > b.left - 22 && centreX - halfWidth < b.right + 22 && b.top < height) {
-      high = Math.min(high, (b.top - 22 - board.top) / scale - 230 * hs);
-    }
-    if (low <= high) hy = Math.max(low, Math.min(high, hy));
-    const outputX = hx - 190;
-    const captionY = gy + 115 * gs + 15;
-    const manualLabelY = hy + 230 * hs + 15;
-    const manualLabelHeight = document.querySelector('.stage-manual-label').getBoundingClientRect().height;
-    const researchY = manualLabelY + (manualLabelHeight + 14) / scale;
-    const voicePath = document.querySelector('.stage-voice-path');
-    const manualPath = document.querySelector('.stage-manual-path');
-    voicePath.setAttribute('d', `M${source + 38} ${gy}C${source + 75} ${gy} ${gx - 245 * gs - 20} ${gy} ${gx - 245 * gs} ${gy}M${gx} ${gy + 78 * gs}C${gx} ${captionY - 14} ${gx} ${captionY - 14} ${gx} ${captionY - 10}`);
-    manualPath.setAttribute('d', `M${hx - 90 * hs} ${hy}C${hx - 120} ${hy} ${outputX + 70} ${hy} ${outputX + 42} ${hy}`);
-    styles(vision, {
-      '--glasses-x': gx.toFixed(2) + 'px', '--glasses-y': gy.toFixed(2) + 'px', '--glasses-scale': gs.toFixed(4),
-      '--source-x': source.toFixed(2) + 'px', '--source-scale': mix(1, .7, crossing).toFixed(4),
-      '--glove-x': hx.toFixed(2) + 'px', '--glove-y': hy.toFixed(2) + 'px', '--glove-scale': hs.toFixed(4),
-      '--field-x': mix(850, 310, smooth((progress - .3) / .45)).toFixed(2) + 'px', '--field-y': '325px', '--field-scale': mix(1, .96, crossing).toFixed(4),
-      '--manual-visible': gloveVisible.toFixed(4), '--manual-label-visible': labelsVisible.toFixed(4),
-      '--voice-dash': (1 - smooth((progress - .02) / .2)).toFixed(4), '--manual-dash': (1 - labelsVisible).toFixed(4),
-      '--source-label-x': percentX(source), '--source-label-y': percentY(gy + 56),
-      '--caption-x': percentX(gx), '--caption-y': percentY(captionY),
-      '--manual-label-x': percentX(hx), '--manual-label-y': percentY(manualLabelY),
-      '--output-x': percentX(outputX), '--output-y': percentY(hy - 42),
-      '--research-y': percentY(researchY), '--legend-left': mix(56, 0, glassesTravel).toFixed(3) + '%'
-    });
-    vision.dataset.motionProgress = progress.toFixed(4);
+    settled = true;
+    hero.style.setProperty('--hero-progress', pose.hero.toFixed(4));
+    purpose.style.setProperty('--purpose-progress', pose.purpose.toFixed(4));
+    experiment.style.setProperty('--practice-progress', pose.practice.toFixed(4));
+    const exchange = smooth((pose.vision - .16) / .56);
+    vision.style.setProperty('--exchange', exchange.toFixed(4));
+    vision.style.setProperty('--manual-reveal', smooth((pose.vision - .30) / .25).toFixed(4));
+    vision.style.setProperty('--voice-trace', (1 - smooth(pose.vision / .22)).toFixed(4));
+    vision.dataset.motionProgress = pose.vision.toFixed(4);
+    if (moving) frame = requestAnimationFrame(updateMotion);
+    else previousTime = 0;
   }
-  function queueMotion() { if (!frame) frame = requestAnimationFrame(updateMotion); }
+  function queueMotion() {
+    if (!frame && !document.hidden) frame = requestAnimationFrame(updateMotion);
+  }
   if ('IntersectionObserver' in window) {
-    const motionObserver = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) visibleBlocks.add(entry.target);
-        else visibleBlocks.delete(entry.target);
-      }
-      if (visibleBlocks.size && !reduced.matches) { addEventListener('scroll', queueMotion, {passive: true}); queueMotion(); }
-      else removeEventListener('scroll', queueMotion);
-    }, {rootMargin: '100px 0px'});
-    blocks.forEach(block => motionObserver.observe(block));
     const chapters = [...document.querySelectorAll('[data-chapter]')];
-    const chapterObserver = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver(entries => {
       for (const entry of entries) if (entry.isIntersecting) {
         chapters.forEach(link => {
           if (link.dataset.chapter === entry.target.id) link.setAttribute('aria-current', 'step');
           else link.removeAttribute('aria-current');
         });
       }
-    }, {rootMargin: '-15% 0px -55% 0px', threshold: 0});
-    chapters.forEach(link => chapterObserver.observe(document.getElementById(link.dataset.chapter)));
+    }, {rootMargin: '-20% 0px -55% 0px'});
+    chapters.forEach(link => observer.observe(document.getElementById(link.dataset.chapter)));
+    addEventListener('scroll', queueMotion, {passive: true});
   }
   addEventListener('resize', updateMotionMode, {passive: true});
   diagramMotion.addEventListener('change', updateMotionMode);
   reduced.addEventListener('change', updateMotionMode);
+  if ('ResizeObserver' in window) {
+    const sizeObserver = new ResizeObserver(queueMeasure);
+    [hero, purpose, visionLayout, practiceLayout, diagram].forEach(el => sizeObserver.observe(el));
+  }
+  if (document.fonts?.ready) document.fonts.ready.then(queueMeasure);
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden && frame) { cancelAnimationFrame(frame); frame = 0; }
-    else queueMotion();
+    if (document.hidden && frame) { cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
+    else queueMeasure();
   });
   try {
     const saved = localStorage.getItem('senva-language');

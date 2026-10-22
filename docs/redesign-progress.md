@@ -323,3 +323,39 @@ Once recursos públicos —HTML, CSS/JS versionados, fuente, dispositivos SVG, r
 Fuera del repositorio se guardaron capturas y un GIF de once estados reales del recorrido, con regreso mediante la secuencia inversa de esas capturas: `senva-motion-return.gif`. Es una vista de estados, no una grabación continua ni una medición de fluidez/FPS. La navegación nativa hacia delante y atrás se comprobó aparte.
 
 Este cierre solo actualiza el registro de entrega; se guarda en un segundo commit normal. No quedan fallos reproducibles observados dentro del alcance descrito. Se conservan los límites de revisión indicados arriba. [Web publicada](https://withnolan.github.io/senva/).
+
+<a id="visual-reset"></a>
+## Revisión visual y fluidez — 22 de octubre de 2026
+
+### Inspección y dirección — terminadas
+
+El usuario ha vuelto a rechazar la tipografía, las ilustraciones y los errores del recorrido. La inspección directa de la web publicada confirma una mitad de visión con etiquetas casi invisibles, texto saliente residual y entrante fuera del marco. Auditoría independiente identifica trayectoria condicional, mezcla de lecturas/escrituras por frame y demasiados estilos acumulados.
+
+Referencias primarias consultadas: TuffStudy, Ava y XRAI. Skill `frontend-design` de Anthropic consultada e instalada desde su repositorio oficial; queda disponible para próximos turnos. Brief vigente: [visual-reset-brief.md](visual-reset-brief.md). Se mantienen hechos, logo y paleta; se cambia tipografía y composición. Arte y revisión con propiedad de archivos separada.
+
+### Implementación — terminada; revisión en curso
+
+Retícula estable de lectura y arte, trayectoria continua y amortiguación temporal de 70 ms solo de ilustraciones. Geometría cacheada en resize, idioma y carga de fuentes; se retiran los guards de colisión y las escrituras de paths/left/top por frame. RAF se detiene al asentarse y al ocultar la pestaña. No se sustituye el scroll nativo.
+
+Fuentes Bricolage Grotesque e Instrument Sans locales en WOFF2 latino (107 KB en conjunto), con licencias OFL y preload. Nueva ilustración editorial 2D de conversación, 1200×800 y 122 KB WebP con alfa; origen y límites en [conversation-art.md](conversation-art.md). Gafas/guante refinados en SVG y vista social actualizada. Logo y retratos conservados. Estilos consolidados en una sola implementación por componente.
+
+La primera revisión corrigió el hueco entre lecturas, el cierre de tarjeta en el gráfico, la escala del guante, el agrupamiento de etiquetas y un desbordamiento de la imagen de gafas a 320 px. Comprobación afectada EN/ES repetida con desbordamiento cero. Pendientes revisión final de transiciones, teclado, alternativas y publicación.
+
+### Comprobaciones finales
+
+- Matriz real de viewport EN/ES: 320×844, 390×844, 768×1024, 1000×680, 1280×720, 1440×900 y 844×390. Desbordamiento horizontal cero, sin recortes medidos en titulares, párrafos, botones y etiquetas revisadas. Corregida y repetida la imagen de gafas a 320 px.
+- Inspección visual de portada, lecturas A/B, estados intermedios y regreso con scroll/teclado nativos, primera hipótesis, equipo y cierre. La revisión independiente de capturas no encuentra fallos visuales imprescindibles; no equivale a medir fluidez. Se compactaron los intervalos de lectura y se retiró la tarjeta de la visión. La barra de capítulos queda limitada al recorrido y libera las secciones directas.
+- A 1280×720, avance desde progreso 0,002 hasta 1 y regreso a 0,451. Cambio EN→ES con título de la segunda lectura a 471,86 px antes y 471,76 px después; lang/título correctos. Las figuras no atraviesan texto. Separación entre etiquetas y aviso revisada también durante la entrada.
+- Móvil390: título, misión, CTA, figuras, ambas rutas y avisos legibles en flujo, sin pin. Menú abre con foco en primer enlace; Tab y Escape cierran devolviendo foco. Cambio de orientación a 844×390 y regreso. Anclas de visión/equipo llegan a destinos reales con foco.
+- Arnés externo sin JS a 320 px: inglés completo, menú visible, idioma dependiente de script oculto, rutas en flujo y desbordamiento cero. Preferencia reducida equivalente simulada: sin sticky, transformaciones o scroll suave. Sin observador: lectura normal y selector ES funcional. No se modificó la preferencia real del sistema.
+- 114 pares de claves/valores EN/ES idénticos a la entrega anterior. Logo, favicon y retratos idénticos. HTML equilibrado, IDs/anclas, SVG, enlaces Markdown y PNG social 1200×630 válidos. Sintaxis JS y `git diff --check` correctos. Consola sin errores/avisos registrados en la revisión.
+
+Capturas y matriz fuera del repositorio con prefijo `senva-visual-reset-`. Hubo un zoom residual de la herramienta durante una sesión de inspección; esas capturas no se usaron como prueba responsive final. Se repitieron las medidas con una pestaña limpia, comprobando dimensiones CSS y escala efectiva. Pruebas en navegador integrado, sin dispositivos físicos, lector de pantalla real o medición de FPS. No se afirma rendimiento cuantificado.
+
+### Revisión — cerrada localmente
+
+Las dos críticas visuales independientes se incorporaron a la composición; no quedan fallos visuales imprescindibles observados en las capturas finales. Se ha sincronizado la entrada del grupo manual con el espacio que libera la voz, sin guardas de colisión. El caso ajustado de entrada a 1280×720 conserva margen entre leyendas y aviso; las etiquetas del grupo reducido se dimensionan para mantener al menos 12 px efectivos en su reposo final. La barra de capítulos termina antes del contenido directo; comprobado fuera del viewport al final de página.
+
+### Publicación — pendiente
+
+Implementación lista para commit y push normal. Falta confirmar el build y los recursos públicos. Sin cambios de configuración del repositorio.

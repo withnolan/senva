@@ -1,5 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-155 -230 310 460" fill="none">
-  <path d="M-45 183v-25c-1-26-17-50-36-77l-48-63c-8-12-6-25 5-30 11-6 23 1 31 13l30 39c-3-35-4-56-6-80l-9-88c-2-19 8-32 21-32s22 10 24 28l10 88c1 10 5 10 5 10l-6-144c-1-20 8-33 21-33s21 12 21 31l3 136c0 10 6 10 6 10l7-127c2-20 11-31 24-30s20 13 18 33l-9 138c0 10 6 12 6 12l14-100c3-17 13-26 25-23 13 3 17 15 14 31L108 36c-4 31-16 59-31 85-8 14-13 29-14 40v22c-36 10-72 10-108 0Z" fill="#8de0d4" stroke="var(--device-line,#102e3b)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M-45 158H63v25c-36 10-72 10-108 0Z" fill="#08777b" stroke="var(--device-line,#102e3b)" stroke-width="5.5" stroke-linejoin="round"/>
-  <path d="M-24 171H42" stroke="#8de0d4" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- An unposed textile glove concept, without recognition points or a signed gesture. -->
+  <path d="M-49 171v-24c-1-24-13-44-31-68l-45-58c-9-12-8-24 1-31 10-7 22-2 32 10l27 34-11-171c-1-17 7-28 19-29 12-1 21 8 23 25l11 102-4-155c0-18 8-30 21-30 12 0 21 11 21 28l5 149 8-133c1-17 10-27 23-26 12 1 19 13 18 29L60-11l13-103c3-16 12-24 23-22 13 2 18 13 16 29L99 33c-3 31-12 58-28 84-8 14-12 28-12 43v11H-49Z" fill="#8de0d4" stroke="var(--device-line,#102e3b)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m-69 33-19-24c-7-9-15-14-22-12l46 65c20 26 29 52 29 84v12h19v-24c0-44-19-74-53-101Z" fill="#08777b"/>
+  <path d="M-62-129-51-18M-11-174-7-24M36-153 28-19M87-102 75-2" stroke="#f8f7f2" stroke-width="3" stroke-linecap="round"/>
+  <g stroke="#08777b" stroke-width="2.5" stroke-linecap="round">
+    <path d="M-46-8c12-5 22-5 34-1M7-11c11-4 20-3 29 2M52-4c10-2 18 0 24 4"/>
+    <path d="M-14 24c13-4 29-4 42 0M-15 37c14-4 29-3 41 1"/>
+    <path d="M57 58c-8 19-11 40-10 62"/>
+  </g>
+  <path d="M-52 144c38 8 78 8 114 0v48c-36 10-76 10-114 0v-48Z" fill="#08777b" stroke="var(--device-line,#102e3b)" stroke-width="5.5" stroke-linejoin="round"/>
+  <path d="M-42 156c32 5 63 5 94 0M-42 181c32 6 63 6 94 0" stroke="#8de0d4" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 5"/>
+  <path d="M25 158h46v22H25c-6 0-10-4-10-11s4-11 10-11Z" fill="#102e3b"/>
+  <path d="M27 169h20" stroke="#f8f7f2" stroke-width="3" stroke-linecap="round"/>
 </svg>
