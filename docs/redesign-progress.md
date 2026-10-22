@@ -2,7 +2,7 @@
 
 Actualizado: 22 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Trabajo actual:** [Revisión editorial con método de agentes](#editorial-review), 22 de octubre de 2026, sobre `27a7d3d`. Los bloques anteriores conservan el historial.
+**Trabajo actual:** [Recuperar la coreografía](#motion-return), sobre `d0ba6f9`. La revisión editorial anterior no satisfizo la intención de movimiento; se conserva su contenido y se corrige la experiencia. Los bloques anteriores conservan el historial.
 
 ## Objetivo y alcance
 
@@ -281,3 +281,39 @@ Pruebas en navegador con tamaños de viewport, no en dispositivos físicos; revi
 Implementación guardada y pusheada a `origin/main` en `8a09545a8881c69be8f5ae427a25216427931dc2`. GitHub Pages devolvió `built` para ese SHA, sin error. Se abrió la web pública y se revisaron portada móvil y escritorio; estado, EN/ES, fuente y nueva ilustración cargan correctamente. Once recursos publicados —incluidos HTML, CSS/JS con sus versiones, fuente, SVG, retratos y PNG social— coinciden byte a byte con los archivos locales revisados. La fuente de Pages permanece en `main`, `/`, modo `legacy`.
 
 Este registro de cierre se guarda en un segundo commit normal, sin cambios de implementación. [Web publicada](https://withnolan.github.io/senva/).
+
+
+<a id="motion-return"></a>
+## Recuperar la coreografía — 22 de octubre de 2026
+
+### Corrección de alcance
+
+El usuario ha aclarado que AVIVA debía servir como referencia de **trabajo con agentes**, no como argumento para cambiar la dirección de la web. El rediseño anterior dejó una página demasiado estática. Conservar su contenido más claro y recuperar la esencia inmersiva mediante una coreografía visible, nativa y reversible.
+
+### Organización y brief — terminados
+
+Dirección creativa ha entregado [motion-direction.md](motion-direction.md); desarrollo es propietario de HTML/CSS/JS; revisión independiente evalúa movimiento, contenido y fallos concretos. Coordinación integra, verifica en navegador y realiza Git. El contrato persistente está en [AGENTS.md](../AGENTS.md).
+
+### Implementación — terminada
+
+Portada con personas por capas, hilo trazado y distancias compensadas al escalar el SVG. Propósito con conexión entre situaciones. Visión abierta a ancho total, dos lecturas y recorrido lateral de gafas y guante mediante scroll nativo. Entrada de práctica con despliegue de hoja y trazado; reposo final. En móvil se mantiene movimiento corto sin fijación. Sin dependencias nuevas.
+
+Contenido EN/ES idéntico al baseline: 114 claves; logo, favicon y fotografías idénticos por hash. Se han retirado las transformaciones antiguas del 2 % y actualizado versiones CSS/JS.
+
+### Revisión — terminada localmente
+
+[Informe de hallazgos](motion-review.md). Dirección creativa y revisión técnica independientes han examinado código y capturas; coordinación realiza navegación real. Se corrigieron cuadrícula heredada, carril de leyenda, respaldo accesible de rutas y separación de etiquetas.
+
+- Visión EN a 1280×720: inicio, 25 %, mitad, 75 %, final y regreso, con cambio espacial perceptible y texto en flujo. Mitad ES repetida. A 1000×680 ES, cruces de 50 % y 65 % sin invasión observada de texto; leyendas separadas 14 px.
+- Entrada de práctica 25 %, 50 % y 100 % a 1000×680 ES: texto visible dentro del marco, trazo progresivo y matriz de reposo sin transformación; regreso a 25 % comprobado.
+- Matriz EN/ES en 320×844, 390×844, 768×1024, 1000×680, 1280×720, 1440×900 y 844×390: desbordamiento horizontal cero y sin recortes medidos en el texto revisado. El modo de escenario permanece activo a 1280×720 y 1000×680.
+- Sintaxis JS, HTML, claves EN/ES, rutas, recursos y `git diff --check` correctos.
+- Móvil390×844: aproximación de personas y revelado de hilo observados en inicio y progreso 0,5389; rutas con desplazamiento opuesto y crecimiento de conexión en progreso 0,7108. Sin fijación ni desbordamiento. La matriz incluye 320 px y orientación 844×390.
+- Menú móvil: primer enlace enfocado al abrir, Tab, Escape y foco de retorno; redimensionado con menú abierto. Anclas y modo de escenario recuperado al volver a escritorio. El árbol accesible completo conserva información manual y salida texto/voz en modo animado.
+- Cambio ES→EN durante la lectura B: título a 417,98 px antes y 418,07 px después; metadatos/lang correctos. La escena continúa sin ocultar contenido.
+- Arneses externos: sin JS con inglés completo y rutas/menú visibles; sin observador con lectura normal y selector funcional; almacenamiento bloqueado sin impedir el idioma. Reducción de movimiento equivalente en CSS/JS: sin sticky, transformaciones, trazados progresivos ni scroll suave. No se cambió la preferencia real del sistema operativo.
+- Consola sin errores o avisos registrados. No se han realizado pruebas en dispositivos físicos, lector de pantalla real o medición de FPS. Las revisiones independientes son de capturas/código; el recorrido nativo lo verificó coordinación.
+
+### Entrega — pendiente de verificación pública
+
+Se hará commit y push normal a `origin/main`, sin cambios de ajustes ni force push. Falta confirmar el build del SHA enviado y revisar los recursos públicos.

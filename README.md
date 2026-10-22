@@ -94,13 +94,13 @@ Ambos son estudiantes. Sus ámbitos aportan perspectivas complementarias; no se 
 
 ## Exploring SENVA / Explorar SENVA
 
-The website starts with the people and everyday possibilities that motivate SENVA. A single diagram brings the two directions of the communication concept together; a separate section explains the limited learning hypothesis. The validation plan, research boundaries, founders and Santiago’s Xiji application follow in a direct reading flow. The illustrations describe an idea, not a working product.
+The website starts with the people and everyday possibilities that motivate SENVA. An open scroll-driven scene brings the two directions of the communication concept together: glasses, a glove and their connections change sides as the story advances. A separate section explains the limited learning hypothesis. The validation plan, research boundaries, founders and Santiago’s Xiji application follow in a direct reading flow. The illustrations describe an idea, not a working product.
 
-La web parte de las personas y las posibilidades cotidianas que motivan SENVA. Un único diagrama reúne las dos direcciones del concepto de comunicación; una sección independiente explica la hipótesis acotada de aprendizaje. Después se presentan el plan de validación, los límites de investigación, los fundadores y la candidatura de Santiago a Xiji. Las ilustraciones explican una idea, no un producto funcional.
+La web parte de las personas y las posibilidades cotidianas que motivan SENVA. Un escenario abierto ligado al scroll reúne las dos direcciones del concepto de comunicación: gafas, guante y conexiones cambian de lado al avanzar la historia. Una sección independiente explica la hipótesis acotada de aprendizaje. Después se presentan el plan de validación, los límites de investigación, los fundadores y la candidatura de Santiago a Xiji. Las ilustraciones explican una idea, no un producto funcional.
 
 The redesign uses bounded specialist tasks, a shared factual brief and independent review, informed by [AVIVA’s team method](https://github.com/withnolan/aviva/blob/main/CLAUDE.md). It preserves SENVA’s own identity and content. Decisions and review evidence: [design review](docs/design-review.md) and [progress](docs/redesign-progress.md).
 
-El rediseño utiliza tareas especializadas acotadas, un brief factual común y revisión independiente, a partir del método de equipo de AVIVA. Conserva la identidad y el contenido propios de SENVA. EN/ES, navegación por teclado, lectura móvil y alternativas sin movimiento forman parte de la implementación.
+El rediseño utiliza tareas especializadas acotadas, un brief factual común y revisión independiente, a partir del método de equipo de AVIVA. Esta referencia organiza a los agentes; la identidad, el contenido y la dirección animada siguen siendo propios de SENVA. [Contrato de colaboración](AGENTS.md) · [Storyboard](docs/motion-direction.md). EN/ES, navegación por teclado, movimiento adaptado a móvil y alternativas sin animación forman parte de la implementación.
 
 <a id="quick-start"></a>
 ## Quick start / Inicio rápido
@@ -116,9 +116,10 @@ Open / Abrir [http://127.0.0.1:8000](http://127.0.0.1:8000). Stop / Detener: `Ct
 ## Repository / Repositorio
 
 ```text
+AGENTS.md                  Team responsibilities / responsabilidades del equipo
 index.html                 English fallback / contenido inglés de respaldo
 styles.css                 Editorial layout, motion / diseño editorial y movimiento
-script.js                  EN/ES, navigation, diagram emphasis / navegación
+script.js                  EN/ES, navigation, scene choreography / navegación y escenas
 assets/                    Existing logo, portraits, social image / recursos
   favicon.svg              Original symbol / símbolo original
   senva-logo.svg           Existing symbol + wordmark / logotipo existente
@@ -134,7 +135,9 @@ docs/
   technical-guide.md        Maintenance and deployment / mantenimiento
   visual-assets.md         SVG sources and editing / fuentes SVG y edición
   redesign-progress.md      Decisions, checks and delivery / estado
-  design-review.md           Brief, AVIVA method and independent review / revisión
+  design-review.md           Earlier editorial review / revisión editorial anterior
+  motion-direction.md        Current animation storyboard / coreografía vigente
+  motion-review.md           Findings and corrections / hallazgos y correcciones
 ```
 
 Detailed local preview under `/senva/`, editing, motion and publication: [technical guide / guía técnica](docs/technical-guide.md). Review status and limitations: [redesign progress / estado del rediseño](docs/redesign-progress.md).

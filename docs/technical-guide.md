@@ -1,6 +1,6 @@
 # SENVA — Guía técnica
 
-La [presentación del proyecto](../README.md) explica misión, equipo y estado. La implementación actual es una página editorial estática: portada humana, propósito, visión bidireccional, primer experimento y plan de validación. El movimiento acompaña un único diagrama de la visión; no organiza toda la página como un escenario animado.
+La [presentación del proyecto](../README.md) explica misión, equipo y estado. La implementación combina contenido editorial y una coreografía de SVG/CSS ligada al scroll nativo: encuentro entre personas, dos direcciones de comunicación que intercambian protagonismo y llegada a una primera pregunta de práctica. La organización por agentes se conserva en [AGENTS.md](../AGENTS.md); el brief de movimiento vigente es [motion-direction.md](motion-direction.md).
 
 ## Ejecutar localmente
 
@@ -28,8 +28,8 @@ Abrir [http://127.0.0.1:8000/senva/](http://127.0.0.1:8000/senva/). Los arneses 
 | --- | --- |
 | `index.html` | Inglés completo de respaldo, secciones, diagrama, práctica, detalles nativos, equipo y enlaces. |
 | `styles.css` | Tipografía local, paleta, composición editorial, responsive, foco, entrada breve y alternativa con movimiento reducido. |
-| `script.js` | Selector EN/ES, metadatos, menú, indicador de capítulo y énfasis del diagrama. 114 claves en cada idioma en esta versión. |
-| `assets/graphics/conversation.svg` | Ilustración original de dos personas para la portada; alternativa textual en HTML. |
+| `script.js` | Selector EN/ES, metadatos, menú, indicador de capítulo y coreografía por bloques visibles. 114 claves en cada idioma en esta versión. |
+| `assets/graphics/conversation.svg` | Fuente original de las personas; se integra por grupos en el SVG de portada con alternativa textual EN/ES. |
 | `assets/graphics/glasses.svg`, `glove.svg` | Objetos SVG compartidos por el diagrama y la composición de práctica. |
 | `assets/fonts/manrope-variable.ttf` | Manrope variable, servida localmente; licencia en `assets/fonts/OFL-Manrope.txt`. |
 | `assets/*.jpg` | Retratos originales de 800 × 800, con dimensiones reservadas y carga diferida. |
@@ -37,7 +37,7 @@ Abrir [http://127.0.0.1:8000/senva/](http://127.0.0.1:8000/senva/). Los arneses 
 | `assets/social-card.svg`, `.png` | Fuente y exportación de la vista previa social de 1200 × 630. |
 | `.nojekyll` | Entrega directa desde el repositorio, sin compilación. |
 
-La página solicita recursos locales: CSS, JS, fuente y SVG, además de los dos retratos. No carga bibliotecas, fuentes desde CDN, motores 3D, analítica o servicios de ejecución externos. Los SVG de dispositivos se cargan como imágenes, no mediante definiciones duplicadas en el HTML. La vista previa social es un recurso para metadatos; no es una sección de la web.
+La página solicita recursos locales: CSS, JS, fuente y SVG, además de los dos retratos. No carga bibliotecas, fuentes desde CDN, motores 3D, analítica o servicios de ejecución externos. Los dispositivos se reutilizan como imágenes SVG externas en el respaldo y con `<image>` dentro del escenario SVG animado. La ilustración humana se integra en línea para mover sus capas. La vista previa social es un recurso para metadatos; no es una sección de la web.
 
 Los recursos de `assets/illustrations/` pertenecen a iteraciones anteriores: se conservan como archivo, pero la implementación actual no los solicita. El historial Git conserva las coreografías retiradas. No deben reactivarse estilos o controladores antiguos al hacer ajustes.
 
@@ -60,15 +60,19 @@ Los recursos de `assets/illustrations/` pertenecen a iteraciones anteriores: se 
 
 ## Movimiento y adaptación
 
-La portada usa una entrada CSS breve de textos e ilustración, solo cuando JavaScript añade `.enter`, el movimiento está permitido y la visita comienza cerca del inicio. La lectura no depende de que termine la entrada. No hay pantalla de carga.
+La portada mantiene su entrada breve de texto e ilustración. Después, el avance nativo aproxima las capas de personas y traza el hilo compartido. El propósito retoma el lenguaje de conexión entre las tres situaciones; la práctica despliega su hoja y traza una conexión hacia las preguntas. Son progresos finitos, sin bucles ambientales ni pantalla de carga.
 
-La visión contiene dos artículos `.vision-beat` y una sola figura `.vision-diagram`. Ambas rutas y sus avisos están siempre visibles. El diagrama puede permanecer `position: sticky` a 112 px durante esa sección; su contención termina con `.vision-layout`. No existe un artboard continuo, un array de cinco poses o un control de pausa global.
+La visión utiliza un escenario abierto `position:sticky` y dos artículos reales en flujo. En la primera lectura, texto a la izquierda y gafas a la derecha; en la segunda, texto a la derecha y guante a la izquierda. Los dispositivos recorren varios cientos de unidades del SVG y sus señales permanecen agrupadas. La ruta inversa conserva el interrogante y las aclaraciones de arquitectura pendiente. Las cajas reales de texto y leyenda delimitan el carril de cruce. El escenario termina con la sección.
 
-Un `IntersectionObserver` activa un listener pasivo de scroll mientras la visión está en pantalla. Una única cola `requestAnimationFrame` mide el avance del contenedor durante su intervalo de fijación y actualiza `--route-progress` entre 0 y 1. CSS aplica desplazamientos de pocos píxeles y escalas de 0,98–1 a las dos rutas. Este énfasis es reversible y no oculta texto, dispositivos o aclaraciones. Al detener el scroll se conserva el estado. Otro observador actualiza `aria-current="step"` en la barra de capítulos.
+`IntersectionObserver` registra qué bloques están cerca del viewport. Un solo listener pasivo y una cola `requestAnimationFrame` calculan los progresos de portada, propósito, visión y experimento. No se captura la rueda ni se modifica el desplazamiento nativo. El estado se deriva de posición y geometría actual, por lo que puede recorrerse hacia atrás. La pestaña oculta cancela el frame pendiente; la preferencia reducida desactiva la escucha de movimiento. Otro observador mantiene el capítulo activo.
 
-En anchuras de hasta 760 px el diagrama pasa al flujo normal, antes de sus explicaciones, y los artículos dejan de reservar altura de escritorio. También se desactiva el sticky en ventanas de hasta 720 px de altura. El contenido puede crecer; no se recorta para conservar una animación. El primer experimento y las secciones siguientes se leen con scroll normal.
+El modo de escenario requiere al menos **1000 px de ancho y 640 px de alto**; incluye 1280×720 y 1000×680. La figura se fija a 88 px y usa la altura disponible bajo cabecera. Cada artículo reserva un intervalo de lectura, con crecimiento posible por el contenido. El texto principal no se desvanece ni se retira del árbol accesible.
 
-Con `prefers-reduced-motion: reduce` desaparecen entrada, transiciones, scroll suave y fijación del diagrama. Las transformaciones de énfasis y de las microinteracciones indicadas en CSS se anulan. Si falta JavaScript u observadores, ambos recorridos siguen completos y legibles. Las dependencias de movimiento no controlan la disponibilidad del contenido.
+En móvil y ventanas insuficientes, la visión utiliza sus dos rutas en flujo. El móvil conserva desplazamientos laterales cortos y trazados de conexión, sin pin. La práctica y las personas tienen distancias menores. No se heredan las alturas de escena de escritorio.
+
+Sin JS u observadores se muestra la composición completa. Con `prefers-reduced-motion:reduce` se eliminan entrada, trazados progresivos, transformaciones y scroll suave; no se activa el escenario fijo. La figura accesible contiene las etiquetas de ambas rutas. Durante el modo animado ese respaldo se oculta **solo visualmente**, mientras el stage adicional es decorativo (`aria-hidden`). No hay controles dentro de capas animadas ni un botón de movimiento inoperante.
+
+Los parámetros principales están en `updateMotion` y las reglas de `.motion-ready` / `.motion-desktop`. Cambiar una trayectoria exige revisar su estado intermedio, no solo los extremos. La geometría de una lengua no se infiere del dibujo: los recursos siguen siendo un concepto.
 
 ## Idiomas y accesibilidad
 
@@ -96,7 +100,7 @@ Comprobaciones sugeridas para cambios posteriores:
 
 1. `node --check script.js` y `git diff --check`; paridad de traducciones, inglés de respaldo, IDs únicos, anclas y recursos locales.
 2. Revisar de 320 px a escritorio, ventanas altas y bajas, orientación y redimensionado. Observar ambos idiomas, títulos largos, figura, retratos y detalles abiertos.
-3. Recorrer ambas direcciones hacia delante y atrás; comprobar que el énfasis no cambia la lectura y que el diagrama sale antes del experimento. Revisar también entrada y salida del sticky, no solo sus estados centrales.
+3. Capturar inicio, 25 %, mitad, 75 % y final del intercambio, ida y vuelta. Comprobar geometría de copy, leyendas, dispositivos y enlaces; revisar la salida hacia la práctica y el movimiento de portada/móvil. La animación debe ser perceptible, además de no colisionar.
 4. Menú con teclado, foco de anclas, selector EN/ES, barra de capítulos y enlaces externos. Comprobar alternativas sin script, sin observador, con almacenamiento bloqueado y con movimiento reducido.
 5. Confirmar recursos, fuente y licencia bajo `/senva/`, metadatos sociales y ausencia de errores atribuibles a la web. Mantener el estado de idea y los límites de la investigación.
 

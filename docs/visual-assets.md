@@ -6,7 +6,7 @@ La implementación editorial utiliza azul noche, blanco cálido y turquesa, ilus
 
 | Recurso | Fuente | Uso |
 | --- | --- | --- |
-| Conversación entre dos personas | `assets/graphics/conversation.svg` | Portada; alternativa EN/ES mediante `heroArtAlt` en HTML. |
+| Conversación entre dos personas | `assets/graphics/conversation.svg` | Fuente de portada, integrada en línea por capas; alternativa EN/ES mediante `heroArtAlt`. |
 | Gafas frontales | `assets/graphics/glasses.svg` | Primera dirección del diagrama de visión. |
 | Guante vacío | `assets/graphics/glove.svg` | Segunda dirección y primera hipótesis de práctica. |
 | Señal de voz y conexiones | HTML/CSS del diagrama; SVG local en la práctica | Relaciones conceptuales, sin datos capturados. |
@@ -18,13 +18,13 @@ La implementación editorial utiliza azul noche, blanco cálido y turquesa, ilus
 
 ## Ilustraciones originales
 
-`conversation.svg` es una ilustración vectorial original creada por el agente para este proyecto. Contiene los grupos `left-person`, `shared-space` y `right-person`, sobre un `viewBox` de 720 × 720. Representa dos personas adultas y un espacio compartido; no reproduce un signo concreto, testimonio o resultado de investigación. Está construida con colores planos, sin modelos, texturas ni recursos de terceros.
+`conversation.svg` es una ilustración vectorial original creada por el agente para este proyecto. Contiene los grupos `left-person`, `shared-space` y `right-person`, sobre un `viewBox` de 720 × 720. Representa dos personas adultas y un espacio compartido; no reproduce un signo concreto, testimonio o resultado de investigación. Está construida con colores planos, sin modelos, texturas ni recursos de terceros. En la portada sus grupos equivalentes `person-left`, `shared-space` y `person-right` se integran en línea para animar aproximación e hilo. Si cambia el dibujo fuente, sincronizar esa copia en `index.html` y la vista social; no editar únicamente una representación.
 
 Las gafas y el guante se redibujaron directamente en SVG para SENVA. Comparten un contorno sencillo y pesos proporcionales; se retiraron reflejos, bordes duplicados y líneas interiores redundantes. El guante está vacío, con cinco dedos, pulgar lateral y muñeca corta; no contiene una mano anatómica ni representa un signo lingüístico.
 
-Sus fuentes conservan `var(--device-line,#102e3b)` para el contorno y, en las gafas, `var(--lens-fill,#f8f7f2)` para las lentes. **La web actual los carga con `<img>` sobre superficies claras**, usando los colores de respaldo. Las variables de la página no atraviesan el documento externo de una imagen SVG. Si en el futuro se integran como SVG en línea, podrán heredarse `--device-line:#f8f7f2` y `--lens-fill:#102e3b` para un fondo azul noche, sin añadir un segundo borde.
+Sus fuentes conservan `var(--device-line,#102e3b)` para el contorno y, en las gafas, `var(--lens-fill,#f8f7f2)` para las lentes. **La web actual los carga con `<img>` y `<image>` sobre superficies claras**, usando los colores de respaldo. Las variables de la página no atraviesan el documento externo de una imagen SVG. Si en el futuro se integran como SVG en línea, podrán heredarse `--device-line:#f8f7f2` y `--lens-fill:#102e3b` para un fondo azul noche, sin añadir un segundo borde.
 
-No hay definiciones de dispositivos duplicadas en `index.html`, capas claras/oscuras superpuestas ni un escenario continuo de objetos viajeros. El diagrama de visión reúne ambas direcciones con texto HTML y un énfasis de escala/desplazamiento muy pequeño. Los textos y aclaraciones permanecen visibles.
+No hay paths de dispositivos duplicados en `index.html` ni capas claras/oscuras superpuestas: el stage reutiliza sus fuentes externas mediante `<image>`. El escenario de visión reúne ambas direcciones, pero cambia su composición mediante recorridos laterales amplios y trazados SVG. El HTML conserva las rutas accesibles; el stage por capas es decorativo. Los textos y aclaraciones permanecen disponibles.
 
 ## Tipografía y licencia
 

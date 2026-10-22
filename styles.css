@@ -424,7 +424,7 @@ main:focus,section:focus,[tabindex="-1"]:focus {
 .purpose>.small-note {
   color:var(--muted)
 }
-/* The two directions stay together; native scrolling changes only emphasis. */
+/* Static diagram and visual primitives; the full scroll scene is defined below. */
 .vision {
   background:var(--pale)
 }
@@ -492,7 +492,6 @@ main:focus,section:focus,[tabindex="-1"]:focus {
   scroll-margin-top:110px
 }
 .vision-diagram {
-  --route-progress:0;
   position:sticky;
   top:112px;
   border:1px solid #b7c9c4;
@@ -519,11 +518,6 @@ main:focus,section:focus,[tabindex="-1"]:focus {
   gap:15px;
   min-height:166px;
   transform-origin:center;
-  transition:transform .12s linear;
-  will-change:transform
-}
-.diagram-voice {
-  transform:translateY(calc(var(--route-progress)*-3px)) scale(calc(1 - var(--route-progress)*.02))
 }
 .route-source {
   font-size:12px;
@@ -585,7 +579,6 @@ main:focus,section:focus,[tabindex="-1"]:focus {
 }
 .diagram-manual {
   grid-template-columns:1fr .4fr .8fr;
-  transform:translateY(calc((1 - var(--route-progress))*5px)) scale(calc(.98 + var(--route-progress)*.02));
   min-height:180px
 }
 .manual-input {
@@ -1943,4 +1936,432 @@ section:focus-visible>.section-heading>.eyebrow,section:focus-visible>.section-i
   outline-offset:6px;
   width:fit-content;
   max-width:100%
+}
+/* The shared thread: a finite entrance, then native-scroll choreography. */
+.hero-art .conversation-art {
+  display:block;
+  width:100%;
+  height:auto;
+  overflow:visible
+}
+.conversation-art .person-left,.conversation-art .person-right {
+  transform-box:fill-box;
+  transform-origin:center;
+  will-change:transform
+}
+.hero-thread-tail,.shared-space path,.purpose-thread-line,.practice-thread path {
+  stroke-dasharray:1;
+  stroke-dashoffset:0
+}
+.hero-thread-tail {
+  fill:none
+}
+.purpose-thread {
+  display:block;
+  width:100%;
+  height:70px;
+  margin-top:34px;
+  overflow:visible;
+  color:var(--teal)
+}
+.purpose-thread-line {
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round
+}
+.purpose-thread-nodes circle {
+  fill:var(--paper);
+  stroke:var(--teal);
+  stroke-width:2
+}
+.purpose .situations {
+  margin-top:10px
+}
+.motion-ready .person-left {
+  transform:translateX(calc((var(--hero-progress,0) - 1)*var(--person-shift,44px)))
+}
+.motion-ready .person-right {
+  transform:translateX(calc((1 - var(--hero-progress,0))*var(--person-shift,44px)))
+}
+.motion-ready .hero-thread-tail {
+  stroke-dashoffset:calc(1 - var(--hero-progress,0))
+}
+.motion-ready .shared-space path {
+  stroke-dashoffset:calc(.55 - var(--hero-progress,0)*.55)
+}
+.motion-ready .purpose-thread-line {
+  stroke-dashoffset:calc(1 - var(--purpose-progress,0))
+}
+.motion-ready .situations li:nth-child(1) {
+  transform:translateY(calc((1 - var(--purpose-progress,0))*18px))
+}
+.motion-ready .situations li:nth-child(2) {
+  transform:translateY(calc((1 - var(--purpose-progress,0))*10px))
+}
+.motion-ready .situations li:nth-child(3) {
+  transform:translateY(calc((1 - var(--purpose-progress,0))*22px))
+}
+.vision-layout {
+  display:block
+}
+.vision-story {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8%;
+  position:relative
+}
+.vision-beat {
+  min-height:0;
+  padding-block:30px 0
+}
+.vision-copy>p {
+  font-size:14px;
+  line-height:1.8;
+  color:var(--muted)
+}
+.vision-copy>.small-note {
+  font-size:12px;
+  margin-top:20px
+}
+.vision-diagram {
+  position:relative;
+  top:auto;
+  margin-top:50px;
+  padding:0;
+  border:0;
+  background:none;
+  border-radius:0
+}
+.static-routes {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 8%
+}
+.static-routes .diagram-divider {
+  display:none
+}
+.static-routes .diagram-voice {
+  grid-column:1;
+  grid-row:1
+}
+.static-routes .diagram-manual {
+  grid-column:2;
+  grid-row:1
+}
+.static-routes .diagram-pending {
+  grid-column:2
+}
+.vision-diagram .diagram-route {
+  transform:none;
+  transition:none;
+  will-change:auto
+}
+.vision-diagram figcaption {
+  margin-top:25px
+}
+.vision-stage-content {
+  display:none
+}
+.motion-desktop .vision-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+  position:relative;
+  isolation:isolate;
+  margin-top:42px
+}
+.motion-desktop .vision-story,.motion-desktop .vision-diagram {
+  grid-area:1/1
+}
+.motion-desktop .vision-story {
+  display:block;
+  z-index:2;
+  pointer-events:none
+}
+.motion-desktop .vision-beat {
+  display:flex;
+  align-items:center;
+  min-height:calc((100svh - 104px)*1.18);
+  padding-block:clamp(75px,11vh,130px);
+  border:0
+}
+.motion-desktop .vision-copy {
+  pointer-events:auto;
+  width:37%;
+  max-width:460px;
+  border-top:1px solid #b7c9c4;
+  padding-top:26px
+}
+.motion-desktop .vision-beat[data-route="voice"] .vision-copy {
+  margin-right:auto
+}
+.motion-desktop .vision-beat[data-route="manual"] .vision-copy {
+  margin-left:auto
+}
+.motion-desktop .vision-beat h3 {
+  font-size:clamp(26px,2.5vw,34px);
+  max-width:none
+}
+.motion-desktop .vision-diagram {
+  position:sticky;
+  align-self:start;
+  top:88px;
+  height:calc(100svh - 104px);
+  margin:0;
+  z-index:1;
+  pointer-events:none;
+  min-width:0
+}
+.motion-desktop .static-routes {
+  display:grid;
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap
+}
+.motion-desktop .vision-stage-content {
+  display:block;
+  position:absolute;
+  inset:0
+}
+.motion-desktop .vision-artboard {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(100%,calc((100svh - 104px)*1.875));
+  aspect-ratio:1200/640;
+  transform:translate(-50%,-50%)
+}
+.vision-stage {
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible
+}
+.stage-field {
+  transform:translate(var(--field-x,850px),var(--field-y,325px)) scale(var(--field-scale,1));
+  transform-origin:0 0
+}
+.stage-glasses {
+  transform:translate(var(--glasses-x,850px),var(--glasses-y,250px)) scale(var(--glasses-scale,.82));
+  transform-origin:0 0
+}
+.stage-glove {
+  transform:translate(var(--glove-x,900px),var(--glove-y,500px)) scale(var(--glove-scale,.56));
+  transform-origin:0 0;
+  opacity:var(--manual-visible,0)
+}
+.stage-voice-source {
+  transform:translate(var(--source-x,530px),var(--glasses-y,250px)) scale(var(--source-scale,1));
+  transform-origin:0 0
+}
+.stage-voice-path {
+  stroke-dasharray:1;
+  stroke-dashoffset:var(--voice-dash,0)
+}
+.stage-manual-path {
+  opacity:var(--manual-visible,0);
+  stroke-dashoffset:var(--manual-dash,1)
+}
+.vision-artboard>div {
+  position:absolute;
+  transform:translateX(-50%);
+  font-size:12px;
+  line-height:1.5;
+  text-align:center;
+  color:var(--ink)
+}
+.stage-speech-label {
+  left:var(--source-label-x,44.2%);
+  top:var(--source-label-y,47%);
+  width:100px
+}
+.stage-caption-label {
+  left:var(--caption-x,70.8%);
+  top:var(--caption-y,54.7%);
+  width:220px
+}
+.stage-manual-label {
+  left:var(--manual-label-x,26%);
+  top:var(--manual-label-y,83.5%);
+  width:240px;
+  opacity:var(--manual-label-visible,0)
+}
+.stage-manual-label strong,.stage-manual-label>span {
+  display:block;
+  font-weight:500
+}
+.stage-manual-label>span[aria-hidden] {
+  color:var(--teal);
+  font-size:20px;
+  line-height:1.2
+}
+.stage-output-label {
+  left:var(--output-x,10%);
+  top:var(--output-y,56.3%);
+  width:125px;
+  opacity:var(--manual-label-visible,0)
+}
+.stage-output-label b {
+  display:block;
+  color:var(--teal);
+  font-size:28px;
+  line-height:1.1;
+  font-weight:400;
+  margin-bottom:8px
+}
+.stage-output-label strong {
+  font-size:12px;
+  line-height:1.5;
+  font-weight:500
+}
+.stage-research-label {
+  left:var(--manual-label-x,26%);
+  top:var(--research-y,94%);
+  width:290px;
+  font-size:10px!important;
+  color:var(--teal)!important;
+  opacity:var(--manual-label-visible,0)
+}
+.motion-desktop .vision-diagram .diagram-head {
+  position:absolute;
+  top:8px;
+  left:var(--legend-left,56%);
+  width:44%;
+  margin:0;
+  gap:15px;
+  font-size:10px
+}
+.motion-desktop .vision-diagram figcaption {
+  position:absolute;
+  top:34px;
+  left:var(--legend-left,56%);
+  width:44%;
+  margin:0;
+  border:0;
+  padding:0;
+  font-size:10px
+}
+.motion-ready .practice-board {
+  transform:translateX(calc((1 - var(--practice-progress,0))*76px)) translateY(calc((1 - var(--practice-progress,0))*34px)) rotate(calc((1 - var(--practice-progress,0))*-4deg));
+  transform-origin:20% 70%;
+  transition:none
+}
+.motion-ready .practice-sketch img {
+  transform:translateX(calc((1 - var(--practice-progress,0))*-48px)) translateY(calc((1 - var(--practice-progress,0))*15px)) rotate(calc(-8deg + var(--practice-progress,0)*8deg))
+}
+.motion-ready .practice-thread path {
+  stroke-dashoffset:calc(1 - var(--practice-progress,0));
+  stroke-dasharray:1
+}
+.experiment {
+  overflow:clip
+}
+@media(max-width:999px),(max-height:639px) {
+  .vision-story {
+    gap:6%
+  }
+  .vision-beat h3 {
+    font-size:27px
+  }
+  .vision-diagram {
+    margin-top:35px
+  }
+  .static-routes {
+    gap:0 6%
+  }
+  .motion-ready .practice-board {
+    transform:translateX(calc((1 - var(--practice-progress,0))*24px)) translateY(calc((1 - var(--practice-progress,0))*18px)) rotate(calc((1 - var(--practice-progress,0))*-2deg))
+  }
+}
+@media(max-width:760px) {
+  .vision-layout {
+    display:flex;
+    flex-direction:column;
+    gap:30px
+  }
+  .vision-story {
+    display:block;
+    order:2
+  }
+  .vision-beat+.vision-beat {
+    margin-top:30px
+  }
+  .vision-copy>p {
+    font-size:14px
+  }
+  .vision-diagram {
+    position:relative;
+    top:auto;
+    margin-top:0;
+    max-width:580px;
+    width:100%;
+    padding:0;
+    order:1
+  }
+  .static-routes {
+    display:block
+  }
+  .static-routes .diagram-route {
+    padding:15px 0;
+    min-height:170px
+  }
+  .static-routes .diagram-manual {
+    margin-top:20px;
+    border-top:1px solid var(--line)
+  }
+  .diagram-head {
+    margin-bottom:15px
+  }
+  .vision-diagram figcaption {
+    font-size:10px
+  }
+  .motion-ready .static-routes .diagram-voice {
+    transform:translateX(calc((1 - var(--mobile-vision-progress,0))*18px))!important
+  }
+  .motion-ready .static-routes .diagram-manual {
+    transform:translateX(calc((1 - var(--mobile-vision-progress,0))*-18px))!important
+  }
+  .motion-ready .static-routes .flow-line {
+    transform-origin:left;
+    scale:var(--mobile-line-progress,1) 1
+  }
+  .motion-ready .static-routes .diagram-manual .flow-line {
+    transform-origin:right
+  }
+  .motion-ready .person-left {
+    transform:translateX(calc((var(--hero-progress,0) - 1)*var(--person-shift,20px)))
+  }
+  .motion-ready .person-right {
+    transform:translateX(calc((1 - var(--hero-progress,0))*var(--person-shift,20px)))
+  }
+  .purpose-thread {
+    height:40px;
+    margin-top:25px
+  }
+  .purpose .situations {
+    margin-top:10px
+  }
+  .practice-board {
+    width:calc(100% - 12px)
+  }
+  .motion-ready .practice-board {
+    transform:translateX(calc((1 - var(--practice-progress,0))*18px)) translateY(calc((1 - var(--practice-progress,0))*20px)) rotate(calc((1 - var(--practice-progress,0))*-1.5deg))
+  }
+  .motion-ready .practice-sketch img {
+    transform:translateX(calc((1 - var(--practice-progress,0))*-20px)) rotate(calc((1 - var(--practice-progress,0))*-6deg))
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero-art .person-left,.hero-art .person-right,.motion-ready .situations li,.motion-ready .practice-board,.motion-ready .practice-sketch img,.motion-ready .diagram-route {
+    transform:none!important
+  }
+  .hero-thread-tail,.shared-space path,.purpose-thread-line,.practice-thread path {
+    stroke-dashoffset:0!important
+  }
+  .static-routes .flow-line {
+    scale:1!important
+  }
 }

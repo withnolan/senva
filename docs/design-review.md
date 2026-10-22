@@ -1,5 +1,7 @@
 # Revisión editorial de SENVA — 22 de octubre de 2026
 
+**Decisión visual corregida por el usuario:** este registro es histórico. Se conserva la claridad del contenido, pero la dirección vigente recupera movimiento protagonista en [motion-direction.md](motion-direction.md). El método de agentes no determina la estética ni justifica una experiencia estática.
+
 ## Encargo
 
 Mejorar sustancialmente la web después de revisar cómo trabaja AVIVA con agentes. El contenido de SENVA debe orientar el diseño. Se conservan logo, paleta azul noche/blanco cálido/turquesa, EN/ES, biografías, fotos, enlaces y estado de idea. Sin 3D ni capacidades inventadas.
