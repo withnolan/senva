@@ -2,7 +2,7 @@
 
 Actualizado: 22 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Trabajo actual:** [Correcciones de navegación y transiciones](#scroll-fixes), sobre `1d79aa9`. Tras confirmar que ya ve el smooth scroll, el usuario pide corregir errores. Se conserva el diseño y se revisan navegación, etiquetas y alternativas.
+**Trabajo actual:** [Dispositivos 2D y relevo de escenas](#editorial-devices), sobre `4f60319`. Se rehacen las ilustraciones de gafas/guante y su coreografía, manteniendo contenido, identidad y Lenis.
 
 ## Objetivo y alcance
 
@@ -441,3 +441,27 @@ Pruebas con viewports del navegador integrado, sin dispositivos físicos, lector
 Commit de implementación `7ad7a4abeae31cb995d610190eaf824fe04925ec`, push a `origin/main` y build de Pages `built`, sin error. En la web pública se comprobaron visión a1100×700, indicador correcto, margen12,87 px y ausencia de desbordamiento. PageDown interrumpió un destino a Xiji; posición3515 px estable al asentarse y sin callback que recupere el destino anterior. Consola pública sin errores/avisos registrados.
 
 Dieciséis recursos publicados coinciden byte a byte con los revisados, mediante HTTPS validado. CSS `9617f459`, JS `dc71c364`. Captura fuera del repositorio: `senva-scroll-fixes-public.jpg`. Este registro de entrega se guarda en un segundo commit normal de documentación; su push/build se confirma antes de la respuesta. Sin cambios de configuración ni force push. No quedan fallos reproducibles pendientes dentro del alcance probado; se mantienen los límites de revisión anteriores.
+
+
+<a id="editorial-devices"></a>
+## Dispositivos 2D y relevo de escenas — 23 de octubre de 2026
+
+### Dirección e implementación — terminadas
+
+El usuario rechaza los dispositivos y pide transiciones mucho más trabajadas. [Storyboard vigente](device-motion-direction.md). Arte trabaja exclusivamente en los dos SVG, dirección propone la secuencia y coordinación integra/revisa/Git. Una revisión independiente de código y cuatro capturas aporta fallos concretos de composición.
+
+- Gafas y guante rehechos por completo como ilustraciones editoriales planas: montura fina, patillas y lentes limpias; guante textil con panel, costuras y puño de punto. Sin luces, sensores resueltos, signos o capacidades inventadas. Dos SVG locales de menos de2 KB cada uno, sin filtros, gradientes o dependencias. URLs versionadas para renovar la caché de las imágenes anteriores.
+- La visión deja de mantener dos objetos apilados. A ocupa el centro; sale hacia arriba/derecha y desaparece. B entra desde abajo/izquierda y queda completo. Se mantienen concepto, aviso y texto principal en flujo; solo el campo gráfico enmascara el relevo. Posición, escala y opacidad reversibles; pausas para lectura. Estado inicial CSS evita un destello de ambas composiciones superpuestas.
+- Tres pasos diferentes entre apartados, en lugar de dos ondas idénticas: encuentro con gafas, continuidad del guante hacia práctica y apertura hacia validación. La hoja de práctica se despliega con traslación/escala y rotación plana de hasta3°, con desplazamiento del guante y trazo compartido. Sin 3D, nuevos servicios o nuevas secciones de contenido.
+- Tras la crítica visual se corrigió el puño oscuro sobre el mismo fondo con una costura exterior clara. También se redujo el padding junto a los pasos y se reservan125svh por lectura, dedicando más recorrido a la escena legible y menos a espacio vacío. El tercer paso es breve. Móvil conserva flujo normal y movimientos cortos.
+
+### Comprobaciones locales — terminadas
+
+- Inspección directa de la publicación anterior y nuevas escenas a1280×720. Inicio, salida, mitad, reposo B y regreso recorridos con teclado nativo; tres pasos entre apartados inspeccionados en estados intermedios. La primera mitad se corrigió tras observar dos grupos demasiado tenues: B ahora domina antes de que A desaparezca. El texto principal permanece visible en flujo.
+- A1100×700 ES: progreso observado0 /0,444 /0,485 /1, sin desbordamiento horizontal. A en reposo opacidad1/B0; en el centro B1/A0; final B completo. Repetidos inicio, mitad y reposo en inglés. Concepto y aviso separados del grupo que sale.
+- EN/ES a390×844 y320×844: figuras en flujo, ambos grupos con opacidad1, modo nativo y sin desbordamiento horizontal; titulares/párrafos medidos sin recorte de anchura. Menú móvil y ancla a primera hipótesis comprobados. Guante y preguntas de práctica observados a320 px.
+- Movimiento reducido equivalente mediante arnés externo: scroll nativo, diagramas en flujo, ambas relaciones completas y tres pasos ocultos. Sin JS a320 px: inglés completo, navegación visible, ambas relaciones disponibles y desbordamiento cero. No se cambió la preferencia real del sistema operativo.
+- Revisión de cuatro capturas y código independiente: corrigió pérdida de silueta del puño y exceso de distancia acumulada entre bloques. No equivale a revisión de movimiento continuo; la ida/vuelta la realizó coordinación. SVG renderizados y observados por arte, con una corrección del guante antes de integrar.
+- 114 pares EN/ES, logo, retratos y HTML/CSS restaurados de equipo/contacto conservados. Sintaxis JS, XML de SVG, HTML equilibrado, IDs/anclas, rutas Markdown, recursos locales y `git diff --check` correctos. Sin nuevas bibliotecas; Lenis conserva parámetros y correcciones de teclado/idioma/historial.
+
+Capturas fuera de producción con prefijo `senva-device`/`senva-devices`. Pruebas mediante tamaños de viewport en navegador integrado, sin dispositivos físicos, lector de pantalla real ni medición de FPS. Criterio de calidad visual revisado internamente, pendiente de la valoración del usuario. Siguiente paso: commit/push autorizados y verificar Pages para el SHA enviado.

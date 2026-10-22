@@ -429,10 +429,11 @@
     hero.style.setProperty('--hero-progress', pose.hero.toFixed(4));
     purpose.style.setProperty('--purpose-progress', pose.purpose.toFixed(4));
     experiment.style.setProperty('--practice-progress', pose.practice.toFixed(4));
-    const exchange = smooth((pose.vision - .16) / .56);
+    const exchange = smooth((pose.vision - .28) / .24);
     vision.style.setProperty('--exchange', exchange.toFixed(4));
-    vision.style.setProperty('--manual-reveal', smooth((pose.vision - .30) / .25).toFixed(4));
-    vision.style.setProperty('--voice-trace', (1 - smooth(pose.vision / .22)).toFixed(4));
+    vision.style.setProperty('--manual-reveal', smooth((pose.vision - .34) / .24).toFixed(4));
+    vision.style.setProperty('--manual-opacity', smooth((pose.vision - .32) / .14).toFixed(4));
+    vision.style.setProperty('--voice-opacity', (1 - smooth((pose.vision - .38) / .10)).toFixed(4));
     vision.dataset.motionProgress = pose.vision.toFixed(4);
     transitions.forEach((el, i) => {
       const b = g.transitions[i];

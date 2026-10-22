@@ -1,15 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-155 -230 310 460" fill="none">
-  <!-- An unposed textile glove concept, without recognition points or a signed gesture. -->
-  <path d="M-49 171v-24c-1-24-13-44-31-68l-45-58c-9-12-8-24 1-31 10-7 22-2 32 10l27 34-11-171c-1-17 7-28 19-29 12-1 21 8 23 25l11 102-4-155c0-18 8-30 21-30 12 0 21 11 21 28l5 149 8-133c1-17 10-27 23-26 12 1 19 13 18 29L60-11l13-103c3-16 12-24 23-22 13 2 18 13 16 29L99 33c-3 31-12 58-28 84-8 14-12 28-12 43v11H-49Z" fill="#8de0d4" stroke="var(--device-line,#102e3b)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="m-69 33-19-24c-7-9-15-14-22-12l46 65c20 26 29 52 29 84v12h19v-24c0-44-19-74-53-101Z" fill="#08777b"/>
-  <path d="M-62-129-51-18M-11-174-7-24M36-153 28-19M87-102 75-2" stroke="#f8f7f2" stroke-width="3" stroke-linecap="round"/>
-  <g stroke="#08777b" stroke-width="2.5" stroke-linecap="round">
-    <path d="M-46-8c12-5 22-5 34-1M7-11c11-4 20-3 29 2M52-4c10-2 18 0 24 4"/>
-    <path d="M-14 24c13-4 29-4 42 0M-15 37c14-4 29-3 41 1"/>
-    <path d="M57 58c-8 19-11 40-10 62"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="440" viewBox="0 0 280 440" fill="none">
+  <!-- An unworn fabric glove: relaxed silhouette, sewn panels and a knitted cuff. -->
+  <g transform="rotate(-5 145 230)" stroke="#102e3b" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M105 354c-2-25-10-46-23-69l-39-63c-9-14-10-26-2-32 9-7 19-2 28 10l24 32-9-115c-2-18 4-29 16-29 11-1 18 9 20 26l7 78-2-114c0-16 6-25 17-24 12 1 18 11 19 27l3 107 2-92c0-16 7-25 18-24 12 1 17 11 17 27l-3 105 8-60c2-14 8-22 18-21 11 1 16 10 14 25l-14 116c-3 24-10 45-21 64-7 13-10 27-11 46H105Z" fill="#f8f7f2" stroke-width="3.2"/>
+    <path d="M44 201c4-3 9 0 14 7l39 50c13 18 20 41 21 69l-14 12c-3-18-10-37-21-56l-37-63c-5-9-7-16-2-19Z" fill="#08777b" stroke="none"/>
+    <path d="M99 236c19-16 39-22 62-18 17 3 31 12 38 26l-7 43c-6 26-14 45-13 62l-58 1c-1-32-8-77-22-114Z" fill="#8de0d4" stroke="none"/>
+    <path d="M105 242c15-12 34-17 53-14 13 2 25 9 32 19l-8 39c-6 24-12 43-12 57" stroke="#08777b" stroke-width="1.2" stroke-dasharray="2 4"/>
+    <path d="M94 128 103 204M134 98l4 104M174 117l-2 89M213 165l-8 53" stroke="#08777b" stroke-width="1.5"/>
+    <path d="M91 114c6-2 11-2 17-1M132 84c6-2 12-2 18 0M172 102c6-1 12 0 18 2M210 149c5-1 10 0 15 2" stroke="#102e3b" stroke-width="1.4"/>
+    <path d="M104 219c7-3 13-3 19-1M137 215c8-2 15-1 22 1M174 219c7-1 13 1 19 4" stroke="#08777b" stroke-width="1.4"/>
+    <path d="M101 341c30-7 63-7 99-1l-1 63c-29 11-62 13-95 5l-3-67Z" fill="#102e3b" stroke="#f8f7f2" stroke-width="2.4"/>
+    <path d="M109 351c26-5 53-5 81-1M111 396c24 4 51 3 77-4" stroke="#8de0d4" stroke-width="1.5"/>
+    <path d="m117 361 1 25m11-27 1 28m11-29 1 29m11-29 1 28m11-28 1 27m11-27 1 24" stroke="#08777b" stroke-width="2.2"/>
+    <path d="M109 409c25-6 55-7 83-4-23 9-53 11-83 4Z" fill="#08777b" stroke="none"/>
   </g>
-  <path d="M-52 144c38 8 78 8 114 0v48c-36 10-76 10-114 0v-48Z" fill="#08777b" stroke="var(--device-line,#102e3b)" stroke-width="5.5" stroke-linejoin="round"/>
-  <path d="M-42 156c32 5 63 5 94 0M-42 181c32 6 63 6 94 0" stroke="#8de0d4" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 5"/>
-  <path d="M25 158h46v22H25c-6 0-10-4-10-11s4-11 10-11Z" fill="#102e3b"/>
-  <path d="M27 169h20" stroke="#f8f7f2" stroke-width="3" stroke-linecap="round"/>
 </svg>

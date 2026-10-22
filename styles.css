@@ -87,7 +87,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:pre-line}
 .situation-mark{display:none}
 .situations h3{font-size:30px;max-width:320px;line-height:1.15}
 .purpose>.small-note{margin-top:12px}
-.vision{background:var(--pale);--exchange:0;--manual-reveal:1;--voice-trace:0}
+.vision{background:var(--pale);--exchange:0;--manual-reveal:1;--manual-opacity:1;--voice-opacity:1}
 .vision .section-heading{max-width:900px;margin-bottom:50px}
 .vision .section-lead{max-width:650px}
 .vision-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:start}
@@ -206,18 +206,19 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:pre-line}
 .motion-ready .conversation-art{transform:translateY(calc(var(--hero-progress)*18px)) scale(calc(1 + var(--hero-progress)*.025))}
 .motion-ready .hero-connection path{stroke-dashoffset:calc(.75 - var(--hero-progress)*.75)}
 .motion-ready .purpose-thread-line{stroke-dashoffset:calc(1 - var(--purpose-progress))}
-.motion-ready .practice-board{transform:translateY(calc((1 - var(--practice-progress))*32px))}
 .motion-ready .practice-thread path{stroke-dashoffset:calc(1 - var(--practice-progress))}
 @media(min-width:1100px) and (min-height:700px){
+ .motion-desktop .vision{--manual-opacity:0;--manual-reveal:0}
  .motion-desktop .vision-layout{position:relative}
  .motion-desktop .route-source,.motion-desktop .route-device strong{font-size:16px}
- .motion-desktop .vision-beat{min-height:110svh;display:block;padding-block:42px 100px}
+ .motion-desktop .vision-beat{min-height:125svh;display:block;padding-block:42px 100px}
  .motion-desktop .vision-copy{position:sticky;top:calc(var(--scene-top) + 35px)}
  .motion-desktop .vision-diagram{position:sticky;top:var(--scene-top);height:calc(100svh - var(--scene-top) - 28px);max-height:700px;min-height:490px;display:flex;flex-direction:column;overflow:clip}
- .motion-desktop .static-routes{position:relative;flex:1;min-height:0;display:block;padding:0}
- .motion-desktop .diagram-voice{position:absolute;inset:10% 0 auto;height:190px;transform:translateY(calc(var(--exchange)*-55px)) scale(calc(1 - var(--exchange)*.25));transform-origin:50% 50%;will-change:transform}
- .motion-desktop .diagram-manual{position:absolute;left:0;right:0;top:46%;padding:0;opacity:var(--manual-reveal);transform:translateY(calc((1 - var(--exchange))*24px));will-change:transform,opacity}
- .motion-desktop .manual-input img{max-height:205px;width:128px}
+ .motion-desktop .static-routes{position:relative;flex:1;min-height:0;display:block;padding:0;overflow:clip}
+ .motion-desktop .diagram-voice{position:absolute;inset:calc(50% - 110px) 0 auto;height:220px;opacity:var(--voice-opacity);transform:translate(calc(var(--exchange)*80px),calc(var(--exchange)*-240px)) scale(calc(1 - var(--exchange)*.10));transform-origin:center;will-change:transform,opacity}
+ .motion-desktop .route-device img{max-width:340px}
+ .motion-desktop .diagram-manual{position:absolute;left:0;right:0;top:calc(50% - 115px);padding:0;opacity:var(--manual-opacity);transform:translate(calc((1 - var(--manual-reveal))*-80px),calc((1 - var(--manual-reveal))*160px)) scale(calc(.90 + var(--manual-reveal)*.10));transform-origin:center;will-change:transform,opacity}
+ .motion-desktop .manual-input img{height:230px;max-height:230px;width:146px}
  .motion-desktop .manual-context{font-size:14px;gap:8px}
  .motion-desktop .manual-output{margin-top:14px;font-size:13px}
  .motion-desktop .diagram-pending{margin-top:10px}
@@ -410,7 +411,6 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:pre-line}
  .footer-main>p{font-size:13px;max-width:220px}
  .footer-main>a:last-child{font-size:13px}
  .footer-bottom{font-size:11px;gap:18px}
- .motion-ready .practice-board{transform:translateY(calc((1 - var(--practice-progress))*16px))}
 }
 @media(max-width:370px){.wrap{width:calc(100% - 32px)}.hero h1{font-size:46px}.hero-actions{gap:8px 16px}.hero-lead{font-size:16px}.header-controls{gap:4px}.brand{font-size:24px}.main-nav{padding-inline:16px}.hero-status{font-size:12px}.founder{grid-template-columns:60px 1fr;gap:16px}.founder-portrait{width:60px;height:60px}.founder h3{font-size:24px}.vision-diagram{padding:18px}.diagram-voice{gap:10px}.flow-line{width:16px}.practice-board{padding:22px}h2,.experiment-copy h2{font-size:38px}}
 html:not(.js) .language-switch{display:none}
@@ -418,15 +418,28 @@ html:not(.js) .site-header{position:relative}
 .language-changing{scroll-behavior:auto}
 /* Longer chapter rhythm; only the existing story gains scroll distance. */
 .journey>.section-space{padding-block:160px}
-.scene-transition{position:relative;height:clamp(240px,38svh,420px);overflow:clip;isolation:isolate;background:var(--paper);--transition-progress:1}
+.scene-transition{position:relative;height:clamp(230px,34svh,380px);overflow:clip;isolation:isolate;background:var(--paper);--transition-progress:1}
 .scene-transition::before{content:'';position:absolute;inset:0;background:var(--pale);transform:translateY(calc((1 - var(--transition-progress))*100%))}
-.scene-transition svg{position:relative;width:100%;height:100%;transform:translateY(calc((.5 - var(--transition-progress))*50px))}
-.transition-field{stroke:var(--mint);stroke-width:90;opacity:.6}
+.scene-transition svg{position:relative;width:100%;height:100%;overflow:visible}
 .transition-thread{stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--transition-progress))}
+.transition-ribbon{stroke:var(--mint);stroke-width:12;opacity:.5}
+.transition-from{transform:translateX(calc((1 - var(--transition-progress))*-180px))}
+.transition-to{transform:translateX(calc((1 - var(--transition-progress))*180px))}
 .transition-practice{background:var(--pale)}
 .transition-practice::before{background:var(--ink)}
+.transition-practice svg{transform:none}
 .transition-practice .transition-thread{stroke:var(--mint)}
-.motion-ready .practice-board{transform:translateY(calc((1 - var(--practice-progress))*70px)) scale(calc(.96 + var(--practice-progress)*.04))}
+.transition-device{position:absolute;z-index:2;object-fit:contain;pointer-events:none}
+.transition-glasses{width:clamp(200px,25vw,340px);height:auto;right:12%;top:calc(50% - 85px);transform:translate(calc((1 - var(--transition-progress))*100px),calc((.5 - var(--transition-progress))*80px)) rotate(calc((1 - var(--transition-progress))*-8deg))}
+.transition-glove{height:240px;width:153px;right:24%;top:calc(50% - 120px);transform:translate(calc((1 - var(--transition-progress))*-80px),calc((.5 - var(--transition-progress))*70px)) rotate(calc(-12deg + var(--transition-progress)*16deg))}
+@media(max-width:760px){.transition-glasses{width:200px;right:4%;top:calc(50% - 52px)}.transition-glove{height:140px;width:89px;right:18%;top:calc(50% - 70px)}}
+.transition-validation{background:var(--ink);height:160px}
+.transition-validation::before{background:var(--paper)}
+.transition-validation .transition-thread{stroke:var(--teal);stroke-width:3}
+.motion-ready .practice-board{transform:translateY(calc((1 - var(--practice-progress))*80px)) rotate(calc((1 - var(--practice-progress))*-3deg)) scale(calc(.94 + var(--practice-progress)*.06))}
+.motion-ready .practice-sketch>img{transform:translate(calc((1 - var(--practice-progress))*-26px),calc((1 - var(--practice-progress))*22px)) rotate(calc(-8deg - (1 - var(--practice-progress))*8deg))}
+.motion-ready .purpose,.motion-ready .vision,.motion-ready .experiment{padding-bottom:80px}
+.motion-ready .scene-transition+.section-space{padding-top:90px}
 html:not(.motion-ready) .scene-transition{display:none}
 @media(max-width:1199px) and (min-width:1051px){.header-inner{gap:20px}.main-nav{gap:15px;font-size:12px}.header-controls{gap:16px}}
 @media(max-width:1050px){
@@ -440,9 +453,9 @@ html:not(.motion-ready) .scene-transition{display:none}
  html:not(.js) .menu-toggle{display:none}
 }
 @media(max-width:900px){.journey>.section-space{padding-block:110px}.scene-transition{height:220px}}
-@media(max-width:760px){.journey>.section-space{padding-block:95px}.scene-transition{height:150px}.motion-ready .practice-board{transform:translateY(calc((1 - var(--practice-progress))*22px))}}
+@media(max-width:760px){.journey>.section-space{padding-block:95px}.motion-ready .purpose,.motion-ready .vision,.motion-ready .experiment{padding-bottom:50px}.motion-ready .scene-transition+.section-space{padding-top:55px}.scene-transition{height:150px}.transition-validation{height:110px}.motion-ready .practice-board{transform:translateY(calc((1 - var(--practice-progress))*22px)) rotate(calc((1 - var(--practice-progress))*-1deg))}.motion-ready .practice-sketch>img{transform:translateY(calc((1 - var(--practice-progress))*14px)) rotate(-8deg)}}
 @media(prefers-reduced-motion:reduce){.journey>.section-space{padding-block:80px}.scene-transition{display:none}.vision-copy{position:static!important}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.conversation-art,.practice-board,.diagram-voice,.diagram-manual{transform:none!important;opacity:1!important}.hero-connection path,.purpose-thread-line,.practice-thread path{stroke-dashoffset:0!important}.vision-diagram{position:relative!important;top:auto!important;height:auto!important;max-height:none!important}.static-routes{display:grid!important;position:relative!important}.diagram-voice,.diagram-manual{position:relative!important;inset:auto!important;height:auto!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.conversation-art,.practice-board,.practice-sketch>img,.diagram-voice,.diagram-manual{transform:none!important;opacity:1!important}.hero-connection path,.purpose-thread-line,.practice-thread path{stroke-dashoffset:0!important}.vision-diagram{position:relative!important;top:auto!important;height:auto!important;max-height:none!important}.static-routes{display:grid!important;position:relative!important}.diagram-voice,.diagram-manual{position:relative!important;inset:auto!important;height:auto!important}}
 /* Team and contact restored from 4269030 at the user's request. */
 @font-face{font-family:Manrope;src:url('./assets/fonts/manrope-variable.ttf') format('truetype');font-weight:400 800;font-display:swap}
 #team,#contact{font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;padding-block:110px;--muted:#53616a;--line:#c6d1cd}
