@@ -2,7 +2,7 @@
 
 Actualizado: 22 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Trabajo actual:** [Cabecera integrada y smooth scroll](#inertial-scroll), sobre `7315149`. Se conserva el contenido y la restauración de equipo/contacto; se amplía el recorrido con transiciones e inercia de escritorio por petición expresa del usuario.
+**Trabajo actual:** [Correcciones de navegación y transiciones](#scroll-fixes), sobre `1d79aa9`. Tras confirmar que ya ve el smooth scroll, el usuario pide corregir errores. Se conserva el diseño y se revisan navegación, etiquetas y alternativas.
 
 ## Objetivo y alcance
 
@@ -410,3 +410,28 @@ Implementación guardada y pusheada en `a6a9ee3630bb7de77fe45b599839a6ebf24ac453
 Dieciséis recursos públicos —incluidos HTML, CSS/JS versionados, Lenis CSS/JS, las tres fuentes y recursos visuales— respondieron HTTP200 y coincidieron byte a byte con los archivos revisados, con TLS validado. CSS `ab20db59`, JS `39d7d236`. Captura pública `senva-inertia-public-header.jpg` fuera del repositorio. El indicador se comprobó limpio al final de página en la última revisión local.
 
 Este cierre se guarda en un segundo commit normal, solo de documentación; se confirma también su push/build antes de la entrega. No hay incidencias reproducibles pendientes dentro del alcance comprobado. Se mantienen los límites de revisión indicados. Sin force push ni cambios de configuración. [Web publicada](https://withnolan.github.io/senva/).
+
+
+<a id="scroll-fixes"></a>
+## Correcciones de navegación y transiciones — 22 de octubre de 2026
+
+### Alcance e implementación — terminados
+
+El usuario confirma que ya ve el smooth scroll y pide corregir errores. Se conservan composición, contenido, duración del recorrido y parámetros de inercia de la versión publicada.
+
+- Cancelación explícita y segura de animaciones Lenis al usar teclado, elegir otra ancla, cambiar idioma/layout o volver en el historial. Se usan `stop()`/`start()` consecutivos, sin mantener bloqueo ni impedir acciones nativas. La revisión del código oficial 1.3.27 mostró que `resize()` no detiene una animación y un destino inmediato coincidente puede retornar antes de cancelarla.
+- Indicador por posición de lectura y cajas cacheadas, en lugar de márgenes porcentuales sensibles al ancho. Referencia técnica comprobada: [definición de rootMargin de W3C](https://www.w3.org/TR/intersection-observer/#intersectionobserver-root-intersection-rectangle). Al abrir/cerrar preguntas se vuelven a medir los destinos de equipo y Xiji.
+- Más separación entre las gafas y la etiqueta de concepto al terminar la transición: desplazamiento vertical de −90 a −55 px, manteniendo el resto de la coreografía.
+
+Revisión independiente de código detectó el cálculo del indicador y la necesidad de medir de nuevo tras desplegables. Otro agente revisó la API exacta de cancelación de Lenis. Coordinación implementó y comprobó en navegador. No se cambiaron traducciones, datos, logo, retratos ni la restauración de equipo/contacto.
+
+### Comprobaciones locales — terminadas
+
+- Escritorio1280×720: PageDown interrumpe un viaje hacia Xiji y conserva la nueva posición (595 px), sin continuar hasta el destino anterior ni trasladar el foco después. Cambio de idioma durante rueda a1100×700: posición2579,5 px estable tras traducir; clase de inercia ya asentada. Redimensionado durante otra ancla a1000×680 retira Lenis y mantiene el desplazamiento disponible.
+- Atrás durante una ancla devuelve el hash y cancela el destino pendiente; la posición permanece estable en la comprobación posterior. No se afirma igualdad exacta de restauración con todos los navegadores.
+- Visión a1100×700 EN/ES: final, regreso a mitad y avance; margen medido entre imagen de gafas y cabecera del diagrama de12,87 px en el final ES, sin desbordamiento horizontal. Indicador de visión activo.
+- Tres preguntas abiertas desplazan el inicio de equipo528,77 px; ancla a equipo llega a104,99 px bajo cabecera y el indicador identifica equipo tras recalcular. Menú de1000 px sigue cerrando y enfocando su destino.
+- Móvil320×844 EN/ES: desbordamiento horizontal cero y sin recortes por anchura en titulares/párrafos medidos. Alternativa reducida en arnés externo1280×720: scroll nativo, texto/figura en flujo, opacidad completa y sin desbordamiento. No se modificó la preferencia del sistema operativo.
+- 114 pares EN/ES, bloque restaurado de equipo/contacto, logo y retratos conservados. Sintaxis JS, HTML/IDs/anclas/recursos/Markdown y `git diff --check` correctos. Sin errores/avisos de consola registrados en el recorrido local.
+
+Pruebas con viewports del navegador integrado, sin dispositivos físicos, lector de pantalla real ni mediciones de FPS. Registro de publicación pendiente de confirmar tras commit/push autorizados.

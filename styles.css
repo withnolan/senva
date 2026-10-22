@@ -215,7 +215,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:pre-line}
  .motion-desktop .vision-copy{position:sticky;top:calc(var(--scene-top) + 35px)}
  .motion-desktop .vision-diagram{position:sticky;top:var(--scene-top);height:calc(100svh - var(--scene-top) - 28px);max-height:700px;min-height:490px;display:flex;flex-direction:column;overflow:clip}
  .motion-desktop .static-routes{position:relative;flex:1;min-height:0;display:block;padding:0}
- .motion-desktop .diagram-voice{position:absolute;inset:10% 0 auto;height:190px;transform:translateY(calc(var(--exchange)*-90px)) scale(calc(1 - var(--exchange)*.25));transform-origin:50% 50%;will-change:transform}
+ .motion-desktop .diagram-voice{position:absolute;inset:10% 0 auto;height:190px;transform:translateY(calc(var(--exchange)*-55px)) scale(calc(1 - var(--exchange)*.25));transform-origin:50% 50%;will-change:transform}
  .motion-desktop .diagram-manual{position:absolute;left:0;right:0;top:46%;padding:0;opacity:var(--manual-reveal);transform:translateY(calc((1 - var(--exchange))*24px));will-change:transform,opacity}
  .motion-desktop .manual-input img{max-height:205px;width:128px}
  .motion-desktop .manual-context{font-size:14px;gap:8px}

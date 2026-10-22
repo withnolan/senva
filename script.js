@@ -259,6 +259,13 @@
     root.dataset.scrollMode = smoothScroll ? 'inertia' : 'native';
   }
 
+  function cancelScrollAnimation() {
+    if (!smoothScroll || !smoothScroll.isScrolling) return;
+    // Public stop/start reset the pending animation together, without leaving scroll locked.
+    smoothScroll.stop();
+    smoothScroll.start();
+  }
+
   function setMenu(open, returnFocus = false) {
     const hidden = mobile.matches && !open;
     menu.classList.toggle('is-open', open);
@@ -273,6 +280,7 @@
 
   function setLanguage(next, announce = false) {
     if (!Object.hasOwn(translations, next)) return;
+    cancelScrollAnimation();
     // Preserve the closest reading block rather than the full page's percentage.
     const reading = [...document.querySelectorAll('main h2, main h3, .hero-copy')]
       .filter(el => el.getBoundingClientRect().top <= innerHeight * .6)
@@ -312,6 +320,10 @@
 
   toggle.addEventListener('click', () => { root.classList.add('menu-used'); setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
   document.addEventListener('keydown', event => {
+    const editing = event.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])');
+    const scrollKey = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Tab'].includes(event.key);
+    const scrollSpace = event.key === ' ' && !event.target.closest('button, a, summary');
+    if (!event.defaultPrevented && !editing && (scrollKey || scrollSpace)) cancelScrollAnimation();
     if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setMenu(false, true);
   });
   document.addEventListener('click', event => { if (!event.target.closest('.site-header')) setMenu(false); });
@@ -325,6 +337,7 @@
     target.setAttribute('tabindex', '-1');
     if (smoothScroll) {
       event.preventDefault();
+      cancelScrollAnimation();
       history.pushState(null, '', link.hash);
       // Lenis reads CSS scroll-padding; applying another header offset would double it.
       smoothScroll.scrollTo(target, {onComplete: () => target.focus({preventScroll: true})});
@@ -332,10 +345,11 @@
   }));
   languages.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
   function cancelNavigationInertia() {
-    if (smoothScroll) smoothScroll.scrollTo(smoothScroll.actualScroll, {immediate: true});
+    cancelScrollAnimation();
     // Browser history may restore its native position after popstate dispatch.
     requestAnimationFrame(() => {
-      if (smoothScroll) smoothScroll.scrollTo(smoothScroll.actualScroll, {immediate: true});
+      cancelScrollAnimation();
+      if (smoothScroll) smoothScroll.resize();
     });
   }
   addEventListener('popstate', cancelNavigationInertia);
@@ -354,6 +368,8 @@
   const practiceLayout = document.querySelector('.experiment-layout');
   const transitions = [...document.querySelectorAll('.scene-transition')];
   const header = document.querySelector('.site-header');
+  const chapters = [...document.querySelectorAll('[data-chapter]')];
+  let currentChapter = '';
   let frame = 0, measureFrame = 0, previousTime = 0, geometry = null;
   const pose = {hero: 0, purpose: 0, vision: 0, practice: 0};
   let settled = false;
@@ -362,9 +378,9 @@
     const y = scrollY;
     const box = el => { const r = el.getBoundingClientRect(); return {top: r.top + y, height: r.height}; };
     const headerHeight = header.getBoundingClientRect().height;
-    geometry = {sceneTop: headerHeight + 28, transitions: transitions.map(box), height: innerHeight, hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height};
+    geometry = {chapterLine: Math.max(headerHeight + 40, innerHeight * .32), chapters: chapters.map(link => ({id: link.dataset.chapter, ...box(document.getElementById(link.dataset.chapter))})), sceneTop: headerHeight + 28, transitions: transitions.map(box), height: innerHeight, hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height};
     root.style.setProperty('--header-height', headerHeight + 'px');
-    if (smoothScroll) smoothScroll.resize();
+    if (smoothScroll) { cancelScrollAnimation(); smoothScroll.resize(); }
     queueMotion();
   }
   function queueMeasure() {
@@ -385,6 +401,15 @@
     const enabled = root.classList.contains('motion-ready');
     const y = scrollY, g = geometry;
     const desktop = root.classList.contains('motion-desktop');
+    const readingLine = y + g.chapterLine;
+    const chapter = g.chapters.find(box => readingLine >= box.top && readingLine < box.top + box.height)?.id || '';
+    if (chapter !== currentChapter) {
+      currentChapter = chapter;
+      chapters.forEach(link => {
+        if (link.dataset.chapter === chapter) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
     const target = {
       hero: enabled ? clamp(y / Math.max(300, g.hero.height * .72)) : 1,
       purpose: enabled ? clamp((y + g.height * .85 - g.purpose.top) / (g.height * .8)) : 1,
@@ -420,23 +445,7 @@
   function queueMotion() {
     if (!frame && !document.hidden) frame = requestAnimationFrame(updateMotion);
   }
-  if ('IntersectionObserver' in window) {
-    const chapters = [...document.querySelectorAll('[data-chapter]')];
-    const visibleChapters = new Set();
-    const observer = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) visibleChapters.add(entry.target.id);
-        else visibleChapters.delete(entry.target.id);
-      }
-      const active = chapters.find(link => visibleChapters.has(link.dataset.chapter));
-      chapters.forEach(link => {
-        if (link === active) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
-      });
-    }, {rootMargin: '-20% 0px -55% 0px'});
-    chapters.forEach(link => observer.observe(document.getElementById(link.dataset.chapter)));
-    addEventListener('scroll', queueMotion, {passive: true});
-  }
+  addEventListener('scroll', queueMotion, {passive: true});
   addEventListener('resize', updateMotionMode, {passive: true});
   diagramMotion.addEventListener('change', updateMotionMode);
   reduced.addEventListener('change', updateMotionMode);
@@ -445,6 +454,7 @@
     const sizeObserver = new ResizeObserver(queueMeasure);
     [hero, purpose, visionLayout, practiceLayout, diagram, header].forEach(el => sizeObserver.observe(el));
   }
+  document.querySelectorAll('#research details').forEach(details => details.addEventListener('toggle', queueMeasure));
   if (document.fonts?.ready) document.fonts.ready.then(queueMeasure);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden && frame) { cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
