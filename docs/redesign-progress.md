@@ -365,3 +365,10 @@ Se abrió la web pública y se verificaron portada, fuentes cargadas, ilustraci�
 La revisión técnica independiente final no encuentra nuevos mustfix concretos en el código; sus límites son revisión estática, sin FPS o navegador propio. Las comprobaciones de interacción y publicación corresponden a coordinación. Este cierre se guarda en un commit adicional solo de documentación, cuyo push/build se confirma en la entrega. [Web publicada](https://withnolan.github.io/senva/).
 
 No quedan fallos reproducibles observados dentro del alcance descrito. Se mantienen los límites de pruebas con viewports, simulación de preferencia reducida y ausencia de dispositivos/lector de pantalla reales.
+
+
+## Restauración de equipo y contacto — 22 de octubre de 2026
+
+Petición del usuario: recuperar «Dos perspectivas» y «Cada gesto nos acerca» como estaban antes de la última revisión y mantener una web sencilla de presentación. Se restaura el aspecto de `4269030` exclusivamente en `#team` y `#contact`: Manrope, introducción del equipo a dos columnas, fotos cuadradas y perfiles anteriores; cierre turquesa claro con texto azul noche, titular en dos líneas y separadores de LinkedIn. HTML, traducciones, datos, retratos y enlaces eran idénticos y se conservan. Sin cambios de diseño en otras secciones.
+
+Comparación independiente de alcance realizada sin editar archivos. Restauración terminada: inspección visual de ambas secciones en escritorio y comprobación EN/ES a 320, 390 y 1440 px, sin desbordamiento horizontal o recortes medidos en sus textos. Manrope cargada y retícula anterior comprobada. HTML idéntico salvo versión CSS; JavaScript y las demás reglas CSS conservados. HTML, traducciones, recursos y `git diff --check` correctos. Capturas `senva-restored-team.jpg` y `senva-restored-contact.jpg` fuera del repositorio. La confirmación de push y build del SHA se realiza antes de la respuesta de entrega.

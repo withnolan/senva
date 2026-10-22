@@ -35,7 +35,7 @@ Abrir [http://127.0.0.1:8000/senva/](http://127.0.0.1:8000/senva/). No subir arn
 | `assets/social-card.svg`, `.png` | Fuente editable y exportación social de 1200×630. |
 | `.nojekyll` | Entrega directa desde el repositorio. |
 
-La página solicita recursos del propio sitio. No ejecuta modelos, WebGL, bibliotecas, analítica o servicios externos. La generación/optimización de la ilustración y Sharp fueron herramientas de autoría; no son dependencias del visitante. Recursos anteriores no utilizados se conservan como archivo, incluido `assets/graphics/conversation.svg` y Manrope. No reactivar controladores o estilos históricos.
+La página solicita recursos del propio sitio. No ejecuta modelos, WebGL, bibliotecas, analítica o servicios externos. La generación/optimización de la ilustración y Sharp fueron herramientas de autoría; no son dependencias del visitante. Manrope vuelve a utilizarse exclusivamente en equipo y contacto, restaurados desde `4269030`. Recursos anteriores no utilizados se conservan como archivo, incluido `assets/graphics/conversation.svg`. No reactivar controladores o estilos históricos.
 
 ## Movimiento
 
