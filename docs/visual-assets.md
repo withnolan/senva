@@ -1,26 +1,27 @@
 # SENVA — Recursos visuales y tipografía
 
-Azul noche, blanco cálido y turquesa; ilustración 2D y contenido HTML traducible. Los gráficos son conceptos de investigación, sin datos capturados o capacidades funcionales demostradas.
+Azul noche, blanco cálido y turquesa, con los acentos fríos aprobados; ilustración 2D, una pieza de gafas 3D autorizada posteriormente y contenido HTML traducible. Los gráficos son conceptos de investigación, sin datos capturados o capacidades funcionales demostradas.
 
 ## Recursos activos
 
 | Recurso | Uso y origen |
 | --- | --- |
 | `assets/illustrations/conversation-editorial.webp` | Portada, dos adultos con manos en reposo. Generación editorial mediante imagegen; [origen, selección y límites](conversation-art.md). 1200×800 y unos 122 KB. |
-| `assets/graphics/glasses.svg` | Montura plana, patillas y detalles geométricos; ilustración vectorial propia. |
+| `assets/models/gafas/senva-gafas.glb` | Montura negra mate aprobada; giro conceptual ligado al scroll de visión, carga opcional en escritorio. |
+| `assets/models/gafas/vistas/gafas-*.webp` | Tres cuartos como respaldo del escenario y frontal en el diagrama de subtítulos; vistas del mismo modelo. |
 | `assets/graphics/glove.svg` | Guante textil vacío con panel, costuras y puño; no es un signo concreto ni un esquema de sensores. |
 | Conexiones y voz | SVG/CSS originales, relaciones conceptuales. No representan reconocimiento real. |
 | `assets/shengyu-nolan-chen.jpg`, `santiago-munoz-veguillas.jpg` | Fotografías facilitadas por el usuario; mismo tratamiento y tamaño reservado. |
 | Favicon, símbolo y palabra SENVA | Identidad conservada. El logo mantiene su familia independiente. |
 | `assets/social-card.svg`, `.png` | Vista social 1200×630, nueva ilustración. SVG con imagen PNG embebida para exportación; PNG final para metadatos. |
 
-Dispositivos cargados como `<img>` sobre fondo claro. Son archivos únicos compartidos por sus usos, sin paths duplicados dentro de un stage adicional. Textos, conceptos y aclaraciones se mantienen en HTML.
+El guante y los respaldos de gafas se cargan como `<img>` con medidas reservadas; un canvas decorativo sustituye visualmente al respaldo solo tras dibujar el primer frame. Textos, conceptos y aclaraciones se mantienen en HTML.
 
-La nueva imagen tiene alfa real. Su raster utiliza familias cromáticas y antialiasing; no se afirma una paleta matemática de cuatro valores exactos. No hay naranja, modelado 3D, iluminación volumétrica ni un renderer de ejecución.
+La nueva imagen tiene alfa real. Su raster utiliza familias cromáticas y antialiasing; no se afirma una paleta matemática de cuatro valores exactos. No hay naranja. El renderer local de las gafas es la única excepción 3D, autorizada expresamente después de esta dirección editorial.
 
-## Modelos de producto (no integrados)
+## Modelos de producto
 
-`assets/models/` reúne recursos pedidos por el usuario para una fase posterior; la web actual no los carga. Gafas negras tipo montura cuadrada de acetato, sin marca: vistas 2.5D en WebP transparente (opción por defecto, coherente con el lenguaje 2D) y GLB con patillas articuladas solo si el usuario pide interactividad 3D. Puntos frontales decorativos, no cámaras ni sensores. Detalles, nodos y límites en [assets/models/README.md](../assets/models/README.md). Guante pendiente.
+`assets/models/` reúne las gafas negras de acetato sin marca aprobadas por el usuario. La petición posterior integra el GLB mate en visión, con giro de casi 300° controlado por scroll y reposo final. No se animan las bisagras ni se simula reconocimiento. Los puntos frontales son decorativos, no cámaras ni sensores. Detalles, nodos y límites en [assets/models/README.md](../assets/models/README.md). Guante pendiente.
 
 ## Tipografía local
 

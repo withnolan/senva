@@ -26,19 +26,24 @@ Abrir [http://127.0.0.1:8000/senva/](http://127.0.0.1:8000/senva/). No subir arn
 | --- | --- |
 | `index.html` | Inglés completo de respaldo, contenido, ilustraciones, preguntas, equipo y enlaces. |
 | `styles.css` | Un sistema de composición y tipografía; responsive, foco, entrada y alternativa reducida. |
-| `script.js` | 114 claves EN/ES, metadatos, menú, sección activa, Lenis y progreso decorativo. |
+| `script.js` | 114 claves EN/ES, metadatos, menú, sección activa, Lenis, progreso decorativo y carga opcional del modelo. |
+| `glasses-3d.js` | Escena opcional de gafas, encuadre, materiales, giro con el progreso existente y limpieza de GPU. |
+| `assets/vendor/three/*` | Three.js r169, GLTFLoader, Meshopt, utilidades y entorno; copia local mínima MIT, unos 859 KB sin comprimir, cargada cerca de visión. |
 | `assets/vendor/lenis/*` | Lenis vanilla 1.3.27: JS minificado de 18 815 bytes, CSS recomendado, licencia MIT y registro de procedencia/integridad. |
 | `assets/illustrations/conversation-editorial.webp` | Ilustración 2D de dos adultos, 1200×800, alfa, aproximadamente 122 KB. |
-| `assets/graphics/glasses.svg`, `glove.svg` | Ilustraciones editoriales 2D de montura fina y guante textil, compartidas por visión, transiciones y práctica; versionadas en sus URLs. |
+| `assets/graphics/glove.svg` | Guante editorial 2D en visión y práctica; versión en su URL. |
+| `assets/models/gafas/*` | GLB mate web (1,7 MB) y vistas WebP de respaldo; maestro y brillo conservados sin cargarlos. |
 | `assets/fonts/*latin.woff2` | Bricolage Grotesque e Instrument Sans, unos 107 KB en conjunto. Licencias OFL adjuntas. |
 | `assets/*.jpg` | Retratos facilitados, originales de 800×800, carga diferida y dimensiones reservadas. |
 | `assets/favicon.svg`, `senva-logo.svg` | Identidad conservada; símbolo y palabra de marca también en HTML. |
 | `assets/social-card.svg`, `.png` | Fuente editable y exportación social de 1200×630. |
 | `.nojekyll` | Entrega directa desde el repositorio. |
 
-La página solicita recursos del propio sitio. No ejecuta modelos, WebGL, analítica ni servicios externos. La única biblioteca del visitante es Lenis, servida localmente y sin framework; su [registro de versión y hashes](../assets/vendor/lenis/README.md) permite comprobar la copia. La generación/optimización de la ilustración y Sharp fueron herramientas de autoría; no son dependencias del visitante. Manrope vuelve a utilizarse exclusivamente en equipo y contacto, restaurados desde `4269030`. Recursos anteriores no utilizados se conservan como archivo, incluido `assets/graphics/conversation.svg`. No reactivar controladores o estilos históricos.
+La página solicita recursos del propio sitio, sin analítica ni servicios externos. Lenis conserva su [registro de versión y hashes](../assets/vendor/lenis/README.md). La petición expresa posterior autoriza WebGL para las gafas: Three.js r169 y Meshopt también se sirven localmente, con [procedencia y hashes](../assets/vendor/three/README.md), sin framework. La generación/optimización de la ilustración y Sharp fueron herramientas de autoría; no son dependencias del visitante. Manrope vuelve a utilizarse exclusivamente en equipo y contacto, restaurados desde `4269030`. Recursos anteriores no utilizados se conservan como archivo, incluido `assets/graphics/conversation.svg`. No reactivar controladores o estilos históricos.
 
 ## Navegación, recorrido y movimiento
+
+La barra derecha del documento se oculta con `scrollbar-width:none` y `html::-webkit-scrollbar`; no se aplica `overflow:hidden` al documento ni se oculta la barra del menú móvil. Scroll, teclado, tacto y anclas mantienen su funcionamiento.
 
 La cabecera contiene **una sola navegación con seis destinos**: propósito, visión, primera hipótesis, preguntas, equipo y Xiji. Se retiró la barra de capítulos separada que se superponía al contenido. `aria-current="location"` señala la sección activa dentro de esa misma navegación. El menú se adapta hasta **1050 px**, incluida la anchura de tablet.
 
@@ -56,11 +61,21 @@ El progreso de un escenario fijo recorre `(scrollY - (top - headerHeight)) / (tr
 
 La cabecera usa el tono de entrada del track hasta el cruce y el de salida después; texto/fondo cambian juntos sin pasar por tonos de contraste pobre. Al cambiar idioma se mide de nuevo y se conserva la fracción si el escenario inicial o final usa fijación. Cuando ambos permanecen en flujo se conserva el bloque de lectura. No se fuerzan saltos ni se igualan líneas; los cuatro textos anteriores ya no contienen saltos editoriales. El grupo de dos fragmentos de contacto conserva su estructura restaurada.
 
-Móvil mantiene escenarios en flujo, sin mínimos de dos pantallas, sin desplazamiento lateral del panel y con gafas limitadas a64vw para reservar su giro. Sin JS, sin observador o con movimiento reducido se ocultan las capas decorativas y umbrales; los tres escenarios conservan su contenido real, sin alturas prolongadas, fijación o texto invisible. La señal de foco en el título del destino conserva navegación por teclado.
+Móvil mantiene escenarios en flujo, sin mínimos de dos pantallas, sin desplazamiento lateral del panel y con la imagen de gafas limitada a76vw y cruce de30 px. Sin JS, sin observador o con movimiento reducido se ocultan las capas decorativas y umbrales; los tres escenarios conservan su contenido real, sin alturas prolongadas, fijación o texto invisible. La señal de foco en el título del destino conserva navegación por teclado.
 
 `measureMotion` cachea posiciones y dimensiones tras cambio de ventana, idioma, tamaño de contenido o carga de fuentes, incluida la altura real de cabecera. Los nuevos grupos se controlan con variables de transform/opacidad; su configuración CSS inicial evita superponer ambas composiciones antes de la primera medición. `updateMotion` deriva del scroll las variables para `transform`, `opacity` y trazados predefinidos de portada, propósito, visión, práctica e interludios. Con Lenis activo, las poses siguen el progreso ya interpolado sin un segundo retardo; en modo nativo mantienen el asentamiento decorativo de 70 ms. El RAF decorativo termina al alcanzar el objetivo y se cancela al ocultar la pestaña. La navegación activa se calcula con esas cajas cacheadas y una línea de lectura al 32 % de la altura de ventana, respetando el espacio de cabecera. No depende de márgenes porcentuales de un observador. Los eventos `toggle` de las preguntas vuelven a medir las posiciones posteriores.
 
 No confundir esta descripción de implementación con mediciones de FPS o verificaciones visuales. Los estados efectivamente revisados, el build y sus límites deben registrarse en [redesign-progress.md](redesign-progress.md). Modificar una trayectoria exige observar comienzo, estados intermedios y regreso en ambos idiomas.
+
+## Gafas: modelo opcional y respaldo
+
+La petición del 23 de octubre sustituye la restricción histórica de no usar 3D exclusivamente para las gafas. `IntersectionObserver` aproxima la carga a600 px del track de visión. Solo se importa `glasses-3d.js` si hay puntero fino/hover, ventana de al menos1100×700 y no hay movimiento reducido. No se descarga en móvil. Las rutas son relativas al sitio y funcionan bajo `/senva/`.
+
+El renderer usa GLTFLoader con Meshopt, centra la caja real de la montura y conserva materiales. Cámara ortográfica fija, fondo transparente, iluminación suave y DPR máximo1,5. El yaw va de−38° a−338°, con pitch/roll moderados; desde0,83 permanece quieto. La misma fracción `cinemaProgress` del escenario controla el giro, que se revierte al subir. No añade listeners de rueda, RAF continuo ni otro motor de scroll. Solo se dibuja al cambiar pose o tamaño y no se actualiza fuera del track visible.
+
+La imagen tres cuartos permanece en HTML y se oculta solo tras un primer render válido. El diagrama A/B usa una vista frontal estática del mismo modelo, disponible sin JS y con movimiento reducido aunque se oculten las capas decorativas. Errores de importación/GLB/WebGL o pérdida de contexto recuperan la imagen. Al pasar a móvil/reducido se liberan canvas, geometrías, materiales, entorno y contexto. Un token de generación descarta cargas pendientes obsoletas; se serializan para no mezclar dos instancias al redimensionar. No hay controles enfocables en el gráfico decorativo.
+
+El GLB tiene470508 triángulos. La decodificación y envolvente de101 poses se verifican con Node; eso no acredita rendimiento GPU, apariencia del canvas ni FPS. Consultar el registro de revisión antes de afirmar pruebas visuales. No se cargan el maestro de11 MB, la variante brillo ni texturas externas.
 
 ## Idiomas y acceso
 
@@ -72,10 +87,10 @@ Hasta 1050 px, el menú cerrado usa `inert` y `aria-hidden`. Abrir enfoca su pri
 
 ## Mantener y publicar
 
-Después de cambiar CSS/JS, actualizar `?v=` con los primeros ocho caracteres de SHA-256:
+Después de cambiar CSS/JS, actualizar `?v=` con los primeros ocho caracteres de SHA-256. Primero versionar `glasses-3d.js` en el import de `script.js`, después actualizar CSS/JS en `index.html`:
 
 ```sh
-shasum -a 256 styles.css script.js
+shasum -a 256 styles.css script.js glasses-3d.js
 ```
 
 Comprobar sintaxis, traducciones, HTML, IDs/anclas, recursos, movimiento de ida/vuelta, idiomas durante la lectura, 320 px y ventanas bajas, teclado y alternativas. Repetir las comprobaciones afectadas por correcciones; no sustituir la crítica visual por ausencia de errores técnicos.

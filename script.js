@@ -370,7 +370,7 @@
   addEventListener('hashchange', cancelNavigationInertia);
 
 
-  // The document retains its native scrollbar; Lenis eases desktop wheel input only.
+  // Document scrolling stays native; CSS hides only its scrollbar decoration.
   // Geometry is measured after layout changes, never after writes in a frame.
   const clamp = value => Math.max(0, Math.min(1, value));
   const smooth = value => { value = clamp(value); return value * value * (3 - 2 * value); };
@@ -384,6 +384,51 @@
   const header = document.querySelector('.site-header');
   const surfaces = [...document.querySelectorAll('main [data-tone]')];
   const cinemaTracks = [...document.querySelectorAll('[data-cinema]')].map(el => ({el, stage: el.querySelector('.cinema-stage')})).filter(scene => scene.stage);
+  const glassesHost = document.querySelector('[data-glasses-model]');
+  const glassesTrack = glassesHost?.closest('[data-cinema]');
+  // A local, optional enhancement: no WebGL on touch, small screens or reduced motion.
+  // Import lazily near the vision; the existing motion frame owns its exact progress.
+  let glassesScene = null, glassesLoading = false, glassesNear = false;
+  let glassesGeneration = 0, glassesProgress = 0, glassesFailed = false;
+  function glassesAllowed() {
+    return glassesHost && !reduced.matches && inertiaDesktop.matches && diagramMotion.matches && 'IntersectionObserver' in window;
+  }
+  function syncGlasses() {
+    if (!glassesAllowed()) {
+      if (glassesLoading) glassesGeneration++;
+      glassesScene?.dispose();
+      glassesScene = null;
+      return;
+    }
+    if (glassesScene) { glassesScene.resize(); return; }
+    if (!glassesNear || glassesLoading || glassesFailed || document.hidden) return;
+    const generation = ++glassesGeneration;
+    glassesLoading = true;
+    import('./glasses-3d.js?v=ab83f152').then(module => {
+      if (generation !== glassesGeneration || !glassesAllowed()) return null;
+      return module.createGlassesScene(glassesHost, {
+        modelUrl: new URL('./assets/models/gafas/senva-gafas.glb', document.baseURI).href,
+        initialProgress: glassesProgress
+      });
+    }).then(scene => {
+      if (!scene) return;
+      if (generation !== glassesGeneration || !glassesAllowed()) { scene.dispose(); return; }
+      glassesScene = scene;
+      scene.update(glassesProgress);
+    }).catch(() => {
+      // The image and all HTML remain available if modules, WebGL or the GLB fail.
+      if (generation === glassesGeneration) glassesFailed = true;
+    }).finally(() => {
+      glassesLoading = false;
+      if (generation !== glassesGeneration) syncGlasses();
+    });
+  }
+  if (glassesTrack && 'IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      glassesNear = entries[0].isIntersecting;
+      if (glassesNear) syncGlasses();
+    }, {rootMargin: '600px 0px'}).observe(glassesTrack);
+  }
   const revealScenes = [...document.querySelectorAll('#team, #xiji, #contact')];
   const principle = document.querySelector('.principle');
   const principleStage = document.querySelector('.principle-stage');
@@ -416,6 +461,7 @@
       hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height
     };
     if (smoothScroll) { cancelScrollAnimation(); smoothScroll.resize(); }
+    syncGlasses();
     queueMotion();
   }
   function queueMeasure() {
@@ -445,6 +491,10 @@
       scene.el.style.setProperty('--cinema-cross', smooth((progress - .2) / .44).toFixed(4));
       scene.el.style.setProperty('--cinema-settle', smooth((progress - .62) / .26).toFixed(4));
       scene.el.dataset.cinemaProgress = progress.toFixed(4);
+      if (scene.el === glassesTrack) {
+        glassesProgress = progress;
+        if (glassesScene && y + g.height >= scene.top && y < scene.top + scene.height) glassesScene.update(progress);
+      }
       if (y + g.chromeLine >= scene.top && y + g.chromeLine < scene.top + scene.height) tone = progress < .6 ? scene.from : scene.to;
     });
     if (root.dataset.chrome !== tone) root.dataset.chrome = tone;
@@ -503,7 +553,7 @@
   addEventListener('resize', updateMotionMode, {passive: true});
   diagramMotion.addEventListener('change', updateMotionMode);
   reduced.addEventListener('change', updateMotionMode);
-  inertiaDesktop.addEventListener('change', updateSmoothScroll);
+  inertiaDesktop.addEventListener('change', () => { updateSmoothScroll(); syncGlasses(); });
   if ('ResizeObserver' in window) {
     const sizeObserver = new ResizeObserver(queueMeasure);
     [hero, purpose, visionLayout, practiceLayout, diagram, header, principleStage, ...cinemaTracks.map(scene => scene.stage)].forEach(el => sizeObserver.observe(el));

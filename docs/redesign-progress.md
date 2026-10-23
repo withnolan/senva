@@ -543,3 +543,30 @@ Capturas de escritorio fuera de producción con prefijo `senva-cinema-`. El resu
 Implementación `e875aa9`, integrada y pusheada mediante `f55fd2774c9a4218a1a44c1f1d4963bf8d630e63`. GitHub Pages confirma `built` para ese SHA, sin error. Se conserva íntegro el commit remoto `3b83523`: recursos y registro de modelos de la otra tarea, sin referencias desde la web de esta iteración. Sin force push ni cambios de configuración.
 
 Dieciséis recursos publicados responden HTTP200 y coinciden byte a byte con los revisados mediante HTTPS validado. CSS `8c39a0ba`, JS `717dd77d`. Esta es una verificación técnica de entrega; no sustituye la observación visual bloqueada. Este cierre solo cambia documentación y también se comprueba su push/build. La revisión móvil/tablet, variantes accesibles y caso de idioma indicados arriba siguen pendientes. [Web publicada](https://withnolan.github.io/senva/).
+
+
+<a id="scroll-glasses-3d"></a>
+## Gafas 3D ligadas al scroll y barra lateral — 23 de octubre de 2026
+
+### Implementación terminada; verificación visual pendiente por acceso
+
+La petición expresa del usuario autoriza integrar el modelo 3D ya aprobado y ocultar la barra derecha. Prevalece para esta pieza sobre la restricción histórica de no usar 3D. Se conservan portada, logo, contenido, ambos idiomas, guante 2D y los demás escenarios.
+
+- La introducción de visión sustituye la montura SVG por `senva-gafas.glb`, acabado mate. Giro de casi300° alrededor del centro real, con cabeceo/alabeo moderados: tres cuartos → patillas/reverso → frontal opuesto → reposo desde0,83. Se revierte al subir. Las cintas y el campo mint acompañan el mismo progreso; no se añade otro motor de scroll ni un giro automático. [Dirección y límites](glasses-3d-direction.md).
+- Coordinación integra HTML/CSS/JS y dependencias; desarrollo trabaja solo en `glasses-3d.js`; dirección observa la hoja de vistas; revisión independiente contrasta el ciclo de vida, rutas y encuadre real del modelo. Se serializan cargas para evitar que una instancia obsoleta oculte el respaldo de otra al cambiar tamaño rápidamente.
+- Three.js r169 y Meshopt se sirven localmente, con MIT, procedencia y hashes. Tarball oficial validado mediante SHA-512. Se importa al aproximarse a visión, solo con ventana≥1100×700, hover/puntero fino y sin movimiento reducido. Un canvas, DPR≤1,5, sin sombras ni RAF adicional continuo; dibuja al cambiar pose/tamaño y no actualiza fuera de visión.
+- Tres cuartos WebP permanece hasta el primer frame válido. El diagrama de subtítulos usa la vista frontal del mismo modelo. Móvil, movimiento reducido, sin JS, fallo WebGL/GLB o pérdida de contexto mantienen imágenes/contenido; el diagrama estático permanece incluso cuando se oculta el escenario decorativo. Sin controles de canvas enfocables.
+- `scrollbar-width:none` y el selector WebKit ocultan únicamente la barra del documento. No se bloquea `overflow` de html/body, ni se oculta la barra interna del menú. Se conserva Lenis, tacto, teclado y anclas existentes.
+- No se alteran GLB, vistas, maestro o variante brillo. Los últimos dos no se cargan en la web. Los puntos son decorativos, no sensores/cámaras; el gráfico continúa etiquetado como concepto, sin capacidades funcionales inventadas.
+
+### Comprobaciones reales
+
+- Node carga el GLB mediante GLTFLoader+Meshopt locales:7 mallas,470508 triángulos; caja0,14689×0,04232×0,11634 m. Coordinación recorre101 poses de los vértices reales; revisión independiente recorre1001 con Box3 preciso. Extremos X0,09240/Y0,03671 m dentro del encuadre reservado X0,10437/Y0,04800 m. Esto comprueba la envolvente geométrica del canvas, no el recorte por composición de la página.
+- Sintaxis de los dos controladores y módulos locales, importaciones relativas, HTML equilibrado, recursos existentes,114 claves EN/ES, fallback inglés/metadatos, IDs/anclas y enlaces Markdown. Logo exacto, favicon y ambos retratos conservados. El diccionario y los hechos no cambian. Medidas WebP reales2000×798 y2000×580 reservadas. Revisión independiente estática del ciclo carga/cancelación/dispose, respaldo y barra.
+- Revisada la hoja local de vistas aprobadas, no una captura del nuevo renderer.
+
+### Limitación y siguiente comprobación
+
+Sigue vigente el bloqueo de acceso al navegador documentado en la entrada anterior; no se ha confirmado un restablecimiento ni se intentan vías alternativas para eludirlo. No se afirma revisión visual de esta integración, ausencia de errores de consola, rendimiento GPU/FPS o pruebas en dispositivos físicos. Pendiente observar poses de entrada/perfil/reverso/reposo y regreso, iluminación/contraste del acetato, alturas bajas, EN/ES, cambio de tamaño, móvil y movimiento reducido. La envolvente matemática no sustituye esta revisión. Los pendientes visuales previos también siguen abiertos.
+
+Guía técnica, recursos visuales, README de modelos y reglas de coordinación actualizados. El README principal sigue centrado en el proyecto; sus instrucciones locales no cambian. Commit/push y build exacto se registran después de la entrega técnica.

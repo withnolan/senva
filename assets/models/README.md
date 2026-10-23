@@ -1,6 +1,6 @@
 # SENVA — modelos de producto
 
-Carpeta de recursos para implementar en la web. **Todavía no están integrados en `index.html`.**
+Recursos de producto. **Las gafas mate están integradas en la visión por petición expresa del usuario**, como concepto; no acreditan un prototipo funcional.
 
 | Modelo | Estado |
 | --- | --- |
@@ -26,9 +26,9 @@ Vistas disponibles (`gafas-<vista>.webp`): `frontal`, `tres-cuartos-izquierda`, 
 
 ### Qué usar
 
-`AGENTS.md` y `docs/visual-assets.md` piden una web sin 3D. Por eso, **la opción por defecto son las vistas WebP**: se cargan como `<img>` con `width`/`height` reservados y `alt` en EN/ES, igual que los SVG actuales. Encajan con el lenguaje 2D/2.5D de la web, y combinando varias vistas se puede montar la animación de giro o de relevo entre escenas.
+La petición del 23 de octubre autoriza expresamente el GLB mate y sustituye la restricción histórica de no usar 3D para esta pieza. `glasses-3d.js` lo carga de forma diferida en escritorio con puntero preciso, ventana de al menos 1100×700 y sin movimiento reducido. Gira con el progreso de la visión, sin bucle automático.
 
-Usa el GLB (Three.js) solo si el usuario pide expresamente una pieza 3D interactiva.
+La vista `gafas-tres-cuartos-izquierda.webp` permanece como respaldo en el escenario. `gafas-frontal.webp` sustituye al dibujo anterior en el diagrama de subtítulos. Móvil, movimiento reducido, ausencia de JS o WebGL y errores de carga conservan imágenes y contenido HTML. Three.js r169 y Meshopt se sirven localmente con licencia y procedencia en `assets/vendor/three/README.md`. No se cargan la variante brillo ni el maestro.
 
 ### Datos técnicos del GLB
 
