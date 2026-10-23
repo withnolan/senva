@@ -640,3 +640,9 @@ La limitación de acceso al navegador sigue vigente. No se intenta eludirla; las
 ### Límite pendiente
 
 Se ha revisado la captura aportada por el usuario, el código y las geometrías/simulaciones descritas. Continúa el bloqueo de acceso a la herramienta de navegador, sin restablecimiento confirmado y sin vías alternativas para eludirlo. No hay observación nueva de la página, transparencias, brillo, escritura o trayecto real. Pendiente: 0/25/50/75/100% e ida/vuelta, frío en ancla A, pausa, cambio EN/ES y resize durante el descenso,320 px/móvil/reducido/sin JS. Tampoco se afirman FPS, consola limpia o pruebas en dispositivos físicos. La publicación técnica se verificará por SHA y recursos, separada de esta limitación.
+
+### Entrega técnica
+
+Implementación `affa08bae4ae8c22185afe0e4961f9ffe29478cc`, pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error. Treinta recursos responden HTTP200 y coinciden byte a byte mediante HTTPS validado, incluidos el módulo vivo, controlador, CSS, GLB y respaldos. CSS `4f88ebff`, JS `cbfa062a`, gafas `21560d0a`. Se comprueba entrega de archivos, sin atribuir a ello una revisión GPU/visual de la página.
+
+Este cierre solo actualiza el registro y también se pushea/verifica. No hay force push ni cambios de configuración. Los pendientes de observación visual anteriores siguen abiertos. [Revisar visión](https://withnolan.github.io/senva/#vision).
