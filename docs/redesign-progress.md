@@ -502,6 +502,15 @@ Implementación `ee44d594043723f5699ae8650c22804d1d02afb8`, pusheada a `origin/m
 
 Dieciséis recursos públicos coinciden byte a byte con los revisados mediante HTTPS validado. CSS `b015c4ef`, JS `a5d3e127`; SVG, logo y fotografías conservados. Capturas fuera del repositorio: `senva-chapters-public-vision.jpg` y `senva-chapters-public-paper.jpg`. README, guía técnica y storyboard actualizados. Este cierre añade solo documentación a la implementación; se comprueba también el push/build del commit final. Sin force push ni cambios de configuración. No quedan fallos reproducibles pendientes dentro de las comprobaciones realizadas; se mantienen los límites de revisión descritos. [Web publicada](https://withnolan.github.io/senva/).
 
+<a id="product-models"></a>
+## Modelos de producto: gafas — 23 de octubre de 2026
+
+Recurso solicitado por el usuario para que otro agente lo implemente; no se modifica `index.html`, CSS ni JS. Carpeta [assets/models](../assets/models/README.md).
+
+- Gafas negras de acetato, montura cuadrada inspirada en wayfarer, sin logos ni grabados de marca. Partieron de un modelo generado por el usuario en Tripo; se reconstruyeron como piezas limpias: frontal simétrico con caras planas y aristas de ~0,9 mm, patillas rectas a ras del canto y unidas en ángulo recto, lentes, plaquetas integradas y dos puntos frontales decorativos elegidos por el usuario.
+- Entregables: GLB web con meshopt (1,7 MB, acabado mate), variante brillo, maestro sin comprimir y 15 vistas 2.5D WebP transparentes. Por la regla de no usar 3D en la web, las vistas WebP son la opción por defecto; el GLB queda para una petición expresa de interactividad.
+- Comprobaciones: el GLB comprimido carga en three r169 (Chromium headless con SwiftShader), que es el mismo render usado para las vistas. Revisión visual de 12 ángulos y del primer plano de las bisagras; el usuario aprobó el resultado. No hay pruebas en dispositivos físicos ni medición de rendimiento WebGL.
+- Pendiente: guante.
 
 <a id="integrated-cinema"></a>
 ## Escenarios integrados y composición bilingüe — 23 de octubre de 2026
@@ -531,4 +540,4 @@ Capturas de escritorio fuera de producción con prefijo `senva-cinema-`. El resu
 
 ### Entrega
 
-Pendiente guardar commit/push autorizados y confirmar build del SHA. La limitación de revisión se mantiene visible; no implica un fallo reproducible observado de móvil.
+Implementación guardada en `e875aa9`. Se integra el commit remoto `3b83523`, conservando los recursos y registro de modelos de la otra tarea; no se enlazan desde esta web. Pendientes push y confirmación de build del SHA de integración. La limitación de revisión se mantiene visible; no implica un fallo reproducible observado de móvil.
