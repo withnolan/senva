@@ -6,7 +6,8 @@ Azul noche, blanco cálido y turquesa, con los acentos fríos aprobados; ilustra
 
 | Recurso | Uso y origen |
 | --- | --- |
-| `assets/illustrations/conversation-editorial.webp` | Portada, dos adultos con manos en reposo. Generación editorial mediante imagegen; [origen, selección y límites](conversation-art.md). 1200×800 y unos 122 KB. |
+| `assets/illustrations/conversation-devices.webp` | Portada, dos adultos con gafas conceptuales y manos en reposo, una persona con guantes. Edición imagegen; [prompt, origen y límites](conversation-art.md#device-edition--23-october-2026).1200×800 y unos129 KB. |
+| `assets/illustrations/conversation-editorial.webp` | Recurso anterior preservado; permanece en la vista social. |
 | `assets/models/gafas/senva-gafas.glb` | Montura negra mate aprobada; giro conceptual ligado al scroll de visión, carga opcional en escritorio. |
 | `assets/models/gafas/vistas/gafas-*.webp` | Tres cuartos como respaldo del escenario y frontal en el diagrama de subtítulos; vistas del mismo modelo. |
 | `assets/graphics/glove.svg` | Guante textil vacío con panel, costuras y puño; no es un signo concreto ni un esquema de sensores. |
@@ -21,7 +22,7 @@ La nueva imagen tiene alfa real. Su raster utiliza familias cromáticas y antial
 
 ## Modelos de producto
 
-`assets/models/` reúne las gafas negras de acetato sin marca aprobadas por el usuario. La petición posterior integra el GLB mate en visión, con giro de casi 300° controlado por scroll y reposo final. No se animan las bisagras ni se simula reconocimiento. Los puntos frontales son decorativos, no cámaras ni sensores. Detalles, nodos y límites en [assets/models/README.md](../assets/models/README.md). Guante pendiente.
+`assets/models/` reúne las gafas negras de acetato sin marca aprobadas por el usuario. La petición posterior integra el GLB mate en visión, con giro de casi300° y recorrido lateral controlados por scroll, cristal frío y subtítulos ficticios EN/ES sobre las lentes, con reposo final. No se animan las bisagras ni se simula reconocimiento. Los puntos frontales son decorativos, no cámaras ni sensores. Detalles, nodos y límites en [assets/models/README.md](../assets/models/README.md). Guante pendiente.
 
 ## Tipografía local
 

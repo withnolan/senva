@@ -83,7 +83,7 @@
     "practiceMore": "A complementary practice tool, with exercises to select with teachers. Adult learners are potential users; teaching centres are possible collaborators and buyers. No recognition, scores or linguistic corrections have been validated. This would not establish a route to natural-conversation translation.",
     "manualInfo": "Manual information",
     "heroSecondary": "Our next questions",
-    "heroArtAlt": "Two adults facing each other, joined by a shared turquoise line. An editorial illustration of connection.",
+    "heroArtAlt": "Two adults wearing conceptual glasses, with gloves on the resting hands of one person. An editorial illustration, not a product demonstration.",
     "purposeLabel": "01 / The purpose",
     "purposeTitle": "More room to take part.",
     "purposeBody": "Autonomy, participation and the freedom to join in. Everyday possibilities are the reason to explore SENVA.",
@@ -116,7 +116,11 @@
     "chapterVision": "Vision",
     "chapterExperiment": "First hypothesis",
     "chapterValidation": "Validation",
-    "heroConcrete": "Communication is the purpose. Learning is a first hypothesis."
+    "heroConcrete": "Communication is the purpose. Learning is a first hypothesis.",
+    "legalNav": "Legal information",
+    "termsLink": "Terms of use",
+    "privacyLink": "Privacy",
+    "cookiesLink": "Cookies & preferences"
   },
   "es": {
     "title": "SENVA — Cada gesto nos acerca",
@@ -199,7 +203,7 @@
     "practiceMore": "Una herramienta complementaria de práctica, con ejercicios por elegir con docentes. Los estudiantes adultos serían posibles usuarios; los centros, posibles colaboradores y compradores. No se ha validado reconocimiento, puntuaciones ni correcciones lingüísticas. Esto no demostraría una ruta hacia la traducción de conversaciones naturales.",
     "manualInfo": "Información manual",
     "heroSecondary": "Nuestras próximas preguntas",
-    "heroArtAlt": "Dos personas adultas frente a frente, unidas por un trazo turquesa compartido. Ilustración editorial de conexión.",
+    "heroArtAlt": "Dos personas adultas con gafas conceptuales y una de ellas con guantes sobre las manos en reposo. Ilustración editorial, no una demostración del producto.",
     "purposeLabel": "01 / El propósito",
     "purposeTitle": "Más espacio para participar.",
     "purposeBody": "Autonomía, participación y libertad para sumarse. Las posibilidades cotidianas son la razón para explorar SENVA.",
@@ -232,7 +236,11 @@
     "chapterVision": "Visión",
     "chapterExperiment": "Primera hipótesis",
     "chapterValidation": "Validación",
-    "heroConcrete": "La comunicación es el propósito. El aprendizaje es una primera hipótesis."
+    "heroConcrete": "La comunicación es el propósito. El aprendizaje es una primera hipótesis.",
+    "legalNav": "Información legal",
+    "termsLink": "Términos de uso",
+    "privacyLink": "Privacidad",
+    "cookiesLink": "Cookies y preferencias"
   }
 };
   const root = document.documentElement;
@@ -300,6 +308,8 @@
       document.querySelectorAll(selector).forEach(el => el.setAttribute(attr, copy[el.dataset[key]]));
     }
     root.lang = next;
+    glassesScene?.setLanguage(next);
+    document.querySelectorAll('[data-legal]').forEach(link => { link.href = './legal.html#' + link.dataset.legal + '-' + next; });
     document.title = copy.title;
     for (const [selector, value] of [
       ['meta[name="description"]', copy.description],
@@ -328,7 +338,7 @@
         requestAnimationFrame(() => root.classList.remove('language-changing'));
       }
     }
-    try { localStorage.setItem('senva-language', next); } catch { /* Optional preference. */ }
+    try { if (announce) localStorage.setItem('senva-language', next); } catch { /* Optional preference. */ }
     queueMeasure();
   }
 
@@ -404,16 +414,17 @@
     if (!glassesNear || glassesLoading || glassesFailed || document.hidden) return;
     const generation = ++glassesGeneration;
     glassesLoading = true;
-    import('./glasses-3d.js?v=ab83f152').then(module => {
+    import('./glasses-3d.js?v=c03da9bb').then(module => {
       if (generation !== glassesGeneration || !glassesAllowed()) return null;
       return module.createGlassesScene(glassesHost, {
         modelUrl: new URL('./assets/models/gafas/senva-gafas.glb', document.baseURI).href,
-        initialProgress: glassesProgress
+        initialProgress: glassesProgress, language
       });
     }).then(scene => {
       if (!scene) return;
       if (generation !== glassesGeneration || !glassesAllowed()) { scene.dispose(); return; }
       glassesScene = scene;
+      scene.setLanguage(language);
       scene.update(glassesProgress);
     }).catch(() => {
       // The image and all HTML remain available if modules, WebGL or the GLB fail.
@@ -430,6 +441,7 @@
     }, {rootMargin: '600px 0px'}).observe(glassesTrack);
   }
   const revealScenes = [...document.querySelectorAll('#team, #xiji, #contact')];
+  const bilingualBlocks = [...document.querySelectorAll('[data-bilingual-space]')];
   const principle = document.querySelector('.principle');
   const principleStage = document.querySelector('.principle-stage');
   const chapters = [...document.querySelectorAll('[data-chapter]')];
@@ -447,8 +459,13 @@
     const box = el => { const r = el.getBoundingClientRect(); return {top: r.top + y, height: r.height}; };
     const headerHeight = header.getBoundingClientRect().height;
     root.style.setProperty('--header-height', headerHeight + 'px');
+    window.SenvaBilingualLayout?.reserve(bilingualBlocks, translations);
     const desktop = root.classList.contains('motion-desktop');
     const stageHeights = cinemaTracks.map(scene => scene.stage.getBoundingClientRect().height);
+    if (glassesHost && glassesTrack) {
+      const available = glassesTrack.clientWidth - glassesHost.offsetWidth * .64 - 48;
+      glassesTrack.style.setProperty('--glasses-range', Math.max(0, available) + 'px');
+    }
     cinemaTracks.forEach((scene, i) => scene.el.classList.toggle('is-fixed', desktop && stageHeights[i] > 0 && stageHeights[i] <= innerHeight - headerHeight + 2));
     geometry = {
       headerHeight, chromeLine: headerHeight + 1,
@@ -487,9 +504,10 @@
     g.cinema.forEach(scene => {
       const progress = enabled ? cinemaProgress(scene, y, g) : 1;
       scene.el.style.setProperty('--cinema-p', progress.toFixed(4));
-      scene.el.style.setProperty('--cinema-enter', smooth(progress / .22).toFixed(4));
-      scene.el.style.setProperty('--cinema-cross', smooth((progress - .2) / .44).toFixed(4));
-      scene.el.style.setProperty('--cinema-settle', smooth((progress - .62) / .26).toFixed(4));
+      scene.el.style.setProperty('--cinema-enter', smooth(progress / .34).toFixed(4));
+      scene.el.style.setProperty('--cinema-cross', smooth((progress - .14) / .66).toFixed(4));
+      scene.el.style.setProperty('--cinema-settle', smooth((progress - .60) / .34).toFixed(4));
+      scene.el.style.setProperty('--cinema-travel', smooth((progress - .04) / .86).toFixed(4));
       scene.el.dataset.cinemaProgress = progress.toFixed(4);
       if (scene.el === glassesTrack) {
         glassesProgress = progress;
@@ -528,13 +546,13 @@
     experiment.style.setProperty('--practice-progress', pose.practice.toFixed(4));
     principle.style.setProperty('--principle-progress', (enabled ? smooth((y + g.height * .9 - g.principle.top) / (g.height * .65)) : 1).toFixed(4));
     revealScenes.forEach((el, i) => {
-      el.style.setProperty('--chapter-progress', (enabled ? smooth((y + g.height * .9 - g.reveals[i].top) / (g.height * .65)) : 1).toFixed(4));
+      el.style.setProperty('--chapter-progress', (enabled ? smooth((y + g.height * .9 - g.reveals[i].top) / (g.height * (el.id === 'team' ? 1.2 : .95))) : 1).toFixed(4));
     });
-    const exchange = smooth((pose.vision - .28) / .24);
+    const exchange = smooth((pose.vision - .24) / .50);
     vision.style.setProperty('--exchange', exchange.toFixed(4));
-    vision.style.setProperty('--manual-reveal', smooth((pose.vision - .34) / .24).toFixed(4));
-    vision.style.setProperty('--manual-opacity', smooth((pose.vision - .32) / .14).toFixed(4));
-    vision.style.setProperty('--voice-opacity', (1 - smooth((pose.vision - .38) / .10)).toFixed(4));
+    vision.style.setProperty('--manual-reveal', smooth((pose.vision - .28) / .50).toFixed(4));
+    vision.style.setProperty('--manual-opacity', smooth((pose.vision - .36) / .32).toFixed(4));
+    vision.style.setProperty('--voice-opacity', (1 - smooth((pose.vision - .28) / .30)).toFixed(4));
     vision.dataset.motionProgress = pose.vision.toFixed(4);
     transitions.forEach((el, i) => {
       const b = g.transitions[i];
@@ -559,7 +577,7 @@
     [hero, purpose, visionLayout, practiceLayout, diagram, header, principleStage, ...cinemaTracks.map(scene => scene.stage)].forEach(el => sizeObserver.observe(el));
   }
   document.querySelectorAll('#research details').forEach(details => details.addEventListener('toggle', queueMeasure));
-  if (document.fonts?.ready) document.fonts.ready.then(queueMeasure);
+  if (document.fonts?.ready) document.fonts.ready.then(() => { window.SenvaBilingualLayout?.reserve(bilingualBlocks, translations, {force: true}); queueMeasure(); });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden && frame) { cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
     else queueMeasure();
@@ -572,6 +590,6 @@
   root.classList.add('js');
   setMenu(false);
   updateMotionMode();
-  if (!reduced.matches && scrollY < 80 && (!location.hash || location.hash === '#home')) root.classList.add('enter');
+  if (!root.classList.contains('booting') && !reduced.matches && scrollY < 80 && (!location.hash || location.hash === '#home')) root.classList.add('enter');
 
 })();

@@ -6,7 +6,7 @@ La web debe comunicar el proyecto y ofrecer una experiencia animada con personal
 
 Leer primero `docs/project-brief.md`, la entrada actual de `docs/redesign-progress.md` y el brief vigente. El último mensaje del usuario prevalece sobre este documento y sobre decisiones históricas.
 
-Conservar logo, azul noche/blanco cálido/turquesa, EN/ES, fotografías, nombres, estudios y LinkedIn. Sin naranja ni capacidades inventadas. La última petición autoriza el modelo 3D de gafas existente con giro ligado al scroll; el resto conserva su dirección 2D. Comunicación y autonomía son la misión; la práctica de LSE es una primera hipótesis independiente. Estado de idea, sin prototipo, entrevistas, resultados o alianzas confirmadas.
+Conservar logo, azul noche/blanco cálido/turquesa, EN/ES, fotografías, nombres, estudios y LinkedIn. Sin naranja ni capacidades inventadas. La petición vigente autoriza el modelo 3D de gafas existente con giro ligado al scroll, cristal y subtítulos ficticios sobre las lentes; el resto conserva su dirección 2D. Comunicación y autonomía son la misión; la práctica de LSE es una primera hipótesis independiente. Estado de idea, sin prototipo, entrevistas, resultados o alianzas confirmadas.
 
 ## Responsabilidades acotadas
 
@@ -21,6 +21,7 @@ No editar archivos que otro agente tenga asignados. Comunicar dependencias al co
 ## Criterios de revisión
 
 - El movimiento protagonista debe resultar evidente al comparar inicio, mitad y final. Un cambio de escala del 2 % o un fundido aislado no sustituye una coreografía.
+- La dirección vigente está en `docs/motion-revision-direction.md`: variedad de curvas, trazos y zooms; retirar grandes paneles rectangulares decorativos. EN/ES reserva el máximo natural por grupo sin igualar líneas.
 - Mantener continuidad entre escenas, intervalos de lectura y un foco claro. No ocultar texto principal durante largos recorridos ni añadir pantallas vacías para justificar duración.
 - Desplazamiento vertical reversible, sin saltos obligatorios. La petición vigente autoriza Lenis local para suavizar con inercia la rueda y el trackpad de escritorio; conservar el desplazamiento del documento, teclado y anclas. La última petición oculta solo la barra visible mediante CSS, sin bloquear el scroll. Móvil, entrada táctil, movimiento reducido o biblioteca ausente mantienen desplazamiento nativo. No añadir otros motores de scroll.
 - Móvil conserva una adaptación con personalidad. Movimiento reducido y ausencia de JS ofrecen lectura completa, sin fijaciones prolongadas.

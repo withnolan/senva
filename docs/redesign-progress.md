@@ -574,3 +574,35 @@ Guía técnica, recursos visuales, README de modelos y reglas de coordinación a
 ### Entrega técnica
 
 Implementación `957710a297f8a66cd8205ef4a4490c0f1f91af45`, pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error. Veinticinco recursos publicados responden HTTP200 y coinciden byte a byte mediante HTTPS validado, incluidos GLB, ambas vistas, módulo opcional y cinco módulos Three/Meshopt. CSS `e8053f9e`, JS `90adfb1b`, gafas `ab83f152`. Esta comprobación de entrega no sustituye la revisión visual pendiente descrita arriba. El cierre siguiente modifica solo este registro y también se pushea sin force push ni cambios de configuración. [Web publicada](https://withnolan.github.io/senva/).
+
+
+<a id="optical-motion-revision"></a>
+## Cristal, ritmo compartido y transiciones ópticas — 23 de octubre de 2026
+
+### Dirección y recursos — implementados; integración en comprobación
+
+La nueva petición añade cristal/subtítulos conceptuales, recorrido completo de izquierda a derecha, alturas comunes EN/ES, variedad de transiciones sin paneles rectangulares, movimiento de equipo/cierre, carga/entrada y dispositivos en la ilustración, además de información legal básica. Se preservan hechos, identidad, giro de las gafas y estructura del proyecto.
+
+- Dirección creativa identifica ritmos demasiado breves en el relevo voz/guante y entrada de práctica. [Storyboard](motion-revision-direction.md). Coordinación amplía los tramos de desarrollo, reduce desplazamientos locales y usa una fracción compartida más larga.
+- Desarrollo de gafas añade cristal físico transparente frío, un reflejo que sigue la geometría y subtítulos ficticios EN/ES dentro de ambas lentes. Conserva GLB fuente y giro. El texto es frontal, sin reverso espejado. El reposo ya no dibuja de nuevo cuando cambia solo la fracción.
+- La ilustración nueva `conversation-devices.webp` muestra gafas en las dos personas y guantes en las manos en reposo de una; mantiene composición editorial y alfa. Generada/editada con imagegen y revisada como archivo local. Original y retratos preservados.
+- Retirados de HTML/CSS `scene-plane`, `practice-plane`, `decision-sheet` y `decision-wash`. Una primera propuesta de aperturas resultó repetitiva en revisión independiente: propósito y equipo pasan a curvas/trazos; práctica acerca su hoja; validación abre un campo oval y contacto amplía la profundidad.
+- Módulo separado reserva la altura natural máxima EN/ES en grupos independientes, sin imponer líneas ni limitar texto. Clones inertes, sin IDs y retirados; caché para evitar bucles de medición. Móvil/sin JS conserva flujo. Carga breve con límite de seguridad, sin porcentaje ficticio ni esperar el GLB; entrada escalonada posterior.
+- Términos, privacidad y cookies nativos EN/ES en `legal.html`, enlazados por idioma. No se añaden cookies ni seguimiento. `senva-language` solo se guarda tras elegir idioma. [Fuentes y alcance](legal-notes.md).
+
+La revisión en navegador continúa bloqueada por la política de URL previamente documentada. No se han utilizado vías alternativas. Las comprobaciones técnicas y de archivos se registrarán al terminar esta integración; no equivalen a observar movimiento/composición/alturas reales.
+
+
+### Comprobación e integración técnica — terminadas
+
+- 18 grupos bilingües independientes, sin anidación, en portada, propósito, visión, práctica, decisiones, preguntas, equipo, Xiji y pie. La revisión detectó Xiji/pie inferior sin reserva y se añadieron antes de cerrar. No se fuerzan saltos de línea. Mocks DOM verifican máximo EN/ES, caché tras traducir, resize, force de fuentes, details cerrados, restauración y retirada de clones inertes. Son simulaciones, no medidas de texto en navegador.
+- GLB real con módulos locales: cada plano de texto queda dentro de la lente en153/153 rayos y las cuatro esquinas; desplazamiento frontal0,311 mm. Mismas geometrías de montura. Reflejos y texto añaden10000 triángulos y dos texturas pequeñas; cambio EN/ES y limpieza de11 geometrías,6 materiales,2 texturas comprobados. Reposo final estable sin renders repetidos por fracción. No acredita brillo, orden de transparencias visible ni FPS.
+- Bootstrap de carga ejecutado en VM: recursos listos, recursos rechazados, documento atascado/timeout1600 ms, salida por rueda, reducido, hash y atrás/adelante. Todos pasan sin esperar un mínimo artificial. Entrada de marca/acciones cancela su animación al recibir foco.
+- HTML principal/legal equilibrados;24/13 IDs únicos, anclas y recursos relativos existentes.118 claves EN/ES, atributos/metadatos y respaldo inglés completos. Sintaxis de cuatro controladores, llaves/cadenas/paréntesis CSS y hashes comprobados. No quedan clases de paneles rectangulares decorativos en HTML/CSS. Logo, favicon y retratos coinciden con los originales. WebP activo1200×800/129252 bytes, con píxeles exteriores y centro transparentes; ambos dispositivos inspeccionados en archivo local.
+- Revisión independiente estática repetida después de integrar: sin fallo bloqueante encontrado; se incorpora su crítica de no repetir una apertura en todos los umbrales. Documentación técnica, visual y legal actualizada. El README principal conserva el enfoque del proyecto y sus instrucciones locales no cambian.
+
+### Límite pendiente y siguiente revisión
+
+No se ha restablecido el acceso de la herramienta al navegador y no se elude su política. Por tanto no se declara verificada visualmente esta iteración: brillo/subtítulos, recorrido lateral real, igualdad de alturas EN/ES, ritmo comparado, mobile320 px/tablet/orientación, ida/vuelta, foco y variantes reducidas/sin JS siguen pendientes en navegador. Los arneses simulados, análisis geométricos y revisión de archivos no sustituyen esas pruebas. Al recuperar acceso: revisar0/25/50/75/100% y vuelta, ambos idiomas a1440/1280/768/390/320, carga lenta/fallo y preferencias. No hay nueva captura de página de esta versión.
+
+Se mantiene la autorización de commit/push; el build exacto y recursos publicados se comprobarán tras enviar la implementación.

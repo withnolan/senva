@@ -6,6 +6,10 @@ import { RoomEnvironment } from './assets/vendor/three/RoomEnvironment.js';
 const radians = THREE.MathUtils.degToRad;
 const clamp = value => Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0;
 const ease = value => value * value * (3 - 2 * value);
+const subtitleLines = {
+  en: ['Shall we meet', 'here tomorrow?'],
+  es: ['¿Nos vemos', 'aquí mañana?']
+};
 
 // A continuous yaw discovers the back, then returns to a readable front view.
 // The last 17% is a still pose, rather than another turn or an automatic loop.
@@ -50,12 +54,136 @@ function disposeObject(object) {
   geometries.forEach(geometry => geometry.dispose());
 }
 
+// The overlays use each real lens mesh as their reference. Nothing is attached
+// to the screen, and the caption planes have a front face only, so the wording
+// disappears naturally as the frame turns away. These are fictional captions
+// illustrating the labelled concept, not live recognition or a working display.
+function createLensArtwork() {
+  const reflectionCanvas = document.createElement('canvas');
+  reflectionCanvas.width = 512;
+  reflectionCanvas.height = 256;
+  const reflectionContext = reflectionCanvas.getContext('2d');
+  const subtitleCanvas = document.createElement('canvas');
+  subtitleCanvas.width = 512;
+  subtitleCanvas.height = 224;
+  const subtitleContext = subtitleCanvas.getContext('2d');
+  if (!reflectionContext || !subtitleContext) throw new Error('The lens artwork could not be prepared.');
+
+  // A broad, quiet reflection follows the actual silhouette of the curved lens.
+  // No transmission render target or extra scene render is required.
+  reflectionContext.save();
+  reflectionContext.translate(256, 128);
+  reflectionContext.rotate(-.37);
+  const reflection = reflectionContext.createLinearGradient(-156, 0, 46, 0);
+  reflection.addColorStop(0, 'rgba(248, 255, 255, 0)');
+  reflection.addColorStop(.38, 'rgba(221, 251, 249, .17)');
+  reflection.addColorStop(.48, 'rgba(248, 255, 255, .82)');
+  reflection.addColorStop(.65, 'rgba(141, 224, 212, .14)');
+  reflection.addColorStop(1, 'rgba(248, 255, 255, 0)');
+  reflectionContext.fillStyle = reflection;
+  reflectionContext.fillRect(-180, -240, 230, 480);
+  reflectionContext.fillStyle = 'rgba(248, 255, 255, .28)';
+  reflectionContext.fillRect(64, -240, 3, 480);
+  reflectionContext.restore();
+
+  const reflectionTexture = new THREE.CanvasTexture(reflectionCanvas);
+  reflectionTexture.colorSpace = THREE.SRGBColorSpace;
+  const subtitleTexture = new THREE.CanvasTexture(subtitleCanvas);
+  subtitleTexture.colorSpace = THREE.SRGBColorSpace;
+  const reflectionMaterial = new THREE.MeshBasicMaterial({
+    map: reflectionTexture, transparent: true, opacity: .38,
+    depthWrite: false, toneMapped: false, side: THREE.FrontSide,
+    polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1
+  });
+  const subtitleMaterial = new THREE.MeshBasicMaterial({
+    map: subtitleTexture, transparent: true, opacity: .96,
+    depthWrite: false, toneMapped: false, side: THREE.FrontSide
+  });
+  let currentLanguage;
+
+  function setLanguage(language) {
+    const next = language === 'es' ? 'es' : 'en';
+    if (next === currentLanguage) return false;
+    currentLanguage = next;
+    subtitleContext.clearRect(0, 0, 512, 224);
+    subtitleContext.textAlign = 'center';
+    subtitleContext.textBaseline = 'middle';
+    subtitleContext.font = '500 41px Arial, sans-serif';
+    subtitleContext.shadowColor = 'rgba(141, 224, 212, .95)';
+    subtitleContext.shadowBlur = 10;
+    subtitleContext.fillStyle = '#f4ffff';
+    subtitleLines[next].forEach((line, index) => {
+      subtitleContext.fillText(line, 256, 76 + index * 61, 456);
+    });
+    subtitleContext.shadowBlur = 0;
+    const underline = subtitleContext.createLinearGradient(155, 0, 357, 0);
+    underline.addColorStop(0, 'rgba(141, 224, 212, 0)');
+    underline.addColorStop(.3, 'rgba(141, 224, 212, .9)');
+    underline.addColorStop(.7, 'rgba(141, 224, 212, .9)');
+    underline.addColorStop(1, 'rgba(141, 224, 212, 0)');
+    subtitleContext.fillStyle = underline;
+    subtitleContext.fillRect(155, 188, 202, 2);
+    subtitleTexture.needsUpdate = true;
+    return true;
+  }
+
+  return { reflectionMaterial, subtitleMaterial, setLanguage };
+}
+
+function enhanceLens(lens, artwork) {
+  lens.geometry.computeBoundingBox();
+  const bounds = lens.geometry.boundingBox;
+  const size = bounds.getSize(new THREE.Vector3());
+  const center = bounds.getCenter(new THREE.Vector3());
+  if (size.x <= 0 || size.y <= 0) return;
+
+  // Modest alpha and clearcoat make the surface visible while retaining a clear
+  // view through it. The original frame materials and source GLB stay intact.
+  const previousMaterial = lens.material;
+  lens.material = new THREE.MeshPhysicalMaterial({
+    name: 'senva-concept-clear-lens', color: 0xc9efec,
+    roughness: .065, metalness: 0, transparent: true, opacity: .22,
+    clearcoat: 1, clearcoatRoughness: .045, ior: 1.45,
+    specularIntensity: .85, envMapIntensity: 1.15,
+    depthWrite: false, side: THREE.FrontSide
+  });
+  lens.renderOrder = 2;
+
+  // Project a soft reflection onto a copy of the real lens surface, rather than
+  // a rectangular panel. Its UVs derive from the unscaled local geometry.
+  const reflectionGeometry = lens.geometry.clone();
+  const position = reflectionGeometry.getAttribute('position');
+  const uvs = new Float32Array(position.count * 2);
+  for (let i = 0; i < position.count; i++) {
+    uvs[i * 2] = (position.getX(i) - bounds.min.x) / size.x;
+    uvs[i * 2 + 1] = (position.getY(i) - bounds.min.y) / size.y;
+  }
+  reflectionGeometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+  const reflection = new THREE.Mesh(reflectionGeometry, artwork.reflectionMaterial);
+  reflection.name = 'senva-lens-reflection';
+  reflection.renderOrder = 3;
+  lens.add(reflection);
+
+  // The caption sits inside the central safe area of each real lens. Offset by
+  // ~0.3 mm from the front, it never intersects the frame or appears backwards.
+  const captionWidth = size.x * .72;
+  const caption = new THREE.Mesh(
+    new THREE.PlaneGeometry(captionWidth, captionWidth * 224 / 512),
+    artwork.subtitleMaterial
+  );
+  caption.name = 'senva-concept-caption';
+  caption.position.set(center.x, center.y - size.y * .055, bounds.max.z + size.x * .006);
+  caption.renderOrder = 4;
+  lens.add(caption);
+  return previousMaterial;
+}
+
 /**
  * A render-on-change enhancement. The host's image is always left in the DOM;
  * CSS may hide it only while .is-ready confirms a successfully drawn canvas.
  * The caller owns visibility, scroll scheduling, reduced motion and disposal.
  */
-export async function createGlassesScene(host, { modelUrl, initialProgress = 0 } = {}) {
+export async function createGlassesScene(host, { modelUrl, initialProgress = 0, language = 'en' } = {}) {
   if (!host || !modelUrl) throw new TypeError('A host and a local glasses model URL are required.');
 
   let renderer;
@@ -63,6 +191,8 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0 }
   let loadedModel;
   let disposed = false;
   let lastProgress = -1;
+  let lastPoseKey = '';
+  let lensArtwork;
   let width = 0;
   let height = 0;
   let halfWidth = 0;
@@ -140,7 +270,15 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0 }
     if (Math.abs(next - lastProgress) < .00001) return;
     lastProgress = next;
     const pose = poseAt(next);
+    const poseKey = `${pose.x}:${pose.y}:${pose.z}`;
+    if (poseKey === lastPoseKey) return;
+    lastPoseKey = poseKey;
     pivot.rotation.set(radians(pose.x), radians(pose.y), radians(pose.z), 'YXZ');
+    draw();
+  }
+
+  function setLanguage(nextLanguage) {
+    if (disposed || !lensArtwork || !lensArtwork.setLanguage(nextLanguage)) return;
     draw();
   }
 
@@ -189,8 +327,10 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0 }
       throw new Error('The glasses model has no usable bounds.');
     }
     loadedModel.position.sub(box.getCenter(new THREE.Vector3()));
+    const lenses = [];
     loadedModel.traverse(node => {
       if (!node.isMesh) return;
+      if (node.name === 'lente-derecha' || node.name === 'lente-izquierda') lenses.push(node);
       node.castShadow = false;
       node.receiveShadow = false;
       const materials = Array.isArray(node.material) ? node.material : [node.material];
@@ -201,6 +341,12 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0 }
         }
       }
     });
+    if (lenses.length) {
+      lensArtwork = createLensArtwork();
+      const previousMaterials = new Set(lenses.map(lens => enhanceLens(lens, lensArtwork)));
+      previousMaterials.forEach(material => material?.dispose());
+      lensArtwork.setLanguage(language);
+    }
     pivot.add(loadedModel);
 
     // A stable envelope of the real XZ diagonal accommodates every yaw, pitch
@@ -213,7 +359,7 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0 }
     update(initialProgress);
     resize();
     if (disposed) throw new Error('The glasses model could not be drawn.');
-    return { update, resize, dispose };
+    return { update, resize, setLanguage, dispose };
   } catch (error) {
     dispose();
     throw error;
