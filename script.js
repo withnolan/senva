@@ -368,6 +368,10 @@
   const practiceLayout = document.querySelector('.experiment-layout');
   const transitions = [...document.querySelectorAll('.scene-transition')];
   const header = document.querySelector('.site-header');
+  const surfaces = [...document.querySelectorAll('main [data-tone]')];
+  const revealScenes = [...document.querySelectorAll('#team, #xiji, #contact')];
+  const principle = document.querySelector('.principle');
+  const principleStage = document.querySelector('.principle-stage');
   const chapters = [...document.querySelectorAll('[data-chapter]')];
   let currentChapter = '';
   let frame = 0, measureFrame = 0, previousTime = 0, geometry = null;
@@ -378,7 +382,7 @@
     const y = scrollY;
     const box = el => { const r = el.getBoundingClientRect(); return {top: r.top + y, height: r.height}; };
     const headerHeight = header.getBoundingClientRect().height;
-    geometry = {chapterLine: Math.max(headerHeight + 40, innerHeight * .32), chapters: chapters.map(link => ({id: link.dataset.chapter, ...box(document.getElementById(link.dataset.chapter))})), sceneTop: headerHeight + 28, transitions: transitions.map(box), height: innerHeight, hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height};
+    geometry = {chromeLine: headerHeight + 1, surfaces: surfaces.map(el => ({tone: el.dataset.tone, ...box(el)})).filter(surface => surface.height > 0), reveals: revealScenes.map(box), principle: box(principleStage), chapterLine: Math.max(headerHeight + 40, innerHeight * .32), chapters: chapters.map(link => ({id: link.dataset.chapter, ...box(document.getElementById(link.dataset.chapter))})), sceneTop: headerHeight + 28, transitions: transitions.map(box), height: innerHeight, hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height};
     root.style.setProperty('--header-height', headerHeight + 'px');
     if (smoothScroll) { cancelScrollAnimation(); smoothScroll.resize(); }
     queueMotion();
@@ -401,6 +405,9 @@
     const enabled = root.classList.contains('motion-ready');
     const y = scrollY, g = geometry;
     const desktop = root.classList.contains('motion-desktop');
+    let tone = 'paper';
+    for (const surface of g.surfaces) { if (surface.top > y + g.chromeLine) break; tone = surface.tone; }
+    if (root.dataset.chrome !== tone) root.dataset.chrome = tone;
     const readingLine = y + g.chapterLine;
     const chapter = g.chapters.find(box => readingLine >= box.top && readingLine < box.top + box.height)?.id || '';
     if (chapter !== currentChapter) {
@@ -429,6 +436,10 @@
     hero.style.setProperty('--hero-progress', pose.hero.toFixed(4));
     purpose.style.setProperty('--purpose-progress', pose.purpose.toFixed(4));
     experiment.style.setProperty('--practice-progress', pose.practice.toFixed(4));
+    principle.style.setProperty('--principle-progress', (enabled ? smooth((y + g.height * .9 - g.principle.top) / (g.height * .65)) : 1).toFixed(4));
+    revealScenes.forEach((el, i) => {
+      el.style.setProperty('--chapter-progress', (enabled ? smooth((y + g.height * .9 - g.reveals[i].top) / (g.height * .65)) : 1).toFixed(4));
+    });
     const exchange = smooth((pose.vision - .28) / .24);
     vision.style.setProperty('--exchange', exchange.toFixed(4));
     vision.style.setProperty('--manual-reveal', smooth((pose.vision - .34) / .24).toFixed(4));
@@ -437,7 +448,9 @@
     vision.dataset.motionProgress = pose.vision.toFixed(4);
     transitions.forEach((el, i) => {
       const b = g.transitions[i];
-      const progress = enabled ? smooth((y + g.height - b.top) / (g.height + b.height)) : 1;
+      // Settle the incoming surface before the threshold reaches the header.
+      const travel = (y + g.height - b.top) / (g.height + b.height);
+      const progress = enabled ? smooth((travel - .06) / .78) : 1;
       el.style.setProperty('--transition-progress', progress.toFixed(4));
     });
     if (moving) frame = requestAnimationFrame(updateMotion);
@@ -453,7 +466,7 @@
   inertiaDesktop.addEventListener('change', updateSmoothScroll);
   if ('ResizeObserver' in window) {
     const sizeObserver = new ResizeObserver(queueMeasure);
-    [hero, purpose, visionLayout, practiceLayout, diagram, header].forEach(el => sizeObserver.observe(el));
+    [hero, purpose, visionLayout, practiceLayout, diagram, header, principleStage].forEach(el => sizeObserver.observe(el));
   }
   document.querySelectorAll('#research details').forEach(details => details.addEventListener('toggle', queueMeasure));
   if (document.fonts?.ready) document.fonts.ready.then(queueMeasure);

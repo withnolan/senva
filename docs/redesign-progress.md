@@ -1,8 +1,8 @@
 # SENVA — Rediseño integral
 
-Actualizado: 22 de octubre de 2026. Registro del rediseño desde `4945ec0`.
+Actualizado: 23 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Trabajo actual:** [Dispositivos 2D y relevo de escenas](#editorial-devices), sobre `4f60319`. Se rehacen las ilustraciones de gafas/guante y su coreografía, manteniendo contenido, identidad y Lenis.
+**Trabajo actual:** [Capítulos, contraste y transiciones](#chapter-cinema), sobre `f71b129`. Fondos propios por apartado y umbrales2D inspirados en el ritmo observado en Oryzo; contenido, identidad y Lenis conservados.
 
 ## Objetivo y alcance
 
@@ -471,3 +471,31 @@ Capturas fuera de producción con prefijo `senva-device`/`senva-devices`. Prueba
 Implementación `b7efa3edfdc42d630b30e71df5009adfd33bce1a`, pusheada a `origin/main`; Pages confirma `built`, sin error. A1280×720 en la web pública se verificó avance con rueda desde progreso0,2842 (A1/B0) a0,4617 (A0,0882/B1) y regreso a0,2842 (A1/B0), manteniendo escala de viewport1 y sin desbordamiento. También se recorrieron inicio y reposo B con teclado y se guardaron `senva-editorial-devices-public-a.jpg` / `senva-editorial-devices-public-b.jpg` fuera del repositorio. Consola pública sin errores/avisos registrados.
 
 Dieciséis recursos publicados respondieron correctamente y coinciden byte a byte con los revisados, mediante HTTPS validado. CSS `3756fad0`, JS `a188c918`, gafas `0e05cf94`, guante `5b0df0c0`. README, guía técnica y storyboard reflejan la implementación final. Este registro se guarda en un segundo commit normal solo de documentación, cuyo push/build se confirma antes de la entrega. Sin ajustes del repositorio ni force push; se mantienen los límites de revisión señalados.
+
+
+<a id="chapter-cinema"></a>
+## Capítulos, contraste y transiciones — 23 de octubre de 2026
+
+### Dirección e implementación — terminadas
+
+Se ha inspeccionado [Oryzo](https://oryzo.ai/) en navegador, recorriendo portada y varios encuadres intermedios hacia delante/atrás. La referencia es su continuidad de objeto, contraste y grandes cambios de escala; no se copia su estética, 3D, contenido o bibliotecas. [Storyboard final](chapter-cinema-direction.md).
+
+- Fondos a todo el ancho: portada/experimento/equipo/contacto azul noche; propósito/validación blanco cálido; visión/Xiji turquesa; límites verde pálido. Equipo/contacto conservan composición, tipografías y perfiles restaurados, con el cambio cromático solicitado.
+- Siete umbrales decorativos diferenciados. Protagonistas: círculo turquesa que se expande con las gafas y papel que se abre hacia validación. Barrido diagonal con el guante hacia la primera hipótesis; cuatro pasos cortos enlazan el resto. El principio de comunicación toma escala de titular. Texto y estado siguen en flujo, sin ocultarse por estos planos.
+- Cabecera adopta el tema de cada apartado sin cambiar dimensiones. Cambio simultáneo de foreground/fondo para evitar contraste pobre durante interpolaciones. Sobre mint, los textos pequeños son navy. Sin naranja, 3D, nuevas dependencias o cambios en contenido/recursos gráficos.
+- Revisión independiente de código y cuatro capturas señaló el tema erróneo producido por umbrales ocultos en el fallback y una costura bajo la cabecera al anclar equipo. Se filtran superficies sin altura y las transiciones terminan antes de pasar bajo cabecera. Coordinación detectó además una franja aislada antes de contacto; su plano nace ahora desde abajo.
+
+### Comprobaciones
+
+- Navegador integrado a 1440×900,1280×720 y1100×700: inicio, mitad y reposo de las transiciones protagonistas, regreso y cambios de fondo. Se observaron también los cuatro pasos de apoyo. Relevo A/B de visión recorrido hacia delante/atrás en EN/ES; el cambio de idioma mantuvo el progreso0,4341 y actualizó lang/título/og:locale. Contenido principal visible en flujo.
+- Repetido el anclaje a equipo: paso final1,0000, sección a 104,93 px bajo cabecera, sin la raya pale de media anchura. Contacto revisado en estados intermedios y vuelta: el azul asciende desde el apartado, sin franja aislada.
+- Móvil390×844 ES y320×844 EN/ES: diagramas en flujo, scroll nativo, fondos completos, menú turquesa legible. Sin desbordamiento horizontal ni recorte de anchura en titulares/párrafos/summary medidos. Contacto y hoja observados a 320 px. Tab/Escape cierran menú y devuelven foco al botón.
+- Cambios de ventana a 844×390,1000×680 y regreso a 1440×900: cero desbordamiento en las medidas, figuras sin fijación en tamaños inferiores y navegación de escritorio recuperada. Se comprobó ancla de equipo desde menú y de nuevo en escritorio tras redimensionar; el redimensionado cancela el desplazamiento pendiente como estaba previsto.
+- Arnés externo de movimiento reducido equivalente en CSS/JS a 1280×720 y1440×900: siete pasos ocultos, sin Lenis/sticky, ambas composiciones con opacidad1; cabecera night en portada y mint dentro de visión, tras filtrar umbrales ocultos. No se cambió la preferencia real del sistema. Sin JS a 320 px: inglés íntegro, seis enlaces visibles, figuras en flujo, opacidad1 y cero desbordamiento/recorte de anchura medido.
+- Revisión independiente limitada a código y cuatro capturas. Coordinación realizó navegación y observación del movimiento. Texto HTML y diccionario de 114 pares EN/ES idénticos a `f71b129`; logo/retratos/favicon conservados. Sin nuevos recursos visuales o bibliotecas. Sintaxis JS, HTML equilibrado, IDs/anclas, SVG, recursos y Markdown correctos. Consola local sin errores/avisos registrados. Rueda nativa de la herramienta activa Lenis y hace avanzar el iris; teclado conserva su acción.
+
+Capturas fuera del repositorio con prefijo `senva-chapters-`. Pruebas mediante tamaños de viewport, sin dispositivos físicos, lector de pantalla real ni medición de FPS. No equivalen a inspección completa de todos los efectos de Oryzo. La valoración estética sigue correspondiendo al usuario.
+
+### Publicación — pendiente de verificar
+
+Implementación y documentación listas para commit/push autorizados. Se confirmará por separado el build del SHA y la web pública.
