@@ -570,3 +570,7 @@ La petición expresa del usuario autoriza integrar el modelo 3D ya aprobado y oc
 Sigue vigente el bloqueo de acceso al navegador documentado en la entrada anterior; no se ha confirmado un restablecimiento ni se intentan vías alternativas para eludirlo. No se afirma revisión visual de esta integración, ausencia de errores de consola, rendimiento GPU/FPS o pruebas en dispositivos físicos. Pendiente observar poses de entrada/perfil/reverso/reposo y regreso, iluminación/contraste del acetato, alturas bajas, EN/ES, cambio de tamaño, móvil y movimiento reducido. La envolvente matemática no sustituye esta revisión. Los pendientes visuales previos también siguen abiertos.
 
 Guía técnica, recursos visuales, README de modelos y reglas de coordinación actualizados. El README principal sigue centrado en el proyecto; sus instrucciones locales no cambian. Commit/push y build exacto se registran después de la entrega técnica.
+
+### Entrega técnica
+
+Implementación `957710a297f8a66cd8205ef4a4490c0f1f91af45`, pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error. Veinticinco recursos publicados responden HTTP200 y coinciden byte a byte mediante HTTPS validado, incluidos GLB, ambas vistas, módulo opcional y cinco módulos Three/Meshopt. CSS `e8053f9e`, JS `90adfb1b`, gafas `ab83f152`. Esta comprobación de entrega no sustituye la revisión visual pendiente descrita arriba. El cierre siguiente modifica solo este registro y también se pushea sin force push ni cambios de configuración. [Web publicada](https://withnolan.github.io/senva/).
