@@ -77,22 +77,22 @@
     "journeyNav": "Explore the conversation",
     "voiceBody": "Explore speech as captions in glasses, so words could stay in view while the conversation continues.",
     "signDetails": "What would we need to understand?",
-    "practiceTitle": "Start small.\nLearn what matters.",
+    "practiceTitle": "Start small. Learn what matters.",
     "practiceBody": "A possible complementary LSE practice tool for adult learners and teachers: a limited setting to investigate sensors and useful feedback.",
-    "practicePrinciple": "Communication is the purpose.\nLearning is a first hypothesis.",
+    "practicePrinciple": "Communication is the purpose. Learning is a first hypothesis.",
     "practiceMore": "A complementary practice tool, with exercises to select with teachers. Adult learners are potential users; teaching centres are possible collaborators and buyers. No recognition, scores or linguistic corrections have been validated. This would not establish a route to natural-conversation translation.",
     "manualInfo": "Manual information",
     "heroSecondary": "Our next questions",
     "heroArtAlt": "Two adults facing each other, joined by a shared turquoise line. An editorial illustration of connection.",
     "purposeLabel": "01 / The purpose",
-    "purposeTitle": "More room\nto take part.",
+    "purposeTitle": "More room to take part.",
     "purposeBody": "Autonomy, participation and the freedom to join in. Everyday possibilities are the reason to explore SENVA.",
     "situation1": "Share an idea.",
     "situation2": "Meet someone new.",
     "situation3": "Join a spontaneous conversation.",
     "situationsNote": "Situations that motivate the project, not testimonials or findings from research.",
     "visionLabel": "02 / The vision",
-    "visionTitle": "Two directions.\nOne conversation.",
+    "visionTitle": "Two directions. One conversation.",
     "visionIntro": "A possible system of gloves and glasses to assist communication in both directions. With the aspiration of avoiding the need to hold or position a phone.",
     "voiceHeading": "Make room for the other person’s voice.",
     "manualHeading": "Understand more than the hands.",
@@ -193,22 +193,22 @@
     "journeyNav": "Explorar la conversación",
     "voiceBody": "Explorar el habla como subtítulos en las gafas, para tener las palabras a la vista mientras la conversación continúa.",
     "signDetails": "¿Qué necesitaríamos comprender?",
-    "practiceTitle": "Empezar pequeño.\nAprender lo importante.",
+    "practiceTitle": "Empezar pequeño. Aprender lo importante.",
     "practiceBody": "Una posible herramienta complementaria de práctica de LSE para estudiantes adultos y docentes: un contexto acotado para investigar sensores y feedback útil.",
-    "practicePrinciple": "La comunicación es el propósito.\nEl aprendizaje es una primera hipótesis.",
+    "practicePrinciple": "La comunicación es el propósito. El aprendizaje es una primera hipótesis.",
     "practiceMore": "Una herramienta complementaria de práctica, con ejercicios por elegir con docentes. Los estudiantes adultos serían posibles usuarios; los centros, posibles colaboradores y compradores. No se ha validado reconocimiento, puntuaciones ni correcciones lingüísticas. Esto no demostraría una ruta hacia la traducción de conversaciones naturales.",
     "manualInfo": "Información manual",
     "heroSecondary": "Nuestras próximas preguntas",
     "heroArtAlt": "Dos personas adultas frente a frente, unidas por un trazo turquesa compartido. Ilustración editorial de conexión.",
     "purposeLabel": "01 / El propósito",
-    "purposeTitle": "Más espacio\npara participar.",
+    "purposeTitle": "Más espacio para participar.",
     "purposeBody": "Autonomía, participación y libertad para sumarse. Las posibilidades cotidianas son la razón para explorar SENVA.",
     "situation1": "Compartir una idea.",
     "situation2": "Conocer a alguien.",
     "situation3": "Participar en una conversación espontánea.",
     "situationsNote": "Situaciones que motivan el proyecto, no testimonios ni resultados de investigación.",
     "visionLabel": "02 / La visión",
-    "visionTitle": "Dos direcciones.\nUna conversación.",
+    "visionTitle": "Dos direcciones. Una conversación.",
     "visionIntro": "Un posible sistema de guantes y gafas para asistir a la comunicación en ambas direcciones. Con la aspiración de evitar sostener o colocar un móvil.",
     "voiceHeading": "Dar espacio a la voz de la otra persona.",
     "manualHeading": "Comprender más allá de las manos.",
@@ -281,6 +281,12 @@
   function setLanguage(next, announce = false) {
     if (!Object.hasOwn(translations, next)) return;
     cancelScrollAnimation();
+    const cinemaReading = announce && geometry?.cinema.find(scene => {
+      const start = scene.top - geometry.headerHeight;
+      const end = scene.fixed ? start + scene.height - scene.stageHeight : start + scene.height;
+      return scrollY >= start && scrollY <= end;
+    });
+    const cinemaFraction = cinemaReading ? cinemaProgress(cinemaReading, scrollY, geometry) : 0;
     // Preserve the closest reading block rather than the full page's percentage.
     const reading = [...document.querySelectorAll('main h2, main h3, .hero-copy')]
       .filter(el => el.getBoundingClientRect().top <= innerHeight * .6)
@@ -306,9 +312,17 @@
     toggle.setAttribute('aria-label', copy[toggle.getAttribute('aria-expanded') === 'true' ? 'closeMenu' : 'openMenu']);
     if (announce) {
       document.querySelector('#language-announcement').textContent = copy.languageChanged;
-      if (reading && scrollY > 100) {
+      if ((cinemaReading || reading) && scrollY > 100) {
         root.classList.add('language-changing');
-        const position = scrollY + reading.getBoundingClientRect().top - top;
+        // Translation can change the stage's natural height. Refit first, then
+        // retain the cinematic fraction only while the content still fits.
+        if (measureFrame) { cancelAnimationFrame(measureFrame); measureFrame = 0; }
+        measureMotion();
+        const translatedScene = cinemaReading && geometry.cinema.find(scene => scene.el === cinemaReading.el);
+        const preserveCinema = translatedScene && (cinemaReading.fixed || translatedScene.fixed);
+        const position = preserveCinema
+          ? translatedScene.top - geometry.headerHeight + cinemaFraction * Math.max(0, translatedScene.fixed ? translatedScene.height - translatedScene.stageHeight : translatedScene.stageHeight - (geometry.height - geometry.headerHeight))
+          : scrollY + reading.getBoundingClientRect().top - top;
         if (smoothScroll) { smoothScroll.resize(); smoothScroll.scrollTo(position, {immediate: true}); }
         else scrollTo({top: position, behavior: 'auto'});
         requestAnimationFrame(() => root.classList.remove('language-changing'));
@@ -369,6 +383,7 @@
   const transitions = [...document.querySelectorAll('.scene-transition')];
   const header = document.querySelector('.site-header');
   const surfaces = [...document.querySelectorAll('main [data-tone]')];
+  const cinemaTracks = [...document.querySelectorAll('[data-cinema]')].map(el => ({el, stage: el.querySelector('.cinema-stage')})).filter(scene => scene.stage);
   const revealScenes = [...document.querySelectorAll('#team, #xiji, #contact')];
   const principle = document.querySelector('.principle');
   const principleStage = document.querySelector('.principle-stage');
@@ -377,13 +392,29 @@
   let frame = 0, measureFrame = 0, previousTime = 0, geometry = null;
   const pose = {hero: 0, purpose: 0, vision: 0, practice: 0};
   let settled = false;
+  function cinemaProgress(scene, y, g) {
+    if (scene.fixed) return clamp((y - (scene.top - g.headerHeight)) / Math.max(1, scene.height - scene.stageHeight));
+    return clamp((y + g.height - scene.top) / Math.max(1, g.height + scene.height));
+  }
   function measureMotion() {
     measureFrame = 0;
     const y = scrollY;
     const box = el => { const r = el.getBoundingClientRect(); return {top: r.top + y, height: r.height}; };
     const headerHeight = header.getBoundingClientRect().height;
-    geometry = {chromeLine: headerHeight + 1, surfaces: surfaces.map(el => ({tone: el.dataset.tone, ...box(el)})).filter(surface => surface.height > 0), reveals: revealScenes.map(box), principle: box(principleStage), chapterLine: Math.max(headerHeight + 40, innerHeight * .32), chapters: chapters.map(link => ({id: link.dataset.chapter, ...box(document.getElementById(link.dataset.chapter))})), sceneTop: headerHeight + 28, transitions: transitions.map(box), height: innerHeight, hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height};
     root.style.setProperty('--header-height', headerHeight + 'px');
+    const desktop = root.classList.contains('motion-desktop');
+    const stageHeights = cinemaTracks.map(scene => scene.stage.getBoundingClientRect().height);
+    cinemaTracks.forEach((scene, i) => scene.el.classList.toggle('is-fixed', desktop && stageHeights[i] > 0 && stageHeights[i] <= innerHeight - headerHeight + 2));
+    geometry = {
+      headerHeight, chromeLine: headerHeight + 1,
+      surfaces: surfaces.map(el => ({tone: el.dataset.tone, ...box(el)})).filter(surface => surface.height > 0),
+      cinema: cinemaTracks.map(({el, stage}) => ({el, ...box(el), stageHeight: stage.getBoundingClientRect().height, fixed: el.classList.contains('is-fixed'), from: el.dataset.fromTone, to: el.dataset.toTone})),
+      reveals: revealScenes.map(box), principle: box(principleStage),
+      chapterLine: Math.max(headerHeight + 40, innerHeight * .32),
+      chapters: chapters.map(link => ({id: link.dataset.chapter, ...box(document.getElementById(link.dataset.chapter))})),
+      sceneTop: headerHeight + 28, transitions: transitions.map(box), height: innerHeight,
+      hero: box(hero), purpose: box(purpose), vision: box(visionLayout), practice: box(practiceLayout), stage: diagram.getBoundingClientRect().height
+    };
     if (smoothScroll) { cancelScrollAnimation(); smoothScroll.resize(); }
     queueMotion();
   }
@@ -407,6 +438,15 @@
     const desktop = root.classList.contains('motion-desktop');
     let tone = 'paper';
     for (const surface of g.surfaces) { if (surface.top > y + g.chromeLine) break; tone = surface.tone; }
+    g.cinema.forEach(scene => {
+      const progress = enabled ? cinemaProgress(scene, y, g) : 1;
+      scene.el.style.setProperty('--cinema-p', progress.toFixed(4));
+      scene.el.style.setProperty('--cinema-enter', smooth(progress / .22).toFixed(4));
+      scene.el.style.setProperty('--cinema-cross', smooth((progress - .2) / .44).toFixed(4));
+      scene.el.style.setProperty('--cinema-settle', smooth((progress - .62) / .26).toFixed(4));
+      scene.el.dataset.cinemaProgress = progress.toFixed(4);
+      if (y + g.chromeLine >= scene.top && y + g.chromeLine < scene.top + scene.height) tone = progress < .6 ? scene.from : scene.to;
+    });
     if (root.dataset.chrome !== tone) root.dataset.chrome = tone;
     const readingLine = y + g.chapterLine;
     const chapter = g.chapters.find(box => readingLine >= box.top && readingLine < box.top + box.height)?.id || '';
@@ -466,7 +506,7 @@
   inertiaDesktop.addEventListener('change', updateSmoothScroll);
   if ('ResizeObserver' in window) {
     const sizeObserver = new ResizeObserver(queueMeasure);
-    [hero, purpose, visionLayout, practiceLayout, diagram, header, principleStage].forEach(el => sizeObserver.observe(el));
+    [hero, purpose, visionLayout, practiceLayout, diagram, header, principleStage, ...cinemaTracks.map(scene => scene.stage)].forEach(el => sizeObserver.observe(el));
   }
   document.querySelectorAll('#research details').forEach(details => details.addEventListener('toggle', queueMeasure));
   if (document.fonts?.ready) document.fonts.ready.then(queueMeasure);

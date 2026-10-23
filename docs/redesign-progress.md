@@ -2,7 +2,7 @@
 
 Actualizado: 23 de octubre de 2026. Registro del rediseño desde `4945ec0`.
 
-**Trabajo actual:** [Capítulos, contraste y transiciones](#chapter-cinema), sobre `f71b129`. Fondos propios por apartado y umbrales2D inspirados en el ritmo observado en Oryzo; contenido, identidad y Lenis conservados.
+**Trabajo actual:** [Escenarios integrados y composición bilingüe](#integrated-cinema), sobre `0665049`. Tres escenas de pantalla con contenido real, mayor recorrido y saltos naturales en cada idioma.
 
 ## Objetivo y alcance
 
@@ -501,3 +501,34 @@ Capturas fuera del repositorio con prefijo `senva-chapters-`. Pruebas mediante t
 Implementación `ee44d594043723f5699ae8650c22804d1d02afb8`, pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error. A 1440×900 ES en la web pública, la rueda avanza el iris de progreso 0,2809 a 0,7764 y vuelve a 0,4341, con Lenis activo. Se observaron también el campo turquesa asentado y la apertura de papel. A 390×844 ES: figuras en flujo, modo nativo, cero desbordamiento horizontal. Consola pública sin errores/avisos registrados.
 
 Dieciséis recursos públicos coinciden byte a byte con los revisados mediante HTTPS validado. CSS `b015c4ef`, JS `a5d3e127`; SVG, logo y fotografías conservados. Capturas fuera del repositorio: `senva-chapters-public-vision.jpg` y `senva-chapters-public-paper.jpg`. README, guía técnica y storyboard actualizados. Este cierre añade solo documentación a la implementación; se comprueba también el push/build del commit final. Sin force push ni cambios de configuración. No quedan fallos reproducibles pendientes dentro de las comprobaciones realizadas; se mantienen los límites de revisión descritos. [Web publicada](https://withnolan.github.io/senva/).
+
+
+<a id="integrated-cinema"></a>
+## Escenarios integrados y composición bilingüe — 23 de octubre de 2026
+
+### Dirección e implementación — terminadas; revisión en curso
+
+El usuario sigue considerando básicas las transiciones y autoriza ampliar la paleta, aumentar distancia y dejar distinta composición natural EN/ES. Se contrasta con tres opiniones independientes antes de implementar y se vuelve a criticar con capturas.
+
+- Dirección creativa y arquitectura coinciden: las bandas recortadas eran separadores, aunque sus formas internas fueran grandes. Se aceptan tres escenarios de viewport, fases de entrada/cruce/reposo y cuatro pasos secundarios breves. Coordinación integra el contenido existente en el escenario, evitando repetir encabezados o añadir pantallas decorativas vacías. [Dirección y decisiones](epic-scroll-direction.md).
+- Visión: cintas de conversación, gran desplazamiento/escala de gafas y reposo mint hacia A/B. Práctica: planos laterales y entrada de la hoja real, con lectura principal siempre disponible. Validación: tres hojas atraviesan las decisiones existentes y se alinean en papel. Movimiento 2D nativo y reversible, con Lenis existente. Azul profundo, hielo y lavanda amplían la paleta fría; sin naranja o 3D.
+- Tracks de 210/225/205svh solo si cada escenario cabe realmente bajo cabecera. Altura natural si no cabe; móvil en flujo. El idioma conserva la fracción del escenario fijado y vuelve a medir tras traducir. Se retiran los saltos obligatorios de cuatro titulares/principio del diccionario, del HTML y de CSS; no se igualan líneas.
+- Opiniones incorporadas tras las primeras capturas: retirar cintas grandes al final para dar reposo; proteger etiquetas de concepto; eliminar el rectángulo flotante que enmascaraba el texto de práctica; corregir contraste de texto pequeño sobre hielo/lavanda usando navy. Aumentan biografías a 14 px sin rehacer equipo. Se recupera una señal de foco en títulos de destinos.
+
+### Comprobaciones realizadas
+
+- Navegador integrado a 1440×900 EN: tres escenarios fijados con 819 px útiles. Inicio, cruce y reposo de visión/práctica observados; validación en entrada, mitad y papel asentado. Revisión creativa independiente de seis capturas. Se aplican después sus recomendaciones de reposo y protección de etiquetas.
+- A 1280×720 EN/ES: los tres escenarios caben en 639 px, sin desbordamiento horizontal medido. Visión compone 1 línea EN y 2 ES; práctica 2 y 3; equipo 2 y 3. Cambio EN→ES durante visión conserva progreso 0,4973→0,4970. Titulares y metadatos actualizados, sin alturas igualadas. A 1100×700 ES: escenarios en 619 px; hoja de práctica y texto observados completos en mitad/reposo.
+- Recorrido hacia delante/atrás con teclado nativo en las tres escenas y A/B de visión. Colores y lectura principal disponibles. Comparación con baseline externo `0665049`, mismo EN 1280×720: documento de 9430 a 12625 px, +33,9%, con el mismo contenido. A 1440×900 la nueva página mide 14308 px.
+- Revisión independiente estática: contenido, 114 claves, fallback, foco y medición. Detecta leve recorte potencial del arte móvil; gafas limitadas a 64vw. Detecta el cruce de idiomas natural→fijado: el controlador conserva ahora también esa fracción cuando el idioma final cabe. Estos últimos ajustes no cuentan como pruebas visuales.
+- Sintaxis de JavaScript, estructura HTML, IDs/anclas, recursos locales, SVG, metadata social y Markdown comprobados. Logo, favicon y retratos conservados. Las palabras del diccionario no cambian, salvo retirar los saltos editoriales. Sin frameworks, fuentes o bibliotecas nuevas.
+
+### Limitación de revisión pendiente
+
+Al continuar la revisión móvil, la herramienta de navegador perdió su sesión y rechazó recuperar la pestaña local por su política de URL. No se intentan vías alternativas para eludir ese bloqueo. Se ha pedido al usuario restablecer el acceso. La revisión visual nueva de móvil/tablet, orientación, foco y alternativas reducido/sin JS sigue pendiente; no se heredan como pruebas de esta versión las de la iteración anterior. Las variantes se han revisado en código, no visualmente tras estos cambios. Tampoco se ha observado aún el cruce de idioma natural→fijado, una preferencia real del sistema, dispositivos físicos, lector de pantalla o FPS.
+
+Capturas de escritorio fuera de producción con prefijo `senva-cinema-`. El resultado está implementado y revisado en escritorio, pero no se declara cerrado visualmente hasta resolver la limitación anterior.
+
+### Entrega
+
+Pendiente guardar commit/push autorizados y confirmar build del SHA. La limitación de revisión se mantiene visible; no implica un fallo reproducible observado de móvil.
