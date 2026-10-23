@@ -606,3 +606,9 @@ La revisión en navegador continúa bloqueada por la política de URL previament
 No se ha restablecido el acceso de la herramienta al navegador y no se elude su política. Por tanto no se declara verificada visualmente esta iteración: brillo/subtítulos, recorrido lateral real, igualdad de alturas EN/ES, ritmo comparado, mobile320 px/tablet/orientación, ida/vuelta, foco y variantes reducidas/sin JS siguen pendientes en navegador. Los arneses simulados, análisis geométricos y revisión de archivos no sustituyen esas pruebas. Al recuperar acceso: revisar0/25/50/75/100% y vuelta, ambos idiomas a1440/1280/768/390/320, carga lenta/fallo y preferencias. No hay nueva captura de página de esta versión.
 
 Se mantiene la autorización de commit/push; el build exacto y recursos publicados se comprobarán tras enviar la implementación.
+
+### Entrega técnica y recursos publicados
+
+Implementación `24d67fb0f8b075b73c876ed8846a5aee3b087f60`, pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error. Treinta recursos públicos responden HTTP200 y coinciden byte a byte mediante HTTPS validado, incluidos portada con dispositivos, módulos de carga/reserva/gafas, GLB, términos y CSS legal. CSS `0ec382e7`, controlador `01f763eb`, gafas `c03da9bb`, entrada `fdce6f6b`, reserva `409cb059`, legal `472aa101`. Este resultado acredita entrega de archivos, no el comportamiento visual pendiente.
+
+El siguiente cierre modifica solo este registro y también se pushea/verifica. Sin force push ni cambios de configuración. Los pendientes visuales indicados arriba siguen abiertos hasta restablecer el acceso al navegador. [Web](https://withnolan.github.io/senva/) · [Información legal EN/ES](https://withnolan.github.io/senva/legal.html).
