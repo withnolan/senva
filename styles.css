@@ -437,9 +437,8 @@ html:not(.js) .site-header{position:relative}
 .bridge-surface{fill:var(--ink);transform:translateY(calc(var(--transition-progress)*-35px)) scale(calc(1 + var(--transition-progress)*.12));transform-origin:50% 0}
 .transition-team .bridge-surface{fill:var(--ice);transform:translateY(calc(var(--transition-progress)*-65px))}
 .bridge-stroke{stroke:currentColor;stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--transition-progress));transform:translateY(calc((1 - var(--transition-progress))*18px))}
-.transition-xiji{height:160px;background:var(--ink);color:var(--mint)}
-.transition-xiji .transition-aperture{width:170vw;height:120vw;left:60%;background:var(--lilac)}
-.transition-xiji .transition-orbit{left:30%;transform:translate(-50%,-50%) rotate(-18deg) scale(calc(.7 + var(--transition-progress)*2.5))}
+.transition-xiji{height:90px;background:var(--ink);color:var(--mint)}
+.xiji-bridge-surface{fill:var(--lilac);transform:scaleY(calc(.65 + var(--transition-progress)*.35));transform-origin:50% 100%}
 .transition-contact{background:var(--lilac);color:var(--paper)}
 .transition-contact .transition-aperture{width:180vw;height:120vw;left:35%;background:var(--ink);transform:translate(-50%,-50%) scale(calc(.03 + var(--transition-progress)*1.15))}
 .transition-contact .transition-orbit{left:35%;width:100vw;height:60vw}
@@ -736,7 +735,7 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
 .footer-legal a{display:inline-flex;align-items:center;min-height:32px;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:760px){
  .transition-aperture{width:200vw;height:180vw}
- .transition-xiji .transition-aperture,.transition-contact .transition-aperture{width:240vw;height:180vw}
+ .transition-contact .transition-aperture{width:240vw;height:180vw}
  .team-connection{margin-block:30px -15px}
  .practice-orbit{left:95%;width:110vw;height:140vw}
  .motion-ready #team .founder,.motion-ready #team .founder:nth-child(2){transform:translateY(calc((1 - var(--chapter-progress))*18px))}
@@ -747,3 +746,40 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
  .team-connection>span,.motion-ready .purpose .section-heading{transform:none}
  .contact-arc path{stroke-dashoffset:0}
 }
+
+/* One glasses scene travels within the vision, then docks beside the explanation. */
+.glasses-flight-boundary{position:absolute;inset:0;overflow:clip;pointer-events:none;z-index:3;visibility:hidden}
+.glasses-model.is-continuous{position:absolute;left:0;top:0;transform-origin:center;pointer-events:none;will-change:transform}
+.glasses-dock{display:grid;place-items:center;width:min(340px,28vw);aspect-ratio:2.1;margin-inline:auto}
+.glasses-dock img{transition:none}
+.has-continuous-model .glasses-dock img{opacity:0}
+.caption-toggle{font-size:11px;line-height:1.35;min-height:34px;padding:7px 12px;border:1px solid currentColor;border-radius:24px;background:var(--paper);color:var(--ink);white-space:nowrap;position:relative;z-index:4}
+.caption-toggle:hover{background:var(--mint)}
+.caption-toggle[hidden]{display:none}
+.cinema-meta .caption-toggle{flex-shrink:0}
+.caption-animation-note{display:block;margin-top:7px;font-size:11px}
+#team{padding-bottom:105px}
+.xiji{padding-top:110px}
+.motion-ready .xiji h2{transform:translateY(calc((1 - var(--chapter-progress))*22px)) scale(calc(.95 + var(--chapter-progress)*.05));transform-origin:left center}
+.motion-ready .purpose-thread-nodes circle:nth-child(2){transform:scale(calc(.72 + var(--purpose-progress)*.28));transform-box:fill-box;transform-origin:center}
+.motion-ready .wave{transform:scaleY(calc(.88 + var(--voice-opacity)*.12));transform-origin:center}
+@media(max-width:1099px){.glasses-dock{width:min(260px,48vw)}}
+@media(max-width:760px){
+ .glasses-dock{width:min(220px,50vw)}
+ .transition-xiji{height:70px}
+ #team{padding-bottom:85px}
+ .xiji{padding-top:85px}
+}
+@media(prefers-reduced-motion:reduce){
+ .glasses-flight-boundary{display:none}
+ .motion-ready .xiji h2,.motion-ready .wave,.motion-ready .purpose-thread-nodes circle:nth-child(2){transform:none}
+}
+/* The pause control reserves its row before WebGL starts, avoiding a fit/dispose loop. */
+@media(min-width:1100px) and (min-height:700px){.cinema-meta{min-height:80px}}
+@media(min-width:1100px) and (min-height:700px) and (max-height:800px){.cinema-meta{min-height:64px}}
+.research-details details[open]>p{animation:question-answer .32s var(--ease) both}
+@keyframes question-answer{from{opacity:.55;transform:translateY(7px)}to{opacity:1;transform:none}}
+/* The shared canvas docks to an untransformed anchor; labels carry the route's exit. */
+.has-continuous-model .diagram-voice{transform:none}
+.has-continuous-model .diagram-voice .route-source{transform:translateX(calc(var(--exchange)*24px))}
+.has-continuous-model .diagram-voice>.flow-line{transform:scaleX(calc(1 - var(--exchange)*.5));transform-origin:left}

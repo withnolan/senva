@@ -1,0 +1,40 @@
+{
+  "en": {
+    "heroLead": "We explore how technology could support communication between Deaf signers and hearing people, with more freedom to share, take part and connect.",
+    "purposeBody": "Everyone has something to contribute. We want to explore support that respects people’s autonomy and makes more room for connection.",
+    "situation1": "An idea worth sharing.",
+    "situation2": "Someone you haven’t met yet.",
+    "situation3": "A conversation that starts in the moment.",
+    "visionIntro": "We imagine gloves and glasses that could support both directions of a conversation, without holding or positioning a phone. For now, an idea to investigate.",
+    "voiceBody": "What if speech could appear as captions in glasses, while your attention stays with the other person? A possibility to investigate.",
+    "practiceTitle": "First, learn what helps.",
+    "practiceBody": "A first hypothesis: a possible LSE practice tool to investigate sensors and feedback with teachers and adult learners. A small experiment to learn what might help people practise.",
+    "experimentQuestion2": "What feedback could help someone take the next step?",
+    "experimentNext": "Questions and exercises would be chosen with teachers and adult learners.",
+    "planIntro": "The first step would be to listen and decide with people what is worth investigating. This plan has not started yet.",
+    "plan1Title": "Listen. Decide together.",
+    "planDecision": "Evidence should guide us, even if it means rethinking the idea or leaving the hardware behind.",
+    "teamBody": "Computing, business and transmedia. Two ways of approaching the same challenge, with a shared desire to learn.",
+    "xijiGoal": "The goal: ask better questions, test the idea and choose a meaningful first experiment.",
+    "contactBody": "Ideas grow through conversation. If you have a question or a perspective to share, find us on LinkedIn."
+  },
+  "es": {
+    "heroLead": "Exploramos cómo la tecnología podría acompañar la comunicación entre personas sordas signantes y oyentes, con más libertad para compartir, participar y encontrarse.",
+    "purposeBody": "Cada persona tiene algo que aportar. Queremos explorar apoyos que respeten su autonomía y den más espacio al encuentro.",
+    "situation1": "Una idea que merece compartirse.",
+    "situation2": "Alguien a quien aún no conoces.",
+    "situation3": "Una conversación que surge sin planearla.",
+    "visionIntro": "Imaginamos guantes y gafas que pudieran acompañar una conversación en ambas direcciones, sin tener que sostener o colocar un móvil. Por ahora, una idea que investigar.",
+    "voiceBody": "¿Y si el habla pudiera verse como subtítulos en las gafas, mientras tu atención sigue con la otra persona? Una posibilidad por investigar.",
+    "practiceTitle": "Primero, aprender qué ayuda.",
+    "practiceBody": "Una primera hipótesis: una posible herramienta de práctica de LSE para investigar sensores y feedback con docentes y estudiantes adultos. Un experimento acotado para descubrir qué podría ayudar a practicar.",
+    "experimentQuestion2": "¿Qué feedback ayudaría a dar el siguiente paso?",
+    "experimentNext": "Las preguntas y los ejercicios se elegirían con docentes y estudiantes adultos.",
+    "planIntro": "El primer paso sería escuchar y decidir con las personas qué merece la pena investigar. Este plan todavía no ha comenzado.",
+    "plan1Title": "Escuchar. Decidir juntos.",
+    "planDecision": "La evidencia debería guiarnos, incluso si nos lleva a cambiar de idea o a dejar atrás el hardware.",
+    "teamBody": "Informática, empresa y transmedia. Dos formas de mirar el mismo reto y una voluntad compartida de aprender.",
+    "xijiGoal": "El objetivo: hacer mejores preguntas, contrastar la idea y elegir un primer experimento con sentido.",
+    "contactBody": "Una idea mejora cuando se conversa. Si quieres compartir una pregunta o una perspectiva, puedes encontrarnos en LinkedIn."
+  }
+}

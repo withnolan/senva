@@ -6,7 +6,7 @@ La web debe comunicar el proyecto y ofrecer una experiencia animada con personal
 
 Leer primero `docs/project-brief.md`, la entrada actual de `docs/redesign-progress.md` y el brief vigente. El último mensaje del usuario prevalece sobre este documento y sobre decisiones históricas.
 
-Conservar logo, azul noche/blanco cálido/turquesa, EN/ES, fotografías, nombres, estudios y LinkedIn. Sin naranja ni capacidades inventadas. La petición vigente autoriza el modelo 3D de gafas existente con giro ligado al scroll, cristal y subtítulos ficticios sobre las lentes; el resto conserva su dirección 2D. Comunicación y autonomía son la misión; la práctica de LSE es una primera hipótesis independiente. Estado de idea, sin prototipo, entrevistas, resultados o alianzas confirmadas.
+Conservar logo, azul noche/blanco cálido/turquesa, EN/ES, fotografías, nombres, estudios y LinkedIn. Sin naranja ni capacidades inventadas. La petición vigente autoriza el modelo 3D de gafas existente con giro ligado al scroll, cristal y subtítulos ficticios sobre las lentes; el resto conserva su dirección 2D. La última petición pide escritura continua lenta y reflejos orgánicos solo mientras las lentes están visibles, con pausa y alternativa reducida, y reutilizar una sola escena de gafas entre la introducción y el diagrama. Comunicación y autonomía son la misión; la práctica de LSE es una primera hipótesis independiente. Estado de idea, sin prototipo, entrevistas, resultados o alianzas confirmadas.
 
 ## Responsabilidades acotadas
 

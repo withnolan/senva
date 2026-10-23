@@ -612,3 +612,31 @@ Se mantiene la autorización de commit/push; el build exacto y recursos publicad
 Implementación `24d67fb0f8b075b73c876ed8846a5aee3b087f60`, pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error. Treinta recursos públicos responden HTTP200 y coinciden byte a byte mediante HTTPS validado, incluidos portada con dispositivos, módulos de carga/reserva/gafas, GLB, términos y CSS legal. CSS `0ec382e7`, controlador `01f763eb`, gafas `c03da9bb`, entrada `fdce6f6b`, reserva `409cb059`, legal `472aa101`. Este resultado acredita entrega de archivos, no el comportamiento visual pendiente.
 
 El siguiente cierre modifica solo este registro y también se pushea/verifica. Sin force push ni cambios de configuración. Los pendientes visuales indicados arriba siguen abiertos hasta restablecer el acceso al navegador. [Web](https://withnolan.github.io/senva/) · [Información legal EN/ES](https://withnolan.github.io/senva/legal.html).
+
+<a id="continuous-glasses"></a>
+## Un mismo modelo, cristal vivo y continuidad — 23 de octubre de 2026
+
+### Dirección e integración — en comprobación
+
+La petición vigente pide mejorar cristal y texto, reflejos cambiantes sin bandas rectas y frases ficticias que se escriban lentamente en reposo. El mismo modelo debe entrar completamente desde fuera del borde izquierdo, detenerse a la derecha sin salir y descender al diagrama A. También se revisan palabras y oportunidades de movimiento. La captura del usuario muestra una apertura de Xiji cortada horizontalmente y separación acumulada excesiva.
+
+- Desarrollo de lentes modifica únicamente `glasses-3d.js`: reflejos radiales orgánicos, cristal más transparente, tipografía Instrument Sans de mayor resolución con halo suave, cuatro frases cotidianas ficticias por idioma. Escritura155 ms/carácter, reposo2350 ms, fundido600 ms. Giro aprobado conservado; handoff permite orientar al frontal. La petición autoriza este movimiento continuo acotado al cristal; se pausa por control, invisibilidad, pestaña oculta, preferencia reducida o disposición de recursos.
+- Coordinación integra un solo canvas: host absoluto dentro de visión, en una capa que evita recortes de ambos escenarios. Entra fuera de pantalla, llega con todo el canvas dentro y se desplaza al hueco real del diagrama. Imagen frontal solo como fallback; se oculta mientras el mismo modelo está listo. Sin reparentar al cruzar la escena, sin otro GLB/renderer. [Dirección y fórmulas](continuous-glasses-direction.md).
+- Controles de pausa accesibles junto a los dos momentos de lectura, sincronizados con una única animación. Aviso HTML de frases ficticias, sin aria-live para cada letra. Móvil/reducido/sin WebGL/JS conservan vistas estáticas y toda la lectura. La mejora continua solo se activa si el escenario de escritorio cabe realmente.
+- Edición acotada de17 textos EN/ES sobre participación, atención a la otra persona y primeras preguntas. Se retocan las propuestas de voz/práctica para mantener concisión. Se conservan titulares principales aprobados, estado, perfiles, límites, codiseño y candidatura sin admisión. [Propuesta y criterios](copy-revision.md).
+- Xiji pierde el óvalo recortado: curva SVG de ancho completo, unión90 px/70 px móvil, menor separación vacía antes y después. Se añade acercamiento de su titular, respuesta suave al abrir preguntas y movimiento breve del hilo de propósito/voz. La captura aportada se usa como evidencia del defecto; no es una captura de esta implementación.
+
+La limitación de acceso al navegador sigue vigente. No se intenta eludirla; las comprobaciones geométricas, simuladas y de archivos se registrarán tras revisar la integración y no se describirán como observación visual/GPU.
+
+
+### Revisión y correcciones — integración terminada
+
+- La revisión independiente detecta un desfase: el hueco de llegada heredaba el transform del fotograma previo de voz. Se deja el ancla sin transformar mientras el modelo está activo; voz y línea conservan su movimiento. Así no depende de otro scroll para quedar alineado al volver B→A.
+- El arnés de trayectoria extrae la función real del controlador y prueba1001 muestras: entrada completamente fuera por izquierda, canvas dentro del borde derecho con32 px de margen al llegar, números finitos, continuidad en liberación/llegada y centro final coincidente con el hueco. Recorrido reversible. Una geometría simulada1100×700 detecta desbordamiento inferior intermedio; se limita el arco y se repite la prueba: borde inferior≤684 px,16 px de margen. No equivale a layout observado.
+- GLB real y mocks del renderer:153/153 muestras del plano dentro de cada lente, ocho frases EN/ES, reflejos radiales sin gradientes lineales/barras. En6 segundos de reloj simulado se dibuja87 veces al cambiar las texturas. Activación, pausa, invisibilidad, dispose, contextlost y resolución tardía de fuente pasan; no se presenta como FPS real ni prueba GPU.
+- Se reservan80/64 px para la fila de pausa antes de activar WebGL y evitar un ciclo de encajar→cargar→crecer→destruir. Cambio a reducido/pantalla pequeña desactiva inmediatamente el reloj y restaura el host original. Contextlost restaura imágenes. La revisión estática no encuentra cargas simultáneas ni dos escenas. El respaldo frontal se oculta sin fundido que duplique contornos.
+- Sintaxis de controladores, HTML,121 claves EN/ES, respaldo inglés, atributos/metadatos, IDs/anclas y enlaces Markdown comprobados. Se repite el arnés de reservas bilingües: máximo, caché, resize, fonts/force, details y retirada de clones. Logo, favicon, retratos y archivos de modelo conservados. Documentación técnica/visual actualizada.
+
+### Límite pendiente
+
+Se ha revisado la captura aportada por el usuario, el código y las geometrías/simulaciones descritas. Continúa el bloqueo de acceso a la herramienta de navegador, sin restablecimiento confirmado y sin vías alternativas para eludirlo. No hay observación nueva de la página, transparencias, brillo, escritura o trayecto real. Pendiente: 0/25/50/75/100% e ida/vuelta, frío en ancla A, pausa, cambio EN/ES y resize durante el descenso,320 px/móvil/reducido/sin JS. Tampoco se afirman FPS, consola limpia o pruebas en dispositivos físicos. La publicación técnica se verificará por SHA y recursos, separada de esta limitación.

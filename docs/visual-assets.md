@@ -22,7 +22,7 @@ La nueva imagen tiene alfa real. Su raster utiliza familias cromáticas y antial
 
 ## Modelos de producto
 
-`assets/models/` reúne las gafas negras de acetato sin marca aprobadas por el usuario. La petición posterior integra el GLB mate en visión, con giro de casi300° y recorrido lateral controlados por scroll, cristal frío y subtítulos ficticios EN/ES sobre las lentes, con reposo final. No se animan las bisagras ni se simula reconocimiento. Los puntos frontales son decorativos, no cámaras ni sensores. Detalles, nodos y límites en [assets/models/README.md](../assets/models/README.md). Guante pendiente.
+`assets/models/` reúne las gafas negras de acetato sin marca aprobadas por el usuario. La petición posterior integra el GLB mate en visión, con giro de casi300° y recorrido lateral controlados por scroll, cristal frío, reflejos orgánicos y escritura lenta de frases ficticias EN/ES sobre las lentes. El ángulo reposa; las lentes continúan animándose solo mientras están visibles y sin pausa. Una sola escena continúa hasta el diagrama A, con respaldo estático. No se animan las bisagras ni se simula reconocimiento. Los puntos frontales son decorativos, no cámaras ni sensores. Detalles, nodos y límites en [assets/models/README.md](../assets/models/README.md). Guante pendiente.
 
 ## Tipografía local
 

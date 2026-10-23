@@ -6,10 +6,46 @@ import { RoomEnvironment } from './assets/vendor/three/RoomEnvironment.js';
 const radians = THREE.MathUtils.degToRad;
 const clamp = value => Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0;
 const ease = value => value * value * (3 - 2 * value);
-const subtitleLines = {
-  en: ['Shall we meet', 'here tomorrow?'],
-  es: ['¿Nos vemos', 'aquí mañana?']
+// Fictional everyday captions: a visual illustration of the concept only.
+// Line positions are fixed per phrase so a word never jumps while being typed.
+const subtitlePhrases = {
+  en: [
+    ['So good to', 'see you.'],
+    ['Tell me', 'your idea.'],
+    ['Shall we', 'sit here?'],
+    ["I'd love to know", 'your story.']
+  ],
+  es: [
+    ['Qué alegría', 'verte.'],
+    ['Cuéntame', 'tu idea.'],
+    ['¿Nos sentamos', 'aquí?'],
+    ['Quiero conocer', 'tu historia.']
+  ]
 };
+const characterTime = 155;
+const captionHold = 2350;
+const captionFade = 600;
+const captionGap = 160;
+const idleFrameInterval = 1000 / 24;
+const reflectionInterval = 1000 / 16;
+
+function captionAt(language, elapsed) {
+  const phrases = subtitlePhrases[language];
+  const lengths = phrases.map(lines => lines.join(' ').length);
+  const durations = lengths.map(length => length * characterTime + captionHold + captionFade + captionGap);
+  const totalDuration = durations.reduce((sum, duration) => sum + duration, 0);
+  let time = Math.max(0, elapsed) % totalDuration;
+  let index = 0;
+  while (time >= durations[index]) time -= durations[index++];
+  const typingEnd = lengths[index] * characterTime;
+  const fadeStart = typingEnd + captionHold;
+  const opacity = time <= fadeStart ? 1 : 1 - ease(clamp((time - fadeStart) / captionFade));
+  return {
+    lines: phrases[index], index,
+    count: Math.min(lengths[index], Math.floor(time / characterTime) + 1),
+    opacity
+  };
+}
 
 // A continuous yaw discovers the back, then returns to a readable front view.
 // The last 17% is a still pose, rather than another turn or an automatic loop.
@@ -64,70 +100,137 @@ function createLensArtwork() {
   reflectionCanvas.height = 256;
   const reflectionContext = reflectionCanvas.getContext('2d');
   const subtitleCanvas = document.createElement('canvas');
-  subtitleCanvas.width = 512;
-  subtitleCanvas.height = 224;
+  subtitleCanvas.width = 1024;
+  subtitleCanvas.height = 448;
   const subtitleContext = subtitleCanvas.getContext('2d');
   if (!reflectionContext || !subtitleContext) throw new Error('The lens artwork could not be prepared.');
-
-  // A broad, quiet reflection follows the actual silhouette of the curved lens.
-  // No transmission render target or extra scene render is required.
-  reflectionContext.save();
-  reflectionContext.translate(256, 128);
-  reflectionContext.rotate(-.37);
-  const reflection = reflectionContext.createLinearGradient(-156, 0, 46, 0);
-  reflection.addColorStop(0, 'rgba(248, 255, 255, 0)');
-  reflection.addColorStop(.38, 'rgba(221, 251, 249, .17)');
-  reflection.addColorStop(.48, 'rgba(248, 255, 255, .82)');
-  reflection.addColorStop(.65, 'rgba(141, 224, 212, .14)');
-  reflection.addColorStop(1, 'rgba(248, 255, 255, 0)');
-  reflectionContext.fillStyle = reflection;
-  reflectionContext.fillRect(-180, -240, 230, 480);
-  reflectionContext.fillStyle = 'rgba(248, 255, 255, .28)';
-  reflectionContext.fillRect(64, -240, 3, 480);
-  reflectionContext.restore();
 
   const reflectionTexture = new THREE.CanvasTexture(reflectionCanvas);
   reflectionTexture.colorSpace = THREE.SRGBColorSpace;
   const subtitleTexture = new THREE.CanvasTexture(subtitleCanvas);
   subtitleTexture.colorSpace = THREE.SRGBColorSpace;
+  reflectionTexture.generateMipmaps = false;
+  subtitleTexture.generateMipmaps = false;
+  reflectionTexture.minFilter = THREE.LinearFilter;
+  subtitleTexture.minFilter = THREE.LinearFilter;
   const reflectionMaterial = new THREE.MeshBasicMaterial({
-    map: reflectionTexture, transparent: true, opacity: .38,
+    map: reflectionTexture, transparent: true, opacity: .52,
     depthWrite: false, toneMapped: false, side: THREE.FrontSide,
     polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1
   });
   const subtitleMaterial = new THREE.MeshBasicMaterial({
-    map: subtitleTexture, transparent: true, opacity: .96,
+    map: subtitleTexture, transparent: true, opacity: .94,
     depthWrite: false, toneMapped: false, side: THREE.FrontSide
   });
-  let currentLanguage;
+  let currentLanguage = 'en';
+  let textClock = subtitlePhrases.en[0].join(' ').length * characterTime;
+  let reflectionClock = 0;
+  let previousReflectionTime = -Infinity;
+  let previousTextKey = '';
+  let previousPose = -1;
 
-  function setLanguage(language) {
-    const next = language === 'es' ? 'es' : 'en';
-    if (next === currentLanguage) return false;
-    currentLanguage = next;
-    subtitleContext.clearRect(0, 0, 512, 224);
-    subtitleContext.textAlign = 'center';
-    subtitleContext.textBaseline = 'middle';
-    subtitleContext.font = '500 41px Arial, sans-serif';
-    subtitleContext.shadowColor = 'rgba(141, 224, 212, .95)';
-    subtitleContext.shadowBlur = 10;
-    subtitleContext.fillStyle = '#f4ffff';
-    subtitleLines[next].forEach((line, index) => {
-      subtitleContext.fillText(line, 256, 76 + index * 61, 456);
-    });
-    subtitleContext.shadowBlur = 0;
-    const underline = subtitleContext.createLinearGradient(155, 0, 357, 0);
-    underline.addColorStop(0, 'rgba(141, 224, 212, 0)');
-    underline.addColorStop(.3, 'rgba(141, 224, 212, .9)');
-    underline.addColorStop(.7, 'rgba(141, 224, 212, .9)');
-    underline.addColorStop(1, 'rgba(141, 224, 212, 0)');
-    subtitleContext.fillStyle = underline;
-    subtitleContext.fillRect(155, 188, 202, 2);
-    subtitleTexture.needsUpdate = true;
+  // Only soft pools of light, clipped by the actual lens mesh. Radial gradients
+  // have no hard edge or straight stripe; their centers drift over ~20 seconds.
+  // Scroll changes their position too, so the glass responds while travelling.
+  function paintReflection(progress = 0, force = false) {
+    if (!force && reflectionClock - previousReflectionTime < reflectionInterval && Math.abs(progress - previousPose) < .006) return false;
+    previousReflectionTime = reflectionClock;
+    previousPose = progress;
+    const phase = reflectionClock / 1000;
+    const drift = Math.sin(phase * .27);
+    reflectionContext.clearRect(0, 0, 512, 256);
+    function pool(x, y, radius, stretch, bright, mint) {
+      reflectionContext.save();
+      reflectionContext.translate(x, y);
+      reflectionContext.scale(1, stretch);
+      const light = reflectionContext.createRadialGradient(0, 0, 0, 0, 0, radius);
+      light.addColorStop(0, `rgba(248, 255, 255, ${bright})`);
+      light.addColorStop(.28, `rgba(235, 255, 251, ${bright * .62})`);
+      light.addColorStop(.64, `rgba(141, 224, 212, ${mint})`);
+      light.addColorStop(1, 'rgba(221, 251, 249, 0)');
+      reflectionContext.fillStyle = light;
+      reflectionContext.beginPath();
+      reflectionContext.arc(0, 0, radius, 0, Math.PI * 2);
+      reflectionContext.fill();
+      reflectionContext.restore();
+    }
+    pool(102 + progress * 260 + drift * 54, 20 + Math.cos(phase * .19) * 27,
+      184, .66, .72, .14);
+    pool(410 - progress * 155 + Math.cos(phase * .23) * 37, 242 + drift * 19,
+      176, .72, .34, .09);
+    reflectionTexture.needsUpdate = true;
     return true;
   }
 
-  return { reflectionMaterial, subtitleMaterial, setLanguage };
+  function paintCaption(force = false) {
+    const caption = captionAt(currentLanguage, textClock);
+    const key = `${currentLanguage}:${caption.index}:${caption.count}`;
+    let changed = false;
+    if (force || key !== previousTextKey) {
+      previousTextKey = key;
+      subtitleContext.clearRect(0, 0, 1024, 448);
+      subtitleContext.textAlign = 'center';
+      subtitleContext.textBaseline = 'middle';
+      subtitleContext.font = '500 76px "Instrument Sans", Arial, sans-serif';
+      subtitleContext.fontKerning = 'normal';
+      const fullWidth = Math.max(...caption.lines.map(line => subtitleContext.measureText(line).width));
+      // The longest phrase uses a slightly smaller font, with no compressed text.
+      const fontSize = Math.min(76, 76 * 904 / Math.max(fullWidth, 1));
+      subtitleContext.font = `500 ${fontSize}px "Instrument Sans", Arial, sans-serif`;
+      subtitleContext.shadowColor = 'rgba(141, 224, 212, .68)';
+      subtitleContext.shadowBlur = 17;
+      subtitleContext.fillStyle = '#f3fffd';
+      let offset = 0;
+      caption.lines.forEach((line, index) => {
+        const visible = line.slice(0, Math.max(0, caption.count - offset));
+        // Position the partial text within its final line width, rather than
+        // moving the entire line each time another character is revealed.
+        const full = subtitleContext.measureText(line).width;
+        subtitleContext.textAlign = 'left';
+        const left = (1024 - full) / 2;
+        const baseline = 162 + index * 119;
+        // A very fine cool keyline retains the white lettering on pale fields;
+        // it is not a dark panel behind the concept captions.
+        subtitleContext.strokeStyle = 'rgba(12, 65, 76, .52)';
+        subtitleContext.lineWidth = 2;
+        subtitleContext.strokeText(visible, left, baseline);
+        subtitleContext.fillText(visible, left, baseline);
+        offset += line.length + 1;
+      });
+      subtitleContext.shadowBlur = 0;
+      subtitleTexture.needsUpdate = true;
+      changed = true;
+    }
+    const opacity = .94 * caption.opacity;
+    if (Math.abs(subtitleMaterial.opacity - opacity) > .001) {
+      subtitleMaterial.opacity = opacity;
+      changed = true;
+    }
+    return changed;
+  }
+
+  function setLanguage(language) {
+    const next = language === 'es' ? 'es' : 'en';
+    if (next === currentLanguage && previousTextKey) return false;
+    currentLanguage = next;
+    textClock = subtitlePhrases[next][0].join(' ').length * characterTime;
+    return paintCaption(true);
+  }
+
+  function advance(milliseconds, progress, force = false) {
+    const delta = Math.max(0, Math.min(250, Number.isFinite(milliseconds) ? milliseconds : 0));
+    textClock += delta;
+    reflectionClock += delta;
+    // No short-circuit: both textures can change during the same frame.
+    const captionChanged = paintCaption(force);
+    const reflectionChanged = paintReflection(progress, force);
+    return captionChanged || reflectionChanged;
+  }
+
+  paintCaption(true);
+  paintReflection(0, true);
+  return { reflectionMaterial, subtitleMaterial, setLanguage, advance,
+    refreshFont() { return paintCaption(true); } };
 }
 
 function enhanceLens(lens, artwork) {
@@ -142,9 +245,9 @@ function enhanceLens(lens, artwork) {
   const previousMaterial = lens.material;
   lens.material = new THREE.MeshPhysicalMaterial({
     name: 'senva-concept-clear-lens', color: 0xc9efec,
-    roughness: .065, metalness: 0, transparent: true, opacity: .22,
-    clearcoat: 1, clearcoatRoughness: .045, ior: 1.45,
-    specularIntensity: .85, envMapIntensity: 1.15,
+    roughness: .075, metalness: 0, transparent: true, opacity: .14,
+    clearcoat: 1, clearcoatRoughness: .065, ior: 1.46,
+    specularIntensity: .7, envMapIntensity: .88,
     depthWrite: false, side: THREE.FrontSide
   });
   lens.renderOrder = 2;
@@ -179,6 +282,8 @@ function enhanceLens(lens, artwork) {
 }
 
 /**
+ * Scroll renders immediately; a visible, explicitly activated scene may also
+ * animate its fictional captions and soft reflection at a limited frame rate.
  * A render-on-change enhancement. The host's image is always left in the DOM;
  * CSS may hide it only while .is-ready confirms a successfully drawn canvas.
  * The caller owns visibility, scroll scheduling, reduced motion and disposal.
@@ -192,6 +297,12 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0, 
   let disposed = false;
   let lastProgress = -1;
   let lastPoseKey = '';
+  let handoff = 0;
+  let active = false;
+  let paused = false;
+  let animationFrame = 0;
+  let lastAnimationTime = null;
+  let lastArtworkTime = null;
   let lensArtwork;
   let width = 0;
   let height = 0;
@@ -209,6 +320,7 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0, 
   function dispose() {
     if (disposed) return;
     disposed = true;
+    stopAnimation();
     host.classList.remove('is-ready');
     canvas.removeEventListener('webglcontextlost', onContextLost);
     canvas.remove();
@@ -264,22 +376,82 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0, 
     draw();
   }
 
+  function applyPose() {
+    const pose = poseAt(Math.max(0, lastProgress));
+    const amount = ease(handoff);
+    // -360 keeps the approved continuous yaw; normalizing to zero here would
+    // make the transition spin backwards through almost an entire revolution.
+    const x = THREE.MathUtils.lerp(pose.x, -2, amount);
+    const y = THREE.MathUtils.lerp(pose.y, -360, amount);
+    const z = THREE.MathUtils.lerp(pose.z, 0, amount);
+    const poseKey = `${x}:${y}:${z}`;
+    if (poseKey === lastPoseKey) return false;
+    lastPoseKey = poseKey;
+    pivot.rotation.set(radians(x), radians(y), radians(z), 'YXZ');
+    return true;
+  }
+
   function update(progress) {
     if (disposed) return;
     const next = clamp(progress);
     if (Math.abs(next - lastProgress) < .00001) return;
     lastProgress = next;
-    const pose = poseAt(next);
-    const poseKey = `${pose.x}:${pose.y}:${pose.z}`;
-    if (poseKey === lastPoseKey) return;
-    lastPoseKey = poseKey;
-    pivot.rotation.set(radians(pose.x), radians(pose.y), radians(pose.z), 'YXZ');
-    draw();
+    const poseChanged = applyPose();
+    const artworkChanged = lensArtwork?.advance(0, next);
+    if (poseChanged || artworkChanged) draw();
+  }
+
+  function setHandoff(amount) {
+    if (disposed) return;
+    const next = clamp(amount);
+    if (Math.abs(next - handoff) < .00001) return;
+    handoff = next;
+    if (applyPose()) draw();
   }
 
   function setLanguage(nextLanguage) {
     if (disposed || !lensArtwork || !lensArtwork.setLanguage(nextLanguage)) return;
     draw();
+  }
+
+  function stopAnimation() {
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+    animationFrame = 0;
+    lastAnimationTime = null;
+    lastArtworkTime = null;
+  }
+
+  function animate(timestamp) {
+    animationFrame = 0;
+    if (disposed || !active || paused) { lastAnimationTime = null; lastArtworkTime = null; return; }
+    if (lastAnimationTime === null) lastAnimationTime = lastArtworkTime = timestamp;
+    const delta = timestamp - lastAnimationTime;
+    if (delta >= idleFrameInterval) {
+      // Preserve the fractional remainder so 60 Hz displays average 24 updates,
+      // rather than accidentally dropping to one update every three frames.
+      lastAnimationTime = timestamp - delta % idleFrameInterval;
+      const artworkDelta = timestamp - lastArtworkTime;
+      lastArtworkTime = timestamp;
+      if (lensArtwork?.advance(artworkDelta, Math.max(0, lastProgress))) draw();
+    }
+    if (!disposed && active && !paused) animationFrame = requestAnimationFrame(animate);
+  }
+
+  function syncAnimation() {
+    if (disposed || !active || paused) { stopAnimation(); return; }
+    if (!animationFrame) animationFrame = requestAnimationFrame(animate);
+  }
+
+  function setActive(value) {
+    if (disposed) return;
+    active = Boolean(value);
+    syncAnimation();
+  }
+
+  function setPaused(value) {
+    if (disposed) return;
+    paused = Boolean(value);
+    syncAnimation();
   }
 
   try {
@@ -346,6 +518,11 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0, 
       const previousMaterials = new Set(lenses.map(lens => enhanceLens(lens, lensArtwork)));
       previousMaterials.forEach(material => material?.dispose());
       lensArtwork.setLanguage(language);
+      // Font loading is not a prerequisite for reading or seeing the model.
+      // Refresh only the current caption if the local UI font arrives later.
+      document.fonts?.ready.then(() => {
+        if (!disposed && lensArtwork?.refreshFont()) draw();
+      }).catch(() => {});
     }
     pivot.add(loadedModel);
 
@@ -359,7 +536,7 @@ export async function createGlassesScene(host, { modelUrl, initialProgress = 0, 
     update(initialProgress);
     resize();
     if (disposed) throw new Error('The glasses model could not be drawn.');
-    return { update, resize, setLanguage, dispose };
+    return { update, resize, setLanguage, setActive, setPaused, setHandoff, dispose, hasAnimation: Boolean(lensArtwork) };
   } catch (error) {
     dispose();
     throw error;
