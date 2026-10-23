@@ -540,4 +540,6 @@ Capturas de escritorio fuera de producción con prefijo `senva-cinema-`. El resu
 
 ### Entrega
 
-Implementación guardada en `e875aa9`. Se integra el commit remoto `3b83523`, conservando los recursos y registro de modelos de la otra tarea; no se enlazan desde esta web. Pendientes push y confirmación de build del SHA de integración. La limitación de revisión se mantiene visible; no implica un fallo reproducible observado de móvil.
+Implementación `e875aa9`, integrada y pusheada mediante `f55fd2774c9a4218a1a44c1f1d4963bf8d630e63`. GitHub Pages confirma `built` para ese SHA, sin error. Se conserva íntegro el commit remoto `3b83523`: recursos y registro de modelos de la otra tarea, sin referencias desde la web de esta iteración. Sin force push ni cambios de configuración.
+
+Dieciséis recursos publicados responden HTTP200 y coinciden byte a byte con los revisados mediante HTTPS validado. CSS `8c39a0ba`, JS `717dd77d`. Esta es una verificación técnica de entrega; no sustituye la observación visual bloqueada. Este cierre solo cambia documentación y también se comprueba su push/build. La revisión móvil/tablet, variantes accesibles y caso de idioma indicados arriba siguen pendientes. [Web publicada](https://withnolan.github.io/senva/).
