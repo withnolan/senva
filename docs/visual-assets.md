@@ -18,6 +18,10 @@ Dispositivos cargados como `<img>` sobre fondo claro. Son archivos únicos compa
 
 La nueva imagen tiene alfa real. Su raster utiliza familias cromáticas y antialiasing; no se afirma una paleta matemática de cuatro valores exactos. No hay naranja, modelado 3D, iluminación volumétrica ni un renderer de ejecución.
 
+## Modelos de producto (no integrados)
+
+`assets/models/` reúne recursos pedidos por el usuario para una fase posterior; la web actual no los carga. Gafas negras tipo montura cuadrada de acetato, sin marca: vistas 2.5D en WebP transparente (opción por defecto, coherente con el lenguaje 2D) y GLB con patillas articuladas solo si el usuario pide interactividad 3D. Puntos frontales decorativos, no cámaras ni sensores. Detalles, nodos y límites en [assets/models/README.md](../assets/models/README.md). Guante pendiente.
+
 ## Tipografía local
 
 - **Bricolage Grotesque**, titulares, pesos variables 400–800; fuente [original](https://github.com/ateliertriay/bricolage), distribución oficial [google/fonts](https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque). Licencia [BricolageGrotesque-OFL.txt](../assets/fonts/BricolageGrotesque-OFL.txt).
