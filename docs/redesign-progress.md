@@ -742,3 +742,16 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - Se retiran la etiqueta superior y la línea fina; la fase «Idea / Validación de hipótesis» se integra en la nota de estado, con el mismo texto EN/ES.
 - Título con revelado enmascarado por línea; lente y textos entran con transform/opacidad. Movimiento reducido y ausencia de JS muestran la composición estática.
 - Comprobado en navegador local bajo `/senva/`: EN/ES a 1440 y 390 px, inspector de diseño (desaparecen los fallos de etiqueta, línea y título de más de dos líneas de la portada en EN). El título ES ocupa tres líneas a 390 px; pendiente de decidir un texto más corto con el usuario.
+
+
+## Plan autónomo — paso a.1: 404 de marca — 24 de octubre de 2026
+
+- Commit `ff01863` en `redesign` (pusheado; no hay `.github/workflows`, así que ningún flujo despliega desde esta rama). Se commitea `docs/redesign-plan.md`, `review/` entra en `.gitignore` y se crea `404.html` (EN/ES por `senva-language` o idioma del navegador, enlace a `./index.html`, CSS en línea, fuentes y símbolo propios).
+- Límite: 404.html se sirve en rutas inexistentes más profundas que `/senva/x`, donde `./` apuntaría mal; se acepta por ser el caso habitual de un solo nivel.
+- No comprobado en navegador en este bloque (sin captura todavía).
+- Nota: las fuentes Bricolage/Instrument ya están autoalojadas y precargadas en `index.html`; queda retirar Manrope (`styles.css:453`, `assets/fonts/manrope-variable.ttf`) en el paso a.7.
+
+### Decisions to review
+- (vacío por ahora)
+
+**Next step:** a.2 — limpieza de archivos sin uso (copiar primero a `C:\Users\sheng\Documents\senva-design-source`).
