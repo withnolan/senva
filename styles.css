@@ -90,6 +90,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .xiji-photo figcaption{font-size:13px;line-height:1.5;margin-top:14px;max-width:80ch;color:var(--ink)}
 .xiji-photo figcaption a{text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:24px}
 .xiji{--g1:rgba(141,224,212,.55);--g2:rgba(255,255,255,.5);--g3:rgba(200,211,244,.8);--tile:var(--tile-dark);--grain-a:.035}
+.contact{--g1:rgba(141,224,212,.22);--g2:rgba(200,211,244,.18);--g3:rgba(255,255,255,.1);--tile:var(--tile-light);--grain-a:.05}
+.footer-bottom a>span[aria-hidden]{transition:translate .3s var(--ease)}
+.footer-legal a,.footer-main>a:not(.brand),.footer-bottom a{transition:color .25s}
+@media(hover:hover){.footer-bottom a:hover>span[aria-hidden]{translate:0 -4px}.footer-legal a:hover,.footer-main>a:not(.brand):hover,.footer-bottom a:hover{color:var(--teal)}}
 @keyframes glow-drift{from{transform:translate3d(-3%,-2%,0) scale(1)}to{transform:translate3d(4%,3%,0) scale(1.08)}}
 /* option C: pinned story. The hero stays for ~0.8 screen while the lens zooms on one person, then crosses to the other. Text never fades. */
 .hero-lens-window .lens-clip{position:relative;display:block;width:100%;height:100%;background:var(--ink);overflow:clip;-webkit-mask:var(--lens) center/100% 100% no-repeat;mask:var(--lens) center/100% 100% no-repeat}

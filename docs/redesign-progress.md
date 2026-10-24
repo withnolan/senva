@@ -863,10 +863,14 @@ Ramas empujadas, todas desde `9641ca1` (lente real + fondo vivo):
 - Otros candidatos guardados en `review/xiji-candidates/` (no se publican): dos nocturnos CC0 (Larry Qian 2017; Gankbank789 2025), uno CC BY (Ernest Jourdier), otro CC BY-SA (Phlizz) y otro diurno/nocturno CC BY-SA. Descartados por saturación de neón (choca con la paleta) y por rótulos de marcas visibles. Metadatos en `review/xiji-candidates/sources.json`.
 - Captura `review/c-xiji.png` (EN, 1440 px). No comprobado en ES ni móvil todavía.
 
+## Plan autónomo — paso c.7 (parte 1): contacto y pie — 24 de octubre de 2026
+
+- Contacto: mismos brillos y mosaico claro que el equipo, sobre el degradado turquesa que ya tenía. Pie: el enlace «Back to top» sube su flecha 4 px y los enlaces del pie pasan a turquesa al pasar el puntero. Captura `review/c-contact-footer.png` (EN, 1440 px). Sin fondo vivo en el pie por ser una banda de lectura corta.
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
 - Imagen de Xiji: se eligió el horizonte diurno (CC BY-SA 4.0). Si prefieres una CC0 sin obligación de licencia compartida, las alternativas nocturnas están en `review/xiji-candidates/`.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** c.7 — pie de página y legal.html.
+**Next step:** c.7 parte 2 — legal.html.
