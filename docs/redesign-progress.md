@@ -705,3 +705,31 @@ La captura muestra el divisor del aviso cruzando la base de la ilustración y la
 La cubierta conserva el logo, ahora ampliado sobre el nombre. Se divide el mismo trazado original en sus tres curvas: superior, media e inferior. Cada una avanza de izquierda a derecha durante0,48s, empezando a0,10/0,64/1,18s; las tres están completas en1,66s. Después se revela SENVA y se mantiene el cierre de unos2s existente. El símbolo no se desvanece durante el dibujo de la primera línea. No se cambia `intro.js`, su interrupción por interacción ni las alternativas de anclas/reducido/sinJS.
 
 Revisión independiente de dirección: orden y monotonía horizontal de los paths correctos; advertidos el fundido inicial del padre y la expansión inferior del arte. Se corrigen ambos con símbolo opaco y separación96px. Comprobación estática de trazados originales, secuencia sin solapamiento y cierre antes de2s; HTML, claves EN/ES y recursos conservados. Pendiente observación visual por el bloqueo de navegador ya documentado. Commit/push y build se verifican para la entrega.
+
+
+## SENVA gigante hacia la cabecera y cambios de fondo suaves — 24 de octubre de2026
+
+### Implementación integrada
+
+- Se corrige el orden solicitado: símbolo inferior→medio→superior, cada trazo de izquierda a derecha. Duración600ms, comienzos100/820/1540ms; nombre gigante2160–2440ms. La carga intencional pasa a2600ms con salida de seguridad3600ms.
+- Desarrollo modifica únicamente `intro.js`: reutiliza la misma palabra SENVA y mide origen/destino reales, con hueco reservado. Anima1350ms hasta la palabra de la cabecera, luego restaura nodo/atributos y muestra la marca real en el mismo frame. Coordinación integra CSS/HTML y retira las animaciones anteriores de marca/salida que causarían otro salto.
+- El vuelo se cancela/restaura por interacción/foco, scroll, resize/orientación, hash/idioma, ocultación, reducido o BFcache. Sin Web Animations/rectángulos válidos se muestra la marca real. Limpieza independiente1500ms. Sin bloquear foco o desplazamiento; sinJS/reducido/anclas mantienen alternativas.
+- La cabecera pasa de grandes cambios claro/oscuro a matices de azul noche interpolados700ms, con blanco cálido/turquesa constantes. Evita saltos de superficie y el cruce de bajo contraste entre texto y fondo. Menú, foco e idioma conservan contraste.
+- Apartados de flujo suman32px por lado en escritorio y20px en móvil; portada gana16–24px arriba. Los tres tracks suman15svh, sin alterar la altura natural ni el criterio de encaje de los escenarios de escritorio. Texto, perfiles, enlaces, hechos, idiomas, modelos y recursos ajenos conservados.
+
+### Revisión independiente y comprobaciones iniciales
+
+Dirección señala que la animación antigua de la marca movería el destino y que el título gigante podría recortarse en panorámicas bajas. Se retira la primera y se limita la fuente por ancho/altura, con símbolo/gap compactos bajo420px de alto. El contraste del header se calcula para49pares de fondos×101intermedios: mínimo6,57:1 para blanco cálido/mint; no se presenta como captura ni medición del navegador.
+
+El arnés de desarrollo comprueba30 escenarios de temporización, vuelo medido y ciclo de vida (VM/mocks), incluidos extremos escritorio/móvil y punto intermedio. No acredita apariencia real. HTML/122claves EN/ES, respaldo inglés, recursos, SVG, anclas y conservación de logo/retratos pasan la validación estática. Se comprobarán también reservas bilingües y trayectoria con tracks actualizados antes de entregar.
+
+Continúa el bloqueo de observación en navegador, sin restablecimiento confirmado; no se intenta eludirlo. Pendiente ver la entrada, aterrizaje, gradación y recorrido real en escritorio/móvil/EN/ES, ida/vuelta y reducido. Sin afirmaciones de FPS, consola limpia o pruebas físicas. Commit/push y Pages se verificarán por SHA.
+
+
+### Comprobaciones finales de esta iteración
+
+Se repiten las30 simulaciones de entrada con la curva de aceleración/reposo revisada, incluidas posición inicial/intermedia/final, cancelación y animación sin resolución. Se comprueba la envolvente por altura en seis tamaños, incluidos932×320 y320×200; es cálculo CSS, no render. Los trazos conservan exactamente las curvas originales y el orden ahora inferior/medio/superior.
+
+Se repite la reserva bilingüe (máximo, caché, fuente/resize, details y retirada de clones). La prueba de trayectoria extrae la función actual y actualiza fixtures a225svh y separación262px:1001 muestras, llegada al hueco, continuidad/ida-vuelta y límite inferior en700px pasan. No se cambian renderer, lentes o su reloj. HTML, recursos/metadatos, claves y enlaces se vuelven a comprobar tras versionar. Los pendientes visuales descritos arriba continúan abiertos.
+
+La revisión independiente final de `intro.js` comprueba restauración normal/error/skip, control de reentrada al cancelar WAAPI y disponibilidad del nombre accesible del enlace. No encuentra otro fallo concreto en el código; no se presenta como aprobación visual. El vuelo usa aceleración suave desde reposo y asentamiento final para conservar legibilidad del título grande.

@@ -47,3 +47,10 @@ Se detectaron dos fallos concretos antes del cierre:
 También se amplió el acercamiento del principio a pasaje0,02–0,56 y se retrasó su salida luminosa hasta0,78. Para un escenario de0,85 viewport, el acercamiento ocupa aproximadamente un viewport entero. El pan de la hoja de práctica baja de10vw a3vw para conservar su encuadre con la ampliación.
 
 La lectura estática confirma que las reglas reducidas anulan el movimiento del principio/cierre y que los nuevos efectos no transforman ancestros del único canvas ni su hueco de llegada. El texto del principio permanece opaco y en flujo, con altura mínima adaptable; las etiquetas repetidas se reducen manteniendo el estado real y el aviso contextual del diagrama. No se declara con ello revisada la composición efectiva, la salida exacta del glow o la legibilidad de todos los estados: siguen pendientes de observación visual real.
+
+
+## Revisión vigente de la entrada y cabecera — 24 de octubre de2026
+
+Sustituye el storyboard de apertura anterior: trazos inferior→medio→superior, todos de izquierda a derecha, más lentos; SENVA ocupa gran parte del ancho como título y viaja hasta la palabra real en la cabecera. El inicio permite leer la marca grande; el desplazamiento acelera después y se asienta sin otra animación del destino. Se miden origen y destino, con alternativa inmediata y cancelación al interactuar. El símbolo de navegación permanece disponible.
+
+La cabecera mantiene texto blanco cálido y acento turquesa sobre matices oscuros que cambian gradualmente, evitando el cruce de contraste al invertir texto/fondo. Los apartados ganan algo de espacio y los tracks15svh. La revisión independiente detectó el posible recorte del loader en ventanas bajas: el tamaño de palabra se limita también por svh y el grupo reduce símbolo/espacio en panorámicas. No se ha observado la implementación en navegador por el bloqueo existente.
