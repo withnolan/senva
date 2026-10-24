@@ -124,12 +124,11 @@ assets/                    Existing logo, portraits, social image / recursos
   favicon.svg              Original symbol / símbolo original
   senva-logo.svg           Existing symbol + wordmark / logotipo existente
   *.jpg                    Original founder portraits / retratos originales
-  social-card.svg, .png     Social preview / vista previa social
+  social-card.png           Social preview / vista previa social
   graphics/                Original 2D SVG sources / fuentes SVG 2D propias
-    conversation.svg       Two people / dos personas
     glasses.svg, glove.svg  Concept devices / dispositivos conceptuales
   fonts/                   Local Bricolage + Instrument Sans / fuentes locales y licencias
-  illustrations/           Earlier iteration, not loaded / iteración anterior
+  illustrations/           Hero artwork (WebP) / ilustración de portada
 docs/
   project-brief.md          Research hypotheses and Xiji / hipótesis y Xiji
   technical-guide.md        Maintenance and deployment / mantenimiento

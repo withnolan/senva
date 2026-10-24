@@ -18,17 +18,15 @@ Montura cuadrada de acetato negro, inspirada en una wayfarer y **sin ninguna mar
 | Archivo | Uso |
 | --- | --- |
 | `gafas/senva-gafas.glb` | **Versión web recomendada.** Acabado negro mate. 1,7 MB, ~470 k triángulos, compresión meshopt. |
-| `gafas/senva-gafas-brillo.glb` | La misma montura en negro brillo (wayfarer clásica). |
-| `gafas/fuente/senva-gafas-maestro.glb` | Maestro sin comprimir (11 MB) para editar en Blender u otras herramientas. No usar en la web. |
-| `gafas/vistas/*.webp` | Vistas 2.5D renderizadas, fondo transparente, ~2000 px de ancho y 60–100 KB cada una. |
+| `gafas/vistas/*.webp` | Hoja de vistas y las dos vistas que carga el sitio (frontal y tres cuartos izquierda), fondo transparente. |
 
-Vistas disponibles (`gafas-<vista>.webp`): `frontal`, `tres-cuartos-izquierda`, `tres-cuartos-derecha`, `perfil-izquierdo`, `perfil-derecho`, `picado`, `contrapicado`, `tres-cuartos-trasera`, `trasera`, `cenital`, `rasante`, `desde-abajo`. La variante brillo incluye `gafas-brillo-frontal`, `gafas-brillo-tres-cuartos-izquierda` y `gafas-brillo-picado`. Cada vista lleva una sombra de contacto suave incluida en el canal alfa.
+La variante brillo, el maestro sin comprimir (11 MB) y las demás vistas se retiraron del repositorio; el maestro, la tarjeta social SVG y los PNG fuente de las ilustraciones se conservan en `Documents/senva-design-source`.
 
 ### Qué usar
 
 La petición del 23 de octubre autoriza expresamente el GLB mate y sustituye la restricción histórica de no usar 3D para esta pieza. `glasses-3d.js` lo carga de forma diferida en escritorio con puntero preciso, ventana de al menos 1100×700 y sin movimiento reducido. El ángulo gira con el progreso de la visión, sin auto giro; una sola escena se desplaza después al diagrama. La integración posterior añade cristal frío y subtítulos ficticios EN/ES dentro de las lentes mediante materiales/texturas en memoria; el GLB fuente no cambia. La petición posterior añade reflejos orgánicos cambiantes y escritura lenta de cuatro frases por idioma, únicamente con el modelo visible y sin pausa. No son una transcripción real ni una pantalla validada.
 
-La vista `gafas-tres-cuartos-izquierda.webp` permanece como respaldo en el escenario. `gafas-frontal.webp` sustituye al dibujo anterior en el diagrama de subtítulos. Móvil, movimiento reducido, ausencia de JS o WebGL y errores de carga conservan imágenes y contenido HTML. Three.js r169 y Meshopt se sirven localmente con licencia y procedencia en `assets/vendor/three/README.md`. No se cargan la variante brillo ni el maestro.
+La vista `gafas-tres-cuartos-izquierda.webp` permanece como respaldo en el escenario. `gafas-frontal.webp` sustituye al dibujo anterior en el diagrama de subtítulos. Móvil, movimiento reducido, ausencia de JS o WebGL y errores de carga conservan imágenes y contenido HTML. Three.js r169 y Meshopt se sirven localmente con licencia y procedencia en `assets/vendor/three/README.md`.
 
 ### Datos técnicos del GLB
 

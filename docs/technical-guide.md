@@ -39,7 +39,7 @@ Abrir [http://127.0.0.1:8000/senva/](http://127.0.0.1:8000/senva/). No subir arn
 | `assets/fonts/*latin.woff2` | Bricolage Grotesque e Instrument Sans, unos 107 KB en conjunto. Licencias OFL adjuntas. |
 | `assets/*.jpg` | Retratos facilitados, originales de 800×800, carga diferida y dimensiones reservadas. |
 | `assets/favicon.svg`, `senva-logo.svg` | Identidad conservada; símbolo y palabra de marca también en HTML. |
-| `assets/social-card.svg`, `.png` | Fuente editable y exportación social de 1200×630. |
+| `assets/social-card.png` | Exportación social de 1200×630 (fuente SVG fuera del repositorio). |
 | `.nojekyll` | Entrega directa desde el repositorio. |
 
 La página solicita recursos del propio sitio, sin analítica ni servicios externos. Lenis conserva su [registro de versión y hashes](../assets/vendor/lenis/README.md). La petición expresa posterior autoriza WebGL para las gafas: Three.js r169 y Meshopt también se sirven localmente, con [procedencia y hashes](../assets/vendor/three/README.md), sin framework. La generación/optimización de la ilustración y Sharp fueron herramientas de autoría; no son dependencias del visitante. Manrope vuelve a utilizarse exclusivamente en equipo y contacto, restaurados desde `4269030`. Recursos anteriores no utilizados se conservan como archivo, incluido `assets/graphics/conversation.svg`. No reactivar controladores o estilos históricos.

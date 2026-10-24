@@ -7,14 +7,13 @@ Azul noche, blanco cálido y turquesa, con los acentos fríos aprobados; ilustra
 | Recurso | Uso y origen |
 | --- | --- |
 | `assets/illustrations/conversation-devices.webp` | Portada, dos adultos con gafas conceptuales y manos en reposo, una persona con guantes. Edición imagegen; [prompt, origen y límites](conversation-art.md#device-edition--23-october-2026).1200×800 y unos129 KB. |
-| `assets/illustrations/conversation-editorial.webp` | Recurso anterior preservado; permanece en la vista social. |
 | `assets/models/gafas/senva-gafas.glb` | Montura negra mate aprobada; giro conceptual ligado al scroll de visión, carga opcional en escritorio. |
 | `assets/models/gafas/vistas/gafas-*.webp` | Tres cuartos como respaldo del escenario y frontal en el diagrama de subtítulos; vistas del mismo modelo. |
 | `assets/graphics/glove.svg` | Guante textil vacío con panel, costuras y puño; no es un signo concreto ni un esquema de sensores. |
 | Conexiones y voz | SVG/CSS originales, relaciones conceptuales. No representan reconocimiento real. |
 | `assets/shengyu-nolan-chen.jpg`, `santiago-munoz-veguillas.jpg` | Fotografías facilitadas por el usuario; mismo tratamiento y tamaño reservado. |
 | Favicon, símbolo y palabra SENVA | Identidad conservada. El logo mantiene su familia independiente. |
-| `assets/social-card.svg`, `.png` | Vista social 1200×630, nueva ilustración. SVG con imagen PNG embebida para exportación; PNG final para metadatos. |
+| `assets/social-card.png` | Vista social 1200×630 para metadatos; el SVG fuente se conserva fuera del repositorio. |
 
 El guante y los respaldos de gafas se cargan como `<img>` con medidas reservadas; un canvas decorativo sustituye visualmente al respaldo solo tras dibujar el primer frame. Textos, conceptos y aclaraciones se mantienen en HTML.
 
