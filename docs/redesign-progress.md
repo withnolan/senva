@@ -751,7 +751,14 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - No comprobado en navegador en este bloque (sin captura todavía).
 - Nota: las fuentes Bricolage/Instrument ya están autoalojadas y precargadas en `index.html`; queda retirar Manrope (`styles.css:453`, `assets/fonts/manrope-variable.ttf`) en el paso a.7.
 
+## Plan autónomo — paso a.2: limpieza de archivos sin uso — 24 de octubre de 2026
+
+- Commit `081d973`. Copiados antes de borrar a `Documents/senva-design-source`: maestro GLB, `social-card.svg` y los tres PNG fuente (copias comprobadas).
+- Eliminados tras volver a buscar referencias: maestro GLB, `senva-gafas-brillo.glb`, 3 PNG fuente, 13 vistas WebP, `social-card.svg`, variantes `conversation-768/1536/editorial`, `glasses-*`, `glove-*` y `graphics/conversation.svg`. Se mantienen `hoja-de-vistas`, `gafas-frontal`, `gafas-tres-cuartos-izquierda`, `glasses.svg` y `glove.svg`.
+- Docs corregidos: README, `assets/models/README.md`, `technical-guide.md`, `visual-assets.md`. `conversation-art.md` y `design-review.md` quedan como historial.
+- Comprobado: los siete recursos que carga el sitio existen. Sin captura en navegador (solo se borraron archivos sin referencias).
+
 ### Decisions to review
 - (vacío por ahora)
 
-**Next step:** a.2 — limpieza de archivos sin uso (copiar primero a `C:\Users\sheng\Documents\senva-design-source`).
+**Next step:** a.3 — subtítulos legibles en las lentes 3D.
