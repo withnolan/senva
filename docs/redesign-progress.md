@@ -839,9 +839,13 @@ Ramas empujadas, todas desde `9641ca1` (lente real + fondo vivo):
 - Receta de fondos vivos compartida para todas las secciones (`.chapter-surface:not(.hero)::before/::after` en `styles.css`): brillos menta/lavanda con deriva lenta, grano y mosaico del contorno de lente, configurables con `--g1/--g2/--g3`, `--tile`, `--grain-a`. `--grain`, `--tile-light` y `--tile-dark` pasan a `:root`.
 - Propósito (papel): brillos menta arriba a la izquierda y lavanda abajo a la derecha, mosaico oscuro al 3,5 %. Las tres situaciones suben escalonadas con el trazo (`translate` ligado a `--purpose-progress`; el texto no se atenúa). Captura `review/c-purpose.png`. EN, 1440 px.
 
+## Plan autónomo — paso c.2: visión — 24 de octubre de 2026
+
+- La receta de fondo vivo también se aplica a `.cinema-stage` (cada escenario fijado tiene su propio fondo opaco que tapaba el de la sección). Visión: brillos menta, lavanda y blanco sobre hielo/menta, mosaico al 2,8 %. Las gafas 3D, el diagrama y los subtítulos no cambian. Capturas `review/c-vision-a.png` y `c-vision-b.png` (1440 px, EN): el titular sigue legible sobre el brillo; el mosaico se nota sobre el menta pero no compite con el diagrama.
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** c.2 — visión.
+**Next step:** c.3 — primera hipótesis.
