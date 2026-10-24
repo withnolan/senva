@@ -39,3 +39,9 @@ code{font-size:.92em;overflow-wrap:anywhere}
 @media(max-width:680px){.wrap{width:calc(100% - 40px - 2*var(--sa))}.legal-header{min-height:92px;gap:16px}.legal-header img{width:122px}.back-link{font-size:13px;max-width:100px}.legal-intro{padding-block:44px 24px}.legal-nav{gap:24px}.legal-content{grid-template-columns:1fr;gap:0;padding-top:42px}.legal-content article+article{border-top:1px solid var(--line);padding-top:42px}.legal-footer{padding-bottom:30px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .to-top{margin:32px 0 0;font-size:13px}.to-top a{display:inline-flex;align-items:center;min-height:32px}
+/* same live backdrop as the main site: soft mint/lavender glows that drift slowly, plus fine grain */
+body::before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none;background:radial-gradient(34% 40% at 16% 14%,rgba(141,224,212,.5),transparent 70%),radial-gradient(32% 38% at 88% 40%,rgba(200,211,244,.65),transparent 70%);animation:glow-drift 36s ease-in-out infinite alternate-reverse}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.035;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+@keyframes glow-drift{from{transform:translate3d(-3%,-2%,0) scale(1)}to{transform:translate3d(4%,3%,0) scale(1.08)}}
+@media(prefers-reduced-motion:reduce){body::before{animation:none}}
+

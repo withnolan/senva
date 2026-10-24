@@ -867,10 +867,14 @@ Ramas empujadas, todas desde `9641ca1` (lente real + fondo vivo):
 
 - Contacto: mismos brillos y mosaico claro que el equipo, sobre el degradado turquesa que ya tenía. Pie: el enlace «Back to top» sube su flecha 4 px y los enlaces del pie pasan a turquesa al pasar el puntero. Captura `review/c-contact-footer.png` (EN, 1440 px). Sin fondo vivo en el pie por ser una banda de lectura corta.
 
+## Plan autónomo — paso c.8: legal.html — 24 de octubre de 2026
+
+- Mismo fondo vivo (brillos menta/lavanda con deriva lenta y grano) como capa fija tras la página; se anula con movimiento reducido. Captura `review/c-legal.png` (1440 px). Los enlaces «volver arriba» entre bloques ya se añadieron en a.11.
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
 - Imagen de Xiji: se eligió el horizonte diurno (CC BY-SA 4.0). Si prefieres una CC0 sin obligación de licencia compartida, las alternativas nocturnas están en `review/xiji-candidates/`.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** c.7 parte 2 — legal.html.
+**Next step:** d — pasada final: axe-core, teclado (incluido menú móvil), movimiento reducido, EN/ES, escritorio y móvil; después review/REVIEW.md y STATUS: COMPLETE.
