@@ -1,3 +1,5 @@
+STATUS: COMPLETE
+
 # SENVA — Rediseño integral
 
 Actualizado: 23 de octubre de 2026. Registro del rediseño desde `4945ec0`.
@@ -871,10 +873,18 @@ Ramas empujadas, todas desde `9641ca1` (lente real + fondo vivo):
 
 - Mismo fondo vivo (brillos menta/lavanda con deriva lenta y grano) como capa fija tras la página; se anula con movimiento reducido. Captura `review/c-legal.png` (1440 px). Los enlaces «volver arriba» entre bloques ya se añadieron en a.11.
 
+## Plan autónomo — paso d: pasada final — 24 de octubre de 2026
+
+- **axe-core 4.14** (reglas WCAG 2.0/2.1/2.2 A y AA + buenas prácticas), recorriendo la página entera por tramos de scroll, en portada EN y ES a 1440 y 390 px, `legal.html` a 1440 y 390 px y `404.html`: **0 violaciones** (informe `review/axe-report.json`). La primera pasada encontró 5 fallos *label-content-name-mismatch* (botones EN/ES, enlaces de LinkedIn y del repositorio): las etiquetas accesibles ahora contienen el texto visible (HTML y traducciones).
+- **Movimiento reducido real** (Chromium con `reducedMotion: reduce`, 1440 EN y 390 ES): sin animación de brillos, sin sticky grande, sin pantalla de carga, titular con opacidad 1, sin errores de consola. Detectó un desbordamiento horizontal de 115 px (31 px en móvil) causado por mis capas de fondo (`inset:-8%`); corregido con `overflow-x:clip` en `.chapter-surface`; medido 0 en ambos.
+- **Teclado/menú móvil** (390 px): abrir con clic, Tab por los cinco enlaces, el sexto Tab (EN) cierra el menú; Escape devuelve el foco al botón. Sin JavaScript: aviso `noscript` y contenido completo (a.10).
+- **Idiomas/tamaños:** portada ES a 1440 y 390 px sin desbordamiento (`review/d-es-*.png`); EN comprobado en todas las secciones a 1440 px y en portada, pie y equipo a 390/768 px.
+- **No comprobado:** vídeo/continuidad de movimiento (solo capturas por posición de scroll), dispositivo móvil físico, Safari/Firefox, lector de pantalla real, safe-area en un iPhone con muesca, preferencia real del sistema operativo (se usó la emulación de Chromium), rendimiento en móvil medio. Resumen para revisar en `review/REVIEW.md`.
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
 - Imagen de Xiji: se eligió el horizonte diurno (CC BY-SA 4.0). Si prefieres una CC0 sin obligación de licencia compartida, las alternativas nocturnas están en `review/xiji-candidates/`.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** d — pasada final: axe-core, teclado (incluido menú móvil), movimiento reducido, EN/ES, escritorio y móvil; después review/REVIEW.md y STATUS: COMPLETE.
+**Next step:** Plan completo. Solo queda revisar «Decisions to review».

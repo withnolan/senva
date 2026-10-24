@@ -69,6 +69,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .hero::before{inset:-25%;background:radial-gradient(36% 40% at 26% 34%,rgba(141,224,212,.22),transparent 70%),radial-gradient(34% 38% at 80% 70%,rgba(200,211,244,.20),transparent 70%),radial-gradient(26% 30% at 58% 10%,rgba(141,224,212,.12),transparent 70%);animation:glow-drift 30s ease-in-out infinite alternate;will-change:transform}
 .hero::after{inset:0;background:var(--tile-light) 0 0/220px 150px repeat,var(--grain);opacity:.07}
 /* live chapter backdrops (same recipe as the hero): per-section tints through --g1/--g2/--g3, --tile and --grain-a */
+.chapter-surface{overflow-x:clip}
 .chapter-surface:not(.hero)::before,.chapter-surface:not(.hero)::after,.cinema-stage::before,.cinema-stage::after{content:"";position:absolute;pointer-events:none;z-index:-1}
 .chapter-surface:not(.hero)::before,.cinema-stage::before{inset:-12% -8%;background:radial-gradient(34% 40% at 18% 28%,var(--g1,transparent),transparent 70%),radial-gradient(32% 38% at 84% 74%,var(--g2,transparent),transparent 70%),radial-gradient(24% 28% at 56% 6%,var(--g3,transparent),transparent 70%);animation:glow-drift 36s ease-in-out infinite alternate-reverse;will-change:transform}
 .chapter-surface:not(.hero)::after,.cinema-stage::after{inset:0;background:var(--tile,none) 0 0/220px 150px repeat,var(--grain);opacity:var(--grain-a,.05)}
