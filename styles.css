@@ -70,7 +70,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .hero-connection{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-connection path{stroke:var(--mint);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
 .hero-connection circle{fill:var(--mint)}
-.hero-status{display:grid;grid-template-columns:1fr;gap:0;grid-column:1/-1;border-top:1px solid #45616a;padding-block:22px;font-size:13px;line-height:1.5;position:relative;z-index:2}
+.hero-status{display:grid;grid-template-columns:1fr;gap:0;grid-column:1/-1;margin-top:96px;border-top:1px solid #45616a;padding-block:22px;font-size:13px;line-height:1.5;position:relative;z-index:2}
 .hero-status p{font-size:13px;color:#c5d5d4;max-width:570px}
 .section-heading{max-width:950px}
 .section-heading>.eyebrow,.section-intro>.eyebrow,.experiment-copy>.eyebrow,.research .eyebrow,.xiji .eyebrow,.contact .eyebrow{margin-bottom:22px;color:var(--teal)}
@@ -709,11 +709,15 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
 [data-bilingual-space]{min-block-size:var(--bilingual-space,0px)}
 .page-loader{display:grid;place-content:center;position:fixed;inset:0;z-index:1000;background:var(--ink);color:var(--paper);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .85s ease,visibility 0s .85s;overflow:clip}
 .booting .page-loader{opacity:1;visibility:visible;transition:none}
-.loader-identity{display:flex;align-items:center;gap:18px;font-family:Arial,Helvetica,sans-serif;font-size:clamp(42px,6vw,76px);letter-spacing:-.07em;font-weight:750;z-index:1;transform-origin:center}
+.loader-identity{display:flex;flex-direction:column;align-items:center;gap:26px;font-family:Arial,Helvetica,sans-serif;font-size:clamp(32px,4vw,48px);letter-spacing:-.07em;font-weight:750;z-index:1;transform-origin:center}
 .loader-identity>span>span,.loader-symbol{color:var(--mint)}
-.loader-symbol{width:clamp(36px,4vw,56px);height:auto;overflow:visible}
+.loader-symbol{width:clamp(88px,10vw,128px);height:auto;overflow:visible}
 .booting .loader-identity{animation:loader-approach 2s var(--ease) both}
-.booting .loader-symbol path{stroke-dasharray:1;animation:load-mark 1.5s ease-in-out both}
+.loader-stroke{stroke-dasharray:1;stroke-dashoffset:0}
+.booting .loader-stroke{animation:load-mark .48s .10s cubic-bezier(.4,0,.2,1) both}
+.booting .loader-stroke:nth-child(2){animation-delay:.64s}
+.booting .loader-stroke:nth-child(3){animation-delay:1.18s}
+.booting .loader-name{animation:loader-name .38s 1.58s ease-out both}
 .loader-light{position:absolute;inset:-40%;background:radial-gradient(ellipse at 50% 50%,#267e7b88,transparent 50%);transform-origin:center;opacity:0}
 .booting .loader-light{animation:loader-light 2s var(--ease) both}
 .loader-orbit{position:absolute;left:50%;top:50%;width:min(60vw,600px);aspect-ratio:1.5;border:1px solid #8de0d44d;border-radius:50%;transform:translate(-50%,-50%)}
@@ -721,7 +725,8 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
 .enter .loader-identity{animation:loader-depart .9s cubic-bezier(.5,0,.2,1) both}
 .intro-skipped .page-loader{display:none}
 @keyframes load-mark{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
-@keyframes loader-approach{from{opacity:0;transform:translateY(24px) scale(.7)}40%{opacity:1}to{opacity:1;transform:none}}
+@keyframes loader-approach{from{transform:translateY(8px) scale(.94)}to{transform:none}}
+@keyframes loader-name{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes loader-depart{to{opacity:0;transform:scale(3.5) translateY(-8px)}}
 @keyframes loader-light{from{opacity:0;transform:translateX(-12%) scale(.5)}to{opacity:1;transform:translateX(4%) scale(1.1)}}
 @keyframes load-orbit{from{opacity:0;transform:translate(-50%,-50%) scale(.35) rotate(-28deg)}to{opacity:.6;transform:translate(-50%,-50%) scale(1.5) rotate(10deg)}}

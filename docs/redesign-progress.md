@@ -696,3 +696,12 @@ Petición acotada: más margen arriba y abajo. Se amplía el padding de propósi
 Revisión independiente de selectores: se ajustan también los overrides finales de equipo/Xiji. Se usa padding específico, sin márgenes colapsables ni regla global que altere los escenarios. Los tracks, longitudes y padding de contenido sticky de escritorio permanecen iguales; las posiciones posteriores siguen midiéndose desde el layout real.
 
 Comprobaciones: diff acotado a CSS, versión del recurso y documentación; validación estática de HTML/EN/ES/recursos y reservas bilingües. Sigue pendiente revisión visual porque el acceso al navegador continúa bloqueado; no se atribuyen pruebas nuevas de layout en dispositivos. La publicación se verifica por SHA.
+
+
+## Líneas de portada y carga del símbolo — 24 de octubre de2026
+
+La captura muestra el divisor del aviso cruzando la base de la ilustración y la curva turquesa próxima al borde de portada. Se separa el divisor96px de la fila superior; la curva decorativa baja40 unidades SVG sin mover el fondo ni las otras uniones. La separación también cubre la expansión del arte durante la entrada, según su envolvente CSS; no se presenta como layout observado.
+
+La cubierta conserva el logo, ahora ampliado sobre el nombre. Se divide el mismo trazado original en sus tres curvas: superior, media e inferior. Cada una avanza de izquierda a derecha durante0,48s, empezando a0,10/0,64/1,18s; las tres están completas en1,66s. Después se revela SENVA y se mantiene el cierre de unos2s existente. El símbolo no se desvanece durante el dibujo de la primera línea. No se cambia `intro.js`, su interrupción por interacción ni las alternativas de anclas/reducido/sinJS.
+
+Revisión independiente de dirección: orden y monotonía horizontal de los paths correctos; advertidos el fundido inicial del padre y la expansión inferior del arte. Se corrigen ambos con símbolo opaco y separación96px. Comprobación estática de trazados originales, secuencia sin solapamiento y cierre antes de2s; HTML, claves EN/ES y recursos conservados. Pendiente observación visual por el bloqueo de navegador ya documentado. Commit/push y build se verifican para la entrega.
