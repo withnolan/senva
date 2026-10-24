@@ -814,9 +814,19 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - `--lens` en `styles.css` usa ahora ese trazado (`viewBox 0 0 168 115`, misma relación 168:115). Comparación lado a lado en `review/lens-comparison.png`; portada resultante a 1440 y 390 px en `review/b-lens-after-*.png`.
 - `assets/graphics/glasses.svg` sigue con la forma antigua; no se ha tocado (ver «Decisions to review»).
 
+## Plan autónomo — paso b (2/2): estilos y fondo vivo base — 24 de octubre de 2026
+
+**Estilos elegidos** (leídas las descripciones y el contenido de los skills; son guías de tokens muy genéricas, así que mandan sobre todo su intención):
+- **storytelling** (principal): recorridos narrativos con imagen, texto e interacción; encaja con «una conversación se abre» y con escenas ancladas.
+- **gradient** (apoyo): superficies con degradados suaves y profundidad; es el vocabulario de los brillos menta/lavanda pedidos.
+- **glassmorphism** (apoyo, solo en la opción B): capas translúcidas con borde luminoso; se corresponde con el cristal de las gafas.
+- Descartados: *immersive* (un único lienzo verde continuo choca con la identidad por sección), *cosmic/futuristic/dramatic* (ciencia ficción, no cálido), *editorial/refined* (serif; la marca ya usa Bricolage), *premium/vibrant/expressive* (o demasiado frío o demasiado colorido para «honesto y cálido»).
+
+**Fondo base** (`styles.css`, `.hero::before/::after`): tres brillos radiales menta/lavanda con deriva lenta de 30 s (solo transform), grano SVG y mosaico del contorno de lente al 7 % de opacidad. Solo CSS, sin imágenes; con movimiento reducido la animación queda anulada por la regla global. Captura `review/b-bg-1440.png`. Contraste con axe-core se comprobará en el paso d.
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** b (2/2) — elegir estilos, definir fondos vivos y construir tres opciones de hero en ramas redesign-option-a/b/c.
+**Next step:** b — tres opciones de hero en ramas redesign-option-a/b/c (partiendo de este commit) y elegir una.
