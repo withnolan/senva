@@ -680,3 +680,10 @@ Continúa el bloqueo de acceso al navegador previamente documentado, sin restabl
 - HTML equilibrado,122 claves y respaldo inglés/atributos/metadatos, IDs/anclas y enlaces Markdown, licencia/recursos locales y sintaxis. Logo exacto, favicon y retratos originales conservados. Sin cambios de instrucciones de arranque; README principal permanece centrado en el proyecto. Guía técnica, recursos y storyboard actualizados.
 
 Estas comprobaciones de código, geometría y simulación no sustituyen observación visual. Siguen pendientes encuadres/glow, transiciones reales de ida/vuelta, foco visible,320px/móvil, EN/ES y reducido en navegador, por el bloqueo descrito. No se afirman FPS, consola limpia, rendimiento GPU ni pruebas en dispositivos físicos. Commit/push y build exacto se verifican a continuación.
+
+
+### Entrega técnica
+
+Implementación `f3b83a3ffa3b1abcd0c9b35a7aced5171d690c66` pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error.31 recursos publicados responden HTTP200 y coinciden byte a byte mediante HTTPS validado, incluidos módulo de lentes con su nueva versión, cubierta inicial, controlador, CSS, modelo y respaldos. CSS `8aa75c17`, JS `fe33602b`, entrada `a5895ea3`, gafas `ec903386`.
+
+Esta comprobación acredita entrega de archivos; no sustituye la revisión visual pendiente. El cierre siguiente solo registra la entrega y también se pushea/verifica. Sin force push ni cambios de configuración. [Revisar la web desde el inicio, sin ancla, para ver la apertura](https://withnolan.github.io/senva/).
