@@ -801,7 +801,15 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 
 - Retiradas las tres etiquetas (`purposeLabel`, `visionLabel`, `experimentLabel`) del HTML y de las claves EN/ES de `script.js` (el menú conserva los nombres). Comprobado en navegador a 1440 px (`review/a11-purpose.png`, `a11-concept.png`): titulares bien colocados sin la etiqueta. Quedan las etiquetas sin número (p. ej. «The work ahead») por no estar en la lista del plan.
 
+## Plan autónomo — paso a.11 (parte 2): detalles medios y bajos — 24 de octubre de 2026
+
+- `translate="no"` en el logotipo de cabecera/pie, la cubierta de carga y «SENVA / LSE». No se envuelve cada mención de SENVA en el texto corrido.
+- Safe-area: `viewport-fit=cover` en index, legal y 404, y `--sa` (máx. de insets izquierdo/derecho) restado dos veces del ancho de `.wrap` en `styles.css` y `legal.css`. Medido sin cambios en un navegador de escritorio (80 px a 1440, 20 px a 390, sin desbordamiento); **no probado en un iPhone con muesca real**.
+- `legal.html`: al final de cada bloque, «Back to top ↑ · Ir a español» y «Volver arriba ↑ · Go to English» con 32 px de alto (`review/a11-legal.png`).
+- Pantalla de carga sobre el título: **no se cambia la duración** (2,6 s mínimo, 3,6 s máximo, saltable con cualquier interacción y desactivada con movimiento reducido); es la marca dibujada trazo a trazo que pidió el usuario antes. Ver «Decisions to review».
+
 ### Decisions to review
+- Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** a.11 parte 2 — translate=no, safe-area, pantalla de carga, anclas en legal.html.
+**Next step:** b — forma de la lente del hero según las gafas reales.

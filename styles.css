@@ -1,6 +1,6 @@
 @font-face{font-family:'Bricolage Grotesque';src:url('./assets/fonts/bricolage-grotesque-latin.woff2') format('woff2');font-weight:400 800;font-display:swap}
 @font-face{font-family:'Instrument Sans';src:url('./assets/fonts/instrument-sans-latin.woff2') format('woff2');font-weight:400 700;font-display:swap}
-:root{--ink:#102e3b;--paper:#f8f7f2;--mint:#8de0d4;--teal:#08777b;--pale:#e7eeea;--blue:#174a69;--ice:#ddebf5;--lilac:#c8d3f4;--muted:#52666b;--line:#c8d5d0;--header-height:80px;--scene-top:calc(var(--header-height) + 28px);--ease:cubic-bezier(.22,1,.36,1);font-family:'Instrument Sans',Arial,sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none;color-scheme:light}
+:root{--sa:max(env(safe-area-inset-left,0px),env(safe-area-inset-right,0px));--ink:#102e3b;--paper:#f8f7f2;--mint:#8de0d4;--teal:#08777b;--pale:#e7eeea;--blue:#174a69;--ice:#ddebf5;--lilac:#c8d3f4;--muted:#52666b;--line:#c8d5d0;--header-height:80px;--scene-top:calc(var(--header-height) + 28px);--ease:cubic-bezier(.22,1,.36,1);font-family:'Instrument Sans',Arial,sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none;color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height) + 24px);scrollbar-width:none}
 html::-webkit-scrollbar{display:none;width:0;height:0}
@@ -18,7 +18,7 @@ p{line-height:1.65}
 button,a,summary{touch-action:manipulation}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:6px}
 [tabindex='-1']:focus{outline:none}
-.wrap{width:min(1280px,calc(100% - 112px));margin-inline:auto;min-width:0}
+.wrap{width:min(1280px,calc(100% - 112px - 2*var(--sa)));margin-inline:auto;min-width:0}
 .section-space{padding-block:104px}
 .eyebrow{display:block;font-size:14px;font-weight:550;letter-spacing:.01em;line-height:1.5}
 .small-note{font-size:14px;line-height:1.6;color:var(--muted)}
@@ -261,7 +261,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:normal}
 @keyframes enter-copy{from{opacity:.1;transform:translateY(24px)}to{opacity:1;transform:none}}
 .enter .site-header .brand:focus-visible,.enter .hero-actions:focus-within{animation:none;opacity:1;transform:none}
 @media(max-width:1199px){
- .wrap{width:calc(100% - 80px)}
+ .wrap{width:calc(100% - 80px - 2*var(--sa))}
  .main-nav{gap:22px}
  .header-inner{gap:24px}
  .vision-layout{gap:42px}
@@ -288,7 +288,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:normal}
  .practice-board h3{font-size:28px}
 }
 @media(max-width:900px){
- .wrap{width:calc(100% - 56px)}
+ .wrap{width:calc(100% - 56px - 2*var(--sa))}
  .section-space{padding-block:80px}
  .main-nav{gap:17px;font-size:13px}
  .header-controls{gap:15px}
@@ -330,7 +330,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:normal}
 @media(max-width:760px){
  :root{--header-height:72px}
  body{font-size:17px}
- .wrap{width:calc(100% - 40px)}
+ .wrap{width:calc(100% - 40px - 2*var(--sa))}
  .section-space{padding-block:65px}
  .header-inner{min-height:72px;gap:14px}
  .brand{font-size:26px;gap:10px}
@@ -419,7 +419,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:normal}
  .footer-main>a:last-child{font-size:13px}
  .footer-bottom{font-size:13px;gap:18px}
 }
-@media(max-width:370px){.wrap{width:calc(100% - 32px)}.header-controls{gap:4px}.brand{font-size:24px}.main-nav{padding-inline:16px}.founder{grid-template-columns:60px 1fr;gap:16px}.founder-portrait{width:60px;height:60px}.founder h3{font-size:24px}.vision-diagram{padding:18px}.diagram-voice{gap:10px}.flow-line{width:16px}.practice-board{padding:22px}h2,.experiment-copy h2{font-size:38px}}
+@media(max-width:370px){.wrap{width:calc(100% - 32px - 2*var(--sa))}.header-controls{gap:4px}.brand{font-size:24px}.main-nav{padding-inline:16px}.founder{grid-template-columns:60px 1fr;gap:16px}.founder-portrait{width:60px;height:60px}.founder h3{font-size:24px}.vision-diagram{padding:18px}.diagram-voice{gap:10px}.flow-line{width:16px}.practice-board{padding:22px}h2,.experiment-copy h2{font-size:38px}}
 html:not(.js) .language-switch{display:none}
 html:not(.js) .site-header{position:relative}
 .language-changing{scroll-behavior:auto}
