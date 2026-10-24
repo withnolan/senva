@@ -770,7 +770,11 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - Al ser un cambio global de CSS, `legal.html` también cambia de hash; sin otros efectos.
 - Aparte: `.playwright-cli/` estaba commiteado por error en a.3 y se deja de rastrear.
 
+## Plan autónomo — paso a.5: objetivos táctiles — 24 de octubre de 2026
+
+- «Explore the repository» y «Back to top» medían 21 px de alto; ahora `inline-flex` con `min-height:32px` y sin saltos de línea (`styles.css`). Medido en navegador a 1440 y 390 px: ningún enlace, botón o summary visible por debajo de 24 px. Captura `review/a5-footer-390.png`.
+
 ### Decisions to review
 - (vacío por ahora)
 
-**Next step:** a.5 — objetivos táctiles de 24 px o más («Explore the repository», «Back to top»).
+**Next step:** a.6 — canonical y hreflang.

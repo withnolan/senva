@@ -232,6 +232,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:normal}
 .footer-main>p{max-width:300px;color:var(--muted)}
 .footer-main>a:last-child{text-decoration:underline;text-underline-offset:4px}
 .footer-bottom{display:flex;justify-content:space-between;gap:25px;padding-top:28px;margin-top:32px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.footer-main>a:not(.brand),.footer-bottom a{display:inline-flex;align-items:center;gap:.3em;min-height:32px;white-space:nowrap}
 .anchor-target{scroll-margin-top:0}
 /* Each sequence has one implementation. No geometry is changed by the scroll controller. */
 .motion-ready .conversation-art{transform:translateY(calc(var(--hero-progress)*18px)) scale(calc(1 + var(--hero-progress)*.025))}
