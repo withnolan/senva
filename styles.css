@@ -811,3 +811,4 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
 }
 
 /* Bound the entrance camera to its own scene, preserving document scroll. */
+.noscript-note{margin:0;padding:10px 20px;background:var(--ink);color:var(--paper);font-size:13px;line-height:1.5;text-align:center}

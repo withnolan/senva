@@ -793,7 +793,11 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 
 - El menú ya se cerraba al llegar al contenido, pero el foco pasaba antes por los botones EN/ES dentro de la cabecera con el menú aún abierto. `focusin` en `script.js` ahora cierra el menú en móvil si el foco va a cualquier elemento fuera del menú y del botón. Probado a 390 px: abrir, Tab por los cinco enlaces, el sexto Tab (EN) cierra; reabrir con clic y Escape devuelven el foco al botón. Sin captura.
 
+## Plan autónomo — paso a.10: aviso noscript — 24 de octubre de 2026
+
+- `<noscript>` bilingüe (una línea) tras el enlace «Skip to content» en `index.html`, con estilo `.noscript-note` (13 px, azul noche). Comprobado con Chromium con JavaScript desactivado (`review/a10-nojs.png`): aviso visible, portada y contenido en inglés legibles. `legal.html` y `404.html` no lo llevan (404 ya tiene su propio contenido estático).
+
 ### Decisions to review
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** a.10 — aviso <noscript>.
+**Next step:** a.11 — elementos medios/bajos: quitar etiquetas «01 / …», translate=no en SENVA, safe-area, pantalla de carga sobre el título, enlaces «volver arriba» en legal.html.
