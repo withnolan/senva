@@ -774,7 +774,13 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 
 - «Explore the repository» y «Back to top» medían 21 px de alto; ahora `inline-flex` con `min-height:32px` y sin saltos de línea (`styles.css`). Medido en navegador a 1440 y 390 px: ningún enlace, botón o summary visible por debajo de 24 px. Captura `review/a5-footer-390.png`.
 
-### Decisions to review
-- (vacío por ahora)
+## Plan autónomo — paso a.6: canonical y hreflang — 24 de octubre de 2026
 
-**Next step:** a.6 — canonical y hreflang.
+- `index.html`: `rel=canonical` a https://withnolan.github.io/senva/ y `hreflang` en / es / x-default. `legal.html`: canonical a `.../legal.html`.
+- Límite: el idioma se cambia en cliente sobre una sola URL, así que los tres hreflang apuntan a la misma dirección (válido pero poco informativo). Habría que tener URLs separadas (`/es/`) para que sirvan de algo; ver «Decisions to review».
+- No hay captura (solo metadatos en `<head>`).
+
+### Decisions to review
+- hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
+
+**Next step:** a.7 — cambio de fuentes y precarga.
