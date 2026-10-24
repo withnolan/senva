@@ -808,8 +808,15 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - `legal.html`: al final de cada bloque, «Back to top ↑ · Ir a español» y «Volver arriba ↑ · Go to English» con 32 px de alto (`review/a11-legal.png`).
 - Pantalla de carga sobre el título: **no se cambia la duración** (2,6 s mínimo, 3,6 s máximo, saltable con cualquier interacción y desactivada con movimiento reducido); es la marca dibujada trazo a trazo que pidió el usuario antes. Ver «Decisions to review».
 
+## Plan autónomo — paso b (1/2): forma de la lente del hero — 24 de octubre de 2026
+
+- Referencia: `assets/models/gafas/vistas/gafas-frontal.webp` (apertura de la lente izquierda, trazada en un canvas y retocada a mano con curvas Bézier). La lente real es un trapecio de wayfarer: borde superior casi recto que baja hacia el puente, esquina del puente redondeada y vertical, lado exterior inclinado y estrechándose hacia abajo, esquinas inferiores amplias. La anterior (`glasses.svg`) tenía una esquina superior exterior en punta y un lado exterior recto que no existen en las gafas.
+- `--lens` en `styles.css` usa ahora ese trazado (`viewBox 0 0 168 115`, misma relación 168:115). Comparación lado a lado en `review/lens-comparison.png`; portada resultante a 1440 y 390 px en `review/b-lens-after-*.png`.
+- `assets/graphics/glasses.svg` sigue con la forma antigua; no se ha tocado (ver «Decisions to review»).
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
+- `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** b — forma de la lente del hero según las gafas reales.
+**Next step:** b (2/2) — elegir estilos, definir fondos vivos y construir tres opciones de hero en ramas redesign-option-a/b/c.
