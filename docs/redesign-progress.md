@@ -834,9 +834,14 @@ Ramas empujadas, todas desde `9641ca1` (lente real + fondo vivo):
 **Elegida: C** (merge `95f4044` en `redesign`). Es la única cuyo movimiento se lee al comparar inicio, mitad y final (mujer → ambos → hombre = «una conversación se abre»), sigue el criterio de AGENTS.md (reversible, scroll nativo, sin ocultar texto, tramo corto), solo anima `translate/scale` y trabaja con el estilo principal (*storytelling*) y el fondo en degradado. Se descartó B por coste/valor; sus ideas (cristal en tarjetas) pueden reutilizarse en el paso c. Se conserva `.lens-clip` (la máscara va en un contenedor para poder mover la imagen dentro de la lente).
 - Comprobado en navegador a 1440 px (0/300/600 px de scroll) y 390 px (sin desbordamiento; sin fijación). Capturas `review/b-opt{A,B,C}-*.png`. No grabado en vídeo, no probado con ES ni a 1100 px, ni con movimiento reducido real.
 
+## Plan autónomo — paso c.1: propósito — 24 de octubre de 2026
+
+- Receta de fondos vivos compartida para todas las secciones (`.chapter-surface:not(.hero)::before/::after` en `styles.css`): brillos menta/lavanda con deriva lenta, grano y mosaico del contorno de lente, configurables con `--g1/--g2/--g3`, `--tile`, `--grain-a`. `--grain`, `--tile-light` y `--tile-dark` pasan a `:root`.
+- Propósito (papel): brillos menta arriba a la izquierda y lavanda abajo a la derecha, mosaico oscuro al 3,5 %. Las tres situaciones suben escalonadas con el trazo (`translate` ligado a `--purpose-progress`; el texto no se atenúa). Captura `review/c-purpose.png`. EN, 1440 px.
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** c — aplicar la dirección sección a sección: propósito, visión, primera hipótesis, preguntas, equipo, Xiji, pie y legal.html (un commit por sección).
+**Next step:** c.2 — visión.
