@@ -789,7 +789,11 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 
 - Equipo y contacto tenían su propio ancho de `.wrap` (36 px de margen a 768 px, 54 px de contenido a 1440) distinto del resto (28 px). Se eliminan esas tres reglas y usan el `.wrap` global. Medido: margen izquierdo idéntico en las nueve secciones a 768 (28) y 390 (20) px; sin desbordamiento horizontal (1440/768/390). Captura `review/a8-team-768.png`. No encontré el margen de 10 px citado en el plan; se uniformó el desvío real encontrado.
 
+## Plan autónomo — paso a.9: menú móvil y foco — 24 de octubre de 2026
+
+- El menú ya se cerraba al llegar al contenido, pero el foco pasaba antes por los botones EN/ES dentro de la cabecera con el menú aún abierto. `focusin` en `script.js` ahora cierra el menú en móvil si el foco va a cualquier elemento fuera del menú y del botón. Probado a 390 px: abrir, Tab por los cinco enlaces, el sexto Tab (EN) cierra; reabrir con clic y Escape devuelven el foco al botón. Sin captura.
+
 ### Decisions to review
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** a.9 — cerrar el menú móvil cuando el foco sale de él.
+**Next step:** a.10 — aviso <noscript>.

@@ -357,7 +357,7 @@
     if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setMenu(false, true);
   });
   document.addEventListener('click', event => { if (!event.target.closest('.site-header')) setMenu(false); });
-  document.addEventListener('focusin', event => { if (!event.target.closest('.site-header')) setMenu(false); });
+  document.addEventListener('focusin', event => { if (!event.target.closest('.site-header') || (mobile.matches && !menu.contains(event.target) && event.target !== toggle)) setMenu(false); });
   mobile.addEventListener('change', () => setMenu(false));
   document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
