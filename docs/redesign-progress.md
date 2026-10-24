@@ -848,9 +848,13 @@ Ramas empujadas, todas desde `9641ca1` (lente real + fondo vivo):
 - (Los colores de fondo de esta sección se incluyeron por error en el commit de visión, `286747c`.) Escenario azul noche con brillos menta/lavanda suaves y mosaico claro al 5 %. La tarjeta «A possible practice session» se eleva 8 px con sombra al pasar el puntero (solo con `hover:hover`). Captura `review/c-concept.png`.
 - Observado, sin cambiar: a mitad de la entrada, el trazo decorativo `.practice-sweep` cruza el texto «It would not demonstrate…». Es fino y forma parte del trazo que une escenas; se deja para la revisión final (paso d) si molesta.
 
+## Plan autónomo — paso c.4: preguntas (plan y límites) — 24 de octubre de 2026
+
+- Aplicado a `#validation` («Decisions before devices») y `#research` («A signal is not a language»): brillos lavanda/menta con mosaico oscuro al 3 %. Las tres columnas del plan se elevan 4 px y marcan el filete superior en turquesa al pasar el puntero. Capturas `review/c-validation.png`, `c-research.png` (EN, 1440 px). No comprobado en ES ni móvil todavía (paso d).
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** c.4 — preguntas.
+**Next step:** c.5 — equipo.

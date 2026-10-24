@@ -78,6 +78,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .experiment,.cinema-practice{--g1:rgba(141,224,212,.2);--g2:rgba(200,211,244,.22);--g3:rgba(141,224,212,.1);--tile:var(--tile-light);--grain-a:.05}
 .practice-board{transition:translate .45s var(--ease),box-shadow .45s var(--ease)}
 @media(hover:hover){.practice-board:hover{translate:0 -8px;box-shadow:0 26px 60px -24px rgba(0,0,0,.55)}}
+.validation,.cinema-validation{--g1:rgba(200,211,244,.7);--g2:rgba(141,224,212,.4);--g3:rgba(255,255,255,.5);--tile:var(--tile-dark);--grain-a:.03}
+.research{--g1:rgba(141,224,212,.5);--g2:rgba(200,211,244,.7);--g3:rgba(255,255,255,.4);--tile:var(--tile-dark);--grain-a:.03}
+.validation-plan li{transition:border-color .35s var(--ease),translate .35s var(--ease)}
+@media(hover:hover){.validation-plan li:hover{border-top-color:var(--teal);translate:0 -4px}}
 @keyframes glow-drift{from{transform:translate3d(-3%,-2%,0) scale(1)}to{transform:translate3d(4%,3%,0) scale(1.08)}}
 /* option C: pinned story. The hero stays for ~0.8 screen while the lens zooms on one person, then crosses to the other. Text never fades. */
 .hero-lens-window .lens-clip{position:relative;display:block;width:100%;height:100%;background:var(--ink);overflow:clip;-webkit-mask:var(--lens) center/100% 100% no-repeat;mask:var(--lens) center/100% 100% no-repeat}
