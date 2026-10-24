@@ -36,5 +36,5 @@ dd{margin:0}
 code{font-size:.92em;overflow-wrap:anywhere}
 .legal-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding-block:28px 40px;border-top:1px solid var(--line);font-size:13px}
 @media(max-width:900px){.legal-content{gap:40px}.wrap{width:calc(100% - 56px)}body{font-size:16px}}
-@media(max-width:680px){.wrap{width:calc(100% - 40px)}.legal-header{min-height:92px;gap:16px}.legal-header img{width:122px}.back-link{font-size:12px;max-width:100px}.legal-intro{padding-block:44px 24px}.legal-nav{gap:24px}.legal-content{grid-template-columns:1fr;gap:0;padding-top:42px}.legal-content article+article{border-top:1px solid var(--line);padding-top:42px}.legal-footer{padding-bottom:30px}}
+@media(max-width:680px){.wrap{width:calc(100% - 40px)}.legal-header{min-height:92px;gap:16px}.legal-header img{width:122px}.back-link{font-size:13px;max-width:100px}.legal-intro{padding-block:44px 24px}.legal-nav{gap:24px}.legal-content{grid-template-columns:1fr;gap:0;padding-top:42px}.legal-content article+article{border-top:1px solid var(--line);padding-top:42px}.legal-footer{padding-bottom:30px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

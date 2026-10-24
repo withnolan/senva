@@ -764,7 +764,13 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - Comprobado en navegador local a 1440 px, EN y ES (`review/a3-before-*.png`, `a3-after-4.png`, `a3-es.png`). Frases largas («Cuéntame tu idea.») caben sin recortes. No comprobados 1100–1280 px ni vídeo.
 - Hashes `?v=` de `styles.css`, `glasses-3d.js` y `script.js` recalculados (sha256 del contenido LF, 8 caracteres); los de otros archivos ya no coincidían con su contenido y no se tocan.
 
+## Plan autónomo — paso a.4: texto mínimo de 13 px — 24 de octubre de 2026
+
+- Todos los `font-size` de 9–12 px de `styles.css` y `legal.css` (incluido «Co-founder», notas y pies) pasan a 13 px. Comprobado con script en navegador: ningún nodo de texto visible por debajo de 13 px y desbordamiento horizontal 0, a 1440 y 390 px, EN y ES (portada). Captura del equipo en `review/a4-team-1440.png`. No revisadas todas las secciones en 320 px.
+- Al ser un cambio global de CSS, `legal.html` también cambia de hash; sin otros efectos.
+- Aparte: `.playwright-cli/` estaba commiteado por error en a.3 y se deja de rastrear.
+
 ### Decisions to review
 - (vacío por ahora)
 
-**Next step:** a.4 — tamaño mínimo de texto 13 px.
+**Next step:** a.5 — objetivos táctiles de 24 px o más («Explore the repository», «Back to top»).
