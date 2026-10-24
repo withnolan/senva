@@ -687,3 +687,12 @@ Estas comprobaciones de código, geometría y simulación no sustituyen observac
 Implementación `f3b83a3ffa3b1abcd0c9b35a7aced5171d690c66` pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error.31 recursos publicados responden HTTP200 y coinciden byte a byte mediante HTTPS validado, incluidos módulo de lentes con su nueva versión, cubierta inicial, controlador, CSS, modelo y respaldos. CSS `8aa75c17`, JS `fe33602b`, entrada `a5895ea3`, gafas `ec903386`.
 
 Esta comprobación acredita entrega de archivos; no sustituye la revisión visual pendiente. El cierre siguiente solo registra la entrega y también se pushea/verifica. Sin force push ni cambios de configuración. [Revisar la web desde el inicio, sin ancla, para ver la apertura](https://withnolan.github.io/senva/).
+
+
+## Más aire vertical entre apartados — 24 de octubre de2026
+
+Petición acotada: más margen arriba y abajo. Se amplía el padding de propósito, visión A/B, investigación, equipo, Xiji, contacto y el principio, entre80–100px por lado en escritorio y50–60px en móvil. El principio suma100px a su mínimo para que la separación no quede absorbida por la altura anterior. Móvil mantiene altura natural y amplía también el contenido de las escenas en flujo. Sin contenido nuevo ni cambios de animaciones, modelos, textos o navegación.
+
+Revisión independiente de selectores: se ajustan también los overrides finales de equipo/Xiji. Se usa padding específico, sin márgenes colapsables ni regla global que altere los escenarios. Los tracks, longitudes y padding de contenido sticky de escritorio permanecen iguales; las posiciones posteriores siguen midiéndose desde el layout real.
+
+Comprobaciones: diff acotado a CSS, versión del recurso y documentación; validación estática de HTML/EN/ES/recursos y reservas bilingües. Sigue pendiente revisión visual porque el acceso al navegador continúa bloqueado; no se atribuyen pruebas nuevas de layout en dispositivos. La publicación se verifica por SHA.

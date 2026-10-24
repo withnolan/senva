@@ -151,7 +151,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:normal}
 .practice-questions li::before{content:counter(question,decimal-leading-zero);font-size:11px;color:var(--teal);flex-shrink:0;min-width:24px}
 .practice-board figcaption{font-size:12px;line-height:1.5;margin-top:20px;color:var(--teal)}
 /* The mission has its own space; light moves behind fully readable words. */
-.principle-stage{position:relative;isolation:isolate;overflow:clip;display:grid;align-items:center;min-height:85svh;padding-block:130px;background:var(--ink);--principle-progress:1;--principle-exit:0}
+.principle-stage{position:relative;isolation:isolate;overflow:clip;display:grid;align-items:center;min-height:calc(85svh + 100px);padding-block:210px;background:var(--ink);--principle-progress:1;--principle-exit:0}
 .principle-stage>.wrap{position:relative;z-index:1}
 .principle{font-family:'Bricolage Grotesque',Arial,sans-serif;font-size:clamp(54px,7.6vw,112px);font-weight:550;line-height:1.03;max-width:1160px;margin:0 auto;text-align:center;color:var(--paper);letter-spacing:-.04em;text-wrap:balance}
 .principle>span{display:block}
@@ -560,15 +560,15 @@ html[data-chrome='pale'] .site-header{--chrome-bg:var(--pale)}
 .motion-ready .cinema-art{display:block}
 .motion-ready .cinema-meta{display:flex}
 .motion-ready .cinema-track{--cinema-p:0;--cinema-enter:0;--cinema-cross:0;--cinema-settle:0;--cinema-travel:0}
-.journey>.purpose{padding-block:210px 190px}
+.journey>.purpose{padding-block:300px 280px}
 .journey>.vision,.journey>.experiment,.journey>.validation{padding:0}
-.vision>.wrap{padding-block:150px 210px}
+.vision>.wrap{padding-block:230px 300px}
 .experiment>.wrap{padding-block:90px 180px}
-.research{background:var(--ice);padding-block:160px 210px;--teal:var(--ink)}
-#team,#contact{padding-block:180px}
+.research{background:var(--ice);padding-block:240px 300px;--teal:var(--ink)}
+#team,#contact{padding-block:270px}
 #team .founder-copy>p{font-size:14px}
 #team .collaborator-note{font-size:13px}
-.xiji{background:var(--lilac);padding-block:200px}
+.xiji{background:var(--lilac);padding-block:290px}
 .xiji-body{max-width:72ch}
 .cinema-vision .cinema-stage{background:var(--ice)}
 .cinema-vision .cinema-content{padding-top:60px;padding-bottom:0}
@@ -632,14 +632,14 @@ html[data-chrome='blue'] .site-header{--chrome-bg:var(--blue);--chrome-ink:var(-
  .cinema-practice .practice-board{transform:translateY(calc((1 - var(--cinema-cross))*24px)) rotate(calc((1 - var(--cinema-settle))*2deg))}
  .cinema-practice .experiment-copy::before{display:none}
  .cinema-validation .section-intro{gap:25px;grid-template-columns:1.2fr 1fr}
- #team,#contact{padding-block:140px}
+ #team,#contact{padding-block:200px}
 }
 @media(max-width:760px){
- .journey>.purpose{padding-block:135px 125px}
- .vision>.wrap{padding-block:75px 130px}
+ .journey>.purpose{padding-block:190px 180px}
+ .vision>.wrap{padding-block:130px 185px}
  .experiment>.wrap{padding-block:40px 115px}
- .cinema-content{padding-block:80px}
- .cinema-vision .cinema-content{padding-top:85px}
+ .cinema-content{padding-block:120px}
+ .cinema-vision .cinema-content{padding-top:125px}
  .cinema-vision h2{font-size:clamp(42px,10vw,60px);line-height:1.06}
  .cinema-vision .section-lead{font-size:17px}
  .cinema-vision .vision-art{height:270px}
@@ -652,16 +652,16 @@ html[data-chrome='blue'] .site-header{--chrome-bg:var(--blue);--chrome-ink:var(-
  .cinema-practice h2{font-size:clamp(41px,9vw,58px)}
  .cinema-practice .practice-board{transform:none}
  .cinema-practice .experiment-layout{gap:60px}
- .cinema-practice .cinema-content{padding-block:100px}
+ .cinema-practice .cinema-content{padding-block:145px}
  .practice-sweep{display:none}
  .cinema-validation .section-intro{display:block;margin-bottom:45px}
  .cinema-validation .section-intro>.eyebrow{margin-bottom:22px}
  .cinema-validation .section-intro>p{margin-top:26px}
  .cinema-validation h2{font-size:clamp(39px,9vw,60px)}
  .cinema-validation .validation-plan{gap:44px}
- .research{padding-block:115px 140px}
- #team,#contact{padding-block:130px}
- .xiji{padding-block:140px}
+ .research{padding-block:170px 195px}
+ #team,#contact{padding-block:190px}
+ .xiji{padding-block:190px}
 }
 @media(prefers-reduced-motion:reduce){
  .cinema-art,.cinema-meta{display:none!important}
@@ -762,8 +762,8 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
 .caption-toggle[hidden]{display:none}
 .cinema-meta .caption-toggle{flex-shrink:0}
 .caption-animation-note{display:block;margin-top:7px;font-size:11px}
-#team{padding-bottom:105px}
-.xiji{padding-top:110px}
+#team{padding-bottom:200px}
+.xiji{padding-top:200px}
 .motion-ready .xiji h2{transform:translateY(calc((1 - var(--chapter-progress))*22px)) scale(calc(.95 + var(--chapter-progress)*.05));transform-origin:left center}
 .motion-ready .purpose-thread-nodes circle:nth-child(2){transform:scale(calc(.72 + var(--purpose-progress)*.28));transform-box:fill-box;transform-origin:center}
 .motion-ready .wave{transform:scaleY(calc(.88 + var(--voice-opacity)*.12));transform-origin:center}
@@ -771,8 +771,8 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
 @media(max-width:760px){
  .glasses-dock{width:min(220px,50vw)}
  .transition-xiji{height:70px}
- #team{padding-bottom:85px}
- .xiji{padding-top:85px}
+ #team{padding-bottom:140px}
+ .xiji{padding-top:140px}
 }
 @media(prefers-reduced-motion:reduce){
  .glasses-flight-boundary{display:none}
@@ -797,12 +797,12 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
  .motion-desktop .cinema-validation .cinema-content{transform:translateX(calc((1 - var(--cinema-travel))*-3vw)) scale(calc(.9 + var(--cinema-travel)*.1));transform-origin:45% 50%}
 }
 @media(max-width:1099px){
- .principle-stage{min-height:0;padding-block:110px}
+ .principle-stage{min-height:0;padding-block:160px}
  .principle{font-size:clamp(42px,8.5vw,78px)}
  .motion-ready .principle-stage>.wrap{transform:translateY(calc((1 - var(--principle-progress))*24px)) scale(calc(.94 + var(--principle-progress)*.06))}
 }
 @media(max-width:760px){
- .principle-stage{padding-block:95px}
+ .principle-stage{padding-block:145px}
  .principle{font-size:clamp(39px,10vw,62px)}
  .principle>span+span{font-size:clamp(23px,5.8vw,34px);margin-top:28px}
  .transition-contact{height:130px}
@@ -810,7 +810,7 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
  .enter .hero-art{animation-duration:1.25s}
 }
 @media(prefers-reduced-motion:reduce){
- .principle-stage{min-height:0;padding-block:85px}
+ .principle-stage{min-height:0;padding-block:130px}
  .principle-stage>.wrap,.principle-light,.principle-orbit,.contact-light,.motion-ready #contact .contact-arc{transform:none!important}
  .principle-light{opacity:1}
 }
