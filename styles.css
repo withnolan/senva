@@ -451,10 +451,9 @@ html:not(.motion-ready) .scene-transition{display:none}
 @media(prefers-reduced-motion:reduce){.journey>.section-space{padding-block:80px}.scene-transition{display:none}.vision-copy{position:static!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.conversation-art,.practice-board,.practice-sketch>img,.diagram-voice,.diagram-manual,.principle,#team .section-intro h2,.xiji h2,#contact h2{transform:none!important;opacity:1!important}.hero-connection path,.purpose-thread-line,.practice-thread path{stroke-dashoffset:0!important}.vision-diagram{position:relative!important;top:auto!important;height:auto!important;max-height:none!important}.static-routes{display:grid!important;position:relative!important}.diagram-voice,.diagram-manual{position:relative!important;inset:auto!important;height:auto!important}}
 /* Team and contact restored from 4269030 at the user's request. */
-@font-face{font-family:Manrope;src:url('./assets/fonts/manrope-variable.ttf') format('truetype');font-weight:400 800;font-display:swap}
-#team,#contact{font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;padding-block:110px;--muted:#c5d5d4;--line:#45616a;--teal:var(--mint)}
+#team,#contact{font-size:16px;padding-block:110px;--muted:#c5d5d4;--line:#45616a;--teal:var(--mint)}
 #team>.wrap,#contact>.wrap{width:min(1320px,calc(100% - 112px))}
-#team h2,#team h3,#contact h2{font-family:inherit;font-weight:500;text-wrap:wrap}
+#team h2,#team h3,#contact h2{font-weight:550;text-wrap:wrap}
 #team p,#contact p{line-height:1.7}
 #team .eyebrow,#contact .eyebrow{font-size:13px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;line-height:1.6}
 #team .section-intro{display:grid;grid-template-columns:1fr 1fr;column-gap:10%;align-items:end;max-width:none;margin-bottom:0}

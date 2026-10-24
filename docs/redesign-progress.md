@@ -780,7 +780,12 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - Límite: el idioma se cambia en cliente sobre una sola URL, así que los tres hreflang apuntan a la misma dirección (válido pero poco informativo). Habría que tener URLs separadas (`/es/`) para que sirvan de algo; ver «Decisions to review».
 - No hay captura (solo metadatos en `<head>`).
 
+## Plan autónomo — paso a.7: fuentes — 24 de octubre de 2026
+
+- Bricolage Grotesque e Instrument Sans ya estaban alojadas en woff2 (OFL, licencias en `assets/fonts/`). Se retira Manrope: `@font-face`, reglas de #team/#contact (ahora heredan Bricolage/Instrument), `manrope-variable.ttf` y `OFL-Manrope.txt`; docs corregidas. La marca sigue en Arial por decisión previa.
+- Comprobado: `document.fonts` solo carga las dos nuevas; consola de la portada sin avisos tras 8 s (sin aviso de precarga reproducible en Chromium local; las dos precargas llevan `crossorigin`). Captura `review/a7-team.png`.
+
 ### Decisions to review
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** a.7 — cambio de fuentes y precarga.
+**Next step:** a.8 — márgenes uniformes a 768 px (equipo a 10 px del borde).

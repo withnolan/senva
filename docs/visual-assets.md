@@ -30,7 +30,7 @@ La nueva imagen tiene alfa real. Su raster utiliza familias cromáticas y antial
 
 WOFF2 latinos oficiales descargados mediante Google Fonts CSS2, aproximadamente 77 y 30 KB. Conservan caracteres EN/ES y puntuación. Dos `@font-face`, `font-display:swap`, preload local y respaldo sans-serif. El visitante no solicita Google Fonts ni otro CDN. No son conversiones realizadas por el proyecto.
 
-Manrope y su licencia se reutilizan en las secciones de equipo y contacto para recuperar su presentación anterior; las demás secciones conservan las fuentes de la última entrega. La palabra de marca sigue en Arial/Helvetica, peso 750 y espaciado anterior.
+Manrope y su licencia se han retirado; todo el sitio usa Bricolage Grotesque e Instrument Sans. La palabra de marca sigue en Arial/Helvetica, peso 750 y espaciado anterior.
 
 ## Edición y límites
 
