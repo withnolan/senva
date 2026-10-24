@@ -733,3 +733,12 @@ Se repiten las30 simulaciones de entrada con la curva de aceleración/reposo rev
 Se repite la reserva bilingüe (máximo, caché, fuente/resize, details y retirada de clones). La prueba de trayectoria extrae la función actual y actualiza fixtures a225svh y separación262px:1001 muestras, llegada al hueco, continuidad/ida-vuelta y límite inferior en700px pasan. No se cambian renderer, lentes o su reloj. HTML, recursos/metadatos, claves y enlaces se vuelven a comprobar tras versionar. Los pendientes visuales descritos arriba continúan abiertos.
 
 La revisión independiente final de `intro.js` comprueba restauración normal/error/skip, control de reentrada al cancelar WAAPI y disponibilidad del nombre accesible del enlace. No encuentra otro fallo concreto en el código; no se presenta como aprobación visual. El vuelo usa aceleración suave desde reposo y asentamiento final para conservar legibilidad del título grande.
+
+## Rama `redesign`: prueba de portada con lentes — 24 de octubre de 2026
+
+Petición: auditoría completa y prueba de dirección solo en la portada, en la rama `redesign`, sin push ni merge. Dirección elegida con `design-taste-frontend` (`colour-chapters`, semilla 1441130044; portada sustituida por «Giant cropped shape» porque la original necesitaba fotografías de arquitectura ajenas al proyecto).
+
+- La forma de lente de `assets/graphics/glasses.svg` pasa a ser una gran figura recortada por el borde: una lente turquesa plana y otra que enmarca la ilustración de la conversación, solapadas un cuarto.
+- Se retiran la etiqueta superior y la línea fina; la fase «Idea / Validación de hipótesis» se integra en la nota de estado, con el mismo texto EN/ES.
+- Título con revelado enmascarado por línea; lente y textos entran con transform/opacidad. Movimiento reducido y ausencia de JS muestran la composición estática.
+- Comprobado en navegador local bajo `/senva/`: EN/ES a 1440 y 390 px, inspector de diseño (desaparecen los fallos de etiqueta, línea y título de más de dos líneas de la portada en EN). El título ES ocupa tres líneas a 390 px; pendiente de decidir un texto más corto con el usuario.
