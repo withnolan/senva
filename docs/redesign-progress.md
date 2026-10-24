@@ -785,7 +785,11 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - Bricolage Grotesque e Instrument Sans ya estaban alojadas en woff2 (OFL, licencias en `assets/fonts/`). Se retira Manrope: `@font-face`, reglas de #team/#contact (ahora heredan Bricolage/Instrument), `manrope-variable.ttf` y `OFL-Manrope.txt`; docs corregidas. La marca sigue en Arial por decisión previa.
 - Comprobado: `document.fonts` solo carga las dos nuevas; consola de la portada sin avisos tras 8 s (sin aviso de precarga reproducible en Chromium local; las dos precargas llevan `crossorigin`). Captura `review/a7-team.png`.
 
+## Plan autónomo — paso a.8: márgenes a 768 px — 24 de octubre de 2026
+
+- Equipo y contacto tenían su propio ancho de `.wrap` (36 px de margen a 768 px, 54 px de contenido a 1440) distinto del resto (28 px). Se eliminan esas tres reglas y usan el `.wrap` global. Medido: margen izquierdo idéntico en las nueve secciones a 768 (28) y 390 (20) px; sin desbordamiento horizontal (1440/768/390). Captura `review/a8-team-768.png`. No encontré el margen de 10 px citado en el plan; se uniformó el desvío real encontrado.
+
 ### Decisions to review
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** a.8 — márgenes uniformes a 768 px (equipo a 10 px del borde).
+**Next step:** a.9 — cerrar el menú móvil cuando el foco sale de él.

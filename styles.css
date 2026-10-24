@@ -452,7 +452,6 @@ html:not(.motion-ready) .scene-transition{display:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.conversation-art,.practice-board,.practice-sketch>img,.diagram-voice,.diagram-manual,.principle,#team .section-intro h2,.xiji h2,#contact h2{transform:none!important;opacity:1!important}.hero-connection path,.purpose-thread-line,.practice-thread path{stroke-dashoffset:0!important}.vision-diagram{position:relative!important;top:auto!important;height:auto!important;max-height:none!important}.static-routes{display:grid!important;position:relative!important}.diagram-voice,.diagram-manual{position:relative!important;inset:auto!important;height:auto!important}}
 /* Team and contact restored from 4269030 at the user's request. */
 #team,#contact{font-size:16px;padding-block:110px;--muted:#c5d5d4;--line:#45616a;--teal:var(--mint)}
-#team>.wrap,#contact>.wrap{width:min(1320px,calc(100% - 112px))}
 #team h2,#team h3,#contact h2{font-weight:550;text-wrap:wrap}
 #team p,#contact p{line-height:1.7}
 #team .eyebrow,#contact .eyebrow{font-size:13px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;line-height:1.6}
@@ -484,7 +483,6 @@ html:not(.motion-ready) .scene-transition{display:none}
 #contact a:focus-visible{outline-color:var(--teal)}
 @media(max-width:1100px){
  #team,#contact{padding-block:90px}
- #team>.wrap,#contact>.wrap{width:calc(100% - 72px)}
  #team .founder{grid-template-columns:90px minmax(0,1fr);gap:18px}
  #team .founder-portrait{width:90px;height:90px}
  #team .founder h3{font-size:21px}
@@ -498,7 +496,6 @@ html:not(.motion-ready) .scene-transition{display:none}
 }
 @media(max-width:760px){
  #team,#contact{padding-block:68px}
- #team>.wrap,#contact>.wrap{width:calc(100% - 40px)}
  #team .section-intro{display:block}
  #team .section-intro>.eyebrow{margin-bottom:22px}
  #team .section-intro h2{font-size:clamp(35px,7.4vw,48px);max-width:590px}
