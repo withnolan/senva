@@ -40,3 +40,10 @@ Conservar los `viewBox` y proporciones de los SVG; revisar objetos a tamaño gra
 Mantener medidas reservadas, alternativas EN/ES y textos en HTML. Si cambia la portada, actualizar vista social y revisar su PNG: algunos exportadores SVG no soportan imágenes WebP embebidas, por eso la fuente social usa PNG. Sharp solo se usa durante autoría.
 
 Los recursos históricos ajenos se preservan. `assets/graphics/conversation.svg` y otras ilustraciones anteriores no se solicitan por la implementación actual. El historial Git conserva las coreografías sustituidas. Registrar revisión real y límites en [redesign-progress.md](redesign-progress.md).
+
+
+### Banda inferior y movimiento de cámara — 24 de octubre de2026
+
+Los planos de subtítulos ocupan la mitad inferior de las lentes del GLB real: ancho60% y descenso20% de la altura. Toda la banda queda bajo el centro óptico;2145 rayos por lente comprobados en Node. Fuente de textura92px conserva aproximadamente el tamaño anterior y la proporción, sin modificar el modelo ni el cristal. Esto no es una comprobación visual/GPU.
+
+Los acercamientos de apertura, práctica, principio y cierre operan sobre las composiciones HTML/CSS existentes. Los resplandores son gradientes radiales en capas decorativas, sin nuevos recursos binarios ni dependencias. Práctica/validación retiran sus óvalos sólidos; contacto usa una disolución cromática sin silueta recortada. [Storyboard y límites](camera-motion-direction.md).

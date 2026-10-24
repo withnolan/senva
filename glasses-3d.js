@@ -171,11 +171,11 @@ function createLensArtwork() {
       subtitleContext.clearRect(0, 0, 1024, 448);
       subtitleContext.textAlign = 'center';
       subtitleContext.textBaseline = 'middle';
-      subtitleContext.font = '500 76px "Instrument Sans", Arial, sans-serif';
+      subtitleContext.font = '500 92px "Instrument Sans", Arial, sans-serif';
       subtitleContext.fontKerning = 'normal';
       const fullWidth = Math.max(...caption.lines.map(line => subtitleContext.measureText(line).width));
       // The longest phrase uses a slightly smaller font, with no compressed text.
-      const fontSize = Math.min(76, 76 * 904 / Math.max(fullWidth, 1));
+      const fontSize = Math.min(92, 92 * 904 / Math.max(fullWidth, 1));
       subtitleContext.font = `500 ${fontSize}px "Instrument Sans", Arial, sans-serif`;
       subtitleContext.shadowColor = 'rgba(141, 224, 212, .68)';
       subtitleContext.shadowBlur = 17;
@@ -188,7 +188,7 @@ function createLensArtwork() {
         const full = subtitleContext.measureText(line).width;
         subtitleContext.textAlign = 'left';
         const left = (1024 - full) / 2;
-        const baseline = 162 + index * 119;
+        const baseline = 144 + index * 131;
         // A very fine cool keyline retains the white lettering on pale fields;
         // it is not a dark panel behind the concept captions.
         subtitleContext.strokeStyle = 'rgba(12, 65, 76, .52)';
@@ -267,15 +267,17 @@ function enhanceLens(lens, artwork) {
   reflection.renderOrder = 3;
   lens.add(reflection);
 
-  // The caption sits inside the central safe area of each real lens. Offset by
-  // ~0.3 mm from the front, it never intersects the frame or appears backwards.
-  const captionWidth = size.x * .72;
+  // Keep the optical center clear: the entire caption plane lives in the lower
+  // half of each real lens. Its narrower safe area follows the rounded rim;
+  // larger texture lettering preserves the previous apparent glyph size.
+  // A ~0.3 mm front offset prevents intersections and mirrored reverse text.
+  const captionWidth = size.x * .60;
   const caption = new THREE.Mesh(
     new THREE.PlaneGeometry(captionWidth, captionWidth * 224 / 512),
     artwork.subtitleMaterial
   );
   caption.name = 'senva-concept-caption';
-  caption.position.set(center.x, center.y - size.y * .055, bounds.max.z + size.x * .006);
+  caption.position.set(center.x, center.y - size.y * .20, bounds.max.z + size.x * .006);
   caption.renderOrder = 4;
   lens.add(caption);
   return previousMaterial;

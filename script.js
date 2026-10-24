@@ -79,7 +79,8 @@
     "signDetails": "What would we need to understand?",
     "practiceTitle": "First, learn what helps.",
     "practiceBody": "A first hypothesis: explore sensors and feedback through a possible LSE practice tool with teachers and adult learners. A limited experiment to learn what helps.",
-    "practicePrinciple": "Communication is the purpose. Learning is a first hypothesis.",
+    "principlePurpose": "Communication is the purpose.",
+    "principleHypothesis": "Learning is a first hypothesis.",
     "practiceMore": "A complementary practice tool, with exercises to select with teachers. Adult learners are potential users; teaching centres are possible collaborators and buyers. No recognition, scores or linguistic corrections have been validated. This would not establish a route to natural-conversation translation.",
     "manualInfo": "Manual information",
     "heroSecondary": "Our next questions",
@@ -202,7 +203,8 @@
     "signDetails": "¿Qué necesitaríamos comprender?",
     "practiceTitle": "Primero, aprender qué ayuda.",
     "practiceBody": "Una primera hipótesis: explorar sensores y feedback con una posible herramienta de práctica de LSE, junto a docentes y estudiantes adultos. Un experimento acotado para aprender qué ayuda.",
-    "practicePrinciple": "La comunicación es el propósito. El aprendizaje es una primera hipótesis.",
+    "principlePurpose": "La comunicación es el propósito.",
+    "principleHypothesis": "El aprendizaje es una primera hipótesis.",
     "practiceMore": "Una herramienta complementaria de práctica, con ejercicios por elegir con docentes. Los estudiantes adultos serían posibles usuarios; los centros, posibles colaboradores y compradores. No se ha validado reconocimiento, puntuaciones ni correcciones lingüísticas. Esto no demostraría una ruta hacia la traducción de conversaciones naturales.",
     "manualInfo": "Información manual",
     "heroSecondary": "Nuestras próximas preguntas",
@@ -476,7 +478,7 @@
     if (!glassesNear || glassesLoading || glassesFailed || document.hidden) return;
     const generation = ++glassesGeneration;
     glassesLoading = true;
-    import('./glasses-3d.js?v=21560d0a').then(module => {
+    import('./glasses-3d.js?v=ec903386').then(module => {
       if (generation !== glassesGeneration || !glassesAllowed()) return null;
       return module.createGlassesScene(glassesHost, {
         modelUrl: new URL('./assets/models/gafas/senva-gafas.glb', document.baseURI).href,
@@ -505,7 +507,6 @@
   }
   const revealScenes = [...document.querySelectorAll('#team, #xiji, #contact')];
   const bilingualBlocks = [...document.querySelectorAll('[data-bilingual-space]')];
-  const principle = document.querySelector('.principle');
   const principleStage = document.querySelector('.principle-stage');
   const chapters = [...document.querySelectorAll('[data-chapter]')];
   let currentChapter = '';
@@ -515,6 +516,12 @@
   function cinemaProgress(scene, y, g) {
     if (scene.fixed) return clamp((y - (scene.top - g.headerHeight)) / Math.max(1, scene.height - scene.stageHeight));
     return clamp((y + g.height - scene.top) / Math.max(1, g.height + scene.height));
+  }
+  // One slow approach, a reading hold, then only the light travels out.
+  // Uses the complete passage through the viewport, in either direction.
+  function cameraPass(box, y, height) {
+    const passage = clamp((y + height - box.top) / Math.max(1, height + box.height));
+    return {approach: smooth((passage - .02) / .54), departure: smooth((passage - .78) / .22), passage};
   }
   // Pure document-coordinate path; no DOM reads, scroll locks or reparenting here.
   function glassesFlightPose(g, y, progress, dock, voiceOpacity) {
@@ -600,10 +607,10 @@
     g.cinema.forEach(scene => {
       const progress = enabled ? cinemaProgress(scene, y, g) : 1;
       scene.el.style.setProperty('--cinema-p', progress.toFixed(4));
-      scene.el.style.setProperty('--cinema-enter', smooth(progress / .34).toFixed(4));
-      scene.el.style.setProperty('--cinema-cross', smooth((progress - .14) / .66).toFixed(4));
-      scene.el.style.setProperty('--cinema-settle', smooth((progress - .60) / .34).toFixed(4));
-      scene.el.style.setProperty('--cinema-travel', smooth((progress - .04) / .86).toFixed(4));
+      scene.el.style.setProperty('--cinema-enter', smooth(progress / .60).toFixed(4));
+      scene.el.style.setProperty('--cinema-cross', smooth((progress - .05) / .90).toFixed(4));
+      scene.el.style.setProperty('--cinema-settle', smooth((progress - .36) / .60).toFixed(4));
+      scene.el.style.setProperty('--cinema-travel', smooth(progress).toFixed(4));
       scene.el.dataset.cinemaProgress = progress.toFixed(4);
       if (scene.el === glassesTrack) {
         glassesProgress = progress;
@@ -639,9 +646,12 @@
     hero.style.setProperty('--hero-progress', pose.hero.toFixed(4));
     purpose.style.setProperty('--purpose-progress', pose.purpose.toFixed(4));
     experiment.style.setProperty('--practice-progress', pose.practice.toFixed(4));
-    principle.style.setProperty('--principle-progress', (enabled ? smooth((y + g.height * .9 - g.principle.top) / (g.height * .65)) : 1).toFixed(4));
+    const statementCamera = cameraPass(g.principle, y, g.height);
+    principleStage.style.setProperty('--principle-progress', (enabled ? statementCamera.approach : 1).toFixed(4));
+    principleStage.style.setProperty('--principle-exit', (enabled ? statementCamera.departure : 0).toFixed(4));
     revealScenes.forEach((el, i) => {
-      el.style.setProperty('--chapter-progress', (enabled ? smooth((y + g.height * .9 - g.reveals[i].top) / (g.height * (el.id === 'team' ? 1.2 : .95))) : 1).toFixed(4));
+      el.style.setProperty('--chapter-progress', (enabled ? smooth((y + g.height * .94 - g.reveals[i].top) / (g.height * (el.id === 'contact' ? 1.30 : 1.2))) : 1).toFixed(4));
+      if (el.id === 'contact') el.style.setProperty('--camera-passage', (enabled ? cameraPass(g.reveals[i], y, g.height).passage : .5).toFixed(4));
     });
     const exchange = smooth((pose.vision - .24) / .50);
     vision.style.setProperty('--exchange', exchange.toFixed(4));

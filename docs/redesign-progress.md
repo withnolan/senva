@@ -646,3 +646,37 @@ Se ha revisado la captura aportada por el usuario, el código y las geometrías/
 Implementación `affa08bae4ae8c22185afe0e4961f9ffe29478cc`, pusheada a `origin/main`. GitHub Pages confirma `built` para ese SHA, sin error. Treinta recursos responden HTTP200 y coinciden byte a byte mediante HTTPS validado, incluidos el módulo vivo, controlador, CSS, GLB y respaldos. CSS `4f88ebff`, JS `cbfa062a`, gafas `21560d0a`. Se comprueba entrega de archivos, sin atribuir a ello una revisión GPU/visual de la página.
 
 Este cierre solo actualiza el registro y también se pushea/verifica. No hay force push ni cambios de configuración. Los pendientes de observación visual anteriores siguen abiertos. [Revisar visión](https://withnolan.github.io/senva/#vision).
+
+
+<a id="camera-and-purpose"></a>
+## Cámara, propósito y banda inferior de subtítulos — 24 de octubre de 2026
+
+### Bloque de implementación integrado
+
+Petición vigente: corregir la línea de la captura de las21:37, dar movimientos de cámara y un ritmo menos brusco, bajar los subtítulos, una apertura deliberada de unos2s, menos etiquetas de concepto y un espacio protagonista para el principio de comunicación. Se conserva el proyecto y el único modelo aprobado.
+
+- Coordinación retira el óvalo sólido recortado de la unión Xiji→contacto. La disolución cromática tiene extremos exactamente iguales a las secciones vecinas; el acercamiento/pan corresponde al titular real y al arco de contacto. No existe ya una silueta rellena que corte horizontalmente esa franja.
+- El principio existente ocupa un espacio propio: propósito grande, hipótesis subordinada, luz difusa turquesa detrás y acercamiento amplio. Entrada, reposo de lectura y salida de luz comparten una función reversible del paso por viewport. Sin desaparición del texto ni altura máxima. Móvil/reducido usan contenido en flujo.
+- Práctica aproxima la hoja de0,78→1 durante todo el recorrido. Validación hace un acercamiento/pan del contenido real. Se retiran sus aperturas sólidas gigantes, sustituidas por planos de luz suaves sobre fondos continuos. Los progresos de entrada/cruce/asentamiento se extienden; equipo/Xiji/contacto dejan de completar su movimiento tan pronto. No se transforma ningún ancestro del modelo ni el hueco de llegada.
+- Desarrollo de lentes modifica solo `glasses-3d.js`: el plano completo queda bajo el centro óptico, ancho60% y descenso20% de la altura. La textura compensa el tamaño de letra sin comprimirla; conserva reflejos, escritura, giro y controles.
+- Desarrollo de entrada modifica solo `intro.js`: mínimo solicitado2000ms más fotograma, salida independiente de seguridad2800ms. Interacción/reducido/retorno omiten la cubierta. Marca y luz se aproximan, el logo se amplía al salir y la portada entra escalonada con una aproximación más visible de la ilustración. Sin esperar el GLB ni bloquear desplazamiento/foco.
+- La etiqueta «Concept in research» pasa de cuatro apariciones a una junto al diagrama. Se conservan el estado real en portada, los límites explicativos y las frases ficticias con pausa. El principio deja de repetirse como texto secundario en portada.
+
+[Storyboard y responsabilidades](camera-motion-direction.md). Dirección revisa la captura y el diff de forma independiente. Detectó que reservar el párrafo dentro de un padre escalado subestimaría su altura; la reserva EN/ES se mueve al propio grupo transformado, cuyo clon se mide sin transform. Sin reservas anidadas ni saltos de línea impuestos.
+
+### Comprobaciones iniciales y límite
+
+Sintaxis,17 escenarios de temporización simulada, reservas bilingües y validaciones de HTML/122 claves EN/ES pasan. Geometría GLB real:2145 muestras por lente sitúan toda la banda inferior dentro de su superficie; el arnés del reloj confirma frases, pausa/inactivo/dispose/contextlost. Estas pruebas no acreditan apariencia, GPU o fluidez real.
+
+Continúa el bloqueo de acceso al navegador previamente documentado, sin restablecimiento confirmado. Se usa la captura aportada como evidencia del defecto y no se elude el bloqueo mediante otras superficies. Queda pendiente observar esta nueva implementación en escritorio/móvil, ambas lenguas, ida/vuelta y movimiento reducido. La entrega técnica y sus comprobaciones finales se anotarán al terminar.
+
+
+### Revisión final de código y comprobaciones afectadas
+
+- Segunda crítica independiente detecta que el zoom1,16/pan7% de portada podría desbordar lateralmente; se contiene en `.hero` con `overflow:clip`, conservando el desplazamiento del documento. Práctica reduce su pan de10vw a3vw para mantener el acercamiento dentro de su espacio. Son correcciones por envolvente CSS, no layout observado.
+- `cameraPass` se extrae del controlador real:1001 muestras en tres geometrías, inicio/mitad/final, monotonía, reposo0,56–0,78 y regreso idéntico. Acercamiento0,98–1,04viewports en las geometrías comprobadas. Se comprueba que el umbral ya no tiene apertura sólida, los extremos cromáticos coinciden y solo queda una etiqueta repetitiva de concepto.
+- Trayectoria real extraída:1001 muestras, entrada fuera por izquierda, llegada dentro por derecha, continuidad de liberación y centro del hueco, regreso y límite inferior en700px. El cambio de ritmo de fondos no altera la función del modelo ni sus ancestros.
+- Se repiten geometría inferior de ambas lentes y reloj de escritura/idioma/pausa/inactividad/dispose/contextlost; pasan. Se repiten17 escenarios de entrada:2000ms mínimo,2800ms seguridad, interrupción/bypass, fallos y recursos demorados. Reserva bilingüe: caché, anchos, refresco de fuentes, details, limpieza de clones y máximo EN/ES pasan.
+- HTML equilibrado,122 claves y respaldo inglés/atributos/metadatos, IDs/anclas y enlaces Markdown, licencia/recursos locales y sintaxis. Logo exacto, favicon y retratos originales conservados. Sin cambios de instrucciones de arranque; README principal permanece centrado en el proyecto. Guía técnica, recursos y storyboard actualizados.
+
+Estas comprobaciones de código, geometría y simulación no sustituyen observación visual. Siguen pendientes encuadres/glow, transiciones reales de ida/vuelta, foco visible,320px/móvil, EN/ES y reducido en navegador, por el bloqueo descrito. No se afirman FPS, consola limpia, rendimiento GPU ni pruebas en dispositivos físicos. Commit/push y build exacto se verifican a continuación.
