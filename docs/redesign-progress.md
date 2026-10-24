@@ -797,7 +797,11 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 
 - `<noscript>` bilingüe (una línea) tras el enlace «Skip to content» en `index.html`, con estilo `.noscript-note` (13 px, azul noche). Comprobado con Chromium con JavaScript desactivado (`review/a10-nojs.png`): aviso visible, portada y contenido en inglés legibles. `legal.html` y `404.html` no lo llevan (404 ya tiene su propio contenido estático).
 
+## Plan autónomo — paso a.11 (parte 1): etiquetas «01 / …» fuera — 24 de octubre de 2026
+
+- Retiradas las tres etiquetas (`purposeLabel`, `visionLabel`, `experimentLabel`) del HTML y de las claves EN/ES de `script.js` (el menú conserva los nombres). Comprobado en navegador a 1440 px (`review/a11-purpose.png`, `a11-concept.png`): titulares bien colocados sin la etiqueta. Quedan las etiquetas sin número (p. ej. «The work ahead») por no estar en la lista del plan.
+
 ### Decisions to review
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** a.11 — elementos medios/bajos: quitar etiquetas «01 / …», translate=no en SENVA, safe-area, pantalla de carga sobre el título, enlaces «volver arriba» en legal.html.
+**Next step:** a.11 parte 2 — translate=no, safe-area, pantalla de carga, anclas en legal.html.
