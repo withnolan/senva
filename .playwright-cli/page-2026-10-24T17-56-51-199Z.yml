@@ -1,0 +1,239 @@
+- generic [active] [ref=f7e1]:
+  - generic [aria-hidden]:
+    - generic: SENVA.
+  - link "Saltar al contenido" [ref=f7e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f7e3]:
+    - generic [ref=f7e4]:
+      - link "SENVA — inicio" [ref=f7e5] [cursor=pointer]:
+        - /url: "#home"
+        - generic [ref=f7e8]: SENVA.
+      - navigation "Navegación principal" [ref=f7e9]:
+        - link "Propósito" [ref=f7e10] [cursor=pointer]:
+          - /url: "#opportunity"
+        - link "La visión" [ref=f7e11] [cursor=pointer]:
+          - /url: "#vision"
+        - link "Primera hipótesis" [ref=f7e12] [cursor=pointer]:
+          - /url: "#concept"
+        - link "Las preguntas" [ref=f7e13] [cursor=pointer]:
+          - /url: "#validation"
+        - link "El equipo" [ref=f7e14] [cursor=pointer]:
+          - /url: "#team"
+        - link "Por qué Xiji" [ref=f7e15] [cursor=pointer]:
+          - /url: "#xiji"
+      - group "Idioma" [ref=f7e17]:
+        - button "Leer en inglés" [ref=f7e18] [cursor=pointer]: EN
+        - generic [aria-hidden] [ref=f7e19]: /
+        - button "Leer en español" [pressed] [ref=f7e20] [cursor=pointer]: ES
+  - main [ref=f7e21]:
+    - region [ref=f7e22]:
+      - generic [ref=f7e24]:
+        - heading "Que una conversación abra posibilidades." [level=1] [ref=f7e25]:
+          - generic [ref=f7e26]: Que una conversación
+          - generic [ref=f7e28]: abra posibilidades.
+        - paragraph [ref=f7e30]: Exploramos cómo la tecnología podría acompañar la comunicación entre personas sordas signantes y oyentes, con más libertad para compartir, participar y encontrarse.
+        - generic [ref=f7e31]:
+          - link "Descubre la visión" [ref=f7e32] [cursor=pointer]:
+            - /url: "#vision"
+            - generic [aria-hidden] [ref=f7e34]: ↓
+          - link "Nuestras próximas preguntas" [ref=f7e35] [cursor=pointer]:
+            - /url: "#validation"
+        - paragraph [ref=f7e36]:
+          - strong [ref=f7e37]: Idea / Validación de hipótesis
+          - text: Solo existe la idea. Sin prototipo, entrevistas, pruebas, usuarios, ingresos ni alianzas confirmadas.
+      - figure:
+        - generic:
+          - img "Dos personas adultas con gafas conceptuales y una de ellas con guantes sobre las manos en reposo. Ilustración editorial, no una demostración del producto."
+    - generic [ref=f7e38]:
+      - region [ref=f7e40]:
+        - generic [ref=f7e41]:
+          - generic [ref=f7e42]:
+            - generic [ref=f7e43]: 01 / El propósito
+            - heading "Más espacio para participar." [level=2] [ref=f7e44]
+            - paragraph [ref=f7e45]: Cada persona tiene algo que aportar. Queremos explorar apoyos que respeten su autonomía y den más espacio al encuentro.
+          - list [ref=f7e51]:
+            - listitem [ref=f7e52]:
+              - heading "Una idea que merece compartirse." [level=3] [ref=f7e53]
+            - listitem [ref=f7e54]:
+              - heading "Alguien a quien aún no conoces." [level=3] [ref=f7e55]
+            - listitem [ref=f7e56]:
+              - heading "Una conversación que surge sin planearla." [level=3] [ref=f7e57]
+          - paragraph [ref=f7e58]: Situaciones que motivan el proyecto, no testimonios ni resultados de investigación.
+      - region [ref=f7e59]:
+        - generic [ref=f7e63]:
+          - generic [ref=f7e64]: 02 / La visión
+          - heading "Dos direcciones. Una conversación." [level=2] [ref=f7e65]
+          - paragraph [ref=f7e66]: Imaginamos guantes y gafas que pudieran acompañar una conversación en ambas direcciones, sin tener que sostener o colocar un móvil. Por ahora, una idea que investigar.
+        - generic [ref=f7e69]:
+          - generic [ref=f7e70]:
+            - article [ref=f7e71]:
+              - generic [ref=f7e72]:
+                - generic [aria-hidden] [ref=f7e73]: A
+                - heading "Dar espacio a la voz de la otra persona." [level=3] [ref=f7e74]
+                - paragraph [ref=f7e75]: Queremos investigar cómo mostrar el habla como subtítulos en las gafas, para que la atención pueda quedarse en la otra persona.
+                - generic [ref=f7e76]:
+                  - generic [ref=f7e77]: Frase cotidiana ficticia
+                  - paragraph [ref=f7e78]: “¿Nos vemos aquí mañana?”
+            - article [ref=f7e79]:
+              - generic [ref=f7e80]:
+                - generic [aria-hidden] [ref=f7e81]: B
+                - heading "Comprender más allá de las manos." [level=3] [ref=f7e82]
+                - paragraph [ref=f7e83]: "Los guantes podrían aportar información manual. La expresión facial, el cuerpo y el espacio también aportan significado: un guante no puede traducir por sí solo una lengua de signos completa."
+                - paragraph [ref=f7e84]: Cómo captar el resto de información y cómo funcionaría el sistema siguen siendo preguntas de investigación.
+                - link "¿Qué necesitaríamos comprender?" [ref=f7e85] [cursor=pointer]:
+                  - /url: "#research"
+          - figure "Experiencia conceptual. No es una demostración funcional. Frases ficticias que se escriben lentamente para ilustrar el concepto." [ref=f7e86]:
+            - generic [ref=f7e87]:
+              - generic [ref=f7e88]: Concepto en investigación
+              - generic [aria-hidden] [ref=f7e89]:
+                - generic [ref=f7e90]: A
+                - generic [ref=f7e92]: B
+            - generic [ref=f7e93]:
+              - generic [ref=f7e94]:
+                - generic [ref=f7e95]: Voz
+                - strong [ref=f7e107]: Subtítulos en las gafas
+              - generic [ref=f7e111]:
+                - strong [ref=f7e112]: Información manual
+                - generic [aria-hidden] [ref=f7e113]: +
+                - generic [ref=f7e114]: Rostro, cuerpo y espacio
+                - generic [ref=f7e115]:
+                  - generic [ref=f7e117]: "?"
+                  - strong [ref=f7e118]: Hacia texto / voz
+                - paragraph [ref=f7e119]: Captación y arquitectura por resolver
+            - generic [ref=f7e120]:
+              - text: Experiencia conceptual. No es una demostración funcional.
+              - generic [ref=f7e121]: Frases ficticias que se escriben lentamente para ilustrar el concepto.
+      - region [ref=f7e122]:
+        - generic [ref=f7e126]:
+          - generic [ref=f7e127]:
+            - generic [ref=f7e128]: 03 / La primera hipótesis
+            - heading "Primero, aprender qué ayuda." [level=2] [ref=f7e129]
+            - paragraph [ref=f7e130]: "Una primera hipótesis: explorar sensores y feedback con una posible herramienta de práctica de LSE, junto a docentes y estudiantes adultos. Un experimento acotado para aprender qué ayuda."
+            - paragraph [ref=f7e131]: No demostraría traducción de conversaciones naturales. Eso necesita su propia investigación.
+            - link "Leer los límites de investigación" [ref=f7e132] [cursor=pointer]:
+              - /url: "#research"
+          - figure "Concepto de interfaz · sin datos medidos" [ref=f7e133]:
+            - generic [ref=f7e134]: SENVA / LSE
+            - heading "Una posible sesión de práctica" [level=3] [ref=f7e136]
+            - paragraph [ref=f7e137]: Ejercicios seleccionados · alcance por definir
+            - list [ref=f7e144]:
+              - listitem [ref=f7e145]:
+                - generic [ref=f7e146]: ¿Qué pueden captar los sensores de forma fiable?
+              - listitem [ref=f7e147]:
+                - generic [ref=f7e148]: ¿Qué feedback ayudaría a dar el siguiente paso?
+            - paragraph [ref=f7e149]: Las preguntas y los ejercicios se elegirían con docentes y estudiantes adultos.
+        - paragraph [ref=f7e153]:
+          - generic [ref=f7e154]: La comunicación es el propósito.
+          - generic [ref=f7e155]: El aprendizaje es una primera hipótesis.
+      - region [ref=f7e156]:
+        - generic [ref=f7e159]:
+          - generic [ref=f7e160]:
+            - generic [ref=f7e161]: El trabajo que viene
+            - heading "Decisiones antes que dispositivos." [level=2] [ref=f7e162]
+            - paragraph [ref=f7e163]: El primer paso sería escuchar y decidir con las personas qué merece la pena investigar. Este plan todavía no ha comenzado.
+          - list [ref=f7e164]:
+            - listitem [ref=f7e165]:
+              - generic [aria-hidden] [ref=f7e166]: "01"
+              - generic [ref=f7e167]:
+                - heading "Escuchar. Decidir juntos." [level=3] [ref=f7e168]
+                - paragraph [ref=f7e169]: Codiseñar con personas sordas signantes y oyentes qué situaciones merecen atención y qué apoyo sería útil y aceptable.
+            - listitem [ref=f7e170]:
+              - generic [aria-hidden] [ref=f7e171]: "02"
+              - generic [ref=f7e172]:
+                - heading "Cuestionar la elección de hardware." [level=3] [ref=f7e173]
+                - paragraph [ref=f7e174]: "Comparar guantes y gafas con cámaras, móviles y recursos existentes: autonomía, comodidad, calibración, coste y accesibilidad."
+            - listitem [ref=f7e175]:
+              - generic [aria-hidden] [ref=f7e176]: "03"
+              - generic [ref=f7e177]:
+                - heading "Elegir una pregunta comprobable." [level=3] [ref=f7e178]
+                - paragraph [ref=f7e179]: Si se justifica, elegir unos pocos ejercicios con docentes y explorar sensores comerciales. Evaluar el feedback con distintos estudiantes adultos.
+          - paragraph [ref=f7e180]: La evidencia debería guiarnos, incluso si nos lleva a cambiar de idea o a dejar atrás el hardware.
+    - region [ref=f7e181]:
+      - generic [ref=f7e182]:
+        - generic [ref=f7e183]:
+          - generic [ref=f7e184]: Lo que sigue abierto
+          - heading "Una señal no es una lengua." [level=2] [ref=f7e185]
+        - generic [ref=f7e186]:
+          - group [ref=f7e187]:
+            - generic "¿Qué información faltaría?" [ref=f7e188] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f7e190]: +
+          - group [ref=f7e191]:
+            - generic "¿Qué demostraría un experimento de práctica?" [ref=f7e192] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f7e194]: +
+          - group [ref=f7e195]:
+            - generic "¿Por qué empezar con LSE?" [ref=f7e196] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f7e198]: +
+    - region [ref=f7e200]:
+      - generic [ref=f7e201]:
+        - generic [ref=f7e202]:
+          - generic [ref=f7e203]: Las personas detrás de SENVA
+          - heading "Dos perspectivas. Un punto de partida compartido." [level=2] [ref=f7e204]
+          - paragraph [ref=f7e205]: Informática, empresa y transmedia. Dos formas de mirar el mismo reto y una voluntad compartida de aprender.
+        - generic [ref=f7e209]:
+          - article [ref=f7e210]:
+            - img "Retrato de Shengyu Nolan Chen" [ref=f7e211]
+            - generic [ref=f7e212]:
+              - generic [ref=f7e213]: Cofundador
+              - heading "Shengyu Nolan Chen" [level=3] [ref=f7e214]
+              - paragraph [ref=f7e215]: Estudiante de Informática y Administración y Dirección de Empresas en la Universidad Carlos III de Madrid (UC3M).
+              - link "Shengyu Nolan Chen en LinkedIn (se abre en una pestaña nueva)" [ref=f7e216] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/shengyu-nolan-chen/
+                - text: LinkedIn
+          - article [ref=f7e219]:
+            - img "Retrato de Santiago Muñoz Veguillas" [ref=f7e220]
+            - generic [ref=f7e221]:
+              - generic [ref=f7e222]: Cofundador
+              - heading "Santiago Muñoz Veguillas" [level=3] [ref=f7e223]
+              - paragraph [ref=f7e224]: Estudiante del Grado en Diseño y Gestión de Proyectos Transmedia en CSEU La Salle.
+              - link "Santiago Muñoz Veguillas en LinkedIn (se abre en una pestaña nueva)" [ref=f7e225] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/santiago-veguillas/
+                - text: LinkedIn
+        - paragraph [ref=f7e228]: Con aportaciones de dos estudiantes colaboradoras durante la ideación.
+    - region [ref=f7e230]:
+      - generic [ref=f7e231]:
+        - generic [ref=f7e232]:
+          - generic [ref=f7e233]: Candidatura de Santiago · Xiji, Shanghái
+          - heading "Ampliar la mirada. Mejorar las preguntas." [level=2] [ref=f7e234]
+        - generic [ref=f7e235]:
+          - paragraph [ref=f7e236]: Santiago presenta su candidatura a Xiji para ampliar conocimientos y experiencia internacional, conocer el ecosistema emprendedor chino y entender cómo el desarrollo de hardware y el acceso a componentes y proveedores podrían ayudar a investigar SENVA.
+          - paragraph [ref=f7e237]: "El objetivo: hacer mejores preguntas, contrastar la idea y elegir un primer experimento con sentido."
+          - paragraph [ref=f7e238]: Contexto de candidatura. No implica admisión, afiliación, respaldo ni compromisos de proveedores.
+    - region [ref=f7e240]:
+      - generic [ref=f7e241]:
+        - text: El siguiente paso empieza con una conversación
+        - heading "Cada gesto nos acerca." [level=2] [ref=f7e242]:
+          - generic [ref=f7e243]: Cada gesto
+          - generic [ref=f7e244]: nos acerca.
+        - generic [ref=f7e245]:
+          - paragraph [ref=f7e246]: Una idea mejora cuando se conversa. Si quieres compartir una pregunta o una perspectiva, puedes encontrarnos en LinkedIn.
+          - generic [ref=f7e247]:
+            - link "Shengyu Nolan Chen en LinkedIn (se abre en una pestaña nueva)" [ref=f7e248] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/shengyu-nolan-chen/
+              - generic [ref=f7e249]: Shengyu Nolan Chen
+              - generic [ref=f7e250]: LinkedIn
+            - link "Santiago Muñoz Veguillas en LinkedIn (se abre en una pestaña nueva)" [ref=f7e253] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/santiago-veguillas/
+              - generic [ref=f7e254]: Santiago Muñoz Veguillas
+              - generic [ref=f7e255]: LinkedIn
+  - contentinfo [ref=f7e258]:
+    - generic [ref=f7e259]:
+      - generic [ref=f7e260]:
+        - link "SENVA — inicio" [ref=f7e261] [cursor=pointer]:
+          - /url: "#home"
+          - generic [ref=f7e264]: SENVA.
+        - paragraph [ref=f7e265]: Inspirado en seña, movimiento y avance. No es un acrónimo.
+        - link "Ver SENVA en GitHub (se abre en una pestaña nueva)" [ref=f7e266] [cursor=pointer]:
+          - /url: https://github.com/withnolan/senva
+          - text: Explora el repositorio
+      - navigation "Información legal" [ref=f7e267]:
+        - link "Términos de uso" [ref=f7e268] [cursor=pointer]:
+          - /url: ./legal.html#terms-es
+        - link "Privacidad" [ref=f7e269] [cursor=pointer]:
+          - /url: ./legal.html#privacy-es
+        - link "Cookies y preferencias" [ref=f7e270] [cursor=pointer]:
+          - /url: ./legal.html#cookies-es
+      - generic [ref=f7e271]:
+        - generic [ref=f7e272]: Un proyecto emprendedor en fase de idea.
+        - link "Volver al inicio" [ref=f7e273] [cursor=pointer]:
+          - /url: "#home"
+          - text: Volver al inicio ↑

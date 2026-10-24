@@ -1,0 +1,239 @@
+- generic [active] [ref=f2e1]:
+  - generic [aria-hidden]:
+    - generic: SENVA.
+  - link "Skip to content" [ref=f2e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - link "SENVA — home" [ref=f2e5] [cursor=pointer]:
+        - /url: "#home"
+        - generic [ref=f2e8]: SENVA.
+      - navigation "Main navigation" [ref=f2e9]:
+        - link "Purpose" [ref=f2e10] [cursor=pointer]:
+          - /url: "#opportunity"
+        - link "The vision" [ref=f2e11] [cursor=pointer]:
+          - /url: "#vision"
+        - link "First hypothesis" [ref=f2e12] [cursor=pointer]:
+          - /url: "#concept"
+        - link "The questions" [ref=f2e13] [cursor=pointer]:
+          - /url: "#validation"
+        - link "The people" [ref=f2e14] [cursor=pointer]:
+          - /url: "#team"
+        - link "Why Xiji" [ref=f2e15] [cursor=pointer]:
+          - /url: "#xiji"
+      - group "Language" [ref=f2e17]:
+        - button "Read in English" [pressed] [ref=f2e18] [cursor=pointer]: EN
+        - generic [aria-hidden] [ref=f2e19]: /
+        - button "Read in Spanish" [ref=f2e20] [cursor=pointer]: ES
+  - main [ref=f2e21]:
+    - region [ref=f2e22]:
+      - generic [ref=f2e24]:
+        - heading "Let a conversation open possibilities." [level=1] [ref=f2e25]:
+          - generic [ref=f2e26]: Let a conversation
+          - generic [ref=f2e28]: open possibilities.
+        - paragraph [ref=f2e30]: We explore how technology could support communication between Deaf signers and hearing people, with more freedom to share, take part and connect.
+        - generic [ref=f2e31]:
+          - link "Discover the vision" [ref=f2e32] [cursor=pointer]:
+            - /url: "#vision"
+            - generic [aria-hidden] [ref=f2e34]: ↓
+          - link "Our next questions" [ref=f2e35] [cursor=pointer]:
+            - /url: "#validation"
+        - paragraph [ref=f2e36]:
+          - strong [ref=f2e37]: Idea / Hypothesis validation
+          - text: Only the idea exists. No prototype, interviews, tests, users, revenue or confirmed partnerships.
+      - figure:
+        - generic:
+          - img "Two adults wearing conceptual glasses, with gloves on the resting hands of one person. An editorial illustration, not a product demonstration."
+    - generic [ref=f2e38]:
+      - region [ref=f2e40]:
+        - generic [ref=f2e41]:
+          - generic [ref=f2e42]:
+            - generic [ref=f2e43]: 01 / The purpose
+            - heading "More room to take part." [level=2] [ref=f2e44]
+            - paragraph [ref=f2e45]: Everyone has something to contribute. We want to explore support that respects people’s autonomy and makes more room for connection.
+          - list [ref=f2e51]:
+            - listitem [ref=f2e52]:
+              - heading "An idea worth sharing." [level=3] [ref=f2e53]
+            - listitem [ref=f2e54]:
+              - heading "Someone you haven’t met yet." [level=3] [ref=f2e55]
+            - listitem [ref=f2e56]:
+              - heading "A conversation that starts in the moment." [level=3] [ref=f2e57]
+          - paragraph [ref=f2e58]: Situations that motivate the project, not testimonials or findings from research.
+      - region [ref=f2e59]:
+        - generic [ref=f2e63]:
+          - generic [ref=f2e64]: 02 / The vision
+          - heading "Two directions. One conversation." [level=2] [ref=f2e65]
+          - paragraph [ref=f2e66]: We imagine gloves and glasses that could support both directions of a conversation, without holding or positioning a phone. For now, an idea to investigate.
+        - generic [ref=f2e69]:
+          - generic [ref=f2e70]:
+            - article [ref=f2e71]:
+              - generic [ref=f2e72]:
+                - generic [aria-hidden] [ref=f2e73]: A
+                - heading "Make room for the other person’s voice." [level=3] [ref=f2e74]
+                - paragraph [ref=f2e75]: We want to explore speech as captions in glasses, so attention could stay with the person in front of you.
+                - generic [ref=f2e76]:
+                  - generic [ref=f2e77]: Fictional everyday phrase
+                  - paragraph [ref=f2e78]: “Shall we meet here tomorrow?”
+            - article [ref=f2e79]:
+              - generic [ref=f2e80]:
+                - generic [aria-hidden] [ref=f2e81]: B
+                - heading "Understand more than the hands." [level=3] [ref=f2e82]
+                - paragraph [ref=f2e83]: "Gloves could contribute manual information. Facial expression, the body and space also carry meaning: gloves alone cannot translate a whole sign language."
+                - paragraph [ref=f2e84]: How to capture the other information, and how the system would work, remain research questions.
+                - link "What would we need to understand?" [ref=f2e85] [cursor=pointer]:
+                  - /url: "#research"
+          - figure "Conceptual experience. Not a functional demonstration. Fictional phrases, written slowly to illustrate the concept." [ref=f2e86]:
+            - generic [ref=f2e87]:
+              - generic [ref=f2e88]: Concept in research
+              - generic [aria-hidden] [ref=f2e89]:
+                - generic [ref=f2e90]: A
+                - generic [ref=f2e92]: B
+            - generic [ref=f2e93]:
+              - generic [ref=f2e94]:
+                - generic [ref=f2e95]: Speech
+                - strong [ref=f2e107]: Captions in glasses
+              - generic [ref=f2e111]:
+                - strong [ref=f2e112]: Manual information
+                - generic [aria-hidden] [ref=f2e113]: +
+                - generic [ref=f2e114]: Face, body and space
+                - generic [ref=f2e115]:
+                  - generic [ref=f2e117]: "?"
+                  - strong [ref=f2e118]: Towards text / voice
+                - paragraph [ref=f2e119]: Capture and architecture unresolved
+            - generic [ref=f2e120]:
+              - text: Conceptual experience. Not a functional demonstration.
+              - generic [ref=f2e121]: Fictional phrases, written slowly to illustrate the concept.
+      - region [ref=f2e122]:
+        - generic [ref=f2e126]:
+          - generic [ref=f2e127]:
+            - generic [ref=f2e128]: 03 / The first hypothesis
+            - heading "First, learn what helps." [level=2] [ref=f2e129]
+            - paragraph [ref=f2e130]: "A first hypothesis: explore sensors and feedback through a possible LSE practice tool with teachers and adult learners. A limited experiment to learn what helps."
+            - paragraph [ref=f2e131]: It would not demonstrate translation of natural conversations. That needs its own research.
+            - link "Read the research boundaries" [ref=f2e132] [cursor=pointer]:
+              - /url: "#research"
+          - figure "Interface concept · no measured data" [ref=f2e133]:
+            - generic [ref=f2e134]: SENVA / LSE
+            - heading "A possible practice session" [level=3] [ref=f2e136]
+            - paragraph [ref=f2e137]: Selected exercises · scope to define
+            - list [ref=f2e144]:
+              - listitem [ref=f2e145]:
+                - generic [ref=f2e146]: What can sensors capture reliably?
+              - listitem [ref=f2e147]:
+                - generic [ref=f2e148]: What feedback could help someone take the next step?
+            - paragraph [ref=f2e149]: Questions and exercises would be chosen with teachers and adult learners.
+        - paragraph [ref=f2e153]:
+          - generic [ref=f2e154]: Communication is the purpose.
+          - generic [ref=f2e155]: Learning is a first hypothesis.
+      - region [ref=f2e156]:
+        - generic [ref=f2e159]:
+          - generic [ref=f2e160]:
+            - generic [ref=f2e161]: The work ahead
+            - heading "Decisions before devices." [level=2] [ref=f2e162]
+            - paragraph [ref=f2e163]: The first step would be to listen and decide with people what is worth investigating. This plan has not started yet.
+          - list [ref=f2e164]:
+            - listitem [ref=f2e165]:
+              - generic [aria-hidden] [ref=f2e166]: "01"
+              - generic [ref=f2e167]:
+                - heading "Listen. Decide together." [level=3] [ref=f2e168]
+                - paragraph [ref=f2e169]: "Co-design with Deaf signers and hearing people: which situations matter, and what support would be useful and acceptable?"
+            - listitem [ref=f2e170]:
+              - generic [aria-hidden] [ref=f2e171]: "02"
+              - generic [ref=f2e172]:
+                - heading "Challenge the hardware choice." [level=3] [ref=f2e173]
+                - paragraph [ref=f2e174]: "Compare gloves and glasses with cameras, phones and existing resources: autonomy, comfort, calibration, cost and accessibility."
+            - listitem [ref=f2e175]:
+              - generic [aria-hidden] [ref=f2e176]: "03"
+              - generic [ref=f2e177]:
+                - heading "Choose a question we can test." [level=3] [ref=f2e178]
+                - paragraph [ref=f2e179]: If justified, select a few exercises with teachers and explore off-the-shelf sensors. Assess feedback with different adult learners.
+          - paragraph [ref=f2e180]: Evidence should guide us, even if it means rethinking the idea or leaving the hardware behind.
+    - region [ref=f2e181]:
+      - generic [ref=f2e182]:
+        - generic [ref=f2e183]:
+          - generic [ref=f2e184]: What remains open
+          - heading "A signal is not a language." [level=2] [ref=f2e185]
+        - generic [ref=f2e186]:
+          - group [ref=f2e187]:
+            - generic "What information would be missing?" [ref=f2e188] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f2e190]: +
+          - group [ref=f2e191]:
+            - generic "What could a practice experiment establish?" [ref=f2e192] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f2e194]: +
+          - group [ref=f2e195]:
+            - generic "Why begin with LSE?" [ref=f2e196] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f2e198]: +
+    - region [ref=f2e200]:
+      - generic [ref=f2e201]:
+        - generic [ref=f2e202]:
+          - generic [ref=f2e203]: The people behind SENVA
+          - heading "Two perspectives. A shared starting point." [level=2] [ref=f2e204]
+          - paragraph [ref=f2e205]: Computing, business and transmedia. Two ways of approaching the same challenge, with a shared desire to learn.
+        - generic [ref=f2e209]:
+          - article [ref=f2e210]:
+            - img "Portrait of Shengyu Nolan Chen" [ref=f2e211]
+            - generic [ref=f2e212]:
+              - generic [ref=f2e213]: Co-founder
+              - heading "Shengyu Nolan Chen" [level=3] [ref=f2e214]
+              - paragraph [ref=f2e215]: Student of Computer Science and Business Administration at Universidad Carlos III de Madrid (UC3M).
+              - link "Shengyu Nolan Chen on LinkedIn (opens in a new tab)" [ref=f2e216] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/shengyu-nolan-chen/
+                - text: LinkedIn
+          - article [ref=f2e219]:
+            - img "Portrait of Santiago Muñoz Veguillas" [ref=f2e220]
+            - generic [ref=f2e221]:
+              - generic [ref=f2e222]: Co-founder
+              - heading "Santiago Muñoz Veguillas" [level=3] [ref=f2e223]
+              - paragraph [ref=f2e224]: Bachelor’s degree student in Design and Management of Transmedia Projects at CSEU La Salle.
+              - link "Santiago Muñoz Veguillas on LinkedIn (opens in a new tab)" [ref=f2e225] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/santiago-veguillas/
+                - text: LinkedIn
+        - paragraph [ref=f2e228]: With contributions from two student collaborators during ideation.
+    - region [ref=f2e230]:
+      - generic [ref=f2e231]:
+        - generic [ref=f2e232]:
+          - generic [ref=f2e233]: Santiago’s application · Xiji, Shanghai
+          - heading "A wider perspective. Better questions." [level=2] [ref=f2e234]
+        - generic [ref=f2e235]:
+          - paragraph [ref=f2e236]: Santiago is applying to Xiji to broaden his knowledge and international experience, discover China’s entrepreneurial ecosystem, and understand how hardware development and access to components and suppliers could help investigate SENVA.
+          - paragraph [ref=f2e237]: "The goal: ask better questions, test the idea and choose a meaningful first experiment."
+          - paragraph [ref=f2e238]: Application context. No admission, affiliation, endorsement or supplier commitments are implied.
+    - region [ref=f2e240]:
+      - generic [ref=f2e241]:
+        - text: A next step starts with a conversation
+        - heading "Every gesture brings us closer." [level=2] [ref=f2e242]:
+          - generic [ref=f2e243]: Every gesture
+          - generic [ref=f2e244]: brings us closer.
+        - generic [ref=f2e245]:
+          - paragraph [ref=f2e246]: Ideas grow through conversation. If you have a question or a perspective to share, find us on LinkedIn.
+          - generic [ref=f2e247]:
+            - link "Shengyu Nolan Chen on LinkedIn (opens in a new tab)" [ref=f2e248] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/shengyu-nolan-chen/
+              - generic [ref=f2e249]: Shengyu Nolan Chen
+              - generic [ref=f2e250]: LinkedIn
+            - link "Santiago Muñoz Veguillas on LinkedIn (opens in a new tab)" [ref=f2e253] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/santiago-veguillas/
+              - generic [ref=f2e254]: Santiago Muñoz Veguillas
+              - generic [ref=f2e255]: LinkedIn
+  - contentinfo [ref=f2e258]:
+    - generic [ref=f2e259]:
+      - generic [ref=f2e260]:
+        - link "SENVA — home" [ref=f2e261] [cursor=pointer]:
+          - /url: "#home"
+          - generic [ref=f2e264]: SENVA.
+        - paragraph [ref=f2e265]: Inspired by seña, movement and progress. Not an acronym.
+        - link "View SENVA on GitHub (opens in a new tab)" [ref=f2e266] [cursor=pointer]:
+          - /url: https://github.com/withnolan/senva
+          - text: Explore the repository
+      - navigation "Legal information" [ref=f2e267]:
+        - link "Terms of use" [ref=f2e268] [cursor=pointer]:
+          - /url: ./legal.html#terms-en
+        - link "Privacy" [ref=f2e269] [cursor=pointer]:
+          - /url: ./legal.html#privacy-en
+        - link "Cookies & preferences" [ref=f2e270] [cursor=pointer]:
+          - /url: ./legal.html#cookies-en
+      - generic [ref=f2e271]:
+        - generic [ref=f2e272]: An entrepreneurial project at the idea stage.
+        - link "Back to top" [ref=f2e273] [cursor=pointer]:
+          - /url: "#home"
+          - text: Back to top ↑

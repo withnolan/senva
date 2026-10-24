@@ -476,7 +476,7 @@
     if (!glassesNear || glassesLoading || glassesFailed || document.hidden) return;
     const generation = ++glassesGeneration;
     glassesLoading = true;
-    import('./glasses-3d.js?v=ec903386').then(module => {
+    import('./glasses-3d.js?v=0eaa3b38').then(module => {
       if (generation !== glassesGeneration || !glassesAllowed()) return null;
       return module.createGlassesScene(glassesHost, {
         modelUrl: new URL('./assets/models/gafas/senva-gafas.glb', document.baseURI).href,
@@ -541,7 +541,7 @@
     const centerX = introX + (dockX - introX) * handoff;
     let centerY = handoff > 0 ? departureY + (dockY - departureY) * handoff + Math.sin(handoff * Math.PI) * 44 : movingY;
     const introScale = .92 + travel * .08;
-    const dockScale = Math.min(.72, dock.width / Math.max(1, f.width * .70));
+    const dockScale = Math.min(.9, dock.width / Math.max(1, f.width * .70));
     const scale = introScale + (dockScale - introScale) * handoff;
     if (handoff > 0 && handoff < 1) {
       const halfHeight = f.height * scale / 2;

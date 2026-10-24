@@ -171,15 +171,16 @@ function createLensArtwork() {
       subtitleContext.clearRect(0, 0, 1024, 448);
       subtitleContext.textAlign = 'center';
       subtitleContext.textBaseline = 'middle';
-      subtitleContext.font = '500 92px "Instrument Sans", Arial, sans-serif';
+      subtitleContext.font = '600 108px "Instrument Sans", Arial, sans-serif';
       subtitleContext.fontKerning = 'normal';
       const fullWidth = Math.max(...caption.lines.map(line => subtitleContext.measureText(line).width));
       // The longest phrase uses a slightly smaller font, with no compressed text.
-      const fontSize = Math.min(92, 92 * 904 / Math.max(fullWidth, 1));
-      subtitleContext.font = `500 ${fontSize}px "Instrument Sans", Arial, sans-serif`;
-      subtitleContext.shadowColor = 'rgba(141, 224, 212, .68)';
-      subtitleContext.shadowBlur = 17;
-      subtitleContext.fillStyle = '#f3fffd';
+      const fontSize = Math.min(108, 108 * 904 / Math.max(fullWidth, 1));
+      subtitleContext.font = `600 ${fontSize}px "Instrument Sans", Arial, sans-serif`;
+      subtitleContext.shadowColor = 'rgba(255, 255, 255, .85)';
+      subtitleContext.shadowBlur = 12;
+      subtitleContext.fillStyle = '#082f3a';
+      subtitleContext.lineJoin = 'round';
       let offset = 0;
       caption.lines.forEach((line, index) => {
         const visible = line.slice(0, Math.max(0, caption.count - offset));
@@ -189,10 +190,10 @@ function createLensArtwork() {
         subtitleContext.textAlign = 'left';
         const left = (1024 - full) / 2;
         const baseline = 144 + index * 131;
-        // A very fine cool keyline retains the white lettering on pale fields;
-        // it is not a dark panel behind the concept captions.
-        subtitleContext.strokeStyle = 'rgba(12, 65, 76, .52)';
-        subtitleContext.lineWidth = 2;
+        // Dark lettering with a pale halo reads on both the light lens and the
+        // dark frame edge; it is not a panel behind the captions.
+        subtitleContext.strokeStyle = 'rgba(255, 255, 255, .8)';
+        subtitleContext.lineWidth = 7;
         subtitleContext.strokeText(visible, left, baseline);
         subtitleContext.fillText(visible, left, baseline);
         offset += line.length + 1;
@@ -271,7 +272,7 @@ function enhanceLens(lens, artwork) {
   // half of each real lens. Its narrower safe area follows the rounded rim;
   // larger texture lettering preserves the previous apparent glyph size.
   // A ~0.3 mm front offset prevents intersections and mirrored reverse text.
-  const captionWidth = size.x * .60;
+  const captionWidth = size.x * .82;
   const caption = new THREE.Mesh(
     new THREE.PlaneGeometry(captionWidth, captionWidth * 224 / 512),
     artwork.subtitleMaterial

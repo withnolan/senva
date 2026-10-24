@@ -758,7 +758,13 @@ Petición: auditoría completa y prueba de dirección solo en la portada, en la 
 - Docs corregidos: README, `assets/models/README.md`, `technical-guide.md`, `visual-assets.md`. `conversation-art.md` y `design-review.md` quedan como historial.
 - Comprobado: los siete recursos que carga el sitio existen. Sin captura en navegador (solo se borraron archivos sin referencias).
 
+## Plan autónomo — paso a.3: subtítulos legibles en las lentes — 24 de octubre de 2026
+
+- Los subtítulos de las lentes medían unos 6 px de alto, blancos sobre cristal claro. Ahora: texto azul noche con halo claro (legible sobre cristal y montura), tipografía 108 px en la textura (antes 92), plano de subtítulo al 82 % del ancho de la lente (antes 60 %), peso 600, gafas del diagrama a 440 px máx. (antes 340; límite de escala 0,9 en `script.js`).
+- Comprobado en navegador local a 1440 px, EN y ES (`review/a3-before-*.png`, `a3-after-4.png`, `a3-es.png`). Frases largas («Cuéntame tu idea.») caben sin recortes. No comprobados 1100–1280 px ni vídeo.
+- Hashes `?v=` de `styles.css`, `glasses-3d.js` y `script.js` recalculados (sha256 del contenido LF, 8 caracteres); los de otros archivos ya no coincidían con su contenido y no se tocan.
+
 ### Decisions to review
 - (vacío por ahora)
 
-**Next step:** a.3 — subtítulos legibles en las lentes 3D.
+**Next step:** a.4 — tamaño mínimo de texto 13 px.

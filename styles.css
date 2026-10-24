@@ -247,7 +247,7 @@ h2{font-size:clamp(44px,5.3vw,72px);white-space:normal}
  .motion-desktop .vision-diagram{position:sticky;top:var(--scene-top);height:calc(100svh - var(--scene-top) - 28px);max-height:700px;min-height:490px;display:flex;flex-direction:column;overflow:clip}
  .motion-desktop .static-routes{position:relative;flex:1;min-height:0;display:block;padding:0;overflow:clip}
  .motion-desktop .diagram-voice{position:absolute;inset:calc(50% - 110px) 0 auto;height:220px;opacity:var(--voice-opacity);transform:translate(calc(var(--exchange)*42px),calc(var(--exchange)*-45px)) scale(calc(1 - var(--exchange)*.06));transform-origin:center;will-change:transform,opacity}
- .motion-desktop .route-device img{max-width:340px}
+ .motion-desktop .route-device img{max-width:440px}
  .motion-desktop .diagram-manual{position:absolute;left:0;right:0;top:calc(50% - 115px);padding:0;opacity:var(--manual-opacity);transform:translate(calc((1 - var(--manual-reveal))*-42px),calc((1 - var(--manual-reveal))*45px)) scale(calc(.94 + var(--manual-reveal)*.06));transform-origin:center;will-change:transform,opacity}
  .motion-desktop .manual-input img{height:230px;max-height:230px;width:146px}
  .motion-desktop .manual-context{font-size:14px;gap:8px}
@@ -753,7 +753,7 @@ main section:focus-visible h2,main:focus-visible .hero h1{outline:2px solid curr
 /* One glasses scene travels within the vision, then docks beside the explanation. */
 .glasses-flight-boundary{position:absolute;inset:0;overflow:clip;pointer-events:none;z-index:3;visibility:hidden}
 .glasses-model.is-continuous{position:absolute;left:0;top:0;transform-origin:center;pointer-events:none;will-change:transform}
-.glasses-dock{display:grid;place-items:center;width:min(340px,28vw);aspect-ratio:2.1;margin-inline:auto}
+.glasses-dock{display:grid;place-items:center;width:min(440px,32vw);aspect-ratio:2.1;margin-inline:auto}
 .glasses-dock img{transition:none}
 .has-continuous-model .glasses-dock img{opacity:0}
 .caption-toggle{font-size:11px;line-height:1.35;min-height:34px;padding:7px 12px;border:1px solid currentColor;border-radius:24px;background:var(--paper);color:var(--ink);white-space:nowrap;position:relative;z-index:4}
