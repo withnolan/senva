@@ -49,7 +49,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 /* Hero: SENVA's own lens shape, enlarged and cropped by the screen, frames the conversation. */
 .hero{position:relative;overflow:clip;min-height:calc(100svh - var(--header-height));background:var(--ink);color:var(--paper);--hero-progress:1;--lens:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='51 88 168 115' preserveAspectRatio='none'><path d='M53 105c23-11 47-15 77-15 29 0 53 4 73 13 10 5 15 13 14 24l-4 27c-5 32-28 49-68 49-44 0-70-17-78-48l-14-50Z'/></svg>")}
 .hero-grid{position:relative;z-index:2;display:flex;align-items:center;min-height:inherit;padding-block:72px 80px}
-.hero-copy{max-width:min(760px,56%)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;max-width:min(760px,56%)}
 .hero h1{font-size:clamp(54px,5.3vw,92px);line-height:.96;letter-spacing:-.045em;font-weight:600}
 .hero-line{display:block;overflow:clip;padding-bottom:.1em;margin-bottom:-.1em}
 .hero-line>span{display:block}
