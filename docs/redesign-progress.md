@@ -856,9 +856,17 @@ Ramas empujadas, todas desde `9641ca1` (lente real + fondo vivo):
 
 - Fondo oscuro con brillos menta/lavanda y mosaico claro (como la portada). Retratos de ambos cofundadores con el mismo gesto de elevación (5 px, 1,03×) al pasar el puntero, para mantener la misma importancia. Retratos y textos sin cambios. Captura `review/c-team.png` (EN, 1440 px).
 
+## Plan autónomo — paso c.6: Xiji — 24 de octubre de 2026
+
+- Fondo vivo (menta, blanco y lavanda sobre el lila). Nueva imagen de archivo bajo el texto: horizonte diurno de Shanghái recortado a 1600 × 500 y exportado a WebP (96 KB, `assets/xiji/shanghai-skyline.webp`), con crédito visible EN/ES, enlaces a la página de Commons y a la licencia, y aviso «solo ilustrativa; no implica socio, sede ni proveedor».
+- **Fuente:** Wikimedia Commons, «Skyline of Shanghai at day, Aug 10 2023.jpg», autor A Chinese ID, **CC BY-SA 4.0** (https://commons.wikimedia.org/wiki/File:Skyline_of_Shanghai_at_day,_Aug_10_2023.jpg). Se eligió por paleta azul/turquesa, cielo despejado y sin marcas ni neones protagonistas. La licencia compartir-igual exige mantener el crédito y que el recorte se publique con la misma licencia.
+- Otros candidatos guardados en `review/xiji-candidates/` (no se publican): dos nocturnos CC0 (Larry Qian 2017; Gankbank789 2025), uno CC BY (Ernest Jourdier), otro CC BY-SA (Phlizz) y otro diurno/nocturno CC BY-SA. Descartados por saturación de neón (choca con la paleta) y por rótulos de marcas visibles. Metadatos en `review/xiji-candidates/sources.json`.
+- Captura `review/c-xiji.png` (EN, 1440 px). No comprobado en ES ni móvil todavía.
+
 ### Decisions to review
 - Pantalla de carga: se dejó en 2,6 s mínimo porque dibuja el logotipo trazo a trazo (petición anterior); si se quiere el titular visible antes, bajar `minimumTimer` y los 2,6 s de `.booting` en `styles.css`.
 - `assets/graphics/glasses.svg` (dibujo de gafas del diagrama original) no coincide con la montura real (esquinas, lente en punta); no se cambia, solo se usa la forma real en el hero.
+- Imagen de Xiji: se eligió el horizonte diurno (CC BY-SA 4.0). Si prefieres una CC0 sin obligación de licencia compartida, las alternativas nocturnas están en `review/xiji-candidates/`.
 - hreflang: EN/ES comparten URL (cambio de idioma en cliente); si se quiere SEO por idioma habría que crear páginas separadas. Se dejó como mínimo conservador.
 
-**Next step:** c.6 — Xiji con imagen de archivo (candidatos en review/xiji-candidates/).
+**Next step:** c.7 — pie de página y legal.html.

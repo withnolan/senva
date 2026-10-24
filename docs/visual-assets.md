@@ -13,6 +13,7 @@ Azul noche, blanco cálido y turquesa, con los acentos fríos aprobados; ilustra
 | Conexiones y voz | SVG/CSS originales, relaciones conceptuales. No representan reconocimiento real. |
 | `assets/shengyu-nolan-chen.jpg`, `santiago-munoz-veguillas.jpg` | Fotografías facilitadas por el usuario; mismo tratamiento y tamaño reservado. |
 | Favicon, símbolo y palabra SENVA | Identidad conservada. El logo mantiene su familia independiente. |
+| `assets/xiji/shanghai-skyline.webp` | Fotografía de archivo de Shanghái para la sección Xiji, recortada a 1600 × 500 y convertida a WebP (96 KB). Autor: A Chinese ID. Licencia: CC BY-SA 4.0 (derivados bajo la misma licencia). Origen: https://commons.wikimedia.org/wiki/File:Skyline_of_Shanghai_at_day,_Aug_10_2023.jpg. Crédito visible bajo la imagen en EN/ES. Solo ilustra la ciudad de la candidatura; no implica socio, sede ni proveedor. |
 | `assets/social-card.png` | Vista social 1200×630 para metadatos; el SVG fuente se conserva fuera del repositorio. |
 
 El guante y los respaldos de gafas se cargan como `<img>` con medidas reservadas; un canvas decorativo sustituye visualmente al respaldo solo tras dibujar el primer frame. Textos, conceptos y aclaraciones se mantienen en HTML.
